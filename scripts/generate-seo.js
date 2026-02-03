@@ -6,31 +6,31 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const DOMAIN = 'https://freemath.vercel.app'; // Placeholder domain
+const DOMAIN = 'https://free-math.vercel.app';
 const SITE_TITLE = '수학 탐험대 (3학년 수학 학습)';
 const SITE_DESC = '3학년 1학기 수학(덧셈, 뺄셈, 나눗셈, 곱셈, 분수)을 시각적으로 배우고 연습하는 무료 학습 사이트입니다.';
 
 const routes = [
-    { path: '/', changefreq: 'daily', priority: 1.0, title: '홈 - 수학 탐험대' },
-    { path: '/myroom', changefreq: 'weekly', priority: 0.8, title: '내 방 꾸미기' },
-    { path: '/shop', changefreq: 'weekly', priority: 0.8, title: '상점' },
-    { path: '/grade/3/arithmetic', changefreq: 'weekly', priority: 0.9, title: '덧셈과 뺄셈' },
-    { path: '/grade/3/subtraction', changefreq: 'weekly', priority: 0.9, title: '받아내림 뺄셈' },
-    { path: '/grade/3/multiplication', changefreq: 'weekly', priority: 0.9, title: '곱셈 (구구단)' },
-    { path: '/grade/3/division', changefreq: 'weekly', priority: 0.9, title: '나눗셈' },
-    { path: '/grade/3/fraction', changefreq: 'weekly', priority: 0.9, title: '분수와 소수' },
-    { path: '/grade/3/geometry', changefreq: 'weekly', priority: 0.8, title: '평면도형' },
-    { path: '/grade/3/length', changefreq: 'weekly', priority: 0.8, title: '길이와 시간' },
-    { path: '/grade/3/clock', changefreq: 'weekly', priority: 0.8, title: '시계 보기' },
-    { path: '/grade/3/quiz', changefreq: 'daily', priority: 0.8, title: '무한 퀴즈' },
-    { path: '/grade/3/worksheet', changefreq: 'weekly', priority: 0.8, title: '학습지 만들기' },
+  { path: '/', changefreq: 'daily', priority: 1.0, title: '홈 - 수학 탐험대' },
+  { path: '/myroom', changefreq: 'weekly', priority: 0.8, title: '내 방 꾸미기' },
+  { path: '/shop', changefreq: 'weekly', priority: 0.8, title: '상점' },
+  { path: '/grade/3/arithmetic', changefreq: 'weekly', priority: 0.9, title: '덧셈과 뺄셈' },
+  { path: '/grade/3/subtraction', changefreq: 'weekly', priority: 0.9, title: '받아내림 뺄셈' },
+  { path: '/grade/3/multiplication', changefreq: 'weekly', priority: 0.9, title: '곱셈 (구구단)' },
+  { path: '/grade/3/division', changefreq: 'weekly', priority: 0.9, title: '나눗셈' },
+  { path: '/grade/3/fraction', changefreq: 'weekly', priority: 0.9, title: '분수와 소수' },
+  { path: '/grade/3/geometry', changefreq: 'weekly', priority: 0.8, title: '평면도형' },
+  { path: '/grade/3/length', changefreq: 'weekly', priority: 0.8, title: '길이와 시간' },
+  { path: '/grade/3/clock', changefreq: 'weekly', priority: 0.8, title: '시계 보기' },
+  { path: '/grade/3/quiz', changefreq: 'daily', priority: 0.8, title: '무한 퀴즈' },
+  { path: '/grade/3/worksheet', changefreq: 'weekly', priority: 0.8, title: '학습지 만들기' },
 ];
 
 const publicDir = path.join(__dirname, '../public');
 
 // Ensure public dir exists
 if (!fs.existsSync(publicDir)) {
-    fs.mkdirSync(publicDir, { recursive: true });
+  fs.mkdirSync(publicDir, { recursive: true });
 }
 
 // 1. Generate Sitemap
