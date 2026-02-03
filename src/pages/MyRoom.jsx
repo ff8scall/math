@@ -11,7 +11,7 @@ const MyRoom = () => {
     const allItems = [
         { id: 101, name: '멋진 모자', icon: '🎩' },
         { id: 102, name: '반짝이는 왕관', icon: '👑' },
-        { id: 103, name: '마법 지팡이', icon: '🪄' },
+        { id: 103, name: '마법 지팡이', icon: '✨' },
         { id: 201, name: '비밀의 열쇠', icon: '🗝️' },
         // ... add more if needed
     ];

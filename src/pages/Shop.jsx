@@ -11,6 +11,7 @@ const Shop = () => {
     const [inputCode, setInputCode] = useState('');
     const [generatedCode, setGeneratedCode] = useState('');
     const [showCodeModal, setShowCodeModal] = useState(false);
+    const [couponModal, setCouponModal] = useState(null);
 
     useEffect(() => {
         // Refresh data on mount
@@ -25,7 +26,7 @@ const Shop = () => {
     const items = [
         { id: 101, name: '멋진 모자', price: 100, icon: '🎩' },
         { id: 102, name: '반짝이는 왕관', price: 300, icon: '👑' },
-        { id: 103, name: '마법 지팡이', price: 500, icon: '🪄' },
+        { id: 103, name: '마법 지팡이', price: 500, icon: '✨' },
         { id: 201, name: '비밀의 열쇠', price: 1000, icon: '🗝️' },
     ];
 
@@ -85,7 +86,9 @@ const Shop = () => {
                 <h1>수학 상점 🏪</h1>
                 <div className={styles.wallet}>
                     <Button onClick={() => window.location.href = '/myroom'} size="small" variant="secondary" style={{ marginRight: '10px' }}>🏠 내 방 가기</Button>
-                    내 코인: <span className={styles.coin}>{data.coins}</span> 🪙
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '1.2rem', fontWeight: 'bold' }}>
+                        내 코인: <span className={styles.coin}>{data.coins}</span> <span style={{ fontSize: '1.5rem' }}>💰</span>
+                    </div>
                 </div>
             </div>
 

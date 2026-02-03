@@ -1,10 +1,10 @@
 import React from 'react';
 import styles from './Button.module.css';
 
-const Button = ({ children, onClick, variant = 'primary', size = 'medium', ...props }) => {
+const Button = ({ children, onClick, variant = 'primary', size = 'medium', fullWidth, ...props }) => {
     return (
         <button
-            className={`${styles.button} ${styles[variant]} ${styles[size]}`}
+            className={`${styles.button} ${styles[variant]} ${styles[size]} ${fullWidth ? styles.fullWidth : ''}`}
             onClick={onClick}
             {...props}
         >

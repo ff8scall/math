@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Button from '../common/Button';
 import { JsonLd, generateCourseSchema } from '../seo/JsonLd';
@@ -86,11 +86,12 @@ const SubtractionWithBorrow = () => {
                     <div className={styles.stage}>
                         <div className={styles.grid}>
                             {/* Headers */}
+                            <div className={styles.operatorHeader}></div>
                             <div className={styles.columnHeader}>십의 자리</div>
                             <div className={styles.columnHeader}>일의 자리</div>
-                            <div className={styles.operatorHeader}></div>
 
                             {/* Row 1: Borrow/Regrouping Markers */}
+                            <div className={styles.operator}></div>
                             <div className={styles.cell}>
                                 <AnimatePresence>
                                     {step >= 1 && needBorrow && (
@@ -110,25 +111,24 @@ const SubtractionWithBorrow = () => {
                                     )}
                                 </AnimatePresence>
                             </div>
-                            <div className={styles.operator}></div>
 
                             {/* Row 2: Minuend */}
+                            <div className={styles.operator}></div>
                             <div className={`${styles.cell} ${step >= 1 && needBorrow ? styles.dimmed : ''}`}>
                                 <div className={styles.numberBlock}>{topTens}</div>
                             </div>
                             <div className={styles.cell}>
                                 <div className={styles.numberBlock}>{topOnes}</div>
                             </div>
-                            <div className={styles.operator}></div>
 
                             {/* Row 3: Subtrahend */}
+                            <div className={styles.operator}>-</div>
                             <div className={styles.cell}>
                                 <div className={styles.numberBlock}>{botTens}</div>
                             </div>
                             <div className={styles.cell}>
                                 <div className={styles.numberBlock}>{botOnes}</div>
                             </div>
-                            <div className={styles.operator}>-</div>
 
                             {/* Divider */}
                             <div className={styles.divider}></div>
@@ -136,6 +136,7 @@ const SubtractionWithBorrow = () => {
                             <div className={styles.divider}></div>
 
                             {/* Row 4: Result */}
+                            <div className={styles.operator}></div>
                             <div className={styles.cell}>
                                 <AnimatePresence>
                                     {step >= 3 && (
@@ -154,7 +155,6 @@ const SubtractionWithBorrow = () => {
                                     )}
                                 </AnimatePresence>
                             </div>
-                            <div className={styles.operator}></div>
                         </div>
                     </div>
 
