@@ -1,0 +1,232 @@
+.container {
+    padding: 30px;
+    max-width: 1000px;
+    margin: 0 auto;
+    min-height: 100vh;
+}
+
+.modeTabs {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.title {
+    font-size: 2.2rem;
+    color: var(--text-main);
+    text-align: center;
+    margin-bottom: 10px;
+    font-family: 'Jua', sans-serif;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    color: var(--text-sub);
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+/* 탐험 모드 */
+.gridCanvas {
+    width: 400px;
+    height: 400px;
+    background: white;
+    margin: 0 auto 40px;
+    position: relative;
+    border: 2px solid #333;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.gridLines {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.vLine,
+.hLine {
+    position: absolute;
+    background: #eee;
+}
+
+.vLine {
+    width: 1px;
+    height: 100%;
+}
+
+.hLine {
+    height: 1px;
+    width: 100%;
+}
+
+.shapeContainer {
+    position: relative;
+    z-index: 2;
+}
+
+.lShape {
+    width: 80px;
+    height: 80px;
+    position: relative;
+}
+
+.lVertical {
+    position: absolute;
+    width: 20px;
+    height: 60px;
+    background: var(--primary-color);
+    top: 0;
+    left: 0;
+    border-radius: 4px;
+}
+
+.lHorizontal {
+    position: absolute;
+    width: 40px;
+    height: 20px;
+    background: var(--primary-color);
+    bottom: 20px;
+    left: 0;
+    border-radius: 4px;
+}
+
+.controlsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.controlGroup {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 20px;
+    text-align: center;
+}
+
+.controlGroup h3 {
+    margin-bottom: 15px;
+    font-family: 'Jua', sans-serif;
+}
+
+.btnRow {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+/* 연습 모드 */
+.practice {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.problemCard {
+    background: white;
+    padding: 40px;
+    border-radius: 30px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.question {
+    font-size: 1.8rem;
+    margin-bottom: 30px;
+    font-family: 'Jua', sans-serif;
+}
+
+.quizVisual {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.originalBox {
+    background: #f0f7ff;
+    padding: 20px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.originalBox span {
+    font-weight: bold;
+    color: #007bff;
+}
+
+.optionsGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.optionCard {
+    background: white;
+    border: 3px solid #eee;
+    border-radius: 20px;
+    padding: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.optionCard:hover {
+    border-color: var(--primary-color);
+    transform: translateY(-5px);
+}
+
+.optionCard.selected {
+    background: #fff9c4;
+    border-color: #ffd93d;
+}
+
+.optLabel {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.feedbackCorrect {
+    margin-top: 25px;
+    padding: 20px;
+    background: #e8f5e9;
+    color: #2e7d32;
+    border-radius: 20px;
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+.feedbackIncorrect {
+    margin-top: 25px;
+    padding: 20px;
+    background: #ffebee;
+    color: #c62828;
+    border-radius: 20px;
+    font-size: 1.2rem;
+}
+
+.helpBox {
+    margin-top: 30px;
+    background: #f1f3f4;
+    padding: 25px;
+    border-radius: 20px;
+    text-align: left;
+}
+
+@media (max-width: 500px) {
+    .gridCanvas {
+        width: 300px;
+        height: 300px;
+    }
+}

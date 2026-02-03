@@ -1,0 +1,183 @@
+.container {
+    padding: 30px;
+    max-width: 1000px;
+    margin: 0 auto;
+    min-height: 100vh;
+}
+
+.modeTabs {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.opToggle {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+}
+
+.opBtn {
+    padding: 12px 25px;
+    border: 2px solid #eee;
+    background: white;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: 0.3s;
+    font-family: 'Jua', sans-serif;
+}
+
+.activeOp {
+    background: #FFD93D;
+    border-color: #FFD93D;
+}
+
+.title {
+    font-size: 2.2rem;
+    color: var(--text-main);
+    text-align: center;
+    margin-bottom: 30px;
+    font-family: 'Jua', sans-serif;
+}
+
+/* 탐험 모드 */
+.setup {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.setup input {
+    width: 120px;
+    padding: 15px;
+    font-size: 2rem;
+    border: 3px solid #ddd;
+    border-radius: 15px;
+    text-align: center;
+    font-family: 'Jua', sans-serif;
+}
+
+.setup span {
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+.visualStack {
+    background: white;
+    padding: 40px;
+    border-radius: 30px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.stepRow {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+}
+
+.divider {
+    height: 3px;
+    background: #333;
+    margin: 20px 0;
+}
+
+.finalRow {
+    display: flex;
+    justify-content: space-between;
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.divResult {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-bottom: 30px;
+    font-size: 2rem;
+}
+
+.divCheck {
+    text-align: center;
+    font-size: 1.3rem;
+    color: #666;
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 15px;
+}
+
+/* 연습 모드 */
+.practice {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.problemCard {
+    background: white;
+    padding: 40px;
+    border-radius: 30px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.question {
+    font-size: 2rem;
+    margin-bottom: 30px;
+    font-family: 'Jua', sans-serif;
+}
+
+.input {
+    width: 100%;
+    padding: 20px;
+    font-size: 2rem;
+    border: 3px solid #eee;
+    border-radius: 20px;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.feedbackCorrect {
+    margin-top: 25px;
+    padding: 20px;
+    background: #e8f5e9;
+    color: #2e7d32;
+    border-radius: 20px;
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+.feedbackIncorrect {
+    margin-top: 25px;
+    padding: 20px;
+    background: #ffebee;
+    color: #c62828;
+    border-radius: 20px;
+    font-size: 1.2rem;
+}
+
+.feedbackAnswer {
+    margin-top: 25px;
+}
+
+.answerBox {
+    background: #f1f3f4;
+    padding: 25px;
+    border-radius: 20px;
+    text-align: left;
+    margin-bottom: 20px;
+}

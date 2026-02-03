@@ -1,0 +1,381 @@
+.container {
+    padding: 30px;
+    max-width: 1000px;
+    margin: 0 auto;
+    min-height: 100vh;
+}
+
+.modeTabs {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.title {
+    font-size: 2.5rem;
+    color: var(--text-main);
+    margin-bottom: 10px;
+    font-family: 'Jua', sans-serif;
+    text-align: center;
+}
+
+.subtitle {
+    font-size: 1.3rem;
+    color: var(--text-sub);
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+/* ===== 탐험 모드 ===== */
+.explore {
+    text-align: center;
+}
+
+
+/* 도형 선택기 */
+.shapeSelector {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    max-width: 800px;
+    margin: 0 auto 40px;
+}
+
+.shapeBtn {
+    padding: 20px;
+    background: white;
+    border: 4px solid transparent;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.shapeBtn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.shapeBtn.selected {
+    transform: scale(1.1);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+    background: #FFF9C4;
+}
+
+.shapeIconWrapper {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.shapeName {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+    font-family: 'Jua', sans-serif;
+}
+
+/* 캔버스 */
+.canvas {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+    overflow: hidden;
+}
+
+.placedShape {
+    position: absolute;
+    cursor: pointer;
+    transform: translate(-50%, -50%);
+    /* Center the shape at x,y */
+    /* Size is controlled inline in JSX */
+}
+
+.canvasPlaceholder {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.5rem;
+    color: #ccc;
+}
+
+/* 컨트롤 */
+.controls {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+/* 실생활 예시 */
+.realWorldBox {
+    background: #E8F5E9;
+    padding: 25px;
+    border-radius: 15px;
+    margin-bottom: 30px;
+    text-align: left;
+    border-left: 5px solid #4CAF50;
+}
+
+.realWorldBox h3 {
+    margin-bottom: 20px;
+    color: #2E7D32;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.realWorldRow {
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+    line-height: 1.8;
+    display: flex;
+    align-items: center;
+}
+
+.realWorldShape {
+    font-weight: bold;
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.realWorldObjects {
+    color: #555;
+    flex: 1;
+}
+
+/* 도움말 */
+.helpBox {
+    background: #E3F2FD;
+    padding: 25px;
+    border-radius: 15px;
+    text-align: left;
+    border-left: 5px solid #2196F3;
+}
+
+.helpBox h3 {
+    margin-bottom: 15px;
+    color: #1976D2;
+    font-size: 1.5rem;
+}
+
+.helpBox ul {
+    list-style: none;
+    padding: 0;
+}
+
+.helpBox li {
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+    line-height: 1.6;
+}
+
+/* ===== 연습 모드 ===== */
+.practice {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.problemCard {
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.question {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 30px;
+    font-family: 'Jua', sans-serif;
+    text-align: center;
+}
+
+.shapeDisplay {
+    text-align: center;
+    margin: 30px 0;
+    padding: 30px;
+    background: #F5F5F5;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 200px;
+}
+
+.bigShape {
+    width: 150px;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.countGrid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 15px;
+    margin: 30px 0;
+    padding: 20px;
+    background: #FFF9C4;
+    border-radius: 15px;
+}
+
+.countShape {
+    width: 100%;
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+}
+
+.input {
+    width: 100%;
+    padding: 20px;
+    font-size: 3rem;
+    text-align: center;
+    border: 3px solid #ddd;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    font-family: 'Jua', sans-serif;
+}
+
+.input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+.choiceButtons {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.choiceBtn {
+    padding: 20px;
+    font-size: 1.5rem;
+    background: white;
+    border: 3px solid #ddd;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-family: 'Jua', sans-serif;
+}
+
+.choiceBtn:hover:not(:disabled) {
+    border-color: var(--primary-color);
+    background: #FFF9C4;
+}
+
+.choiceBtn.choiceSelected {
+    border-color: var(--primary-color);
+    background: var(--primary-color);
+    color: white;
+}
+
+.choiceBtn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 10px;
+}
+
+/* 피드백 */
+.feedbackCorrect {
+    margin-top: 20px;
+    padding: 20px;
+    background: #C8E6C9;
+    border-radius: 15px;
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #2E7D32;
+    text-align: center;
+}
+
+.feedbackIncorrect {
+    margin-top: 20px;
+    padding: 20px;
+    background: #FFCDD2;
+    border-radius: 15px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #C62828;
+    text-align: center;
+}
+
+.feedbackAnswer {
+    margin-top: 20px;
+}
+
+.answerBox {
+    background: #E3F2FD;
+    padding: 25px;
+    border-radius: 15px;
+    margin-bottom: 15px;
+    border-left: 5px solid #2196F3;
+}
+
+.answerText {
+    font-size: 2rem;
+    color: #1976D2;
+    margin-bottom: 15px;
+}
+
+.explanation {
+    font-size: 1.3rem;
+    color: #666;
+    line-height: 1.6;
+}
+
+/* 반응형 */
+@media (max-width: 768px) {
+    .shapeSelector {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .shapeIconWrapper {
+        width: 50px;
+        height: 50px;
+    }
+
+    .shapeName {
+        font-size: 1.2rem;
+    }
+
+    .canvas {
+        height: 300px;
+    }
+
+    .bigShape {
+        width: 100px;
+        height: 100px;
+    }
+
+    .countGrid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .question {
+        font-size: 1.5rem;
+    }
+}
