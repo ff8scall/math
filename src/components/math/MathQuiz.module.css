@@ -1,0 +1,136 @@
+.container {
+    padding: 30px;
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.title {
+    font-size: 2.5rem;
+    color: var(--text-main);
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    color: var(--text-sub);
+    margin-bottom: 40px;
+}
+
+.topicGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.topicBtn {
+    padding: 30px;
+    font-size: 1.5rem;
+    border: none;
+    border-radius: 20px;
+    background-color: white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.topicBtn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+    background-color: #FFFDE7;
+}
+
+.icon {
+    font-size: 3rem;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.scoreBadge {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.quizCard {
+    background-color: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.problemDisplay {
+    font-size: 3.5rem;
+    font-weight: bold;
+    font-family: 'Jua', sans-serif;
+    margin-bottom: 30px;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+.number {
+    color: #333;
+}
+
+.operator {
+    color: var(--primary-color);
+}
+
+.questionMark {
+    color: #ddd;
+}
+
+.answerForm {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+.input {
+    font-size: 2rem;
+    padding: 10px;
+    text-align: center;
+    border: 3px solid #ddd;
+    border-radius: 10px;
+    outline: none;
+    font-family: 'Jua', sans-serif;
+}
+
+.input:focus {
+    border-color: var(--primary-color);
+}
+
+.error {
+    border-color: #ff6b6b;
+    background-color: #fff5f5;
+}
+
+.feedbackCorrect {
+    margin-top: 20px;
+    font-size: 1.5rem;
+    color: #2ecc71;
+    font-weight: bold;
+}
+
+.feedbackIncorrect {
+    margin-top: 20px;
+    font-size: 1.2rem;
+    color: #e74c3c;
+    font-weight: bold;
+}

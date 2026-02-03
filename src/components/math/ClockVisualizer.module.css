@@ -1,0 +1,126 @@
+.container {
+    padding: 30px;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.title {
+    font-size: 2.5rem;
+    color: var(--text-main);
+    margin-bottom: 30px;
+}
+
+.clockBody {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.clockFace {
+    width: 320px;
+    height: 320px;
+    border: 10px solid #333;
+    border-radius: 50%;
+    position: relative;
+    background-color: white;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.marker {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+    pointer-events: none;
+}
+
+.hourHand {
+    position: absolute;
+    bottom: 50%;
+    left: 50%;
+    width: 8px;
+    height: 90px;
+    background-color: #333;
+    transform-origin: bottom center;
+    border-radius: 4px;
+    z-index: 2;
+}
+
+.minuteHand {
+    position: absolute;
+    bottom: 50%;
+    left: 50%;
+    width: 4px;
+    height: 120px;
+    background-color: var(--primary-color);
+    transform-origin: bottom center;
+    border-radius: 2px;
+    z-index: 1;
+}
+
+.centerDot {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 16px;
+    height: 16px;
+    background-color: #e74c3c;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+}
+
+.digitalDisplay {
+    font-size: 3rem;
+    font-family: 'Jua', sans-serif;
+    color: var(--text-main);
+    background-color: #f0f0f0;
+    display: inline-block;
+    padding: 10px 30px;
+    border-radius: 15px;
+    margin-bottom: 30px;
+}
+
+.controls {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.controlGroup {
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.controlGroup p {
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #666;
+}
+
+.btnRow {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.note {
+    margin-top: 40px;
+    padding: 20px;
+    background-color: #E8F5E9;
+    /* Light Green */
+    border-radius: 15px;
+    text-align: left;
+    line-height: 1.6;
+}

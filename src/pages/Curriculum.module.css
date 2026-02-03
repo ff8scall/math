@@ -1,0 +1,107 @@
+.container {
+    padding: 20px;
+}
+
+.header {
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.backButton {
+    align-self: flex-start;
+    padding: 8px 16px;
+    background-color: #eee;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    color: #666;
+    text-decoration: none;
+    transition: background 0.2s;
+}
+
+.backButton:hover {
+    background-color: #ddd;
+}
+
+.pageTitle {
+    font-size: 2.5rem;
+    color: var(--text-main);
+}
+
+.semesterSection {
+    margin-bottom: 3rem;
+}
+
+.semesterTitle {
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 0.5rem;
+    display: inline-block;
+}
+
+.topicGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.topicCard {
+    background-color: white;
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-sm);
+    text-decoration: none;
+    border: 2px solid transparent;
+    transition: all 0.2s;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 160px;
+}
+
+.topicCard:not(.disabled):hover {
+    border-color: var(--secondary-color);
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+}
+
+.topicTitle {
+    font-size: 1.4rem;
+    color: var(--text-main);
+    margin-bottom: 0.5rem;
+}
+
+.topicDesc {
+    color: var(--text-sub);
+    font-size: 1rem;
+    line-height: 1.4;
+    margin-bottom: 1rem;
+}
+
+.playButton {
+    align-self: flex-end;
+    color: white;
+    background-color: var(--secondary-color);
+    padding: 6px 12px;
+    border-radius: 15px;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+.disabled {
+    opacity: 0.7;
+    cursor: default;
+    background-color: #f9f9f9;
+}
+
+.soonBadge {
+    align-self: flex-end;
+    background-color: #ddd;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    color: #888;
+}

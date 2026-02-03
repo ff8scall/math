@@ -1,0 +1,48 @@
+:root {
+  /* Brand Colors */
+  --primary-color: #FFD93D; /* Bright Yellow */
+  --primary-hover: #E6C22C;
+  --secondary-color: #6BCB77; /* Soft Green */
+  --secondary-hover: #56AB61;
+  --accent-color: #4D96FF; /* Sky Blue */
+  --accent-hover: #3B7ADF;
+
+  /* Backgrounds */
+  --bg-color: #F9F9F9;
+  --card-bg: #FFFFFF;
+  --header-bg: #FFFFFF;
+
+  /* Text Colors */
+  --text-main: #333333;
+  --text-sub: #666666;
+  --text-placeholder: #999999;
+
+  /* Status Colors */
+  --success-color: #6BCB77;
+  --error-color: #FF6B6B;
+  --warning-color: #FFD93D;
+
+  /* Spacing */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --spacing-xxl: 48px;
+
+  /* Border Radius */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+  --shadow-md: 0 4px 8px rgba(0,0,0,0.1);
+  --shadow-lg: 0 8px 16px rgba(0,0,0,0.1);
+  --shadow-floating: 0 10px 20px rgba(0,0,0,0.15);
+
+  /* Font */
+  --font-main: 'Jua', 'Gamja Flower', sans-serif;
+  --font-body: 'Noto Sans KR', sans-serif;
+}

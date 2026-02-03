@@ -1,0 +1,157 @@
+.container {
+    padding: 20px;
+    background-color: #f5f5f5;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.controls {
+    background-color: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+    width: 100%;
+    max-width: 800px;
+}
+
+.screenTitle {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.configRow {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+    align-items: center;
+}
+
+.configRow label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: bold;
+}
+
+.configRow input,
+.configRow select {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.btnRow {
+    display: flex;
+    gap: 15px;
+    justify-content: flex-end;
+}
+
+/* A4 Sheet Styles */
+.sheetPage {
+    width: 210mm;
+    min-height: 297mm;
+    background: white;
+    padding: 20mm;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    position: relative;
+    font-family: 'Noto Sans KR', sans-serif;
+    /* Cleaner font for print */
+    display: flex;
+    flex-direction: column;
+}
+
+.sheetHeader {
+    text-align: center;
+    border-bottom: 2px solid #333;
+    padding-bottom: 20px;
+    margin-bottom: 30px;
+}
+
+.sheetTitle {
+    font-size: 24pt;
+    margin: 0 0 20px 0;
+}
+
+.sheetMeta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12pt;
+}
+
+.problemGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    /* 2 columns for A4 */
+    gap: 40px 20px;
+    flex-grow: 1;
+    align-content: start;
+}
+
+.problemItem {
+    padding: 10px;
+    font-size: 16pt;
+    break-inside: avoid;
+    /* Prevent split on page break */
+}
+
+.problemNum {
+    font-size: 12pt;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+.equation {
+    font-family: 'Jua', sans-serif;
+    font-size: 20pt;
+    letter-spacing: 2px;
+}
+
+.sheetFooter {
+    text-align: center;
+    font-size: 10pt;
+    color: #999;
+    margin-top: 20px;
+    border-top: 1px solid #eee;
+    padding-top: 10px;
+}
+
+/* Print Media Query */
+@media print {
+    @page {
+        size: A4;
+        margin: 0;
+    }
+
+    body {
+        margin: 0;
+        background: white;
+    }
+
+    .container {
+        padding: 0;
+        background: white;
+        display: block;
+    }
+
+    .controls,
+    :global(header),
+    :global(nav),
+    :global(.confetti-canvas) {
+        display: none !important;
+    }
+
+    .sheetPage {
+        width: 100%;
+        height: 100%;
+        box-shadow: none;
+        margin: 0;
+        padding: 20mm;
+        page-break-after: always;
+    }
+}

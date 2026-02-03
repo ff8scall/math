@@ -1,0 +1,139 @@
+.container {
+    padding: 30px;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.title {
+    font-size: 2.5rem;
+    color: var(--text-main);
+    margin-bottom: 30px;
+}
+
+.stage {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 80px);
+    /* 10s, 1s, operator */
+    gap: 10px;
+    background-color: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.columnHeader {
+    font-size: 1.2rem;
+    color: #999;
+    margin-bottom: 10px;
+}
+
+.operatorHeader {
+    width: 60px;
+    /* Placeholder width */
+}
+
+.cell {
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    font-size: 2.5rem;
+    font-family: 'Jua', sans-serif;
+}
+
+.numberBlock {
+    width: 60px;
+    height: 60px;
+    background-color: #f0f0f0;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #333;
+}
+
+.resultBlock {
+    color: var(--secondary-color);
+    font-weight: bold;
+}
+
+.operator {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.divider {
+    grid-column: span 1;
+    height: 4px;
+    background-color: #333;
+    border-radius: 2px;
+}
+
+/* Borrowing Styles */
+.borrowMark {
+    position: absolute;
+    top: -30px;
+    font-size: 1.5rem;
+    color: #e74c3c;
+    background-color: #fff;
+    padding: 2px 5px;
+    border-radius: 5px;
+    border: 1px solid #e74c3c;
+    z-index: 10;
+}
+
+.strikeThrough {
+    position: absolute;
+    width: 50px;
+    height: 3px;
+    background-color: #e74c3c;
+    transform: rotate(-20deg);
+    top: 50%;
+}
+
+.borrowValue {
+    position: absolute;
+    top: -20px;
+    right: -10px;
+    font-size: 1.2rem;
+    color: var(--success-color);
+    background-color: #E8F5E9;
+    padding: 2px 5px;
+    border-radius: 50%;
+    border: 1px solid var(--success-color);
+}
+
+.explanation {
+    font-size: 1.3rem;
+    margin-bottom: 30px;
+    min-height: 60px;
+    padding: 20px;
+    background-color: #E3F2FD;
+    border-radius: 15px;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.controls {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.dimmed .numberBlock {
+    opacity: 0.3;
+}

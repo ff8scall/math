@@ -1,0 +1,91 @@
+.container {
+    padding: 20px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.wallet {
+    font-size: 1.5rem;
+    font-weight: bold;
+    background-color: #fff;
+    padding: 10px 20px;
+    border-radius: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.coin {
+    color: #FFD700;
+    text-shadow: 1px 1px 0 #b8860b;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.itemCard {
+    background-color: white;
+    border-radius: 15px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.itemCard:hover {
+    transform: translateY(-5px);
+}
+
+.owned {
+    background-color: #E8F5E9;
+    border: 2px solid #6BCB77;
+}
+
+.itemIcon {
+    font-size: 4rem;
+    margin-bottom: 10px;
+}
+
+.itemName {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.itemPrice {
+    color: #666;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal {
+    background-color: white;
+    padding: 30px;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 500px;
+    text-align: center;
+}
