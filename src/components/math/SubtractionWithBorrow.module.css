@@ -20,7 +20,6 @@
 .grid {
     display: grid;
     grid-template-columns: repeat(3, 80px);
-    /* 10s, 1s, operator */
     gap: 10px;
     background-color: white;
     padding: 40px;
@@ -36,7 +35,6 @@
 
 .operatorHeader {
     width: 60px;
-    /* Placeholder width */
 }
 
 .cell {
@@ -80,51 +78,107 @@
     border-radius: 2px;
 }
 
-/* Borrowing Styles */
 .borrowMark {
     position: absolute;
-    top: -30px;
+    bottom: 5px;
     font-size: 1.5rem;
     color: #e74c3c;
     background-color: #fff;
-    padding: 2px 5px;
-    border-radius: 5px;
-    border: 1px solid #e74c3c;
+    padding: 2px 6px;
+    border-radius: 8px;
+    border: 2px solid #e74c3c;
     z-index: 10;
 }
 
 .strikeThrough {
     position: absolute;
-    width: 50px;
-    height: 3px;
+    width: 65px;
+    height: 4px;
     background-color: #e74c3c;
-    transform: rotate(-20deg);
+    transform: rotate(-25deg);
     top: 50%;
+    left: 7px;
+    z-index: 5;
+    border-radius: 2px;
 }
 
 .borrowValue {
     position: absolute;
-    top: -20px;
-    right: -10px;
+    bottom: 5px;
     font-size: 1.2rem;
-    color: var(--success-color);
-    background-color: #E8F5E9;
-    padding: 2px 5px;
+    font-weight: bold;
+    color: #2e7d32;
+    background-color: #e8f5e9;
+    width: 38px;
+    height: 38px;
     border-radius: 50%;
-    border: 1px solid var(--success-color);
-}
-
-.explanation {
-    font-size: 1.3rem;
-    margin-bottom: 30px;
-    min-height: 60px;
-    padding: 20px;
-    background-color: #E3F2FD;
-    border-radius: 15px;
-    color: #333;
+    border: 2px solid #a5d6a7;
     display: flex;
     justify-content: center;
     align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.tutorialBox {
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    margin-bottom: 30px;
+    border: 2px solid #e3f2fd;
+}
+
+.stepBadge {
+    display: inline-block;
+    background: var(--primary-color);
+    color: white;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.explanation {
+    margin-bottom: 25px;
+    min-height: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.explanation p {
+    font-size: 1.4rem;
+    line-height: 1.6;
+    color: #333;
+    margin: 0;
+    font-weight: 500;
+}
+
+.navControls {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.navControls button {
+    font-size: 1.2rem !important;
+    font-weight: bold !important;
+    height: 55px;
+    /* 높이 통일 */
+    min-width: 150px;
+    /* 가로 길이 확보 */
+}
+
+.problemPresets {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    color: #666;
+    font-size: 0.95rem;
 }
 
 .controls {
@@ -136,4 +190,22 @@
 
 .dimmed .numberBlock {
     opacity: 0.3;
+}
+
+.nextPulse {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(26, 115, 232, 0.4);
+    }
+
+    70% {
+        box-shadow: 0 0 0 12px rgba(26, 115, 232, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(26, 115, 232, 0);
+    }
 }

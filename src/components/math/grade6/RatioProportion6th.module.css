@@ -1,0 +1,96 @@
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.tabHeader {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.content,
+.quizCard {
+    background: white;
+    padding: 40px;
+    border-radius: 25px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.sec {
+    margin-bottom: 30px;
+    padding: 20px;
+    background: #f0f4ff;
+    border-radius: 15px;
+    border-left: 5px solid #3f51b5;
+    text-align: left;
+}
+
+.sec h3 {
+    color: #3f51b5;
+    margin-top: 0;
+}
+
+.formula {
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    font-weight: bold;
+    color: #3f51b5;
+    text-align: center;
+    margin: 15px 0;
+}
+
+.perc {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #e91e63;
+    text-align: center;
+    margin: 20px 0;
+}
+
+/* Quiz Styles */
+.problemBox {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.question {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+.quizInput {
+    display: block;
+    width: 100%;
+    max-width: 250px;
+    margin: 0 auto 30px;
+    padding: 15px;
+    font-size: 1.8rem;
+    text-align: center;
+    border: 3px solid #dee2e6;
+    border-radius: 15px;
+    outline: none;
+}
+
+.quizInput:focus {
+    border-color: #3f51b5;
+}
+
+.correct {
+    color: #2f9e44;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.incorrect {
+    color: #e03131;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-top: 20px;
+}

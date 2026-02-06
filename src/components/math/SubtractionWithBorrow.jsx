@@ -100,7 +100,6 @@ const SubtractionWithBorrow = () => {
                                         </motion.div>
                                     )}
                                 </AnimatePresence>
-                                {step >= 1 && needBorrow && <div className={styles.strikeThrough} />}
                             </div>
                             <div className={styles.cell}>
                                 <AnimatePresence>
@@ -116,6 +115,7 @@ const SubtractionWithBorrow = () => {
                             <div className={styles.operator}></div>
                             <div className={`${styles.cell} ${step >= 1 && needBorrow ? styles.dimmed : ''}`}>
                                 <div className={styles.numberBlock}>{topTens}</div>
+                                {step >= 1 && needBorrow && <motion.div initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} className={styles.strikeThrough} />}
                             </div>
                             <div className={styles.cell}>
                                 <div className={styles.numberBlock}>{topOnes}</div>
@@ -158,23 +158,33 @@ const SubtractionWithBorrow = () => {
                         </div>
                     </div>
 
-                    <div className={styles.explanation}>
-                        {step === 0 && "자, 뺄셈을 시작해볼까요? 일의 자리부터 봐주세요."}
-                        {step === 1 && needBorrow && `${topOnes}에서 ${botOnes}을 뺄 수 없어요! 십의 자리에서 10을 빌려와요.`}
-                        {step === 1 && !needBorrow && `일의 자리끼리 뺄 수 있네요! 그대로 진행해요.`}
-                        {step === 2 && `이제 일의 자리 뺄셈을 해요. ${needBorrow ? `10 + ${topOnes} - ${botOnes}` : `${topOnes} - ${botOnes}`} = ${finalResult % 10}`}
-                        {step === 3 && `십의 자리를 마저 빼주면 끝! 정답은 ${finalResult}입니다.`}
+                    <div className={styles.tutorialBox}>
+                        <div className={styles.explanation}>
+                            <div className={styles.stepBadge}>단계 {step + 1} / 4</div>
+                            <p>
+                                {step === 0 && "자, 뺄셈을 시작해볼까요? 일의 자리부터 봐주세요."}
+                                {step === 1 && needBorrow && `${topOnes}에서 ${botOnes}을 뺄 수 없어요! 십의 자리에서 10을 빌려와요.`}
+                                {step === 1 && !needBorrow && `일의 자리끼리 뺄 수 있네요! 그대로 진행해요.`}
+                                {step === 2 && `이제 일의 자리 뺄셈을 해요. ${needBorrow ? `10 + ${topOnes} - ${botOnes}` : `${topOnes} - ${botOnes}`} = ${finalResult % 10}`}
+                                {step === 3 && `십의 자리를 마저 빼주면 끝! 정답은 ${finalResult}입니다.`}
+                            </p>
+                        </div>
+
+                        <div className={styles.navControls}>
+                            <Button onClick={prevStep} disabled={step === 0} variant="ghost" size="large">이전 단계</Button>
+                            <Button onClick={nextStep} disabled={step === 3} variant="primary" size="large" className={styles.nextPulse}>
+                                {step === 3 ? "탐험 완료! 🎉" : "다음 단계로 ▶"}
+                            </Button>
+                        </div>
                     </div>
 
-                    <div className={styles.controls}>
-                        <Button onClick={() => { setMinuend(32); setSubtrahend(15); reset(); }} variant="secondary" size="small">문제 1 (32-15)</Button>
-                        <Button onClick={() => { setMinuend(40); setSubtrahend(18); reset(); }} variant="secondary" size="small">문제 2 (40-18)</Button>
-                        <Button onClick={() => { setMinuend(55); setSubtrahend(27); reset(); }} variant="secondary" size="small">문제 3 (55-27)</Button>
-                    </div>
-
-                    <div style={{ marginTop: '20px', display: 'flex', gap: '10px', justifyContent: 'center' }}>
-                        <Button onClick={prevStep} disabled={step === 0}>이전 단계</Button>
-                        <Button onClick={nextStep} disabled={step === 3}>다음 단계</Button>
+                    <div className={styles.problemPresets}>
+                        <span>다른 문제 도전:</span>
+                        <div className={styles.controls}>
+                            <Button onClick={() => { setMinuend(32); setSubtrahend(15); reset(); }} variant="secondary" size="small">32 - 15</Button>
+                            <Button onClick={() => { setMinuend(40); setSubtrahend(18); reset(); }} variant="secondary" size="small">40 - 18</Button>
+                            <Button onClick={() => { setMinuend(55); setSubtrahend(27); reset(); }} variant="secondary" size="small">55 - 27</Button>
+                        </div>
                     </div>
                 </>
             ) : (

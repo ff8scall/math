@@ -1,0 +1,107 @@
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+}
+
+.tabHeader {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 30px;
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 20px;
+}
+
+.modeTabs {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.content,
+.quizCard {
+    background: white;
+    padding: 40px;
+    border-radius: 25px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.sec h1 {
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+}
+
+.visualBoard {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    height: 150px;
+    margin: 30px 0;
+    background: #f1f3f5;
+    border-radius: 20px;
+}
+
+.rect {
+    width: 80px;
+    height: 80px;
+    background: #51cf66;
+    border-radius: 10px;
+    border: 3px solid #2b8a3e;
+}
+
+.hint {
+    color: #40c057;
+    font-weight: bold;
+}
+
+.symmetryBox {
+    background: #fff4e6;
+    padding: 20px;
+    border-radius: 15px;
+    margin-bottom: 15px;
+    border: 2px solid #ffd8a8;
+    text-align: left;
+}
+
+.symmetryBox h3 {
+    margin-top: 0;
+    color: #e67700;
+}
+
+/* Quiz Styles */
+.problemBox {
+    margin-top: 20px;
+}
+
+.question {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 30px;
+    line-height: 1.5;
+}
+
+.optionsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.correct {
+    color: #2f9e44;
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-top: 20px;
+}
+
+.incorrect {
+    color: #e03131;
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-top: 20px;
+}

@@ -1,0 +1,177 @@
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.modeTabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 30px;
+    justify-content: center;
+}
+
+.title {
+    text-align: center;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    text-align: center;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+.inputSection {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 15px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.slider {
+    width: 100%;
+    margin-top: 15px;
+}
+
+/* Factors */
+.factorGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.factorCard {
+    background: #e3f2fd;
+    color: #1976d2;
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.resultText {
+    text-align: center;
+    font-weight: bold;
+    color: #1976d2;
+}
+
+/* Multiples */
+.multipleList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+.multipleItem {
+    background: #fff3e0;
+    padding: 15px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 80px;
+    border: 2px solid #ffb74d;
+}
+
+.multipleIndex {
+    font-size: 0.8rem;
+    color: #e65100;
+}
+
+.multipleValue {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #bf360c;
+}
+
+/* Quiz */
+.quizCard {
+    background: white;
+    padding: 40px;
+    border-radius: 25px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.question {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+.oxButtons {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.oxButton {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    font-size: 2.5rem;
+    font-weight: bolder;
+    cursor: pointer;
+    border: none;
+    transition: transform 0.2s;
+}
+
+.oxButton:hover {
+    transform: scale(1.1);
+}
+
+.oBtn {
+    background: #e8f5e9;
+    color: #2e7d32;
+    border: 4px solid #4caf50;
+}
+
+.xBtn {
+    background: #ffebee;
+    color: #c62828;
+    border: 4px solid #f44336;
+}
+
+.feedbackCorrect {
+    color: #2e7d32;
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+.feedbackIncorrect {
+    color: #c62828;
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+.infoBox {
+    margin-top: 40px;
+    background: #fffde7;
+    padding: 25px;
+    border-radius: 15px;
+    border-left: 6px solid #fbc02d;
+}
+
+.infoBox h3 {
+    margin-top: 0;
+    color: #f57f17;
+}
+
+.infoBox p {
+    margin: 8px 0;
+    color: #5d4037;
+}
+.magicNumber { margin-top: 30px; background: #f3e5f5; padding: 25px; border-radius: 20px; border: 2px solid #9c27b0; }
+.magicNumber h3 { margin-top: 0; color: #7b1fa2; }
+.magicFormula { font-size: 1.2rem; background: white; padding: 10px; border-radius: 10px; text-align: center; margin: 15px 0; }
+.atomsNumber { margin-top: 25px; background: #e0f2f1; padding: 25px; border-radius: 20px; border: 2px solid #009688; }
+.atomsNumber h3 { margin-top: 0; color: #00796b; }
+.atomList { font-size: 1.5rem; font-weight: bold; color: #004d40; text-align: center; margin: 15px 0; letter-spacing: 5px; }

@@ -145,6 +145,12 @@ const Angles4th = () => {
                             <p>90도보다 크고 180도보다 작은 각</p>
                         </div>
                     </div>
+
+                    <div className={styles.deepInsight}>
+                        <h3>🧐 왜 한 바퀴는 360도일까요?</h3>
+                        <p>고대 사람들은 태양이 지구를 한 바퀴 도는 데 약 <strong>360일</strong>이 걸린다고 생각했어요(지금은 365일인 걸 알지만요!).</p>
+                        <p>또한, 360은 2, 3, 4, 5, 6, 8, 9, 10, 12 등 아주 많은 숫자로 <strong>똑같이 나누기 매우 편한 숫자</strong>이기 때문이기도 하답니다.</p>
+                    </div>
                 </div>
             ) : (
                 <div className={styles.practice}>

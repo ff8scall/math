@@ -1,0 +1,180 @@
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.modeTabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 30px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.title {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.infoCard {
+    background: white;
+    padding: 40px;
+    border-radius: 25px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    text-align: center;
+}
+
+.description {
+    font-size: 1.2rem;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+.formulaBox {
+    background: #f8f9fa;
+    padding: 25px;
+    border-radius: 20px;
+    margin-bottom: 40px;
+}
+
+.formula {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.perimeter {
+    margin-top: 10px;
+    color: #666;
+    font-size: 1.1rem;
+}
+
+.shapePreview {
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+    border: 2px dashed #ccc;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+/* Base shape CSS */
+.rect {
+    width: 120px;
+    height: 80px;
+    border: 4px solid;
+}
+
+.para {
+    width: 120px;
+    height: 80px;
+    border: 4px solid;
+    transform: skewX(-20deg);
+}
+
+.tri {
+    width: 0;
+    height: 0;
+    border-left: 60px solid transparent;
+    border-right: 60px solid transparent;
+    border-bottom: 100px solid;
+}
+
+.trap {
+    width: 60px;
+    height: 0;
+    border-left: 30px solid transparent;
+    border-right: 30px solid transparent;
+    border-bottom: 80px solid;
+}
+
+.rhom {
+    width: 100px;
+    height: 100px;
+    transform: rotate(45deg);
+    opacity: 0.6;
+}
+
+/* Quiz Area */
+.quizCard {
+    background: white;
+    padding: 50px;
+    border-radius: 30px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.question {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+.inputGroup {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.inputGroup input {
+    padding: 12px;
+    font-size: 1.5rem;
+    width: 120px;
+    text-align: center;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+}
+
+.unit {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.correct {
+    color: #4caf50;
+    font-weight: bold;
+    margin-top: 20px;
+    font-size: 1.2rem;
+}
+
+.incorrect {
+    color: #f44336;
+    font-weight: bold;
+    margin-top: 20px;
+    font-size: 1.1rem;
+}
+
+.tipBox {
+    margin-top: 40px;
+    background: #f3e5f5;
+    padding: 25px;
+    border-radius: 15px;
+    border-left: 6px solid #9c27b0;
+}
+
+.tipBox h3 {
+    margin-top: 0;
+    color: #7b1fa2;
+}
+
+.tipBox p {
+    margin: 8px 0;
+    color: #4a148c;
+}
+
+@media (max-width: 600px) {
+    .formula {
+        font-size: 1.4rem;
+    }
+
+    .shapePreview {
+        width: 150px;
+        height: 150px;
+    }
+}

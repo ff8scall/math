@@ -28,7 +28,8 @@ const Curriculum = () => {
                 }
             ],
             tools: [
-                { id: 'quiz', title: '🏆 종합 퀴즈왕', description: '1학기+2학기 모든 문제를 풀어보세요!', link: '#', status: 'coming-soon' },
+                { id: 'quiz', title: '🏆 종합 퀴즈왕', description: '1학기+2학기 모든 문제를 풀어보세요!', link: '/grade/1/quiz', status: 'available' },
+                { id: 'print', title: '🖨️ 학습지 출력', description: '집에서 종이로 직접 풀어보세요!', link: '/grade/1/worksheet', status: 'available' },
             ]
         },
         2: {
@@ -52,7 +53,8 @@ const Curriculum = () => {
                 }
             ],
             tools: [
-                { id: 'quiz', title: '🏆 종합 퀴즈왕', description: '1학기+2학기 모든 문제를 풀어보세요!', link: '#', status: 'coming-soon' },
+                { id: 'quiz', title: '🏆 종합 퀴즈왕', description: '1학기+2학기 모든 문제를 풀어보세요!', link: '/grade/2/quiz', status: 'available' },
+                { id: 'print', title: '🖨️ 학습지 출력', description: '오늘 배운 내용을 종이로 풀어보세요!', link: '/grade/2/worksheet', status: 'available' },
             ]
         },
         3: {
@@ -101,16 +103,75 @@ const Curriculum = () => {
                 {
                     semester: 2,
                     topics: [
-                        { id: 'fraction-calc', title: '분수의 덧셈과 뺄셈', description: '대분수의 계산을 배워요.', link: '/grade/4/fraction', status: 'coming-soon' },
-                        { id: 'triangles', title: '삼각형', description: '삼각형의 성질과 종류를 배워요.', link: '/grade/4/triangle', status: 'coming-soon' },
-                        { id: 'decimal-calc', title: '소수의 덧셈과 뺄셈', description: '소수의 자릿값을 알고 더하고 빼요.', link: '/grade/4/decimal', status: 'coming-soon' },
-                        { id: 'quadrilaterals', title: '사각형', description: '평행사변형과 마름모를 배워요.', link: '/grade/4/quadrilateral', status: 'coming-soon' },
-                        { id: 'line-graph', title: '꺾은선그래프', description: '변화하는 모습을 그래프로 그려요.', link: '/grade/4/line-graph', status: 'coming-soon' },
+                        { id: 'fraction-calc', title: '분수의 덧셈과 뺄셈', description: '대분수의 계산을 배워요.', link: '/grade/4/fraction', status: 'available' },
+                        { id: 'triangles', title: '삼각형', description: '삼각형의 성질과 종류를 배워요.', link: '/grade/4/triangle', status: 'available' },
+                        { id: 'decimal-calc', title: '소수의 덧셈과 뺄셈', description: '소수의 자릿값을 알고 더하고 빼요.', link: '/grade/4/decimal', status: 'available' },
+                        { id: 'quadrilaterals', title: '사각형', description: '평행사변형과 마름모를 배워요.', link: '/grade/4/quadrilateral', status: 'available' },
+                        { id: 'line-graph', title: '꺾은선그래프', description: '변화하는 모습을 그래프로 그려요.', link: '/grade/4/line-graph', status: 'available' },
+                        { id: 'polygons', title: '다각형', description: '변이 여러 개인 도형과 정다각형을 배워요.', link: '/grade/4/polygons', status: 'available' },
                     ]
                 }
             ],
             tools: [
-                { id: 'quiz', title: '🏆 종합 퀴즈왕', description: '4학년 모든 문제를 풀어보세요!', link: '#', status: 'coming-soon' },
+                { id: 'quiz', title: '🏆 종합 퀴즈왕', description: '4학년 모든 문제를 풀어보세요!', link: '/grade/4/quiz', status: 'available' },
+                { id: 'print', title: '🖨️ 학습지 출력', description: '단원평가 준비! 종이 학습지로 해봐요.', link: '/grade/4/worksheet', status: 'available' },
+            ]
+        },
+        5: {
+            semesters: [
+                {
+                    semester: 1,
+                    topics: [
+                        { id: 'mixed-arithmetic', title: '자연수의 혼합 계산', description: '덧셈, 뺄셈, 곱셈, 나눗셈이 섞여 있는 식을 계산해요.', link: '/grade/5/mixed-arithmetic', status: 'available' },
+                        { id: 'factors-multiples', title: '약수와 배수', description: '약수와 배수, 공약수와 공배수를 배워요.', link: '/grade/5/factors-multiples', status: 'available' },
+                        { id: 'rules-response', title: '규칙과 대응', description: '두 양 사이의 관계를 찾아봐요.', link: '/grade/5/rules', status: 'available' },
+                        { id: 'reduction-common-denom', title: '약분과 통분', description: '분수를 간단하게 만들고 분모를 같게 해요.', link: '/grade/5/reduction', status: 'available' },
+                        { id: 'fraction-addition-subtraction', title: '분수의 덧셈과 뺄셈', description: '분모가 다른 분수의 계산을 배워요.', link: '/grade/5/fraction-arithmetic', status: 'available' },
+                        { id: 'perimeters-areas', title: '다각형의 둘레와 넓이', description: '다각형의 둘레와 넓이 구하는 방법을 배워요.', link: '/grade/5/area', status: 'available' },
+                    ]
+                },
+                {
+                    semester: 2,
+                    topics: [
+                        { id: 'numbers-range', title: '수의 범위와 어림하기', description: '이상, 이하, 초과, 미만과 반올림을 배워요.', link: '/grade/5/range', status: 'available' },
+                        { id: 'fraction-multiplication', title: '분수의 곱셈', description: '분수와 자연수, 분수와 분수의 곱셈을 해요.', link: '/grade/5/fraction-multiplication', status: 'available' },
+                        { id: 'congruence-symmetry', title: '합동과 대칭', description: '모양이 같은 도형과 대칭을 배워요.', link: '/grade/5/congruence', status: 'available' },
+                        { id: 'decimal-multiplication', title: '소수의 곱셈', description: '소수의 곱셈 원리를 배워요.', link: '/grade/5/decimal-multiplication', status: 'available' },
+                        { id: 'cuboids', title: '직육면체', description: '직육면체와 정육면체의 성질을 배워요.', link: '/grade/5/cuboid', status: 'available' },
+                        { id: 'average-possibility', title: '평균과 가능성', description: '평균을 구하고 일어날 가능성을 알아보아요.', link: '/grade/5/average', status: 'available' },
+                    ]
+                }
+            ],
+            tools: [
+                { id: 'quiz', title: '🏆 종합 퀴즈왕', description: '5학년 모든 문제를 풀어보세요!', link: '/grade/5/quiz', status: 'available' },
+                { id: 'print', title: '🖨️ 학습지 출력', description: '5학년 실력을 종이로 확인해봐요!', link: '/grade/5/worksheet', status: 'available' },
+            ]
+        },
+        6: {
+            semesters: [
+                {
+                    semester: 1,
+                    topics: [
+                        { id: 'fraction-division', title: '분수의 나눗셈', description: '분수의 나눗셈 원리를 배워요.', link: '/grade/6/fraction-division', status: 'available' },
+                        { id: 'prism-pyramid', title: '각기둥과 각뿔', description: '입체도형의 특징을 탐구해요.', link: '/grade/6/geometry', status: 'available' },
+                        { id: 'decimal-division', title: '소수의 나눗셈', description: '소수의 나눗셈을 소수점 맞춰 계산해요.', link: '/grade/6/decimal-division', status: 'available' },
+                        { id: 'ratio-proportion', title: '비와 비율', description: '비의 뜻과 백분율을 배워요.', link: '/grade/6/ratio', status: 'available' },
+                        { id: 'graphs', title: '여러 가지 그래프', description: '띠그래프와 원그래프를 그려요.', link: '/grade/6/graphs', status: 'available' },
+                        { id: 'volume-area', title: '직육면체의 부피와 겉넓이', description: '부피와 겉넓이 구하는 법을 배워요.', link: '/grade/6/volume', status: 'available' },
+                    ]
+                },
+                {
+                    semester: 2,
+                    topics: [
+                        { id: 'ratio-expression', title: '비례식과 비례배분', description: '비례식의 성질을 이용해 문제를 풀어요.', link: '/grade/6/proportion', status: 'available' },
+                        { id: 'circle-area', title: '원의 넓이', description: '원주와 원의 넓이를 구해요.', link: '/grade/6/circle-area', status: 'available' },
+                        { id: 'cylinder-cone-sphere', title: '원기둥, 원뿔, 구', description: '회전체의 성질을 배워요.', link: '/grade/6/round-geometry', status: 'available' },
+                    ]
+                }
+            ],
+            tools: [
+                { id: 'quiz', title: '🏆 종합 퀴즈왕', description: '6학년 모든 문제를 풀어보세요!', link: '/grade/6/quiz', status: 'available' },
+                { id: 'print', title: '🖨️ 학습지 출력', description: '중학교 가기 전, 종이로 최종 점검!', link: '/grade/6/worksheet', status: 'available' },
             ]
         }
     };

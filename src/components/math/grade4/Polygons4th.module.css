@@ -1,0 +1,161 @@
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.modeTabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 30px;
+    justify-content: center;
+}
+
+.title {
+    text-align: center;
+    color: #333;
+    margin-bottom: 10px;
+    font-size: 2rem;
+}
+
+.subtitle {
+    text-align: center;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+.exploreCard {
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.visualizer {
+    flex: 1;
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.svgArea {
+    background: #f8f9fa;
+    border-radius: 15px;
+    margin-bottom: 10px;
+}
+
+.shapeLabel {
+    font-size: 1.2rem;
+    font-weight: bold;
+    fill: #ff9800;
+}
+
+.controls {
+    flex: 1;
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.controlGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.controlGroup label {
+    font-weight: bold;
+    color: #444;
+}
+
+.sideButtons {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.infoCards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.infoCard {
+    background: #fff;
+    padding: 20px;
+    border-radius: 15px;
+    border-left: 5px solid #ff9800;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+}
+
+.infoCard h3 {
+    margin-top: 0;
+    font-size: 1.1rem;
+    color: #e65100;
+}
+
+.infoCard p {
+    margin-bottom: 0;
+    color: #666;
+    line-height: 1.5;
+}
+
+/* Practice Styles */
+.problemCard {
+    background: white;
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.question {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+.choiceGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.choiceItem {
+    padding: 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 12px;
+    background: white;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.choiceItem:hover {
+    border-color: #ff9800;
+    background: #fff3e0;
+    transform: translateY(-2px);
+}
+
+.feedback {
+    margin-top: 30px;
+    padding: 15px;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+@media (max-width: 600px) {
+    .choiceGrid {
+        grid-template-columns: 1fr;
+    }
+}

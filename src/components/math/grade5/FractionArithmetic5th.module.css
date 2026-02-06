@@ -1,0 +1,162 @@
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.modeTabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 30px;
+    justify-content: center;
+}
+
+.title {
+    text-align: center;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+.learningArea {
+    background: white;
+    padding: 40px;
+    border-radius: 25px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.stepCard {
+    background: #f1f8e9;
+    padding: 30px;
+    border-radius: 20px;
+    border-left: 8px solid #8bc34a;
+}
+
+.steps p {
+    margin: 10px 0;
+    font-size: 1.1rem;
+    color: #555;
+    line-height: 1.6;
+}
+
+.exampleBox {
+    margin-top: 30px;
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+}
+
+.expr {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #3f51b5;
+}
+
+/* Quiz Style */
+.quizArea {
+    text-align: center;
+}
+
+.quizCard {
+    background: white;
+    padding: 50px;
+    border-radius: 30px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.problem {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.f {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 50px;
+}
+
+.line {
+    width: 100%;
+    height: 3px;
+    background: #333;
+    margin: 5px 0;
+}
+
+.op {
+    font-size: 2.5rem;
+    color: #e91e63;
+}
+
+.answerInput {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.answerInput input {
+    width: 80px;
+    padding: 10px;
+    font-size: 1.5rem;
+    text-align: center;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    outline: none;
+}
+
+.answerInput input:focus {
+    border-color: #2196f3;
+}
+
+.correct {
+    color: #2e7d32;
+    font-weight: bold;
+    margin-top: 20px;
+    font-size: 1.2rem;
+}
+
+.incorrect {
+    color: #c62828;
+    font-weight: bold;
+    margin-top: 20px;
+    font-size: 1.1rem;
+}
+
+.tipBox {
+    margin-top: 40px;
+    background: #e1f5fe;
+    padding: 25px;
+    border-radius: 15px;
+    border-left: 6px solid #03a9f4;
+}
+
+.tipBox h3 {
+    margin-top: 0;
+    color: #0277bd;
+}
+
+.tipBox p {
+    margin: 8px 0;
+    color: #01579b;
+}
+
+@media (max-width: 600px) {
+    .problem {
+        font-size: 1.5rem;
+        gap: 10px;
+    }
+
+    .answerInput input {
+        width: 60px;
+    }
+}

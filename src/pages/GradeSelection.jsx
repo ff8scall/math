@@ -8,11 +8,7 @@ const GradeSelection = () => {
     const grades = [1, 2, 3, 4, 5, 6];
 
     const handleGradeClick = (grade) => {
-        if ([1, 2, 3, 4].includes(grade)) {
-            navigate(`/grade/${grade}`);
-        } else {
-            alert("지금은 1, 2, 3, 4학년 친구들만 입장할 수 있어요! 다른 학년은 준비 중이에요 🚧");
-        }
+        navigate(`/grade/${grade}`);
     };
 
     return (
@@ -25,12 +21,11 @@ const GradeSelection = () => {
                 {grades.map((grade) => (
                     <button
                         key={grade}
-                        className={`${styles.card} ${([1, 2, 3, 4].includes(grade)) ? styles.active : styles.disabled}`}
+                        className={`${styles.card} ${styles.active}`}
                         onClick={() => handleGradeClick(grade)}
                     >
                         <span className={styles.gradeNumber}>{grade}</span>
                         <span className={styles.gradeText}>학년</span>
-                        {([1, 2, 3, 4].includes(grade)) && <span className={styles.badge}>입장 가능!</span>}
                     </button>
                 ))}
             </div>

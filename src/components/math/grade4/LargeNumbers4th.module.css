@@ -218,3 +218,8 @@
         grid-template-columns: 1fr 1fr;
     }
 }
+.zeroTheory { margin-top: 40px; background: #eceff1; padding: 30px; border-radius: 25px; border: 2px solid #607d8b; grid-column: 1 / -1; text-align: left; }
+.zeroTheory h3 { margin-top: 0; color: #455a64; margin-bottom: 15px; }
+.zeroViz { font-size: 2.5rem; font-weight: bold; background: white; padding: 20px; border-radius: 15px; text-align: center; margin: 20px 0; color: #78909c; }
+.zeroViz strong { color: #f44336; }
+.zeroViz span { color: #3f51b5; }

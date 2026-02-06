@@ -1,0 +1,158 @@
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.tabHeader {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.content,
+.quizCard {
+    background: white;
+    padding: 40px;
+    border-radius: 25px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.sec {
+    margin-bottom: 30px;
+    padding: 20px;
+    background: #f3f0ff;
+    border-radius: 15px;
+    border-left: 5px solid #7048e8;
+}
+
+.f {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #5f3dc4;
+    margin: 10px 0;
+    text-align: center;
+}
+
+.vizBox {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    margin-top: 15px;
+    border: 2px dashed #7048e8;
+}
+
+.vizText {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333;
+    text-align: center;
+}
+
+.theoryList {
+    text-align: left;
+    color: #555;
+    margin-bottom: 15px;
+}
+
+.formulaEmph {
+    font-size: 1.3rem;
+    background: #f3f0ff;
+    padding: 10px;
+    border-radius: 8px;
+    font-weight: bold;
+    color: #7048e8;
+    text-align: center;
+}
+
+/* Practice Styles */
+.problemBox {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.viz {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.circle {
+    position: relative;
+    background: #ede7f6;
+    border: 4px solid #7e57c2;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.radiusLine {
+    position: absolute;
+    width: 50%;
+    height: 3px;
+    background: #7e57c2;
+    right: 50%;
+    top: 50%;
+}
+
+.radiusText {
+    position: absolute;
+    top: 35%;
+    left: 20%;
+    font-weight: bold;
+    color: #512da8;
+    font-size: 1.2rem;
+}
+
+.question {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+.inputWrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.quizInput {
+    padding: 15px;
+    font-size: 2rem;
+    width: 180px;
+    text-align: center;
+    border: 3px solid #dee2e6;
+    border-radius: 15px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.quizInput:focus {
+    border-color: #7048e8;
+}
+
+.unit {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #666;
+}
+
+.correct {
+    color: #2f9e44;
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.incorrect {
+    color: #e03131;
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-top: 20px;
+}

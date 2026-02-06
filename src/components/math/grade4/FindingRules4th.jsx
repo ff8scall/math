@@ -10,6 +10,9 @@ const FindingRules4th = () => {
     const [mode, setMode] = useState('explore');
     const [exploreType, setExploreType] = useState('number'); // 'number', 'shape'
     const [sequence, setSequence] = useState([2, 4, 6, 8]);
+    const [revealNext, setRevealNext] = useState(false);
+    const [exploreRule, setExploreRule] = useState('');
+    const [nextValue, setNextValue] = useState(10);
 
     // Quiz state
     const [quizData, setQuizData] = useState(null);
@@ -18,13 +21,41 @@ const FindingRules4th = () => {
     const [showAnswer, setShowAnswer] = useState(false);
 
     const generateSequence = (type) => {
+        setRevealNext(false);
         if (type === 'number') {
-            const start = Math.floor(Math.random() * 10) + 1;
-            const diff = Math.floor(Math.random() * 5) + 2;
-            setSequence([start, start + diff, start + diff * 2, start + diff * 3]);
+            const isAdd = Math.random() > 0.5;
+            if (isAdd) {
+                const start = Math.floor(Math.random() * 20) + 1;
+                const diff = Math.floor(Math.random() * 10) + 2;
+                const seq = [start, start + diff, start + diff * 2, start + diff * 3];
+                setSequence(seq);
+                setNextValue(start + diff * 4);
+                setExploreRule(`앞의 수에 ${diff}씩 더해지는 규칙이에요!`);
+            } else {
+                const start = [1, 2, 3][Math.floor(Math.random() * 3)];
+                const multi = [2, 3][Math.floor(Math.random() * 2)];
+                const seq = [start, start * multi, start * multi * 2, start * multi * 3];
+                setSequence(seq);
+                setNextValue(start * multi * 4);
+                setExploreRule(`앞의 수에 ${multi}배씩 커지는 규칙이에요!`);
+            }
         } else {
-            // Shape pattern logic (conceptual)
-            setSequence([1, 2, 3, 4]); // representing layers or count
+            const patternType = Math.floor(Math.random() * 2);
+            if (patternType === 0) {
+                const start = Math.floor(Math.random() * 3) + 1;
+                const diff = Math.floor(Math.random() * 2) + 1;
+                const seq = [start, start + diff, start + diff * 2, start + diff * 3];
+                setSequence(seq);
+                setNextValue(start + diff * 4);
+                setExploreRule(`모양이 ${diff}개씩 늘어나는 규칙이에요!`);
+            } else {
+                const start = 1;
+                const multi = 2;
+                const seq = [start, start * multi, start * multi * 2, start * multi * 3];
+                setSequence(seq);
+                setNextValue(start * multi * 4);
+                setExploreRule(`모양이 ${multi}배씩 늘어나는 규칙이에요!`);
+            }
         }
     };
 
@@ -43,20 +74,21 @@ const FindingRules4th = () => {
             displaySeq = [start, start + diff, start + diff * 2, start + diff * 3];
             question = `${displaySeq.join(', ')} ... 다음 빈칸에 알맞은 수는 무엇인가요?`;
             answer = (start + diff * 4).toString();
-            explanation = `앞의 수에 ${diff}씩 더해지는 규칙이에요. ${start + diff * 3} + ${diff} = ${answer}`;
+            explanation = `앞의 수에 ${diff}씩 더해지는 규칙이에요. ${start + diff * 3} + ${diff} = ${answer}가 됩니다.`;
         } else if (type === 'number-multi') {
             const start = [2, 3, 5][Math.floor(Math.random() * 3)];
             const multi = 2;
             displaySeq = [start, start * multi, start * multi * 2, start * multi * 3];
             question = `${displaySeq.join(', ')} ... 다음 빈칸에 알맞은 수는 무엇인가요?`;
             answer = (start * multi * 4).toString();
-            explanation = `앞의 수에 ${multi}배씩 곱해지는 규칙이에요. ${start * multi * 3} × ${multi} = ${answer}`;
+            explanation = `앞의 수에 ${multi}배씩 커지는 규칙이에요. ${start * multi * 3} × ${multi} = ${answer}가 됩니다.`;
         } else {
             const base = Math.floor(Math.random() * 3) + 1;
-            displaySeq = [base, base + 2, base + 4, base + 6];
+            const diff = 2;
+            displaySeq = [base, base + diff, base + diff * 2, base + diff * 3];
             question = `모양이 [${displaySeq[0]}개, ${displaySeq[1]}개, ${displaySeq[2]}개...] 순서로 늘어날 때, 5번째 모양은 몇 개일까요?`;
-            answer = (base + 8).toString();
-            explanation = `모양이 2개씩 점차 늘어나는 규칙이에요. 4번째가 ${displaySeq[3]}개이므로 5번째는 ${base + 8}개입니다.`;
+            answer = (base + diff * 4).toString();
+            explanation = `모양이 ${diff}개씩 늘어나는 규칙이에요. 4번째가 ${displaySeq[3]}개이므로 5번째는 ${displaySeq[3]} + ${diff} = ${answer}개입니다.`;
         }
 
         setQuizData({
@@ -72,14 +104,15 @@ const FindingRules4th = () => {
 
     useEffect(() => {
         if (mode === 'practice' && !quizData) generateQuiz();
+        if (mode === 'explore' && exploreRule === '') generateSequence('number');
     }, [mode]);
 
     const checkAnswer = () => {
         if (userAnswer.trim() === quizData.answer) {
             setFeedback('correct');
+            setShowAnswer(true); // 정답 시에도 설명을 보여줌
             confetti();
             updateCoins(15);
-            setTimeout(generateQuiz, 2000);
         } else {
             setFeedback('incorrect');
         }
@@ -98,8 +131,18 @@ const FindingRules4th = () => {
                     <p className={styles.subtitle}>숫자나 모양의 배열에서 어떤 규칙이 숨어있는지 확인하세요.</p>
 
                     <div className={styles.exploreToggle}>
-                        <button onClick={() => setExploreType('number')} className={exploreType === 'number' ? styles.activeType : ''}>숫자 규칙</button>
-                        <button onClick={() => setExploreType('shape')} className={exploreType === 'shape' ? styles.activeType : ''}>모양 규칙</button>
+                        <button
+                            onClick={() => { setExploreType('number'); generateSequence('number'); }}
+                            className={exploreType === 'number' ? styles.activeType : ''}
+                        >
+                            숫자 규칙
+                        </button>
+                        <button
+                            onClick={() => { setExploreType('shape'); generateSequence('shape'); }}
+                            className={exploreType === 'shape' ? styles.activeType : ''}
+                        >
+                            모양 규칙
+                        </button>
                     </div>
 
                     <div className={styles.displayBoard}>
@@ -115,18 +158,58 @@ const FindingRules4th = () => {
                                     {exploreType === 'number' ? (
                                         <div className={styles.numBox}>{item}</div>
                                     ) : (
-                                        <div className={styles.shapeBox}>
+                                        <div
+                                            className={styles.shapeBox}
+                                            style={{
+                                                gridTemplateColumns: `repeat(${Math.ceil(Math.sqrt(item))}, 1fr)`,
+                                                gap: item > 10 ? '3px' : '5px'
+                                            }}
+                                        >
                                             {Array.from({ length: item }).map((_, j) => (
-                                                <div key={j} className={styles.dot} />
+                                                <div
+                                                    key={j}
+                                                    className={styles.dot}
+                                                    style={{
+                                                        width: item > 10 ? '12px' : '20px',
+                                                        height: item > 10 ? '12px' : '20px'
+                                                    }}
+                                                />
                                             ))}
                                         </div>
                                     )}
                                 </motion.div>
                             ))}
-                            <motion.div className={`${styles.sequenceItem} ${styles.nextItem}`}>
-                                ?
+                            <motion.div
+                                className={`${styles.sequenceItem} ${styles.nextItem} ${revealNext ? styles.revealed : ''}`}
+                                onClick={() => setRevealNext(true)}
+                                whileTap={{ scale: 0.95 }}
+                            >
+                                {revealNext ? (
+                                    exploreType === 'number' ? (
+                                        <div className={styles.numBox}>{nextValue}</div>
+                                    ) : (
+                                        <div className={styles.shapeBox} style={{ gridTemplateColumns: `repeat(${Math.ceil(Math.sqrt(nextValue))}, 1fr)` }}>
+                                            {Array.from({ length: nextValue }).map((_, j) => (
+                                                <div key={j} className={styles.dot} />
+                                            ))}
+                                        </div>
+                                    )
+                                ) : (
+                                    "?"
+                                )}
                             </motion.div>
                         </div>
+                        <AnimatePresence>
+                            {revealNext && (
+                                <motion.div
+                                    className={styles.ruleMessage}
+                                    initial={{ opacity: 0, y: 10 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                >
+                                    ✨ {exploreRule}
+                                </motion.div>
+                            )}
+                        </AnimatePresence>
                     </div>
 
                     <Button onClick={() => generateSequence(exploreType)} size="large">새로운 규칙 보기</Button>

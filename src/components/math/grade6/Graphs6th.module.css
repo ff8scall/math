@@ -1,0 +1,115 @@
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+}
+
+.tabHeader {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 30px;
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 20px;
+}
+
+.content,
+.quizCard {
+    background: white;
+    padding: 40px;
+    border-radius: 25px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.sec {
+    text-align: left;
+    margin-bottom: 30px;
+}
+
+.stripChart {
+    display: flex;
+    height: 60px;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-top: 20px;
+    color: white;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.stripChart div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.circleChartViz {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.piePlaceholder {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: #e9ecef;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 5px solid #dee2e6;
+    color: #adb5bd;
+}
+
+/* Quiz Styles */
+.problemBox {
+    margin-top: 30px;
+}
+
+.question {
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin: 30px 0;
+}
+
+.options {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.inputArea {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+.quizInput {
+    padding: 12px;
+    font-size: 1.5rem;
+    width: 120px;
+    text-align: center;
+    border: 2px solid #dee2e6;
+    border-radius: 10px;
+}
+
+.unit {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.correct {
+    color: #2f9e44;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.incorrect {
+    color: #e03131;
+    font-weight: bold;
+    margin-top: 20px;
+}

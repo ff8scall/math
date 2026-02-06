@@ -79,7 +79,11 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 60px;
+    justify-content: flex-end;
+    /* 막대를 하단에 배치 */
+    width: 70px;
+    /* 너비 약간 증가 */
+    height: 100%;
     position: relative;
 }
 

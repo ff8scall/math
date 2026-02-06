@@ -1,0 +1,159 @@
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.modeTabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 30px;
+    justify-content: center;
+}
+
+.title {
+    text-align: center;
+    color: #333;
+    margin-bottom: 25px;
+}
+
+.scenarioSelector {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.scenarioBtn {
+    padding: 12px 20px;
+    border-radius: 12px;
+    border: 2px solid #e0e0e0;
+    background: white;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.2s;
+}
+
+.scenarioBtn.active {
+    border-color: #3f51b5;
+    background: #e8eaf6;
+    color: #3f51b5;
+    font-weight: bold;
+}
+
+.visualizer {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+}
+
+.tableArea {
+    overflow-x: auto;
+    margin-bottom: 30px;
+}
+
+.tableArea table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 400px;
+}
+
+.tableArea th,
+.tableArea td {
+    padding: 15px;
+    border: 1px solid #eee;
+    text-align: center;
+}
+
+.tableArea th {
+    background: #f8f9fa;
+    color: #555;
+    width: 150px;
+}
+
+.formulaCard {
+    background: #e3f2fd;
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+    border: 2px dashed #2196f3;
+}
+
+.formulaHighlight {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #1565c0;
+    margin-top: 10px;
+}
+
+/* Quiz */
+.quizCard {
+    background: white;
+    padding: 40px;
+    border-radius: 25px;
+    text-align: center;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+}
+
+.quizIcon {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.question {
+    font-size: 1.3rem;
+    margin-bottom: 25px;
+    line-height: 1.5;
+}
+
+.inputGroup {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.input {
+    padding: 12px;
+    font-size: 1.2rem;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    width: 100px;
+    text-align: center;
+}
+
+.feedbackC {
+    color: #2e7d32;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.feedbackI {
+    color: #c62828;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.infoBox {
+    margin-top: 40px;
+    background: #fff3e0;
+    padding: 25px;
+    border-radius: 15px;
+    border-left: 6px solid #ff9800;
+}
+
+.infoBox h3 {
+    margin-top: 0;
+    color: #e65100;
+}
+
+.infoBox p {
+    margin: 8px 0;
+    color: #5d4037;
+}
+.deepInsight { margin-top: 30px; background: #e1f5fe; padding: 30px; border-radius: 20px; }
+.deepInsight h3 { margin-top: 0; color: #01579b; }
+.machineViz { background: white; padding: 20px; border-radius: 15px; text-align: center; }
+.mPart { font-size: 1.2rem; font-weight: bold; color: #0288d1; }
+.mDesc { font-size: 1rem; color: #546e7a; }

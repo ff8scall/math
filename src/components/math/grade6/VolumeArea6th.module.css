@@ -1,0 +1,92 @@
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+}
+
+.tabHeader {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 30px;
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 20px;
+}
+
+.content,
+.quizCard {
+    background: white;
+    padding: 40px;
+    border-radius: 25px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.card {
+    margin-bottom: 25px;
+    padding: 25px;
+    background: #fff9db;
+    border-radius: 15px;
+    border: 2px solid #fab005;
+}
+
+.formula {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #e67700;
+    margin: 15px 0;
+}
+
+/* Quiz Styles */
+.problemBox {
+    margin-top: 20px;
+}
+
+.question {
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+.inputArea {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.quizInput {
+    padding: 15px;
+    font-size: 1.8rem;
+    width: 150px;
+    text-align: center;
+    border: 3px solid #dee2e6;
+    border-radius: 15px;
+    outline: none;
+}
+
+.quizInput:focus {
+    border-color: #fab005;
+}
+
+.unit {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #666;
+}
+
+.correct {
+    color: #2f9e44;
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-top: 20px;
+}
+
+.incorrect {
+    color: #e03131;
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-top: 20px;
+}

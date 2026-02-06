@@ -14,7 +14,6 @@ const LargeNumbers4th = () => {
     const [feedback, setFeedback] = useState(null);
     const [showAnswer, setShowAnswer] = useState(false);
 
-    // 단위 정의
     const units = [
         { label: '일', value: 1, color: '#e3f2fd' },
         { label: '만', value: 10000, color: '#e8f5e9' },
@@ -47,7 +46,6 @@ const LargeNumbers4th = () => {
         const type = types[Math.floor(Math.random() * types.length)];
 
         if (type === 'read') {
-            // "만" 단위 위주의 읽기 문제
             const base = [10000, 100000, 1000000, 10000000][Math.floor(Math.random() * 4)];
             const multiplier = Math.floor(Math.random() * 9) + 1;
             const num = base * multiplier;
@@ -158,6 +156,14 @@ const LargeNumbers4th = () => {
                         <div className={styles.infoCard}>
                             <h3>📍 조 (1,000,000,000,000)</h3>
                             <p>억이 10000개인 수예요. 0이 12개나 붙어요!</p>
+                        </div>
+                        <div className={styles.zeroTheory}>
+                            <h3>🛡️ 0의 진짜 역할: 자릿수 수문장</h3>
+                            <p>숫자 0은 단순히 '없다'는 뜻만 있는 게 아니에요. 0은 뒤에서 친구들을 든든하게 밀어주어 <strong>숫자의 자리</strong>를 지켜주는 아주 중요한 수문장이에요!</p>
+                            <div className={styles.zeroViz}>
+                                <span>1</span> ➡️ <span>1</span><strong>0</strong> ➡️ <span>1</span><strong>00</strong>
+                            </div>
+                            <p>0이 하나 붙을 때마다 숫자는 <strong>10배씩</strong> 강력해진답니다. 0이 없었다면 우리는 큰 수를 절대 쓸 수 없었을 거예요!</p>
                         </div>
                     </div>
                 </div>

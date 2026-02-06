@@ -1,0 +1,121 @@
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+}
+
+.tabHeader {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 30px;
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 20px;
+}
+
+.modeTabs {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.content,
+.quizCard {
+    background: white;
+    padding: 40px;
+    border-radius: 25px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.box h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.box p {
+    font-size: 1.2rem;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+.parts {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.pCard {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 15px;
+    font-weight: bold;
+    color: #7048e8;
+    border: 2px solid #e9ecef;
+}
+
+.formulaBox {
+    background: #f3f0ff;
+    padding: 20px;
+    border-radius: 15px;
+    text-align: left;
+    display: inline-block;
+}
+
+.formulaBox p {
+    margin-bottom: 10px;
+    color: #5f3dc4;
+    font-weight: bold;
+}
+
+.formulaBox p:last-child {
+    margin-bottom: 0;
+}
+
+/* Quiz Styles */
+.problemBox {
+    margin-top: 20px;
+}
+
+.question {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+.quizInput {
+    display: block;
+    width: 100%;
+    max-width: 200px;
+    margin: 0 auto 30px;
+    padding: 15px;
+    font-size: 2rem;
+    text-align: center;
+    border: 3px solid #dee2e6;
+    border-radius: 15px;
+    outline: none;
+}
+
+.quizInput:focus {
+    border-color: #7048e8;
+}
+
+.correct {
+    color: #2f9e44;
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.incorrect {
+    color: #e03131;
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-top: 20px;
+}
+.optionsGrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 15px; margin-bottom: 30px; }

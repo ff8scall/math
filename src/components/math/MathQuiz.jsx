@@ -141,9 +141,9 @@ const MathQuiz = () => {
 
     const handleCorrect = () => {
         setFeedback('correct');
-        setScore(score + 10);
-        updateCoins(10); // +10 Coins!
-        setCoinsEarned(prev => prev + 10);
+        setScore(score + 5);
+        updateCoins(5); // +5 Coins!
+        setCoinsEarned(prev => prev + 5);
         confetti({
             particleCount: 100,
             spread: 70,

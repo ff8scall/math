@@ -6,6 +6,35 @@ import { updateCoins } from '../../../utils/storage/storageManager';
 import { JsonLd, generateCourseSchema } from '../../seo/JsonLd';
 import styles from './BarGraph4th.module.css';
 
+const GraphView = ({ items, height = 300 }) => (
+    <div className={styles.graphContainer} style={{ height }}>
+        <div className={styles.yAxis}>
+            {[10, 8, 6, 4, 2, 0].map(val => (
+                <div key={val} className={styles.yTick}>
+                    <span>{val}</span>
+                    <div className={styles.gridLine} />
+                </div>
+            ))}
+        </div>
+        <div className={styles.barsArea}>
+            {items.map((item, i) => (
+                <div key={i} className={styles.barWrapper}>
+                    <motion.div
+                        className={styles.bar}
+                        style={{ backgroundColor: item.color }}
+                        initial={{ height: 0 }}
+                        animate={{ height: `${item.value * 10}%` }}
+                        transition={{ type: 'spring', damping: 15 }}
+                    >
+                        <span className={styles.barValue}>{item.value}</span>
+                    </motion.div>
+                    <span className={styles.barLabel}>{item.label}</span>
+                </div>
+            ))}
+        </div>
+    </div>
+);
+
 const BarGraph4th = () => {
     const [mode, setMode] = useState('explore');
     const [data, setData] = useState([
@@ -23,7 +52,12 @@ const BarGraph4th = () => {
 
     const generateQuiz = () => {
         const items = ['축구', '농구', '야구', '배구'];
-        const values = items.map(() => Math.floor(Math.random() * 9) + 1);
+        // 중복 없는 랜덤 값 생성 (1~9 사이)
+        const uniqueValues = new Set();
+        while (uniqueValues.size < items.length) {
+            uniqueValues.add(Math.floor(Math.random() * 9) + 1);
+        }
+        const values = Array.from(uniqueValues);
         const quizItems = items.map((label, i) => ({ label, value: values[i], color: '#48dbfb' }));
 
         const types = ['read', 'compare', 'total'];
@@ -71,41 +105,12 @@ const BarGraph4th = () => {
         if (userAnswer.trim() === quizData.answer) {
             setFeedback('correct');
             confetti();
-            updateCoins(15);
+            updateCoins(10);
             setTimeout(generateQuiz, 2000);
         } else {
             setFeedback('incorrect');
         }
     };
-
-    const GraphView = ({ items, height = 300 }) => (
-        <div className={styles.graphContainer} style={{ height }}>
-            <div className={styles.yAxis}>
-                {[10, 8, 6, 4, 2, 0].map(val => (
-                    <div key={val} className={styles.yTick}>
-                        <span>{val}</span>
-                        <div className={styles.gridLine} />
-                    </div>
-                ))}
-            </div>
-            <div className={styles.barsArea}>
-                {items.map((item, i) => (
-                    <div key={i} className={styles.barWrapper}>
-                        <motion.div
-                            className={styles.bar}
-                            style={{ backgroundColor: item.color }}
-                            initial={{ height: 0 }}
-                            animate={{ height: `${item.value * 10}%` }}
-                            transition={{ type: 'spring', damping: 15 }}
-                        >
-                            <span className={styles.barValue}>{item.value}</span>
-                        </motion.div>
-                        <span className={styles.barLabel}>{item.label}</span>
-                    </div>
-                ))}
-            </div>
-        </div>
-    );
 
     return (
         <div className={styles.container}>
@@ -180,7 +185,7 @@ const BarGraph4th = () => {
                             </div>
 
                             <AnimatePresence>
-                                {feedback === 'correct' && <motion.div className={styles.feedbackCorrect}>🎉 정답입니다! (+15 코인)</motion.div>}
+                                {feedback === 'correct' && <motion.div className={styles.feedbackCorrect}>🎉 정답입니다! (+10 코인)</motion.div>}
                                 {feedback === 'incorrect' && <motion.div className={styles.feedbackIncorrect}>😅 그래프를 다시 한 번 꼼꼼히 살펴보세요!</motion.div>}
                                 {showAnswer && (
                                     <motion.div className={styles.feedbackAnswer}>

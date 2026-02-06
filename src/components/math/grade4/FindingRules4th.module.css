@@ -106,6 +106,30 @@
     font-size: 2.5rem;
     font-weight: bold;
     color: #888;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.nextItem:hover {
+    background: #fff59d;
+    transform: translateY(-5px);
+}
+
+.revealed {
+    border-style: solid;
+    background: #e3f2fd;
+    border-color: #2196f3;
+}
+
+.ruleMessage {
+    margin-top: 30px;
+    padding: 20px;
+    background: #e3f2fd;
+    color: #1a73e8;
+    border-radius: 15px;
+    font-size: 1.3rem;
+    font-weight: bold;
+    text-align: center;
 }
 
 .infoCards {
