@@ -103,7 +103,7 @@ const MathWorksheet = () => {
                 </div>
 
                 <div className={styles.wsFooter}>
-                    ⓒ FreeMath.co.kr - 스스로 공부하는 힘
+                    ⓒ 매쓰 펫토리 (Math Petory) - 스스로 공부하는 힘
                 </div>
             </div>
 

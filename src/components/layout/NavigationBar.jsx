@@ -15,7 +15,7 @@ const NavigationBar = () => {
     return (
         <nav className={styles.navbar}>
             <div className={styles.logo}>
-                <Link to="/">수학 탐험대 🚀</Link>
+                <Link to="/">매쓰 펫토리 🚀</Link>
             </div>
             <ul className={styles.navList}>
                 {navItems.map((item) => (

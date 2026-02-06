@@ -29,6 +29,7 @@ const Curriculum = () => {
             ],
             tools: [
                 { id: 'quiz', title: '🏆 종합 퀴즈왕', description: '1학기+2학기 모든 문제를 풀어보세요!', link: '/grade/1/quiz', status: 'available' },
+                { id: 'game', title: '🏁 수학 레이스', description: '60초 동안 달리는 스피드 수학 게임!', link: '/grade/1/game', status: 'available' },
                 { id: 'print', title: '🖨️ 학습지 출력', description: '집에서 종이로 직접 풀어보세요!', link: '/grade/1/worksheet', status: 'available' },
             ]
         },
@@ -54,6 +55,7 @@ const Curriculum = () => {
             ],
             tools: [
                 { id: 'quiz', title: '🏆 종합 퀴즈왕', description: '1학기+2학기 모든 문제를 풀어보세요!', link: '/grade/2/quiz', status: 'available' },
+                { id: 'game', title: '🏁 수학 레이스', description: '60초 동안 달리는 스피드 수학 게임!', link: '/grade/2/game', status: 'available' },
                 { id: 'print', title: '🖨️ 학습지 출력', description: '오늘 배운 내용을 종이로 풀어보세요!', link: '/grade/2/worksheet', status: 'available' },
             ]
         },
@@ -84,6 +86,7 @@ const Curriculum = () => {
             ],
             tools: [
                 { id: 'quiz', title: '🏆 종합 퀴즈왕', description: '1학기+2학기 모든 단원 문제를 풀어보세요!', link: '/grade/3/quiz', status: 'available' },
+                { id: 'game', title: '🏁 수학 레이스', description: '60초 동안 달리는 스피드 수학 게임!', link: '/grade/3/game', status: 'available' },
                 { id: 'worksheet', title: '📄 학습지 출력', description: '원하는 단원 문제를 PDF로 뽑아요.', link: '/grade/3/worksheet', status: 'available' },
             ]
         },
@@ -114,6 +117,7 @@ const Curriculum = () => {
             ],
             tools: [
                 { id: 'quiz', title: '🏆 종합 퀴즈왕', description: '4학년 모든 문제를 풀어보세요!', link: '/grade/4/quiz', status: 'available' },
+                { id: 'game', title: '🏁 수학 레이스', description: '60초 동안 달리는 스피드 수학 게임!', link: '/grade/4/game', status: 'available' },
                 { id: 'print', title: '🖨️ 학습지 출력', description: '단원평가 준비! 종이 학습지로 해봐요.', link: '/grade/4/worksheet', status: 'available' },
             ]
         },
@@ -144,6 +148,7 @@ const Curriculum = () => {
             ],
             tools: [
                 { id: 'quiz', title: '🏆 종합 퀴즈왕', description: '5학년 모든 문제를 풀어보세요!', link: '/grade/5/quiz', status: 'available' },
+                { id: 'game', title: '🏁 수학 레이스', description: '60초 동안 달리는 스피드 수학 게임!', link: '/grade/5/game', status: 'available' },
                 { id: 'print', title: '🖨️ 학습지 출력', description: '5학년 실력을 종이로 확인해봐요!', link: '/grade/5/worksheet', status: 'available' },
             ]
         },
@@ -171,6 +176,7 @@ const Curriculum = () => {
             ],
             tools: [
                 { id: 'quiz', title: '🏆 종합 퀴즈왕', description: '6학년 모든 문제를 풀어보세요!', link: '/grade/6/quiz', status: 'available' },
+                { id: 'game', title: '🏁 수학 레이스', description: '60초 동안 달리는 스피드 수학 게임!', link: '/grade/6/game', status: 'available' },
                 { id: 'print', title: '🖨️ 학습지 출력', description: '중학교 가기 전, 종이로 최종 점검!', link: '/grade/6/worksheet', status: 'available' },
             ]
         }

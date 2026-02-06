@@ -7,13 +7,14 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const DOMAIN = 'https://free-math.vercel.app';
-const SITE_TITLE = '수학 탐험대 (3학년 수학 학습)';
-const SITE_DESC = '3학년 1학기 수학(덧셈, 뺄셈, 나눗셈, 곱셈, 분수)을 시각적으로 배우고 연습하는 무료 학습 사이트입니다.';
+const SITE_TITLE = '매쓰 펫토리 (Math Petory) | 초등 수학 원리 & 펫 키우기';
+const SITE_DESC = '초등학교 1학년부터 6학년까지, 공식 암기가 아닌 원리로 배우는 수학 학습 플랫폼 매쓰 펫토리! 나만의 펫을 키우고 방을 꾸미며 즐겁게 수학 실력을 키워보세요.';
 
 const routes = [
-  { path: '/', changefreq: 'daily', priority: 1.0, title: '홈 - 수학 탐험대' },
+  { path: '/', changefreq: 'daily', priority: 1.0, title: '홈 - 매쓰 펫토리' },
   { path: '/myroom', changefreq: 'weekly', priority: 0.8, title: '내 방 꾸미기' },
-  { path: '/shop', changefreq: 'weekly', priority: 0.8, title: '상점' },
+  { path: '/shop', changefreq: 'weekly', priority: 0.8, title: '매쓰 펫토리 상점' },
+  { path: '/grade/1/game', changefreq: 'daily', priority: 0.9, title: '수학 레이스' },
   { path: '/grade/3/arithmetic', changefreq: 'weekly', priority: 0.9, title: '덧셈과 뺄셈' },
   { path: '/grade/3/subtraction', changefreq: 'weekly', priority: 0.9, title: '받아내림 뺄셈' },
   { path: '/grade/3/multiplication', changefreq: 'weekly', priority: 0.9, title: '곱셈 (구구단)' },

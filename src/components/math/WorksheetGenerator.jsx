@@ -131,7 +131,7 @@ const WorksheetGenerator = () => {
                 </div>
 
                 <div className={styles.sheetFooter}>
-                    수학 탐험대 (FreeMath) - 매일매일 조금씩 성장해요!
+                    매쓰 펫토리 (Math Petory) - 매일매일 조금씩 성장해요!
                 </div>
             </div>
         </div>

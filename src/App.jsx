@@ -82,6 +82,7 @@ import Graphs6th from './components/math/grade6/Graphs6th';
 import Proportion6th from './components/math/grade6/Proportion6th';
 import RoundGeometry6th from './components/math/grade6/RoundGeometry6th';
 import Grade6Quiz from './components/math/Grade6Quiz';
+import MathGame from './pages/MathGame';
 
 function App() {
   return (
@@ -173,6 +174,7 @@ function App() {
           <Route path="/grade/6/circle-area" element={<CircleArea6th />} />
           <Route path="/grade/6/round-geometry" element={<RoundGeometry6th />} />
           <Route path="/grade/6/quiz" element={<Grade6Quiz />} />
+          <Route path="/grade/:gradeId/game" element={<MathGame />} />
 
           <Route path="/myroom" element={<MyRoom />} />
           <Route path="/shop" element={<Shop />} />

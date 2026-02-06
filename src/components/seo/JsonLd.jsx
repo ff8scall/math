@@ -11,7 +11,7 @@ export const JsonLd = ({ data }) => {
     );
 };
 
-export const generateCourseSchema = (name, description, provider = "수학 탐험대") => {
+export const generateCourseSchema = (name, description, provider = "매쓰 펫토리") => {
     return {
         "@context": "https://schema.org",
         "@type": "Course",

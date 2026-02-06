@@ -5,7 +5,7 @@ const HomePage = () => {
     return (
         <div style={{ padding: '20px', textAlign: 'center' }}>
             <SEOHead title="홈" />
-            <h1 style={{ fontSize: '3rem', color: '#333', marginBottom: '20px' }}>수학 탐험대에 오신 것을 환영합니다! 🚀</h1>
+            <h1 style={{ fontSize: '3rem', color: '#333', marginBottom: '20px' }}>매쓰 펫토리에 오신 것을 환영합니다! 🚀</h1>
             <p style={{ fontSize: '1.5rem', color: '#666', marginBottom: '40px' }}>재미있는 수학 여행을 떠나볼까요?</p>
 
             <div style={{ display: 'flex', justifyContent: 'center', gap: '20px' }}>

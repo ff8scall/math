@@ -23,6 +23,13 @@
   </url>
 
   <url>
+    <loc>https://free-math.vercel.app/grade/1/game</loc>
+    <lastmod>2026-02-06</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
     <loc>https://free-math.vercel.app/grade/3/arithmetic</loc>
     <lastmod>2026-02-06</lastmod>
     <changefreq>weekly</changefreq>

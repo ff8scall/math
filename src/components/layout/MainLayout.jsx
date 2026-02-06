@@ -10,7 +10,7 @@ const MainLayout = ({ children }) => {
                 {children}
             </main>
             <footer className={styles.footer}>
-                <p>© 2026 수학 탐험대. 부모님과 함께 재미있게 배워요!</p>
+                <p>© 2026 매쓰 펫토리. 부모님과 함께 재미있게 배워요!</p>
             </footer>
         </div>
     );
