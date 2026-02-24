@@ -54,69 +54,73 @@
 /* A4 Sheet Styles */
 .sheetPage {
     width: 210mm;
-    min-height: 297mm;
+    height: 297mm;
     background: white;
-    padding: 20mm;
+    padding: 15mm;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
     box-sizing: border-box;
     position: relative;
     font-family: 'Noto Sans KR', sans-serif;
-    /* Cleaner font for print */
     display: flex;
     flex-direction: column;
+    margin: 0 auto;
+    overflow: hidden;
 }
 
 .sheetHeader {
     text-align: center;
     border-bottom: 2px solid #333;
-    padding-bottom: 20px;
-    margin-bottom: 30px;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
 }
 
 .sheetTitle {
-    font-size: 24pt;
-    margin: 0 0 20px 0;
+    font-size: 20pt;
+    margin: 0 0 10px 0;
 }
 
 .sheetMeta {
     display: flex;
     justify-content: space-between;
-    font-size: 12pt;
+    font-size: 11pt;
 }
 
 .problemGrid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    /* 2 columns for A4 */
-    gap: 40px 20px;
+    gap: 15px 30px;
     flex-grow: 1;
     align-content: start;
 }
 
 .problemItem {
-    padding: 10px;
-    font-size: 16pt;
-    break-inside: avoid;
-    /* Prevent split on page break */
+    padding: 8px 5px;
+    font-size: 14pt;
+    border-bottom: 1px dotted #eee;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
 .problemNum {
-    font-size: 12pt;
-    color: #666;
-    margin-bottom: 5px;
+    font-size: 11pt;
+    color: #333;
+    font-weight: bold;
+    min-width: 25px;
 }
 
 .equation {
     font-family: 'Jua', sans-serif;
-    font-size: 20pt;
-    letter-spacing: 2px;
+    font-size: 17pt;
+    letter-spacing: 1px;
+    flex: 1;
 }
 
 .sheetFooter {
     text-align: center;
-    font-size: 10pt;
+    font-size: 9pt;
     color: #999;
-    margin-top: 20px;
+    margin-top: 10px;
     border-top: 1px solid #eee;
     padding-top: 10px;
 }
@@ -130,28 +134,39 @@
 
     body {
         margin: 0;
+        padding: 0;
         background: white;
     }
 
     .container {
         padding: 0;
+        margin: 0;
         background: white;
         display: block;
+        width: 100%;
     }
 
     .controls,
     :global(header),
     :global(nav),
+    :global(footer),
+    :global(.NavigationBar),
     :global(.confetti-canvas) {
         display: none !important;
     }
 
+    :global(main) {
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
     .sheetPage {
-        width: 100%;
-        height: 100%;
+        width: 210mm !important;
+        height: 297mm !important;
         box-shadow: none;
         margin: 0;
-        padding: 20mm;
+        padding: 15mm !important;
         page-break-after: always;
+        border: none;
     }
 }

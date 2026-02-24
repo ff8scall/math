@@ -102,7 +102,6 @@ function App() {
           */}
           <Route path="/" element={<GradeSelection />} />
           <Route path="/grade/:gradeId" element={<Curriculum />} />
-          <Route path="/grade/:grade/worksheet" element={<MathWorksheet />} />
           <Route path="/grade/3/arithmetic" element={<AdditionWithCarry />} />
           <Route path="/grade/3/fraction" element={<FractionVisualizer />} />
           <Route path="/grade/3/multiplication" element={<MultiplicationVisualizer />} />
@@ -111,10 +110,10 @@ function App() {
           <Route path="/grade/3/clock" element={<ClockVisualizer />} />
           <Route path="/grade/3/subtraction" element={<SubtractionWithBorrow />} />
           <Route path="/grade/3/length" element={<UnitConverter />} />
-          <Route path="/grade/3/quiz" element={<MathQuiz />} />
-          <Route path="/grade/3/word-problem" element={<WordProblemQuiz />} />
-          <Route path="/grade/3/word-problem-worksheet" element={<WordProblemWorksheet />} />
-          <Route path="/grade/3/worksheet" element={<WorksheetGenerator />} />
+          <Route path="/grade/:gradeId/quiz" element={<MathQuiz />} />
+          <Route path="/grade/:gradeId/word-problem" element={<WordProblemQuiz />} />
+          <Route path="/grade/:gradeId/word-problem-worksheet" element={<WordProblemWorksheet />} />
+          <Route path="/grade/:gradeId/worksheet" element={<WorksheetGenerator />} />
           <Route path="/grade/3/circle" element={<CircleExplorer />} />
           <Route path="/grade/3/weight-volume" element={<WeightVolumeConverter />} />
 
@@ -126,8 +125,6 @@ function App() {
           <Route path="/grade/1/clock" element={<ClockBasic1st />} />
           <Route path="/grade/1/number-100" element={<NumberTo100 />} />
           <Route path="/grade/1/quiz" element={<Grade1Quiz />} />
-          <Route path="/grade/1/word-problem" element={<WordProblemQuiz />} />
-          <Route path="/grade/1/word-problem-worksheet" element={<WordProblemWorksheet />} />
 
           {/* 2학년 Routes */}
           <Route path="/grade/2/three-digit" element={<ThreeDigitNumber />} />
@@ -138,8 +135,6 @@ function App() {
           <Route path="/grade/2/multiplication" element={<MultiplicationTable />} />
           <Route path="/grade/2/time" element={<TimeCalculation />} />
           <Route path="/grade/2/quiz" element={<Grade2Quiz />} />
-          <Route path="/grade/2/word-problem" element={<WordProblemQuiz />} />
-          <Route path="/grade/2/word-problem-worksheet" element={<WordProblemWorksheet />} />
 
           {/* 4학년 Routes */}
           <Route path="/grade/4/large-numbers" element={<LargeNumbers4th />} />

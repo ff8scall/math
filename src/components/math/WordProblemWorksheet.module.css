@@ -159,7 +159,12 @@
         margin: 0;
     }
 
-    .noPrint {
+    .noPrint,
+    :global(header),
+    :global(nav),
+    :global(footer),
+    :global(.NavigationBar),
+    :global(.confetti-canvas) {
         display: none !important;
     }
 
@@ -167,6 +172,12 @@
         margin: 0;
         padding: 0;
         -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    :global(main) {
+        padding: 0 !important;
+        margin: 0 !important;
     }
 
     .container {
