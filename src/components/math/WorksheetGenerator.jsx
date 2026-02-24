@@ -4,22 +4,24 @@ import Button from '../common/Button';
 import styles from './WorksheetGenerator.module.css';
 
 const WorksheetGenerator = () => {
-    const { gradeId } = useParams();
+    const { gradeId, grade } = useParams();
+    const effectiveGrade = gradeId || grade;
+
     const [config, setConfig] = useState({
         topic: 'mix', // 'addition', 'subtraction', 'multiplication', 'division', 'mix'
         count: 20,
-        title: `${gradeId || ''}학년 수학 기초 학습지`
+        title: `${effectiveGrade || ''}학년 수학 기초 학습지`
     });
     const [problems, setProblems] = useState([]);
 
     useEffect(() => {
         generateWorksheet();
-    }, [config.topic, config.count, gradeId]); // Auto regen on config change
+    }, [config.topic, config.count, effectiveGrade]); // Auto regen on config change
 
     const generateWorksheet = () => {
         const newProblems = [];
         const types = ['addition', 'subtraction', 'multiplication', 'division'];
-        const grade = parseInt(gradeId) || 2;
+        const gradeNum = parseInt(effectiveGrade) || 2;
 
         for (let i = 0; i < config.count; i++) {
             let type = config.topic;
@@ -28,7 +30,7 @@ const WorksheetGenerator = () => {
             }
 
             let p;
-            if (grade >= 3) {
+            if (gradeNum >= 3) {
                 // 3rd Grade+ Difficulty
                 if (type === 'addition') {
                     p = { n1: Math.floor(Math.random() * 800) + 100, n2: Math.floor(Math.random() * 800) + 100, operator: '+' };
