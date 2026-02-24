@@ -32,10 +32,18 @@ const MathWorksheet = () => {
                 q = `${n1} × ${n2} = (   )`;
                 a = n1 * n2;
             } else if (gradeNum === 3) {
-                const n1 = Math.floor(Math.random() * 90) + 10;
-                const n2 = Math.floor(Math.random() * 90) + 10;
-                q = `${n1} + ${n2} = (   )`;
-                a = n1 + n2;
+                // Grade 3: Three-digit arithmetic
+                const n1 = Math.floor(Math.random() * 800) + 100;
+                const n2 = Math.floor(Math.random() * 800) + 100;
+                if (Math.random() > 0.5) {
+                    q = `${n1} + ${n2} = (   )`;
+                    a = n1 + n2;
+                } else {
+                    const bigger = Math.max(n1, n2);
+                    const smaller = Math.min(n1, n2);
+                    q = `${bigger} - ${smaller} = (   )`;
+                    a = bigger - smaller;
+                }
             } else if (gradeNum === 4) {
                 const n1 = Math.floor(Math.random() * 900) + 100;
                 const n2 = Math.floor(Math.random() * 9) + 2;

@@ -1,73 +1,63 @@
 import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import Button from '../common/Button';
 import styles from './WorksheetGenerator.module.css';
 
 const WorksheetGenerator = () => {
+    const { gradeId } = useParams();
     const [config, setConfig] = useState({
         topic: 'mix', // 'addition', 'subtraction', 'multiplication', 'division', 'mix'
         count: 20,
-        title: '나만의 수학 학습지'
+        title: `${gradeId || ''}학년 수학 기초 학습지`
     });
     const [problems, setProblems] = useState([]);
 
     useEffect(() => {
         generateWorksheet();
-    }, [config.topic, config.count]); // Auto regen on config change
-
-    const generateProblem = (type) => {
-        let n1, n2, operator;
-        switch (type) {
-            case 'addition':
-                n1 = Math.floor(Math.random() * 90) + 10;
-                n2 = Math.floor(Math.random() * 90) + 10;
-                operator = '+';
-                break;
-            case 'subtraction':
-                n1 = Math.floor(Math.random() * 90) + 10;
-                n2 = Math.floor(Math.random() * (n1 - 1)) + 1;
-                operator = '-';
-                break;
-            case 'multiplication':
-                n1 = Math.floor(Math.random() * 8) + 2;
-                n2 = Math.floor(Math.random() * 9) + 1;
-                operator = '×';
-                break;
-            case 'division':
-                n2 = Math.floor(Math.random() * 8) + 2;
-                ans = Math.floor(Math.random() * 9) + 1;
-                n1 = n2 * ans;
-                operator = '÷';
-                break;
-            default:
-                n1 = 0; n2 = 0; operator = '?';
-        }
-        return { n1, n2, operator };
-    };
+    }, [config.topic, config.count, gradeId]); // Auto regen on config change
 
     const generateWorksheet = () => {
         const newProblems = [];
         const types = ['addition', 'subtraction', 'multiplication', 'division'];
+        const grade = parseInt(gradeId) || 2;
 
         for (let i = 0; i < config.count; i++) {
             let type = config.topic;
             if (type === 'mix') {
                 type = types[Math.floor(Math.random() * types.length)];
             }
-            // Fix for 'division' variable scope issue in generateProblem if pasted directly
-            // Extracting logic cleanly:
+
             let p;
-            if (type === 'division') {
-                let divisor = Math.floor(Math.random() * 8) + 2;
-                let quotient = Math.floor(Math.random() * 9) + 1;
-                p = { n1: divisor * quotient, n2: divisor, operator: '÷' };
-            } else if (type === 'multiplication') {
-                p = { n1: Math.floor(Math.random() * 8) + 2, n2: Math.floor(Math.random() * 9) + 1, operator: '×' };
-            } else if (type === 'subtraction') {
-                let a = Math.floor(Math.random() * 90) + 10;
-                let b = Math.floor(Math.random() * (a - 1)) + 1;
-                p = { n1: a, n2: b, operator: '-' };
-            } else { // addition
-                p = { n1: Math.floor(Math.random() * 90) + 10, n2: Math.floor(Math.random() * 90) + 10, operator: '+' };
+            if (grade >= 3) {
+                // 3rd Grade+ Difficulty
+                if (type === 'addition') {
+                    p = { n1: Math.floor(Math.random() * 800) + 100, n2: Math.floor(Math.random() * 800) + 100, operator: '+' };
+                } else if (type === 'subtraction') {
+                    let a = Math.floor(Math.random() * 800) + 200;
+                    let b = Math.floor(Math.random() * (a - 100)) + 50;
+                    p = { n1: a, n2: b, operator: '-' };
+                } else if (type === 'multiplication') {
+                    p = { n1: Math.floor(Math.random() * 90) + 10, n2: Math.floor(Math.random() * 9) + 2, operator: '×' };
+                } else { // division
+                    let divisor = Math.floor(Math.random() * 8) + 2;
+                    let quotient = Math.floor(Math.random() * 15) + 2;
+                    p = { n1: divisor * quotient, n2: divisor, operator: '÷' };
+                }
+            } else {
+                // Lower Grade Difficulty (1-2)
+                if (type === 'addition') {
+                    p = { n1: Math.floor(Math.random() * 80) + 10, n2: Math.floor(Math.random() * 80) + 10, operator: '+' };
+                } else if (type === 'subtraction') {
+                    let a = Math.floor(Math.random() * 90) + 10;
+                    let b = Math.floor(Math.random() * (a - 1)) + 1;
+                    p = { n1: a, n2: b, operator: '-' };
+                } else if (type === 'multiplication') {
+                    p = { n1: Math.floor(Math.random() * 8) + 2, n2: Math.floor(Math.random() * 9) + 1, operator: '×' };
+                } else { // division
+                    let divisor = Math.floor(Math.random() * 8) + 2;
+                    let quotient = Math.floor(Math.random() * 9) + 1;
+                    p = { n1: divisor * quotient, n2: divisor, operator: '÷' };
+                }
             }
             newProblems.push({ ...p, id: i });
         }
