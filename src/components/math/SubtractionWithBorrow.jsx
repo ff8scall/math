@@ -12,8 +12,8 @@ const SubtractionWithBorrow = () => {
     const [mode, setMode] = useState('explore');
 
     // Explore Data
-    const [minuend, setMinuend] = useState(32);
-    const [subtrahend, setSubtrahend] = useState(15);
+    const [minuend, setMinuend] = useState(425);
+    const [subtrahend, setSubtrahend] = useState(158);
     const [step, setStep] = useState(0);
 
     // Practice Data
@@ -23,32 +23,27 @@ const SubtractionWithBorrow = () => {
 
     // --- Explore Logic ---
     const reset = () => { setStep(0); };
-    const nextStep = () => { if (step < 3) setStep(step + 1); if (step === 2) confetti(); };
+    const nextStep = () => { if (step < 4) setStep(step + 1); if (step === 3) confetti(); };
     const prevStep = () => { if (step > 0) setStep(step - 1); };
 
-    // Helper values
-    const topTens = Math.floor(minuend / 10);
-    const topOnes = minuend % 10;
-    const botTens = Math.floor(subtrahend / 10);
-    const botOnes = subtrahend % 10;
-    const needBorrow = topOnes < botOnes;
+    // Breakdown
+    const m_h = Math.floor(minuend / 100);
+    const m_t = Math.floor((minuend % 100) / 10);
+    const m_o = minuend % 10;
+
+    const s_h = Math.floor(subtrahend / 100);
+    const s_t = Math.floor((subtrahend % 100) / 10);
+    const s_o = subtrahend % 10;
+
+    const needBorrow1 = m_o < s_o;
+    const needBorrow2 = (needBorrow1 ? m_t - 1 : m_t) < s_t;
+
     const finalResult = minuend - subtrahend;
 
     // --- Practice Logic ---
     const startPractice = () => {
-        // Generate problem with borrow
-        const t = Math.floor(Math.random() * 8) + 2; // Tens: 2~9
-        const o = Math.floor(Math.random() * 5); // Ones: 0~4
-
-        let m = t * 10 + o; // e.g. 32
-
-        // Random subtrahend ensuring borrow
-        // s_ones > o. 5~9
-        const s_o = Math.floor(Math.random() * 5) + 5;
-        const s_t = Math.floor(Math.random() * (t - 1)) + 1; // 1 ~ t-1
-
-        let s = s_t * 10 + s_o;
-        if (s >= m) s = m - 1; // Fallback
+        const m = Math.floor(Math.random() * 800) + 200; // 200~999
+        let s = Math.floor(Math.random() * (m - 50)) + 50; // Ensure positive result
 
         setChoiceData({ m, s });
         setUserResponse('');
@@ -65,7 +60,7 @@ const SubtractionWithBorrow = () => {
         if (parseInt(userResponse) === correct) {
             setFeedback('correct');
             confetti();
-            updateCoins(10);
+            updateCoins(15);
             setTimeout(startPractice, 2000);
         } else {
             setFeedback('incorrect');
@@ -81,56 +76,70 @@ const SubtractionWithBorrow = () => {
 
             {mode === 'explore' ? (
                 <>
-                    <h2 className={styles.title}>뺄셈 탐험: 받아내림이 있어요! ➖</h2>
+                    <h2 className={styles.title}>세 자리 수 뺄셈: 받아내림 탐험 ➖</h2>
 
                     <div className={styles.stage}>
                         <div className={styles.grid}>
                             {/* Headers */}
                             <div className={styles.operatorHeader}></div>
+                            <div className={styles.columnHeader}>백의 자리</div>
                             <div className={styles.columnHeader}>십의 자리</div>
                             <div className={styles.columnHeader}>일의 자리</div>
 
-                            {/* Row 1: Borrow/Regrouping Markers */}
+                            {/* Row 1: Borrow Markers */}
                             <div className={styles.operator}></div>
+                            {/* Hundreds Borrow Marker */}
                             <div className={styles.cell}>
                                 <AnimatePresence>
-                                    {step >= 1 && needBorrow && (
-                                        <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} className={styles.borrowMark}>
-                                            {topTens - 1}
-                                        </motion.div>
+                                    {step >= 2 && needBorrow2 && (
+                                        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className={styles.borrowMark}>{m_h - 1}</motion.div>
                                     )}
                                 </AnimatePresence>
                             </div>
+                            {/* Tens Borrow Marker */}
                             <div className={styles.cell}>
                                 <AnimatePresence>
-                                    {step >= 1 && needBorrow && (
-                                        <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} exit={{ scale: 0 }} className={styles.borrowValue}>
-                                            10
+                                    {step >= 1 && needBorrow1 && (
+                                        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className={styles.borrowMark}>
+                                            {needBorrow2 ? 10 + (m_t - 1) : m_t - 1}
                                         </motion.div>
+                                    )}
+                                    {step >= 2 && needBorrow2 && (
+                                        <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} className={styles.borrowValue}>10</motion.div>
+                                    )}
+                                </AnimatePresence>
+                            </div>
+                            {/* Ones Borrow Marker */}
+                            <div className={styles.cell}>
+                                <AnimatePresence>
+                                    {step >= 1 && needBorrow1 && (
+                                        <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} className={styles.borrowValue}>10</motion.div>
                                     )}
                                 </AnimatePresence>
                             </div>
 
                             {/* Row 2: Minuend */}
                             <div className={styles.operator}></div>
-                            <div className={`${styles.cell} ${step >= 1 && needBorrow ? styles.dimmed : ''}`}>
-                                <div className={styles.numberBlock}>{topTens}</div>
-                                {step >= 1 && needBorrow && <motion.div initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} className={styles.strikeThrough} />}
+                            <div className={`${styles.cell} ${step >= 2 && needBorrow2 ? styles.dimmed : ''}`}>
+                                <div className={styles.numberBlock}>{m_h}</div>
+                                {step >= 2 && needBorrow2 && <motion.div initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} className={styles.strikeThrough} />}
+                            </div>
+                            <div className={`${styles.cell} ${step >= 1 && needBorrow1 ? styles.dimmed : ''}`}>
+                                <div className={styles.numberBlock}>{m_t}</div>
+                                {step >= 1 && needBorrow1 && <motion.div initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} className={styles.strikeThrough} />}
                             </div>
                             <div className={styles.cell}>
-                                <div className={styles.numberBlock}>{topOnes}</div>
+                                <div className={styles.numberBlock}>{m_o}</div>
                             </div>
 
                             {/* Row 3: Subtrahend */}
                             <div className={styles.operator}>-</div>
-                            <div className={styles.cell}>
-                                <div className={styles.numberBlock}>{botTens}</div>
-                            </div>
-                            <div className={styles.cell}>
-                                <div className={styles.numberBlock}>{botOnes}</div>
-                            </div>
+                            <div className={styles.cell}><div className={styles.numberBlock}>{s_h}</div></div>
+                            <div className={styles.cell}><div className={styles.numberBlock}>{s_t}</div></div>
+                            <div className={styles.cell}><div className={styles.numberBlock}>{s_o}</div></div>
 
                             {/* Divider */}
+                            <div className={styles.divider}></div>
                             <div className={styles.divider}></div>
                             <div className={styles.divider}></div>
                             <div className={styles.divider}></div>
@@ -138,66 +147,55 @@ const SubtractionWithBorrow = () => {
                             {/* Row 4: Result */}
                             <div className={styles.operator}></div>
                             <div className={styles.cell}>
-                                <AnimatePresence>
-                                    {step >= 3 && (
-                                        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className={styles.resultBlock}>
-                                            {Math.floor(finalResult / 10)}
-                                        </motion.div>
-                                    )}
-                                </AnimatePresence>
+                                {step >= 4 && <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className={styles.resultBlock}>{Math.floor(finalResult / 100)}</motion.div>}
                             </div>
                             <div className={styles.cell}>
-                                <AnimatePresence>
-                                    {step >= 2 && (
-                                        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className={styles.resultBlock}>
-                                            {finalResult % 10}
-                                        </motion.div>
-                                    )}
-                                </AnimatePresence>
+                                {step >= 3 && <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className={styles.resultBlock}>{Math.floor((finalResult % 100) / 10)}</motion.div>}
+                            </div>
+                            <div className={styles.cell}>
+                                {step >= 2 && <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className={styles.resultBlock}>{finalResult % 10}</motion.div>}
                             </div>
                         </div>
                     </div>
 
                     <div className={styles.tutorialBox}>
                         <div className={styles.explanation}>
-                            <div className={styles.stepBadge}>단계 {step + 1} / 4</div>
+                            <div className={styles.stepBadge}>단계 {step + 1} / 5</div>
                             <p>
-                                {step === 0 && "자, 뺄셈을 시작해볼까요? 일의 자리부터 봐주세요."}
-                                {step === 1 && needBorrow && `${topOnes}에서 ${botOnes}을 뺄 수 없어요! 십의 자리에서 10을 빌려와요.`}
-                                {step === 1 && !needBorrow && `일의 자리끼리 뺄 수 있네요! 그대로 진행해요.`}
-                                {step === 2 && `이제 일의 자리 뺄셈을 해요. ${needBorrow ? `10 + ${topOnes} - ${botOnes}` : `${topOnes} - ${botOnes}`} = ${finalResult % 10}`}
-                                {step === 3 && `십의 자리를 마저 빼주면 끝! 정답은 ${finalResult}입니다.`}
+                                {step === 0 && "일의 자리부터 확인해요. 빌려와야 할까요?"}
+                                {step === 1 && (needBorrow1 ? `일의 자리가 부족해요! 십의 자리에서 10을 빌려와요.` : `일의 자리는 그대로 뺄 수 있어요!`)}
+                                {step === 2 && (needBorrow1 ? `일의 자리를 빼고 나서(${10 + m_o} - ${s_o} = ${finalResult % 10}), 이제 십의 자리를 봐요.` : `일의 자리를 빼고(${m_o} - ${s_o}), 십의 자리를 봐요.`)}
+                                {step === 3 && (needBorrow2 ? `십의 자리가 부족해서 백의 자리에서 빌려왔어요! 십의 자리를 계산해요.` : `십의 자리도 차례대로 빼주세요.`)}
+                                {step === 4 && `마지막 백의 자리까지 계산하면 끝! 정답은 ${finalResult}입니다.`}
                             </p>
                         </div>
 
                         <div className={styles.navControls}>
                             <Button onClick={prevStep} disabled={step === 0} variant="ghost" size="large">이전 단계</Button>
-                            <Button onClick={nextStep} disabled={step === 3} variant="primary" size="large" className={styles.nextPulse}>
-                                {step === 3 ? "탐험 완료! 🎉" : "다음 단계로 ▶"}
+                            <Button onClick={nextStep} disabled={step === 4} variant="primary" size="large" className={styles.nextPulse}>
+                                {step === 4 ? "탐험 완료! 🎉" : "다음 단계로 ▶"}
                             </Button>
                         </div>
                     </div>
 
                     <div className={styles.problemPresets}>
-                        <span>다른 문제 도전:</span>
+                        <span>추천 문제:</span>
                         <div className={styles.controls}>
-                            <Button onClick={() => { setMinuend(32); setSubtrahend(15); reset(); }} variant="secondary" size="small">32 - 15</Button>
-                            <Button onClick={() => { setMinuend(40); setSubtrahend(18); reset(); }} variant="secondary" size="small">40 - 18</Button>
-                            <Button onClick={() => { setMinuend(55); setSubtrahend(27); reset(); }} variant="secondary" size="small">55 - 27</Button>
+                            <Button onClick={() => { setMinuend(425); setSubtrahend(158); reset(); }} variant="secondary" size="small">425 - 158</Button>
+                            <Button onClick={() => { setMinuend(512); setSubtrahend(235); reset(); }} variant="secondary" size="small">512 - 235</Button>
+                            <Button onClick={() => { setMinuend(300); setSubtrahend(123); reset(); }} variant="secondary" size="small">300 - 123</Button>
                         </div>
                     </div>
                 </>
             ) : (
                 <div style={{ maxWidth: '400px', margin: '0 auto' }}>
-                    <h2>뺄셈 연습: 받아내림 주의! 🔥</h2>
+                    <h2>세 자리 수 뺄셈 연습 🔥</h2>
                     {choiceData && (
                         <div style={{ backgroundColor: 'white', padding: '30px', borderRadius: '20px', boxShadow: '0 5px 15px rgba(0,0,0,0.1)' }}>
-                            <div style={{ fontSize: '3rem', fontWeight: 'bold', fontFamily: 'monospace', marginBottom: '30px', display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '20px' }}>
-                                <div style={{ textAlign: 'right' }}>
-                                    <div>{choiceData.m}</div>
-                                    <div>- {choiceData.s}</div>
-                                    <div style={{ borderTop: '3px solid #333', marginTop: '10px', width: '100%' }}></div>
-                                </div>
+                            <div style={{ fontSize: '3.5rem', fontWeight: 'bold', fontFamily: 'monospace', marginBottom: '30px', textAlign: 'right', paddingRight: '40px' }}>
+                                <div>{choiceData.m}</div>
+                                <div>- {choiceData.s}</div>
+                                <div style={{ borderTop: '4px solid #333', marginTop: '10px' }}></div>
                             </div>
 
                             <input
@@ -206,19 +204,19 @@ const SubtractionWithBorrow = () => {
                                 onChange={(e) => setUserResponse(e.target.value)}
                                 placeholder="정답"
                                 onKeyDown={(e) => e.key === 'Enter' && checkAnswer()}
-                                style={{ width: '100%', padding: '15px', fontSize: '1.5rem', borderRadius: '10px', border: '2px solid #ddd', marginBottom: '20px', textAlign: 'center' }}
+                                style={{ width: '100%', padding: '15px', fontSize: '2rem', borderRadius: '10px', border: '2px solid #ddd', marginBottom: '20px', textAlign: 'center' }}
                             />
 
                             <Button onClick={checkAnswer} size="large" fullWidth>정답 확인</Button>
 
-                            {feedback === 'correct' && <div style={{ marginTop: '20px', color: 'green', fontSize: '1.5rem', fontWeight: 'bold' }}>정답입니다! 🎉 (+10 코인)</div>}
+                            {feedback === 'correct' && <div style={{ marginTop: '20px', color: 'green', fontSize: '1.5rem', fontWeight: 'bold' }}>정답입니다! 🎉 (+15 코인)</div>}
                             {feedback === 'incorrect' && <div style={{ marginTop: '20px', color: 'red', fontSize: '1.5rem', fontWeight: 'bold' }}>다시 계산해보세요! 🤔</div>}
                         </div>
                     )}
                 </div>
             )}
 
-            <JsonLd data={generateCourseSchema("받아내림이 있는 뺄셈", "십의 자리에서 10을 빌려와서 계산하는 받아내림 뺄셈의 원리를 시각적으로 학습합니다.")} />
+            <JsonLd data={generateCourseSchema("세 자리 수 뺄셈", "백의 자리, 십의 자리에서 빌려오는 받아내림 뺄셈의 전 과정을 시각적으로 학습합니다.")} />
         </div>
     );
 };

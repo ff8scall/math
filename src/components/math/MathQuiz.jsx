@@ -34,17 +34,17 @@ const MathQuiz = () => {
 
         switch (topic) {
             case 'addition':
-                // Two or Three digit addition
-                n1 = Math.floor(Math.random() * 90) + 10;
-                n2 = Math.floor(Math.random() * 90) + 10;
+                // Three-digit addition for 3rd grade level
+                n1 = Math.floor(Math.random() * 800) + 100;
+                n2 = Math.floor(Math.random() * 800) + 100;
                 operator = '+';
                 ans = n1 + n2;
                 explanation = `${n1} + ${n2} = ${ans}`;
                 break;
             case 'subtraction':
-                // Ensure positive result
-                n1 = Math.floor(Math.random() * 90) + 10;
-                n2 = Math.floor(Math.random() * (n1 - 1)) + 1;
+                // Three-digit subtraction
+                n1 = Math.floor(Math.random() * 800) + 200;
+                n2 = Math.floor(Math.random() * (n1 - 50)) + 50;
                 operator = '-';
                 ans = n1 - n2;
                 explanation = `${n1} - ${n2} = ${ans}`;

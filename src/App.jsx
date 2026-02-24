@@ -30,6 +30,8 @@ import NumberTo50 from './components/math/grade1/NumberTo50';
 import ClockBasic1st from './components/math/grade1/ClockBasic1st';
 import NumberTo100 from './components/math/grade1/NumberTo100';
 import Grade1Quiz from './components/math/Grade1Quiz';
+import WordProblemQuiz from './components/math/WordProblemQuiz';
+import WordProblemWorksheet from './components/math/WordProblemWorksheet';
 
 // 2학년 컴포넌트
 import ThreeDigitNumber from './components/math/grade2/ThreeDigitNumber';
@@ -110,6 +112,8 @@ function App() {
           <Route path="/grade/3/subtraction" element={<SubtractionWithBorrow />} />
           <Route path="/grade/3/length" element={<UnitConverter />} />
           <Route path="/grade/3/quiz" element={<MathQuiz />} />
+          <Route path="/grade/3/word-problem" element={<WordProblemQuiz />} />
+          <Route path="/grade/3/word-problem-worksheet" element={<WordProblemWorksheet />} />
           <Route path="/grade/3/worksheet" element={<WorksheetGenerator />} />
           <Route path="/grade/3/circle" element={<CircleExplorer />} />
           <Route path="/grade/3/weight-volume" element={<WeightVolumeConverter />} />
@@ -122,6 +126,8 @@ function App() {
           <Route path="/grade/1/clock" element={<ClockBasic1st />} />
           <Route path="/grade/1/number-100" element={<NumberTo100 />} />
           <Route path="/grade/1/quiz" element={<Grade1Quiz />} />
+          <Route path="/grade/1/word-problem" element={<WordProblemQuiz />} />
+          <Route path="/grade/1/word-problem-worksheet" element={<WordProblemWorksheet />} />
 
           {/* 2학년 Routes */}
           <Route path="/grade/2/three-digit" element={<ThreeDigitNumber />} />
@@ -132,6 +138,8 @@ function App() {
           <Route path="/grade/2/multiplication" element={<MultiplicationTable />} />
           <Route path="/grade/2/time" element={<TimeCalculation />} />
           <Route path="/grade/2/quiz" element={<Grade2Quiz />} />
+          <Route path="/grade/2/word-problem" element={<WordProblemQuiz />} />
+          <Route path="/grade/2/word-problem-worksheet" element={<WordProblemWorksheet />} />
 
           {/* 4학년 Routes */}
           <Route path="/grade/4/large-numbers" element={<LargeNumbers4th />} />

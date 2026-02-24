@@ -28,19 +28,20 @@ const Grade2Quiz = () => {
                 exp = `각 자리의 숫자를 합치면 ${ans}입니다.`;
                 break;
             case 'arithmetic':
-                const n1 = Math.floor(Math.random() * 50) + 10;
-                const n2 = Math.floor(Math.random() * 40) + 10;
+                // Focus on carries and borrows for Grade 2
                 const isAdd = Math.random() > 0.5;
                 if (isAdd) {
+                    const n1 = Math.floor(Math.random() * 40) + 15;
+                    const n2 = Math.floor(Math.random() * 40) + 15;
                     q = `${n1} + ${n2} 는 얼마인가요?`;
                     ans = (n1 + n2).toString();
-                    exp = `두 수를 더하면 ${ans}가 됩니다.`;
+                    exp = `일의 자리끼리 더했을 때 10이 넘으면 십의 자리로 받아올림 해요!`;
                 } else {
-                    const bigger = Math.max(n1, n2);
-                    const smaller = Math.min(n1, n2);
-                    q = `${bigger} - ${smaller} 는 얼마인가요?`;
-                    ans = (bigger - smaller).toString();
-                    exp = `큰 수에서 작은 수를 빼면 ${ans}가 남아요.`;
+                    const n1 = Math.floor(Math.random() * 50) + 40;
+                    const n2 = Math.floor(Math.random() * 30) + 15;
+                    q = `${n1} - ${n2} 는 얼마인가요?`;
+                    ans = (n1 - n2).toString();
+                    exp = `일의 자리에서 뺄 수 없으면 십의 자리에서 받아내림 해보세요.`;
                 }
                 break;
             case 'multiplication':
@@ -51,18 +52,34 @@ const Grade2Quiz = () => {
                 exp = `곱셈구구 ${m1}단을 떠올려보세요! ${m1} × ${m2} = ${ans}입니다.`;
                 break;
             case 'length':
-                const meter = Math.floor(Math.random() * 3) + 1;
+                const meter = Math.floor(Math.random() * 5) + 1;
                 const cm = Math.floor(Math.random() * 90) + 10;
-                q = `${meter}m ${cm}cm 는 모두 몇 cm인가요?`;
-                ans = (meter * 100 + cm).toString();
-                exp = `1m는 100cm이므로 ${meter}m는 ${meter * 100}cm입니다. 따라서 ${ans}cm입니다.`;
+                const type = Math.random() > 0.5;
+                if (type) {
+                    q = `${meter}m ${cm}cm 는 모두 몇 cm인가요?`;
+                    ans = (meter * 100 + cm).toString();
+                } else {
+                    const total = meter * 100 + cm;
+                    q = `${total}cm 는 몇 m 몇 cm인가요? (숫자만 입력: ${meter}m ${cm}cm라면 ${meter}${cm})`;
+                    // To keep input simple, we might ask for specific parts
+                    q = `${total}cm는 ${meter}m와 몇 cm인가요?`;
+                    ans = cm.toString();
+                }
+                exp = `1m는 100cm입니다.`;
                 break;
             case 'time':
-                const startHour = Math.floor(Math.random() * 10) + 1;
-                const elapsed = Math.floor(Math.random() * 2) + 1;
-                q = `${startHour}시에서 ${elapsed}시간이 지나면 몇 시인가요?`;
-                ans = (startHour + elapsed).toString();
-                exp = `${startHour} + ${elapsed} = ${ans}입니다.`;
+                const startH = Math.floor(Math.random() * 10) + 1;
+                const startM = [0, 10, 20, 30, 40, 50][Math.floor(Math.random() * 6)];
+                const elapsed = [30, 60, 90][Math.floor(Math.random() * 3)];
+                q = `${startH}시 ${startM === 0 ? "" : startM + "분"}에서 ${elapsed}분 후는 몇 시 몇 분인가요? (${startH}시 ${startM + elapsed}분이 되면 시가 바뀔 수 있어요)`;
+
+                const totalMinutes = startH * 60 + startM + elapsed;
+                const finalH = Math.floor(totalMinutes / 60) % 12 || 12;
+                const finalM = totalMinutes % 60;
+
+                q = `${startH}시 ${startM === 0 ? "정각" : startM + "분"}에서 ${elapsed}분 후는 몇 시인가요?`;
+                ans = finalH.toString();
+                exp = `${elapsed}분은 ${Math.floor(elapsed / 60) > 0 ? "1시간 " : ""}${elapsed % 60}분이에요.`;
                 break;
             default:
                 break;

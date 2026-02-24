@@ -29,6 +29,8 @@ const Curriculum = () => {
             ],
             tools: [
                 { id: 'quiz', title: '🏆 종합 퀴즈왕', description: '1학기+2학기 모든 문제를 풀어보세요!', link: '/grade/1/quiz', status: 'available' },
+                { id: 'word-problem', title: '🧠 심화 문장제', description: '생각하며 푸는 문장형 수학 문제!', link: '/grade/1/word-problem', status: 'available' },
+                { id: 'word-print', title: '🖨️ 문장제 학습지', description: '심화 문제를 종이로 출력해서 풀어요.', link: '/grade/1/word-problem-worksheet', status: 'available' },
                 { id: 'game', title: '🏁 수학 레이스', description: '60초 동안 달리는 스피드 수학 게임!', link: '/grade/1/game', status: 'available' },
                 { id: 'print', title: '🖨️ 학습지 출력', description: '집에서 종이로 직접 풀어보세요!', link: '/grade/1/worksheet', status: 'available' },
             ]
@@ -55,6 +57,8 @@ const Curriculum = () => {
             ],
             tools: [
                 { id: 'quiz', title: '🏆 종합 퀴즈왕', description: '1학기+2학기 모든 문제를 풀어보세요!', link: '/grade/2/quiz', status: 'available' },
+                { id: 'word-problem', title: '🧠 심화 문장제', description: '상황을 이해하고 식으로 풀어봐요!', link: '/grade/2/word-problem', status: 'available' },
+                { id: 'word-print', title: '🖨️ 문장제 학습지', description: '두 자리 수 문장제를 종이로 출력해요.', link: '/grade/2/word-problem-worksheet', status: 'available' },
                 { id: 'game', title: '🏁 수학 레이스', description: '60초 동안 달리는 스피드 수학 게임!', link: '/grade/2/game', status: 'available' },
                 { id: 'print', title: '🖨️ 학습지 출력', description: '오늘 배운 내용을 종이로 풀어보세요!', link: '/grade/2/worksheet', status: 'available' },
             ]
@@ -86,6 +90,8 @@ const Curriculum = () => {
             ],
             tools: [
                 { id: 'quiz', title: '🏆 종합 퀴즈왕', description: '1학기+2학기 모든 단원 문제를 풀어보세요!', link: '/grade/3/quiz', status: 'available' },
+                { id: 'word-problem', title: '🧠 심화 문장제', description: '나눗셈, 분수, 시간 계산 등 어려운 문제 도전!', link: '/grade/3/word-problem', status: 'available' },
+                { id: 'word-print', title: '🖨️ 문장제 학습지', description: '3학년 심화 문제를 종이로 출력해요.', link: '/grade/3/word-problem-worksheet', status: 'available' },
                 { id: 'game', title: '🏁 수학 레이스', description: '60초 동안 달리는 스피드 수학 게임!', link: '/grade/3/game', status: 'available' },
                 { id: 'worksheet', title: '📄 학습지 출력', description: '원하는 단원 문제를 PDF로 뽑아요.', link: '/grade/3/worksheet', status: 'available' },
             ]

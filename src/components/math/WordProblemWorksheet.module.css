@@ -1,0 +1,188 @@
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.noPrint {
+    background: #f8f9fa;
+    padding: 30px;
+    border-radius: 20px;
+    margin-bottom: 40px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.backLink {
+    display: inline-block;
+    margin-bottom: 15px;
+    color: #666;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.actions {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+/* Worksheet Styling - A4 Focus */
+.worksheet {
+    background: white;
+    padding: 20mm;
+    /* Standard A4 margin */
+    width: 210mm;
+    height: 297mm;
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    color: #000;
+    font-family: 'Nanum Gothic', sans-serif;
+    margin: 0 auto 50px auto;
+    overflow: hidden;
+    /* Prevent overflow to 2nd page */
+    display: flex;
+    flex-direction: column;
+}
+
+.wsHeader {
+    border-bottom: 3px double #000;
+    padding-bottom: 15px;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.wsTitle {
+    font-size: 1.8rem;
+    font-weight: 800;
+}
+
+.wsMeta {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    font-size: 1rem;
+    min-width: 150px;
+    text-align: right;
+}
+
+.problemList {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    /* Use flex-grow for items instead */
+    flex: 1;
+}
+
+.problemItem {
+    flex: 1;
+    /* Distribute space evenly among 8 problems */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-bottom: 1px dotted #eee;
+    padding: 10px 0;
+}
+
+.problemItem:last-child {
+    border-bottom: none;
+}
+
+.problemTop {
+    display: flex;
+    gap: 10px;
+    font-size: 1.15rem;
+    line-height: 1.5;
+    margin-bottom: 10px;
+}
+
+.pNum {
+    font-weight: bold;
+    min-width: 25px;
+}
+
+.pContent {
+    flex: 1;
+    word-break: keep-all;
+}
+
+.answerSpace {
+    margin-left: 35px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.solutionLine,
+.answerLine {
+    font-size: 1rem;
+    color: #333;
+}
+
+.wsFooter {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 0.9rem;
+    color: #444;
+    border-top: 1px solid #000;
+    padding-top: 15px;
+    font-weight: bold;
+}
+
+.answerKey {
+    page-break-before: always;
+    height: auto !important;
+    min-height: 297mm;
+}
+
+.answerGrid {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.aItem {
+    font-size: 1.1rem;
+    padding: 10px;
+    border-bottom: 1px dotted #ccc;
+}
+
+/* PRINT MEDIA */
+@media print {
+    @page {
+        size: A4;
+        margin: 0;
+    }
+
+    .noPrint {
+        display: none !important;
+    }
+
+    body {
+        margin: 0;
+        padding: 0;
+        -webkit-print-color-adjust: exact;
+    }
+
+    .container {
+        max-width: 100% !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    .worksheet {
+        border: none !important;
+        box-shadow: none !important;
+        padding: 15mm 15mm 10mm 15mm !important;
+        /* Adjusted for printer safe area */
+        margin: 0 !important;
+        width: 100% !important;
+        height: 100vh !important;
+        page-break-after: always;
+    }
+}

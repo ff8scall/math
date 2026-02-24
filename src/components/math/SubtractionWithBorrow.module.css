@@ -19,7 +19,7 @@
 
 .grid {
     display: grid;
-    grid-template-columns: repeat(3, 80px);
+    grid-template-columns: repeat(4, 80px);
     gap: 10px;
     background-color: white;
     padding: 40px;

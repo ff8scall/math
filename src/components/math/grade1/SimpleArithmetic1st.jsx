@@ -21,24 +21,35 @@ const SimpleArithmetic1st = () => {
 
     const generateQuiz = () => {
         if (operation === 'addition') {
+            // Grade 1 covers up to sums of 18 (9+9)
             const num1 = Math.floor(Math.random() * 9) + 1;
-            const num2 = Math.floor(Math.random() * (9 - num1)) + 1;
+            const num2 = Math.floor(Math.random() * 9) + 1;
+            const answer = num1 + num2;
+
+            let explanation = `${num1} + ${num2} = ${answer}`;
+            if (answer > 10) {
+                explanation += ` (10을 먼저 만들고 남은 ${answer - 10}을 더해요!)`;
+            }
+
             setQuizData({
                 num1,
                 num2,
                 operator: '+',
-                answer: num1 + num2,
-                explanation: `${num1} + ${num2} = ${num1 + num2} (${num1}개에 ${num2}개를 더하면 ${num1 + num2}개)`
+                answer: answer,
+                explanation: explanation
             });
         } else {
-            const num1 = Math.floor(Math.random() * 8) + 2; // 2-9
-            const num2 = Math.floor(Math.random() * (num1 - 1)) + 1;
+            // Subtraction starting from up to 18
+            const answer = Math.floor(Math.random() * 9) + 1;
+            const num2 = Math.floor(Math.random() * 9) + 1;
+            const num1 = answer + num2;
+
             setQuizData({
                 num1,
                 num2,
                 operator: '-',
-                answer: num1 - num2,
-                explanation: `${num1} - ${num2} = ${num1 - num2} (${num1}개에서 ${num2}개를 빼면 ${num1 - num2}개)`
+                answer: answer,
+                explanation: `${num1} - ${num2} = ${answer} (${num1}개에서 ${num2}개를 빼면 ${answer}개!)`
             });
         }
 

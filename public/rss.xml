@@ -10,98 +10,245 @@
     <title>홈 - 매쓰 펫토리</title>
     <link>https://free-math.vercel.app/</link>
     <description>홈 - 매쓰 펫토리 - 초등학교 1학년부터 6학년까지, 공식 암기가 아닌 원리로 배우는 수학 학습 플랫폼 매쓰 펫토리! 나만의 펫을 키우고 방을 꾸미며 즐겁게 수학 실력을 키워보세요.</description>
-    <pubDate>Fri, 06 Feb 2026 14:40:47 GMT</pubDate>
+    <pubDate>Tue, 24 Feb 2026 05:15:23 GMT</pubDate>
   </item>
   
   <item>
     <title>내 방 꾸미기</title>
     <link>https://free-math.vercel.app/myroom</link>
     <description>내 방 꾸미기 - 초등학교 1학년부터 6학년까지, 공식 암기가 아닌 원리로 배우는 수학 학습 플랫폼 매쓰 펫토리! 나만의 펫을 키우고 방을 꾸미며 즐겁게 수학 실력을 키워보세요.</description>
-    <pubDate>Fri, 06 Feb 2026 14:40:47 GMT</pubDate>
+    <pubDate>Tue, 24 Feb 2026 05:15:23 GMT</pubDate>
   </item>
   
   <item>
     <title>매쓰 펫토리 상점</title>
     <link>https://free-math.vercel.app/shop</link>
     <description>매쓰 펫토리 상점 - 초등학교 1학년부터 6학년까지, 공식 암기가 아닌 원리로 배우는 수학 학습 플랫폼 매쓰 펫토리! 나만의 펫을 키우고 방을 꾸미며 즐겁게 수학 실력을 키워보세요.</description>
-    <pubDate>Fri, 06 Feb 2026 14:40:47 GMT</pubDate>
+    <pubDate>Tue, 24 Feb 2026 05:15:23 GMT</pubDate>
   </item>
   
   <item>
-    <title>수학 레이스</title>
-    <link>https://free-math.vercel.app/grade/1/game</link>
-    <description>수학 레이스 - 초등학교 1학년부터 6학년까지, 공식 암기가 아닌 원리로 배우는 수학 학습 플랫폼 매쓰 펫토리! 나만의 펫을 키우고 방을 꾸미며 즐겁게 수학 실력을 키워보세요.</description>
-    <pubDate>Fri, 06 Feb 2026 14:40:47 GMT</pubDate>
+    <title>1학년: 숫자 세기</title>
+    <link>https://free-math.vercel.app/grade/1/number-counting</link>
+    <description>1학년: 숫자 세기 - 초등학교 1학년부터 6학년까지, 공식 암기가 아닌 원리로 배우는 수학 학습 플랫폼 매쓰 펫토리! 나만의 펫을 키우고 방을 꾸미며 즐겁게 수학 실력을 키워보세요.</description>
+    <pubDate>Tue, 24 Feb 2026 05:15:23 GMT</pubDate>
   </item>
   
   <item>
-    <title>덧셈과 뺄셈</title>
+    <title>1학년: 모양 찾기</title>
+    <link>https://free-math.vercel.app/grade/1/shapes</link>
+    <description>1학년: 모양 찾기 - 초등학교 1학년부터 6학년까지, 공식 암기가 아닌 원리로 배우는 수학 학습 플랫폼 매쓰 펫토리! 나만의 펫을 키우고 방을 꾸미며 즐겁게 수학 실력을 키워보세요.</description>
+    <pubDate>Tue, 24 Feb 2026 05:15:23 GMT</pubDate>
+  </item>
+  
+  <item>
+    <title>1학년: 기초 덧셈과 뺄셈</title>
+    <link>https://free-math.vercel.app/grade/1/arithmetic</link>
+    <description>1학년: 기초 덧셈과 뺄셈 - 초등학교 1학년부터 6학년까지, 공식 암기가 아닌 원리로 배우는 수학 학습 플랫폼 매쓰 펫토리! 나만의 펫을 키우고 방을 꾸미며 즐겁게 수학 실력을 키워보세요.</description>
+    <pubDate>Tue, 24 Feb 2026 05:15:23 GMT</pubDate>
+  </item>
+  
+  <item>
+    <title>1학년: 수학 퀴즈</title>
+    <link>https://free-math.vercel.app/grade/1/quiz</link>
+    <description>1학년: 수학 퀴즈 - 초등학교 1학년부터 6학년까지, 공식 암기가 아닌 원리로 배우는 수학 학습 플랫폼 매쓰 펫토리! 나만의 펫을 키우고 방을 꾸미며 즐겁게 수학 실력을 키워보세요.</description>
+    <pubDate>Tue, 24 Feb 2026 05:15:23 GMT</pubDate>
+  </item>
+  
+  <item>
+    <title>2학년: 세 자리 수</title>
+    <link>https://free-math.vercel.app/grade/2/three-digit</link>
+    <description>2학년: 세 자리 수 - 초등학교 1학년부터 6학년까지, 공식 암기가 아닌 원리로 배우는 수학 학습 플랫폼 매쓰 펫토리! 나만의 펫을 키우고 방을 꾸미며 즐겁게 수학 실력을 키워보세요.</description>
+    <pubDate>Tue, 24 Feb 2026 05:15:23 GMT</pubDate>
+  </item>
+  
+  <item>
+    <title>2학년: 여러 가지 모양</title>
+    <link>https://free-math.vercel.app/grade/2/shapes</link>
+    <description>2학년: 여러 가지 모양 - 초등학교 1학년부터 6학년까지, 공식 암기가 아닌 원리로 배우는 수학 학습 플랫폼 매쓰 펫토리! 나만의 펫을 키우고 방을 꾸미며 즐겁게 수학 실력을 키워보세요.</description>
+    <pubDate>Tue, 24 Feb 2026 05:15:23 GMT</pubDate>
+  </item>
+  
+  <item>
+    <title>2학년: 여러 가지 계산</title>
+    <link>https://free-math.vercel.app/grade/2/arithmetic</link>
+    <description>2학년: 여러 가지 계산 - 초등학교 1학년부터 6학년까지, 공식 암기가 아닌 원리로 배우는 수학 학습 플랫폼 매쓰 펫토리! 나만의 펫을 키우고 방을 꾸미며 즐겁게 수학 실력을 키워보세요.</description>
+    <pubDate>Tue, 24 Feb 2026 05:15:23 GMT</pubDate>
+  </item>
+  
+  <item>
+    <title>2학년: 곱셈</title>
+    <link>https://free-math.vercel.app/grade/2/multiplication</link>
+    <description>2학년: 곱셈 - 초등학교 1학년부터 6학년까지, 공식 암기가 아닌 원리로 배우는 수학 학습 플랫폼 매쓰 펫토리! 나만의 펫을 키우고 방을 꾸미며 즐겁게 수학 실력을 키워보세요.</description>
+    <pubDate>Tue, 24 Feb 2026 05:15:23 GMT</pubDate>
+  </item>
+  
+  <item>
+    <title>2학년: 수학 퀴즈</title>
+    <link>https://free-math.vercel.app/grade/2/quiz</link>
+    <description>2학년: 수학 퀴즈 - 초등학교 1학년부터 6학년까지, 공식 암기가 아닌 원리로 배우는 수학 학습 플랫폼 매쓰 펫토리! 나만의 펫을 키우고 방을 꾸미며 즐겁게 수학 실력을 키워보세요.</description>
+    <pubDate>Tue, 24 Feb 2026 05:15:23 GMT</pubDate>
+  </item>
+  
+  <item>
+    <title>3학년: 덧셈과 뺄셈</title>
     <link>https://free-math.vercel.app/grade/3/arithmetic</link>
-    <description>덧셈과 뺄셈 - 초등학교 1학년부터 6학년까지, 공식 암기가 아닌 원리로 배우는 수학 학습 플랫폼 매쓰 펫토리! 나만의 펫을 키우고 방을 꾸미며 즐겁게 수학 실력을 키워보세요.</description>
-    <pubDate>Fri, 06 Feb 2026 14:40:47 GMT</pubDate>
+    <description>3학년: 덧셈과 뺄셈 - 초등학교 1학년부터 6학년까지, 공식 암기가 아닌 원리로 배우는 수학 학습 플랫폼 매쓰 펫토리! 나만의 펫을 키우고 방을 꾸미며 즐겁게 수학 실력을 키워보세요.</description>
+    <pubDate>Tue, 24 Feb 2026 05:15:23 GMT</pubDate>
   </item>
   
   <item>
-    <title>받아내림 뺄셈</title>
+    <title>3학년: 받아내림 뺄셈</title>
     <link>https://free-math.vercel.app/grade/3/subtraction</link>
-    <description>받아내림 뺄셈 - 초등학교 1학년부터 6학년까지, 공식 암기가 아닌 원리로 배우는 수학 학습 플랫폼 매쓰 펫토리! 나만의 펫을 키우고 방을 꾸미며 즐겁게 수학 실력을 키워보세요.</description>
-    <pubDate>Fri, 06 Feb 2026 14:40:47 GMT</pubDate>
+    <description>3학년: 받아내림 뺄셈 - 초등학교 1학년부터 6학년까지, 공식 암기가 아닌 원리로 배우는 수학 학습 플랫폼 매쓰 펫토리! 나만의 펫을 키우고 방을 꾸미며 즐겁게 수학 실력을 키워보세요.</description>
+    <pubDate>Tue, 24 Feb 2026 05:15:23 GMT</pubDate>
   </item>
   
   <item>
-    <title>곱셈 (구구단)</title>
+    <title>3학년: 곱셈 (구구단)</title>
     <link>https://free-math.vercel.app/grade/3/multiplication</link>
-    <description>곱셈 (구구단) - 초등학교 1학년부터 6학년까지, 공식 암기가 아닌 원리로 배우는 수학 학습 플랫폼 매쓰 펫토리! 나만의 펫을 키우고 방을 꾸미며 즐겁게 수학 실력을 키워보세요.</description>
-    <pubDate>Fri, 06 Feb 2026 14:40:47 GMT</pubDate>
+    <description>3학년: 곱셈 (구구단) - 초등학교 1학년부터 6학년까지, 공식 암기가 아닌 원리로 배우는 수학 학습 플랫폼 매쓰 펫토리! 나만의 펫을 키우고 방을 꾸미며 즐겁게 수학 실력을 키워보세요.</description>
+    <pubDate>Tue, 24 Feb 2026 05:15:23 GMT</pubDate>
   </item>
   
   <item>
-    <title>나눗셈</title>
+    <title>3학년: 나눗셈</title>
     <link>https://free-math.vercel.app/grade/3/division</link>
-    <description>나눗셈 - 초등학교 1학년부터 6학년까지, 공식 암기가 아닌 원리로 배우는 수학 학습 플랫폼 매쓰 펫토리! 나만의 펫을 키우고 방을 꾸미며 즐겁게 수학 실력을 키워보세요.</description>
-    <pubDate>Fri, 06 Feb 2026 14:40:47 GMT</pubDate>
+    <description>3학년: 나눗셈 - 초등학교 1학년부터 6학년까지, 공식 암기가 아닌 원리로 배우는 수학 학습 플랫폼 매쓰 펫토리! 나만의 펫을 키우고 방을 꾸미며 즐겁게 수학 실력을 키워보세요.</description>
+    <pubDate>Tue, 24 Feb 2026 05:15:23 GMT</pubDate>
   </item>
   
   <item>
-    <title>분수와 소수</title>
+    <title>3학년: 분수와 소수</title>
     <link>https://free-math.vercel.app/grade/3/fraction</link>
-    <description>분수와 소수 - 초등학교 1학년부터 6학년까지, 공식 암기가 아닌 원리로 배우는 수학 학습 플랫폼 매쓰 펫토리! 나만의 펫을 키우고 방을 꾸미며 즐겁게 수학 실력을 키워보세요.</description>
-    <pubDate>Fri, 06 Feb 2026 14:40:47 GMT</pubDate>
+    <description>3학년: 분수와 소수 - 초등학교 1학년부터 6학년까지, 공식 암기가 아닌 원리로 배우는 수학 학습 플랫폼 매쓰 펫토리! 나만의 펫을 키우고 방을 꾸미며 즐겁게 수학 실력을 키워보세요.</description>
+    <pubDate>Tue, 24 Feb 2026 05:15:23 GMT</pubDate>
   </item>
   
   <item>
-    <title>평면도형</title>
+    <title>3학년: 평면도형</title>
     <link>https://free-math.vercel.app/grade/3/geometry</link>
-    <description>평면도형 - 초등학교 1학년부터 6학년까지, 공식 암기가 아닌 원리로 배우는 수학 학습 플랫폼 매쓰 펫토리! 나만의 펫을 키우고 방을 꾸미며 즐겁게 수학 실력을 키워보세요.</description>
-    <pubDate>Fri, 06 Feb 2026 14:40:47 GMT</pubDate>
+    <description>3학년: 평면도형 - 초등학교 1학년부터 6학년까지, 공식 암기가 아닌 원리로 배우는 수학 학습 플랫폼 매쓰 펫토리! 나만의 펫을 키우고 방을 꾸미며 즐겁게 수학 실력을 키워보세요.</description>
+    <pubDate>Tue, 24 Feb 2026 05:15:23 GMT</pubDate>
   </item>
   
   <item>
-    <title>길이와 시간</title>
-    <link>https://free-math.vercel.app/grade/3/length</link>
-    <description>길이와 시간 - 초등학교 1학년부터 6학년까지, 공식 암기가 아닌 원리로 배우는 수학 학습 플랫폼 매쓰 펫토리! 나만의 펫을 키우고 방을 꾸미며 즐겁게 수학 실력을 키워보세요.</description>
-    <pubDate>Fri, 06 Feb 2026 14:40:47 GMT</pubDate>
-  </item>
-  
-  <item>
-    <title>시계 보기</title>
-    <link>https://free-math.vercel.app/grade/3/clock</link>
-    <description>시계 보기 - 초등학교 1학년부터 6학년까지, 공식 암기가 아닌 원리로 배우는 수학 학습 플랫폼 매쓰 펫토리! 나만의 펫을 키우고 방을 꾸미며 즐겁게 수학 실력을 키워보세요.</description>
-    <pubDate>Fri, 06 Feb 2026 14:40:47 GMT</pubDate>
-  </item>
-  
-  <item>
-    <title>무한 퀴즈</title>
+    <title>3학년: 무한 퀴즈</title>
     <link>https://free-math.vercel.app/grade/3/quiz</link>
-    <description>무한 퀴즈 - 초등학교 1학년부터 6학년까지, 공식 암기가 아닌 원리로 배우는 수학 학습 플랫폼 매쓰 펫토리! 나만의 펫을 키우고 방을 꾸미며 즐겁게 수학 실력을 키워보세요.</description>
-    <pubDate>Fri, 06 Feb 2026 14:40:47 GMT</pubDate>
+    <description>3학년: 무한 퀴즈 - 초등학교 1학년부터 6학년까지, 공식 암기가 아닌 원리로 배우는 수학 학습 플랫폼 매쓰 펫토리! 나만의 펫을 키우고 방을 꾸미며 즐겁게 수학 실력을 키워보세요.</description>
+    <pubDate>Tue, 24 Feb 2026 05:15:23 GMT</pubDate>
   </item>
   
   <item>
-    <title>학습지 만들기</title>
-    <link>https://free-math.vercel.app/grade/3/worksheet</link>
-    <description>학습지 만들기 - 초등학교 1학년부터 6학년까지, 공식 암기가 아닌 원리로 배우는 수학 학습 플랫폼 매쓰 펫토리! 나만의 펫을 키우고 방을 꾸미며 즐겁게 수학 실력을 키워보세요.</description>
-    <pubDate>Fri, 06 Feb 2026 14:40:47 GMT</pubDate>
+    <title>4학년: 큰 수</title>
+    <link>https://free-math.vercel.app/grade/4/large-numbers</link>
+    <description>4학년: 큰 수 - 초등학교 1학년부터 6학년까지, 공식 암기가 아닌 원리로 배우는 수학 학습 플랫폼 매쓰 펫토리! 나만의 펫을 키우고 방을 꾸미며 즐겁게 수학 실력을 키워보세요.</description>
+    <pubDate>Tue, 24 Feb 2026 05:15:23 GMT</pubDate>
+  </item>
+  
+  <item>
+    <title>4학년: 각도</title>
+    <link>https://free-math.vercel.app/grade/4/angles</link>
+    <description>4학년: 각도 - 초등학교 1학년부터 6학년까지, 공식 암기가 아닌 원리로 배우는 수학 학습 플랫폼 매쓰 펫토리! 나만의 펫을 키우고 방을 꾸미며 즐겁게 수학 실력을 키워보세요.</description>
+    <pubDate>Tue, 24 Feb 2026 05:15:23 GMT</pubDate>
+  </item>
+  
+  <item>
+    <title>4학년: 곱셈과 나눗셈</title>
+    <link>https://free-math.vercel.app/grade/4/arithmetic</link>
+    <description>4학년: 곱셈과 나눗셈 - 초등학교 1학년부터 6학년까지, 공식 암기가 아닌 원리로 배우는 수학 학습 플랫폼 매쓰 펫토리! 나만의 펫을 키우고 방을 꾸미며 즐겁게 수학 실력을 키워보세요.</description>
+    <pubDate>Tue, 24 Feb 2026 05:15:23 GMT</pubDate>
+  </item>
+  
+  <item>
+    <title>4학년: 분수의 덧셈과 뺄셈</title>
+    <link>https://free-math.vercel.app/grade/4/fraction</link>
+    <description>4학년: 분수의 덧셈과 뺄셈 - 초등학교 1학년부터 6학년까지, 공식 암기가 아닌 원리로 배우는 수학 학습 플랫폼 매쓰 펫토리! 나만의 펫을 키우고 방을 꾸미며 즐겁게 수학 실력을 키워보세요.</description>
+    <pubDate>Tue, 24 Feb 2026 05:15:23 GMT</pubDate>
+  </item>
+  
+  <item>
+    <title>4학년: 수학 퀴즈</title>
+    <link>https://free-math.vercel.app/grade/4/quiz</link>
+    <description>4학년: 수학 퀴즈 - 초등학교 1학년부터 6학년까지, 공식 암기가 아닌 원리로 배우는 수학 학습 플랫폼 매쓰 펫토리! 나만의 펫을 키우고 방을 꾸미며 즐겁게 수학 실력을 키워보세요.</description>
+    <pubDate>Tue, 24 Feb 2026 05:15:23 GMT</pubDate>
+  </item>
+  
+  <item>
+    <title>5학년: 혼합 계산</title>
+    <link>https://free-math.vercel.app/grade/5/mixed-arithmetic</link>
+    <description>5학년: 혼합 계산 - 초등학교 1학년부터 6학년까지, 공식 암기가 아닌 원리로 배우는 수학 학습 플랫폼 매쓰 펫토리! 나만의 펫을 키우고 방을 꾸미며 즐겁게 수학 실력을 키워보세요.</description>
+    <pubDate>Tue, 24 Feb 2026 05:15:23 GMT</pubDate>
+  </item>
+  
+  <item>
+    <title>5학년: 약수와 배수</title>
+    <link>https://free-math.vercel.app/grade/5/factors-multiples</link>
+    <description>5학년: 약수와 배수 - 초등학교 1학년부터 6학년까지, 공식 암기가 아닌 원리로 배우는 수학 학습 플랫폼 매쓰 펫토리! 나만의 펫을 키우고 방을 꾸미며 즐겁게 수학 실력을 키워보세요.</description>
+    <pubDate>Tue, 24 Feb 2026 05:15:23 GMT</pubDate>
+  </item>
+  
+  <item>
+    <title>5학년: 분수의 덧셈과 뺄셈</title>
+    <link>https://free-math.vercel.app/grade/5/fraction-arithmetic</link>
+    <description>5학년: 분수의 덧셈과 뺄셈 - 초등학교 1학년부터 6학년까지, 공식 암기가 아닌 원리로 배우는 수학 학습 플랫폼 매쓰 펫토리! 나만의 펫을 키우고 방을 꾸미며 즐겁게 수학 실력을 키워보세요.</description>
+    <pubDate>Tue, 24 Feb 2026 05:15:23 GMT</pubDate>
+  </item>
+  
+  <item>
+    <title>5학년: 수학 퀴즈</title>
+    <link>https://free-math.vercel.app/grade/5/quiz</link>
+    <description>5학년: 수학 퀴즈 - 초등학교 1학년부터 6학년까지, 공식 암기가 아닌 원리로 배우는 수학 학습 플랫폼 매쓰 펫토리! 나만의 펫을 키우고 방을 꾸미며 즐겁게 수학 실력을 키워보세요.</description>
+    <pubDate>Tue, 24 Feb 2026 05:15:23 GMT</pubDate>
+  </item>
+  
+  <item>
+    <title>6학년: 분수의 나눗셈</title>
+    <link>https://free-math.vercel.app/grade/6/fraction-division</link>
+    <description>6학년: 분수의 나눗셈 - 초등학교 1학년부터 6학년까지, 공식 암기가 아닌 원리로 배우는 수학 학습 플랫폼 매쓰 펫토리! 나만의 펫을 키우고 방을 꾸미며 즐겁게 수학 실력을 키워보세요.</description>
+    <pubDate>Tue, 24 Feb 2026 05:15:23 GMT</pubDate>
+  </item>
+  
+  <item>
+    <title>6학년: 소수의 나눗셈</title>
+    <link>https://free-math.vercel.app/grade/6/decimal-division</link>
+    <description>6학년: 소수의 나눗셈 - 초등학교 1학년부터 6학년까지, 공식 암기가 아닌 원리로 배우는 수학 학습 플랫폼 매쓰 펫토리! 나만의 펫을 키우고 방을 꾸미며 즐겁게 수학 실력을 키워보세요.</description>
+    <pubDate>Tue, 24 Feb 2026 05:15:23 GMT</pubDate>
+  </item>
+  
+  <item>
+    <title>6학년: 비와 비율</title>
+    <link>https://free-math.vercel.app/grade/6/ratio</link>
+    <description>6학년: 비와 비율 - 초등학교 1학년부터 6학년까지, 공식 암기가 아닌 원리로 배우는 수학 학습 플랫폼 매쓰 펫토리! 나만의 펫을 키우고 방을 꾸미며 즐겁게 수학 실력을 키워보세요.</description>
+    <pubDate>Tue, 24 Feb 2026 05:15:23 GMT</pubDate>
+  </item>
+  
+  <item>
+    <title>6학년: 수학 퀴즈</title>
+    <link>https://free-math.vercel.app/grade/6/quiz</link>
+    <description>6학년: 수학 퀴즈 - 초등학교 1학년부터 6학년까지, 공식 암기가 아닌 원리로 배우는 수학 학습 플랫폼 매쓰 펫토리! 나만의 펫을 키우고 방을 꾸미며 즐겁게 수학 실력을 키워보세요.</description>
+    <pubDate>Tue, 24 Feb 2026 05:15:23 GMT</pubDate>
+  </item>
+  
+  <item>
+    <title>수학 레이스 (1학년)</title>
+    <link>https://free-math.vercel.app/grade/1/game</link>
+    <description>수학 레이스 (1학년) - 초등학교 1학년부터 6학년까지, 공식 암기가 아닌 원리로 배우는 수학 학습 플랫폼 매쓰 펫토리! 나만의 펫을 키우고 방을 꾸미며 즐겁게 수학 실력을 키워보세요.</description>
+    <pubDate>Tue, 24 Feb 2026 05:15:23 GMT</pubDate>
+  </item>
+  
+  <item>
+    <title>수학 레이스 (2학년)</title>
+    <link>https://free-math.vercel.app/grade/2/game</link>
+    <description>수학 레이스 (2학년) - 초등학교 1학년부터 6학년까지, 공식 암기가 아닌 원리로 배우는 수학 학습 플랫폼 매쓰 펫토리! 나만의 펫을 키우고 방을 꾸미며 즐겁게 수학 실력을 키워보세요.</description>
+    <pubDate>Tue, 24 Feb 2026 05:15:23 GMT</pubDate>
+  </item>
+  
+  <item>
+    <title>수학 레이스 (3학년)</title>
+    <link>https://free-math.vercel.app/grade/3/game</link>
+    <description>수학 레이스 (3학년) - 초등학교 1학년부터 6학년까지, 공식 암기가 아닌 원리로 배우는 수학 학습 플랫폼 매쓰 펫토리! 나만의 펫을 키우고 방을 꾸미며 즐겁게 수학 실력을 키워보세요.</description>
+    <pubDate>Tue, 24 Feb 2026 05:15:23 GMT</pubDate>
   </item>
   
 </channel>
