@@ -44,20 +44,34 @@ const MultiDiv4th = () => {
                 explanation: `${num1} × ${num2 % 10} = ${num1 * (num2 % 10)}, ${num1} × ${Math.floor(num2 / 10) * 10} = ${num1 * (Math.floor(num2 / 10) * 10)} 이므로 합치면 ${num1 * num2}입니다.`
             });
         } else {
+            const types = ['quotient', 'remainder'];
+            const type = types[Math.floor(Math.random() * types.length)];
             const num2 = Math.floor(Math.random() * 80) + 10;  // 10~89 (divisor)
-            const quotient = Math.floor(Math.random() * 80) + 10; // 10~89 (quotient)
-            const num1 = (num2 * quotient) + Math.floor(Math.random() * num2); // dividend
-            setQuizData({
-                num1, num2,
-                answer: quotient.toString(),
-                question: `${num1} ÷ ${num2} 의 몫은 얼마인가요?`,
-                explanation: `${num1} 안에 ${num2}가 ${quotient}번 들어갑니다.`
-            });
+            const quotient = Math.floor(Math.random() * 40) + 10; // 10~49 (quotient)
+            const remainder = Math.floor(Math.random() * num2);
+            const num1 = (num2 * quotient) + remainder; // dividend
+
+            if (type === 'quotient') {
+                setQuizData({
+                    num1, num2,
+                    answer: quotient.toString(),
+                    question: `${num1} ÷ ${num2} 의 몫은 얼마인가요?`,
+                    explanation: `${num1} 안에 ${num2}가 ${quotient}번 들어가고 ${remainder}가 남습니다.`
+                });
+            } else {
+                setQuizData({
+                    num1, num2,
+                    answer: remainder.toString(),
+                    question: `${num1} ÷ ${num2} 의 나머지는 얼마인가요?`,
+                    explanation: `${num1} ÷ ${num2} = ${quotient} ... ${remainder} 이므로 나머지는 ${remainder}입니다.`
+                });
+            }
         }
         setUserAnswer('');
         setFeedback(null);
         setShowAnswer(false);
     };
+
 
     useEffect(() => {
         if (mode === 'practice') generateQuiz();

@@ -42,13 +42,16 @@ const LargeNumbers4th = () => {
     };
 
     const generateQuiz = () => {
-        const types = ['read', 'place-value', 'compare'];
+        const types = ['read', 'place-value', 'compare', 'structure'];
         const type = types[Math.floor(Math.random() * types.length)];
 
         if (type === 'read') {
-            const base = [10000, 100000, 1000000, 10000000][Math.floor(Math.random() * 4)];
-            const multiplier = Math.floor(Math.random() * 9) + 1;
-            const num = base * multiplier;
+            // 조, 억, 만 단위를 섞어서 생성
+            const jo = Math.floor(Math.random() * 5);
+            const eok = Math.floor(Math.random() * 900) + 100;
+            const man = Math.floor(Math.random() * 9000) + 1000;
+            const num = (jo * 1000000000000) + (eok * 100000000) + (man * 10000);
+
             setQuizData({
                 type,
                 num,
@@ -57,17 +60,39 @@ const LargeNumbers4th = () => {
                 explanation: `${formatWithCommas(num)}은 ${formatKorean(num)}입니다.`
             });
         } else if (type === 'place-value') {
-            const num = (Math.floor(Math.random() * 9) + 1) * 10000;
+            // 특정 자릿수의 숫자가 나타내는 값 찾기
+            const baseUnits = [10000, 100000, 1000000, 10000000, 100000000];
+            const unit = baseUnits[Math.floor(Math.random() * baseUnits.length)];
+            const digit = Math.floor(Math.random() * 9) + 1;
+            const num = digit * unit + (Math.floor(Math.random() * (unit / 10)));
+
+            const unitNames = {
+                10000: '만', 100000: '십만', 1000000: '백만', 10000000: '천만', 100000000: '억'
+            };
+
             setQuizData({
                 type,
                 num,
-                question: `${formatWithCommas(num)}에서 '만'의 자리 숫자는 무엇인가요?`,
-                answer: Math.floor(num / 10000).toString(),
-                explanation: `만 단위가 ${Math.floor(num / 10000)}개 있으므로 숫자는 ${Math.floor(num / 10000)}입니다.`
+                question: `${formatWithCommas(num)}에서 '${unitNames[unit]}'의 자리 숫자는 무엇인가요?`,
+                answer: digit.toString(),
+                explanation: `${unitNames[unit]}의 자리에 숫자 ${digit}이 있으므로 값은 ${formatWithCommas(digit * unit)}을 나타냅니다.`
+            });
+        } else if (type === 'structure') {
+            // "1000만이 5개, 1만이 3개인 수는?"
+            const eok = Math.floor(Math.random() * 9) + 1;
+            const man = Math.floor(Math.random() * 900) + 10;
+            const num = (eok * 100000000) + (man * 10000);
+
+            setQuizData({
+                type,
+                num,
+                question: `1억이 ${eok}개, 1만이 ${man}개인 수는 얼마인가요?`,
+                answer: num.toString(),
+                explanation: `${eok}억 + ${man}만 = ${formatWithCommas(num)}입니다.`
             });
         } else {
-            const num1 = (Math.floor(Math.random() * 90) + 10) * 10000;
-            const num2 = (Math.floor(Math.random() * 90) + 10) * 10000;
+            const num1 = (Math.floor(Math.random() * 900) + 100) * 10000;
+            const num2 = (Math.floor(Math.random() * 900) + 100) * 10000;
             const bigger = Math.max(num1, num2);
             setQuizData({
                 type,
@@ -82,6 +107,7 @@ const LargeNumbers4th = () => {
         setFeedback(null);
         setShowAnswer(false);
     };
+
 
     useEffect(() => {
         if (mode === 'practice' && !quizData) generateQuiz();

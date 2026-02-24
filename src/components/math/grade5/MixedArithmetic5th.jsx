@@ -15,7 +15,7 @@ const MixedArithmetic5th = () => {
 
     // 혼합 계산 규칙: () 안 -> ×, ÷ -> +, -
     const generateProblem = () => {
-        const types = ['plus_minus_multi', 'plus_minus_div', 'all_mixed', 'with_brackets'];
+        const types = ['basic_3step', 'complex_brackets', 'all_mixed_heavy'];
         const type = types[Math.floor(Math.random() * types.length)];
 
         let expression = '';
@@ -25,39 +25,34 @@ const MixedArithmetic5th = () => {
         const n1 = Math.floor(Math.random() * 20) + 10;
         const n2 = Math.floor(Math.random() * 10) + 2;
         const n3 = Math.floor(Math.random() * 5) + 2;
+        const n4 = Math.floor(Math.random() * 8) + 2;
 
-        if (type === 'plus_minus_multi') {
-            // n1 + n2 * n3
-            expression = `${n1} + ${n2} × ${n3}`;
-            answer = n1 + n2 * n3;
+        if (type === 'basic_3step') {
+            // n1 + n2 * n3 - n4
+            expression = `${n1} + ${n2} × ${n3} - ${n4}`;
+            answer = n1 + (n2 * n3) - n4;
             explanation = [
                 { step: 1, text: `먼저 곱셈(${n2} × ${n3})을 계산해요.`, result: n2 * n3 },
-                { step: 2, text: `그 다음 덧셈(${n1} + ${n2 * n3})을 계산해요.`, result: answer }
+                { step: 2, text: `그 다음 앞에서부터 덧셈(${n1} + ${n2 * n3})을 해요.`, result: n1 + n2 * n3 },
+                { step: 3, text: `마지막으로 뺄셈(${n1 + n2 * n3} - ${n4})을 해요.`, result: answer }
             ];
-        } else if (type === 'plus_minus_div') {
-            // n1 - (n2 * n3) / n3 -> n1 - n2
-            const multi = n2 * n3;
-            expression = `${n1} - ${multi} ÷ ${n3}`;
-            answer = n1 - n2;
+        } else if (type === 'complex_brackets') {
+            // (n1 - n2) * (n3 + n4)
+            expression = `(${n1} - ${n2}) × (${n3} + ${n4})`;
+            answer = (n1 - n2) * (n3 + n4);
             explanation = [
-                { step: 1, text: `먼저 나눗셈(${multi} ÷ ${n3})을 계산해요.`, result: n2 },
-                { step: 2, text: `그 다음 뺄셈(${n1} - ${n2})을 계산해요.`, result: answer }
-            ];
-        } else if (type === 'with_brackets') {
-            // (n1 + n2) * n3
-            expression = `(${n1} + ${n2}) × ${n3}`;
-            answer = (n1 + n2) * n3;
-            explanation = [
-                { step: 1, text: `괄호 안(${n1} + ${n2})을 먼저 계산해요.`, result: n1 + n2 },
-                { step: 2, text: `그 다음 곱셈(${n1 + n2} × ${n3})을 계산해요.`, result: answer }
+                { step: 1, text: `첫 번째 괄호 안(${n1} - ${n2})을 계산해요.`, result: n1 - n2 },
+                { step: 2, text: `두 번째 괄호 안(${n3} + ${n4})을 계산해요.`, result: n3 + n4 },
+                { step: 3, text: `그 다음 두 결과를 곱해요.`, result: answer }
             ];
         } else {
-            // n1 * n2 - n3
-            expression = `${n1} × ${n2} - ${n3}`;
-            answer = n1 * n2 - n3;
+            // n1 * n2 - (n3 * n4)
+            expression = `${n1} × ${n3} - (${n2} × ${n4})`;
+            answer = (n1 * n3) - (n2 * n4);
             explanation = [
-                { step: 1, text: `곱셈(${n1} × ${n2})을 먼저 계산해요.`, result: n1 * n2 },
-                { step: 2, text: `그 다음 뺄셈(${n1 * n2} - ${n3})을 계산해요.`, result: answer }
+                { step: 1, text: `괄호 안의 곱셈(${n2} × ${n4})을 먼저 계산해요.`, result: n2 * n4 },
+                { step: 2, text: `그 다음 앞의 곱셈(${n1} × ${n3})을 계산해요.`, result: n1 * n3 },
+                { step: 3, text: `마지막으로 뺄셈을 해요.`, result: answer }
             ];
         }
 
@@ -66,6 +61,7 @@ const MixedArithmetic5th = () => {
         setUserSteps([]);
         setCurrentStep(0);
     };
+
 
     useEffect(() => {
         if (mode === 'practice' && !quizData) generateProblem();

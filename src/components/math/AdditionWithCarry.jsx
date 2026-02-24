@@ -52,15 +52,36 @@ const AdditionWithCarry = () => {
         setStep(prev => prev + 1);
     };
 
+    const [difficulty, setDifficulty] = useState('random'); // '1-carry', '2-carries', '3-carries', 'missing-digit'
+
     // --- Practice Logic ---
     const startPractice = () => {
-        const n1 = Math.floor(Math.random() * 800) + 100; // 100~899
-        const n2 = Math.floor(Math.random() * 800) + 100; // 100~899
+        let n1, n2, type = 'normal';
 
-        setPracticeData({ n1, n2 });
+        if (difficulty === '1-carry') {
+            n1 = Math.floor(Math.random() * 400) + 100;
+            n2 = Math.floor(Math.random() * 400) + 100;
+            // Ensure at least one carry but not three
+        } else if (difficulty === '2-carries') {
+            n1 = Math.floor(Math.random() * 400) + 500;
+            n2 = Math.floor(Math.random() * 400) + 100;
+        } else if (difficulty === '3-carries') {
+            n1 = Math.floor(Math.random() * 400) + 555;
+            n2 = Math.floor(Math.random() * 400) + 445;
+        } else if (difficulty === 'missing-digit') {
+            type = 'missing';
+            n1 = Math.floor(Math.random() * 800) + 100;
+            n2 = Math.floor(Math.random() * 800) + 100;
+        } else {
+            n1 = Math.floor(Math.random() * 800) + 100;
+            n2 = Math.floor(Math.random() * 800) + 100;
+        }
+
+        setPracticeData({ n1, n2, type });
         setUserAnswer('');
         setFeedback(null);
     };
+
 
     const checkAnswer = () => {
         if (!practiceData) return;
@@ -158,26 +179,72 @@ const AdditionWithCarry = () => {
                     </div>
                 </>
             ) : (
-                <div style={{ maxWidth: '450px', margin: '0 auto' }}>
+                <div style={{ maxWidth: '500px', margin: '0 auto' }}>
                     <h2>세 자리 수 덧셈 연습 ✍️</h2>
+
+                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginBottom: '20px', justifyContent: 'center' }}>
+                        <Button onClick={() => { setDifficulty('random'); startPractice(); }} size="small" variant={difficulty === 'random' ? 'primary' : 'outline'}>랜덤</Button>
+                        <Button onClick={() => { setDifficulty('1-carry'); startPractice(); }} size="small" variant={difficulty === '1-carry' ? 'primary' : 'outline'}>받아올림 1회</Button>
+                        <Button onClick={() => { setDifficulty('2-carries'); startPractice(); }} size="small" variant={difficulty === '2-carries' ? 'primary' : 'outline'}>받아올림 2회</Button>
+                        <Button onClick={() => { setDifficulty('3-carries'); startPractice(); }} size="small" variant={difficulty === '3-carries' ? 'primary' : 'outline'}>받아올림 3회</Button>
+                        <Button onClick={() => { setDifficulty('missing-digit'); startPractice(); }} size="small" variant={difficulty === 'missing-digit' ? 'primary' : 'outline'}>빈칸 채우기</Button>
+                    </div>
+
                     {practiceData && (
                         <div style={{ backgroundColor: 'white', padding: '30px', borderRadius: '20px', boxShadow: '0 5px 15px rgba(0,0,0,0.1)' }}>
-                            <div style={{ fontSize: '3.5rem', fontWeight: 'bold', fontFamily: 'monospace', marginBottom: '30px', textAlign: 'right', paddingRight: '40px' }}>
-                                <div>{practiceData.n1}</div>
-                                <div>+ {practiceData.n2}</div>
+                            <div style={{ fontSize: '3.5rem', fontWeight: 'bold', fontFamily: 'monospace', marginBottom: '30px', textAlign: 'right', paddingRight: '40px', letterSpacing: '10px' }}>
+                                <div>
+                                    {practiceData.type === 'missing'
+                                        ? practiceData.n1.toString().split('').map((d, i) => i === 1 ? '?' : d).join('')
+                                        : practiceData.n1}
+                                </div>
+                                <div>
+                                    + {practiceData.type === 'missing'
+                                        ? practiceData.n2.toString().split('').map((d, i) => i === 2 ? '?' : d).join('')
+                                        : practiceData.n2}
+                                </div>
                                 <div style={{ borderTop: '4px solid #333', marginTop: '10px' }}></div>
+                                {practiceData.type === 'missing' && <div style={{ color: '#1a73e8' }}>{practiceData.n1 + practiceData.n2}</div>}
                             </div>
 
-                            <input
-                                type="number"
-                                value={userAnswer}
-                                onChange={(e) => setUserAnswer(e.target.value)}
-                                placeholder="정답"
-                                onKeyDown={(e) => e.key === 'Enter' && checkAnswer()}
-                                style={{ width: '100%', padding: '15px', fontSize: '2rem', borderRadius: '10px', border: '2px solid #ddd', marginBottom: '20px', textAlign: 'center' }}
-                            />
-
-                            <Button onClick={checkAnswer} size="large" fullWidth>정답 확인</Button>
+                            {practiceData.type === 'missing' ? (
+                                <div style={{ marginBottom: '20px' }}>
+                                    <p style={{ fontSize: '1.2rem', color: '#666' }}>? 에 들어갈 숫자를 각각 순서대로 적어보세요.</p>
+                                    <div style={{ display: 'flex', gap: '10px', justifyContent: 'center', marginTop: '10px' }}>
+                                        <input
+                                            type="number"
+                                            placeholder="첫번째 ?"
+                                            onChange={(e) => setPracticeData({ ...practiceData, u1: e.target.value })}
+                                            style={{ width: '100px', padding: '10px', fontSize: '1.2rem', textAlign: 'center' }}
+                                        />
+                                        <input
+                                            type="number"
+                                            placeholder="두번째 ?"
+                                            onChange={(e) => setPracticeData({ ...practiceData, u2: e.target.value })}
+                                            style={{ width: '100px', padding: '10px', fontSize: '1.2rem', textAlign: 'center' }}
+                                        />
+                                    </div>
+                                    <Button onClick={() => {
+                                        const d1 = practiceData.n1.toString()[1];
+                                        const d2 = practiceData.n2.toString()[2];
+                                        if (practiceData.u1 === d1 && practiceData.u2 === d2) {
+                                            setFeedback('correct'); confetti(); updateCoins(20); setTimeout(startPractice, 2000);
+                                        } else { setFeedback('incorrect'); }
+                                    }} size="large" fullWidth style={{ marginTop: '20px' }}>정답 확인</Button>
+                                </div>
+                            ) : (
+                                <>
+                                    <input
+                                        type="number"
+                                        value={userAnswer}
+                                        onChange={(e) => setUserAnswer(e.target.value)}
+                                        placeholder="정답"
+                                        onKeyDown={(e) => e.key === 'Enter' && checkAnswer()}
+                                        style={{ width: '100%', padding: '15px', fontSize: '2rem', borderRadius: '10px', border: '2px solid #ddd', marginBottom: '20px', textAlign: 'center' }}
+                                    />
+                                    <Button onClick={checkAnswer} size="large" fullWidth>정답 확인</Button>
+                                </>
+                            )}
 
                             {feedback === 'correct' && <div style={{ marginTop: '20px', color: 'green', fontSize: '1.5rem', fontWeight: 'bold' }}>정답입니다! 🎉 (+15 코인)</div>}
                             {feedback === 'incorrect' && <div style={{ marginTop: '20px', color: 'red', fontSize: '1.5rem', fontWeight: 'bold' }}>다시 계산해보세요! 🧐</div>}

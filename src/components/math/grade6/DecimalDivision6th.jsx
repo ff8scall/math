@@ -13,13 +13,29 @@ const DecimalDivision6th = () => {
     const [feedback, setFeedback] = useState(null);
 
     const generateQuiz = () => {
-        const d = Math.floor(Math.random() * 8) + 2;
-        const res = (Math.floor(Math.random() * 40) + 10) / 10;
-        const n = parseFloat((d * res).toFixed(1));
-        setQuizData({ n, d, ans: res.toFixed(1) });
+        const types = ['dec_nat', 'dec_dec'];
+        const type = types[Math.floor(Math.random() * types.length)];
+
+        if (type === 'dec_nat') {
+            const d = Math.floor(Math.random() * 8) + 2;
+            const res = (Math.floor(Math.random() * 40) + 10) / 10;
+            const n = parseFloat((d * res).toFixed(1));
+            setQuizData({ n, d, ans: res.toFixed(1) });
+        } else {
+            // 소수 ÷ 소수 (예: 1.25 ÷ 0.5)
+            const dRaw = Math.floor(Math.random() * 9) + 2; // 2~10
+            const resRaw = Math.floor(Math.random() * 9) + 2; // 2~10
+
+            const d = dRaw / 10; // 0.2 ~ 1.0
+            const n = (dRaw * resRaw) / 100; // 0.04 ~ 1.00
+            const ans = (n / d).toFixed(1);
+
+            setQuizData({ n: n.toFixed(2), d: d.toFixed(1), ans });
+        }
         setUserAns('');
         setFeedback(null);
     };
+
 
     const checkAnswer = () => {
         if (parseFloat(userAns).toFixed(1) === quizData.ans) {

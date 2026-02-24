@@ -72,18 +72,30 @@ const DivisionVisualizer = () => {
         }
     }, [mode]);
 
+    const [difficulty, setDifficulty] = useState('basic'); // 'basic', 'two-by-one'
+
+    // --- Practice Logic ---
     const generateQuiz = () => {
-        // Random division problem
-        const qDivisor = Math.floor(Math.random() * 8) + 2; // 2~9
-        const qQuotient = Math.floor(Math.random() * 9) + 1; // 1~9
-        const qRemainder = Math.floor(Math.random() * qDivisor); // 0 ~ divisor-1
-        const qDividend = qDivisor * qQuotient + qRemainder;
+        let qDividend, qDivisor, qQuotient, qRemainder;
+
+        if (difficulty === 'two-by-one') {
+            qDivisor = Math.floor(Math.random() * 8) + 2; // 2~9
+            qQuotient = Math.floor(Math.random() * 20) + 10; // 10~29 (3rd grade level)
+            qRemainder = Math.floor(Math.random() * qDivisor);
+            qDividend = qDivisor * qQuotient + qRemainder;
+        } else {
+            qDivisor = Math.floor(Math.random() * 8) + 2; // 2~9
+            qQuotient = Math.floor(Math.random() * 9) + 1; // 1~9
+            qRemainder = Math.floor(Math.random() * qDivisor);
+            qDividend = qDivisor * qQuotient + qRemainder;
+        }
 
         setQuizData({ dividend: qDividend, divisor: qDivisor, quotient: qQuotient, remainder: qRemainder });
         setUserQuotient('');
         setUserRemainder('');
         setFeedback(null);
     };
+
 
     const checkAnswer = () => {
         if (!quizData) return;
@@ -209,10 +221,16 @@ const DivisionVisualizer = () => {
                     </div>
                 </>
             ) : (
-                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '30px' }}>
+                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '20px' }}>
                     <h2 className={styles.title}>나눗셈 연습: 몫과 나머지 구하기 ✍️</h2>
 
+                    <div style={{ display: 'flex', gap: '10px', marginBottom: '10px' }}>
+                        <Button onClick={() => { setDifficulty('basic'); generateQuiz(); }} size="small" variant={difficulty === 'basic' ? 'primary' : 'outline'}>기초 (1자리 몫)</Button>
+                        <Button onClick={() => { setDifficulty('two-by-one'); generateQuiz(); }} size="small" variant={difficulty === 'two-by-one' ? 'primary' : 'outline'}>심화 (2자리 몫)</Button>
+                    </div>
+
                     {quizData && (
+
                         <div style={{ backgroundColor: 'white', padding: '40px', borderRadius: '20px', boxShadow: '0 10px 25px rgba(0,0,0,0.1)' }}>
                             <div className={styles.equationArea} style={{ marginBottom: '30px' }}>
                                 <span className={styles.number}>{quizData.dividend}</span>

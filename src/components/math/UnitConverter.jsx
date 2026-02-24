@@ -26,68 +26,72 @@ const UnitConverter = () => {
     const generateQuiz = () => {
         const problemTypes = [
             'cm_to_mm',    // cm를 mm로
-            'cm_to_m',     // cm를 m와 cm로
+            'm_to_cm',     // m를 cm로
+            'km_to_m',     // km를 m로
             'compare',     // 크기 비교
-            'addition'     // 길이 더하기
+            'sub_borrow'   // 길이의 뺄셈 (받아내림)
         ];
 
         const type = problemTypes[Math.floor(Math.random() * problemTypes.length)];
 
         if (type === 'cm_to_mm') {
-            const value = Math.floor(Math.random() * 20) + 1; // 1~20cm
+            const value = Math.floor(Math.random() * 50) + 1;
             setQuizData({
                 type,
                 question: `${value}cm는 몇 mm일까요?`,
                 answer: value * 10,
                 hint: '1cm = 10mm'
             });
-        } else if (type === 'cm_to_m') {
-            const totalCm = (Math.floor(Math.random() * 3) + 1) * 100 + Math.floor(Math.random() * 50); // 100~350
-            const meters = Math.floor(totalCm / 100);
-            const centimeters = totalCm % 100;
+        } else if (type === 'm_to_cm') {
+            const m = Math.floor(Math.random() * 5) + 1;
+            const cm = Math.floor(Math.random() * 90) + 5;
             setQuizData({
                 type,
-                question: `${totalCm}cm는 몇 m 몇 cm일까요?`,
-                questionType: 'two_parts',
-                answer: meters,
-                answerCm: centimeters,
-                hint: '100cm = 1m'
+                question: `${m}m ${cm}cm는 몇 cm일까요?`,
+                answer: m * 100 + cm,
+                hint: '1m = 100cm'
+            });
+        } else if (type === 'km_to_m') {
+            const km = Math.floor(Math.random() * 5) + 1;
+            const m = Math.floor(Math.random() * 900) + 50;
+            setQuizData({
+                type,
+                question: `${km}km ${m}m는 몇 m일까요?`,
+                answer: km * 1000 + m,
+                hint: '1km = 1000m'
             });
         } else if (type === 'compare') {
             const options = [
-                { a: '150cm', aValue: 150, b: '1m 40cm', bValue: 140 },
-                { a: '200cm', aValue: 200, b: '2m', bValue: 200 },
-                { a: '1m 70cm', aValue: 170, b: '180cm', bValue: 180 },
-                { a: '250cm', aValue: 250, b: '2m 60cm', bValue: 260 }
+                { a: '2km', aVal: 2000, b: '1900m', bVal: 1900 },
+                { a: '1m 50cm', aVal: 150, b: '160cm', bVal: 160 },
+                { a: '3cm', aVal: 30, b: '35mm', bVal: 35 }
             ];
-            const selected = options[Math.floor(Math.random() * options.length)];
-
-            let answerText = '같다';
-            if (selected.aValue > selected.bValue) answerText = '크다';
-            else if (selected.aValue < selected.bValue) answerText = '작다';
-
+            const sel = options[Math.floor(Math.random() * options.length)];
             setQuizData({
                 type,
-                question: `${selected.a}는 ${selected.b}보다 클까요, 작을까요, 같을까요?`,
+                question: `${sel.a}와 ${sel.b} 중 어느 것이 더 긴가요?`,
                 questionType: 'choice',
-                answer: answerText,
-                choices: ['크다', '작다', '같다'],
-                hint: '같은 단위로 바꿔서 비교해보세요'
+                choices: [sel.a, sel.b, '같음'],
+                answer: sel.aVal > sel.bVal ? sel.a : (sel.aVal < sel.bVal ? sel.b : '같음')
             });
         } else {
-            const a = Math.floor(Math.random() * 50) + 10;
-            const b = Math.floor(Math.random() * 50) + 10;
+            const m1 = 5; const cm1 = 20;
+            const m2 = 2; const cm2 = 50;
             setQuizData({
-                type,
-                question: `${a}cm + ${b}cm = ?`,
-                answer: a + b,
-                hint: '같은 단위끼리 더하세요'
+                type: 'sub_borrow',
+                question: `${m1}m ${cm1}cm - ${m2}m ${cm2}cm = ?`,
+                questionType: 'two_parts',
+                answer: 2, // 2m
+                answerCm: 70, // 70cm
+                hint: '1m를 100cm로 바꿔서 빌려오세요.'
             });
         }
 
         setUserAnswer('');
+        setUserAnswerCm('');
         setFeedback(null);
     };
+
 
     const [userAnswerCm, setUserAnswerCm] = useState('');
 

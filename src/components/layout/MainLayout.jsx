@@ -1,10 +1,12 @@
 import React from 'react';
 import NavigationBar from './NavigationBar';
+import SEOHead from '../seo/SEOHead';
 import styles from './MainLayout.module.css';
 
 const MainLayout = ({ children }) => {
     return (
         <div className={styles.container}>
+            <SEOHead />
             <NavigationBar />
             <main className={styles.mainContent}>
                 {children}
@@ -15,5 +17,6 @@ const MainLayout = ({ children }) => {
         </div>
     );
 };
+
 
 export default MainLayout;

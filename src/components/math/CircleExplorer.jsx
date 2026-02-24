@@ -23,7 +23,7 @@ const CircleExplorer = () => {
     const diameterCm = (radiusCm * 2).toFixed(1);
 
     const generateQuiz = () => {
-        const types = ['convert', 'term', 'compare', 'logic'];
+        const types = ['convert', 'term', 'compare', 'logic', 'overlap'];
         const type = types[Math.floor(Math.random() * types.length)];
 
         if (type === 'convert') {
@@ -34,26 +34,30 @@ const CircleExplorer = () => {
             });
         } else if (type === 'term') {
             setQuizData({
-                question: '원의 중심을 지나며 원 위의 두 점을 이은 가장 긴 선은?',
-                answer: '지름', hint: '중심을 통과하는 선이에요.', type: 'text'
+                question: '컴퍼스로 원을 그릴 때, 컴퍼스의 침이 꽂혔던 자리는 무엇이 되나요?',
+                answer: '중심', hint: '중심(원의 중심)이라고 불러요.', type: 'text'
+            });
+        } else if (type === 'overlap') {
+            setQuizData({
+                question: '반지름이 5cm인 두 원의 중심을 이어 붙였습니다. 두 중심 사이의 거리는 얼마일까요?',
+                answer: '5', hint: '두 원의 반지름만큼의 거리가 됩니다.', type: 'number'
             });
         } else if (type === 'compare') {
             const r1 = 4;
-            const d1 = 6;
             setQuizData({
-                question: '반지름 4cm인 원과 지름 6cm인 원 중 어느 것이 더 클까요?',
-                choices: ['반지름 4cm 원', '지름 6cm 원', '둘이 같음'],
-                answer: '반지름 4cm 원', hint: '지름 6cm 원의 반지름은 3cm예요.', type: 'choice'
+                question: '한 원에서 반지름은 여러 개 그을 수 있고, 그 길이는 모두 같습니다. (O/X)',
+                choices: ['O', 'X'],
+                answer: 'O', hint: '어느 방향으로 그어도 길이는 반지름으로 동일해요.', type: 'choice'
             });
         } else {
             setQuizData({
-                question: '하나의 원에서 지름의 길이는 모두 같을까요?',
-                choices: ['네, 모두 같아요', '아니요, 방향마다 달라요'],
-                answer: '네, 모두 같아요', hint: '원은 어느 방향으로 재도 모양이 대칭이에요.', type: 'choice'
+                question: '컴퍼스를 3cm 벌려 원을 그렸다면, 이 원의 지름은 몇 cm일까요?',
+                answer: '6', hint: '컴퍼스를 벌린 길이는 반지름이에요.', type: 'number'
             });
         }
         setUserAnswer(''); setFeedback(null);
     };
+
 
     useEffect(() => {
         if (mode === 'practice' && !quizData) generateQuiz();

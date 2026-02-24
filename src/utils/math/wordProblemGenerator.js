@@ -71,7 +71,7 @@ export const generateProblemData = (gradeNum) => {
             return { q, ans: duration, exp: `${startH}시에서 ${duration}분이 지나면 ${startH}시 ${duration}분입니다.` };
         }
     } else if (gradeNum === 3) {
-        const types = ['three-digit-diff', 'division-share', 'fraction-part', 'weight-add'];
+        const types = ['three-digit-diff', 'division-share', 'fraction-part', 'weight-add', 'any-number', 'calendar', 'multi-step'];
         const type = getRandom(types);
 
         if (type === 'three-digit-diff') {
@@ -94,6 +94,26 @@ export const generateProblemData = (gradeNum) => {
             q = `맛있는 빵 ${total}개가 있습니다. 그중에서 1/${denom}을 먹었습니다. 먹은 빵은 몇 개인가요?`;
             ans = count.toString();
             exp = `${total}의 1/${denom}은 ${total} ÷ ${denom} = ${count}개입니다.`;
+        } else if (type === 'any-number') {
+            const any = Math.floor(Math.random() * 50) + 20;
+            const sub = Math.floor(Math.random() * 15) + 5;
+            const result = any - sub;
+            q = `어떤 수에서 ${sub}를 뺐더니 ${result}이 되었습니다. 어떤 수는 얼마인가요?`;
+            ans = any.toString();
+            exp = `□ - ${sub} = ${result} 이므로, □ = ${result} + ${sub} = ${any}입니다.`;
+        } else if (type === 'calendar') {
+            const date = Math.floor(Math.random() * 10) + 5;
+            const after = 14;
+            q = `오늘은 5월 ${date}일 수요일입니다. 오늘로부터 2주일 후는 5월 몇 일인가요?`;
+            ans = (date + after).toString();
+            exp = `1주일은 7일이므로 2주일은 14일입니다. ${date} + 14 = ${ans}일입니다.`;
+        } else if (type === 'multi-step') {
+            const perBox = 8;
+            const boxes = Math.floor(Math.random() * 4) + 3;
+            const extra = Math.floor(Math.random() * 10) + 5;
+            q = `연필이 한 타에 ${perBox}자루씩 들어있는 상자가 ${boxes}개 있고, 낱개로 ${extra}자루가 더 있습니다. 연필은 모두 몇 자루인가요?`;
+            ans = (perBox * boxes + extra).toString();
+            exp = `${perBox} × ${boxes} = ${perBox * boxes}이고, 여기에 ${extra}를 더하면 ${ans}입니다.`;
         } else {
             const kg = Math.floor(Math.random() * 3) + 1;
             const g = Math.floor(Math.random() * 800) + 100;
@@ -102,6 +122,7 @@ export const generateProblemData = (gradeNum) => {
             ans = (kg * 1000 + g + addG).toString();
             exp = `${kg}kg ${g}g은 ${kg * 1000 + g}g입니다. 여기에 ${addG}g를 더하면 ${ans}g가 됩니다.`;
         }
+
     } else {
         q = `${gradeNum}학년 문장제 문제를 생성 중입니다.`;
         ans = "0";

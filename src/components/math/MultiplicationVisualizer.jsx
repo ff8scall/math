@@ -30,15 +30,26 @@ const MultiplicationVisualizer = () => {
         else if (dan > 2) { setDan(dan - 1); setStep(9); }
     };
 
+    const [difficulty, setDifficulty] = useState('times-table'); // 'times-table', 'tens-ones', 'two-by-one'
+
     // --- Practice Logic ---
     const startPractice = () => {
-        // Random multiplication
-        const d = Math.floor(Math.random() * 8) + 2; // 2~9
-        const s = Math.floor(Math.random() * 9) + 1; // 1~9
+        let d, s;
+        if (difficulty === 'tens-ones') {
+            d = (Math.floor(Math.random() * 8) + 2) * 10; // 20, 30... 90
+            s = Math.floor(Math.random() * 8) + 2;
+        } else if (difficulty === 'two-by-one') {
+            d = Math.floor(Math.random() * 80) + 11; // 11~90
+            s = Math.floor(Math.random() * 8) + 2;
+        } else {
+            d = Math.floor(Math.random() * 8) + 2; // 2~9
+            s = Math.floor(Math.random() * 9) + 1; // 1~9
+        }
         setQData({ d, s });
         setUserAns('');
         setFeedback(null);
     };
+
 
     useEffect(() => {
         if (mode === 'practice' && !qData) startPractice();
@@ -135,12 +146,20 @@ const MultiplicationVisualizer = () => {
                 </>
             ) : (
                 <div style={{ maxWidth: '400px', margin: '0 auto' }}>
-                    <h2>구구단 번개 퀴즈 ⚡</h2>
+                    <h2>곱셈 실력 키우기 ⚡</h2>
+
+                    <div style={{ display: 'flex', gap: '8px', marginBottom: '20px', justifyContent: 'center' }}>
+                        <Button onClick={() => { setDifficulty('times-table'); startPractice(); }} size="small" variant={difficulty === 'times-table' ? 'primary' : 'outline'}>구구단</Button>
+                        <Button onClick={() => { setDifficulty('tens-ones'); startPractice(); }} size="small" variant={difficulty === 'tens-ones' ? 'primary' : 'outline'}>(몇십)×(몇)</Button>
+                        <Button onClick={() => { setDifficulty('two-by-one'); startPractice(); }} size="small" variant={difficulty === 'two-by-one' ? 'primary' : 'outline'}>(두자리)×(한자리)</Button>
+                    </div>
+
                     {qData && (
                         <div style={{ backgroundColor: 'white', padding: '40px', borderRadius: '30px', boxShadow: '0 10px 20px rgba(0,0,0,0.1)', textAlign: 'center' }}>
                             <div style={{ fontSize: '4rem', fontWeight: 'bold', color: 'var(--primary-color)', marginBottom: '30px' }}>
                                 {qData.d} × {qData.s} = ?
                             </div>
+
 
                             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '15px' }}>
                                 {/* 4 Choices? Or user input? User input is better for practice. */}

@@ -16,21 +16,41 @@ const FractionDivision6th = () => {
     const getGCD = (a, b) => b ? getGCD(b, a % b) : a;
 
     const generateQuiz = () => {
-        const d1 = Math.floor(Math.random() * 5) + 2;
-        const d2 = Math.floor(Math.random() * 5) + 2;
-        const n1 = Math.floor(Math.random() * (d1 - 1)) + 1;
-        const n2 = Math.floor(Math.random() * (d2 - 1)) + 1;
+        const types = ['fraction_fraction', 'nat_fraction', 'fraction_nat'];
+        const type = types[Math.floor(Math.random() * types.length)];
 
-        // (n1/d1) / (n2/d2) = (n1/d1) * (d2/n2) = (n1*d2) / (d1*n2)
-        const resNum = n1 * d2;
-        const resDen = d1 * n2;
+        let n1, d1, n2, d2, resNum, resDen;
+
+        if (type === 'fraction_fraction') {
+            d1 = Math.floor(Math.random() * 5) + 2;
+            d2 = Math.floor(Math.random() * 5) + 2;
+            n1 = Math.floor(Math.random() * (d1 - 1)) + 1;
+            n2 = Math.floor(Math.random() * (d2 - 1)) + 1;
+            resNum = n1 * d2;
+            resDen = d1 * n2;
+        } else if (type === 'nat_fraction') {
+            n1 = Math.floor(Math.random() * 5) + 2; // Natural number
+            d1 = 1;
+            d2 = Math.floor(Math.random() * 5) + 2;
+            n2 = Math.floor(Math.random() * (d2 - 1)) + 1;
+            resNum = n1 * d2;
+            resDen = n2;
+        } else {
+            d1 = Math.floor(Math.random() * 5) + 2;
+            n1 = Math.floor(Math.random() * (d1 - 1)) + 1;
+            n2 = Math.floor(Math.random() * 5) + 2; // Natural number
+            d2 = 1;
+            resNum = n1;
+            resDen = d1 * n2;
+        }
+
         const gcd = getGCD(resNum, resDen);
-
         setQuizData({ n1, d1, n2, d2, ansNum: resNum / gcd, ansDen: resDen / gcd });
         setUserNum('');
         setUserDen('');
         setFeedback(null);
     };
+
 
     useEffect(() => {
         if (!quizData) generateQuiz();

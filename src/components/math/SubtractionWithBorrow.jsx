@@ -40,15 +40,28 @@ const SubtractionWithBorrow = () => {
 
     const finalResult = minuend - subtrahend;
 
+    const [difficulty, setDifficulty] = useState('random');
+
     // --- Practice Logic ---
     const startPractice = () => {
-        const m = Math.floor(Math.random() * 800) + 200; // 200~999
-        let s = Math.floor(Math.random() * (m - 50)) + 50; // Ensure positive result
+        let m, s;
+        if (difficulty === 'zero-middle') {
+            m = (Math.floor(Math.random() * 8) + 1) * 100 + (Math.floor(Math.random() * 9) + 1); // e.g. 405
+            s = Math.floor(Math.random() * (m - 50)) + 50;
+            if (s % 10 < m % 10) s += 5; // Force borrow if possible
+        } else if (difficulty === 'full-hundreds') {
+            m = (Math.floor(Math.random() * 8) + 2) * 100; // 200, 300...
+            s = Math.floor(Math.random() * (m - 100)) + 55;
+        } else {
+            m = Math.floor(Math.random() * 800) + 200; // 200~999
+            s = Math.floor(Math.random() * (m - 50)) + 50;
+        }
 
         setChoiceData({ m, s });
         setUserResponse('');
         setFeedback(null);
     };
+
 
     useEffect(() => {
         if (mode === 'practice' && !choiceData) startPractice();
@@ -190,7 +203,15 @@ const SubtractionWithBorrow = () => {
             ) : (
                 <div style={{ maxWidth: '400px', margin: '0 auto' }}>
                     <h2>세 자리 수 뺄셈 연습 🔥</h2>
+
+                    <div style={{ display: 'flex', gap: '10px', marginBottom: '20px', justifyContent: 'center' }}>
+                        <Button onClick={() => { setDifficulty('random'); startPractice(); }} size="small" variant={difficulty === 'random' ? 'primary' : 'outline'}>랜덤</Button>
+                        <Button onClick={() => { setDifficulty('zero-middle'); startPractice(); }} size="small" variant={difficulty === 'zero-middle' ? 'primary' : 'outline'}>0 포함</Button>
+                        <Button onClick={() => { setDifficulty('full-hundreds'); startPractice(); }} size="small" variant={difficulty === 'full-hundreds' ? 'primary' : 'outline'}>100 단위</Button>
+                    </div>
+
                     {choiceData && (
+
                         <div style={{ backgroundColor: 'white', padding: '30px', borderRadius: '20px', boxShadow: '0 5px 15px rgba(0,0,0,0.1)' }}>
                             <div style={{ fontSize: '3.5rem', fontWeight: 'bold', fontFamily: 'monospace', marginBottom: '30px', textAlign: 'right', paddingRight: '40px' }}>
                                 <div>{choiceData.m}</div>

@@ -13,7 +13,7 @@ const RatioProportion6th = () => {
     const [feedback, setFeedback] = useState(null);
 
     const generateQuiz = () => {
-        const types = ['to-fraction', 'to-percent', 'find-rate', 'decimal-to-percent'];
+        const types = ['to-fraction', 'to-percent', 'find-compare', 'find-base', 'decimal-to-percent'];
         const type = types[Math.floor(Math.random() * types.length)];
         let question, answer, placeholder;
 
@@ -24,17 +24,25 @@ const RatioProportion6th = () => {
             answer = `${a}/${b}`;
             placeholder = "예: 1/2";
         } else if (type === 'to-percent') {
-            const rates = [0.1, 0.2, 0.25, 0.5, 0.75, 0.8, 1];
+            const rates = [0.1, 0.2, 0.25, 0.4, 0.5, 0.6, 0.75, 0.8, 1];
             const r = rates[Math.floor(Math.random() * rates.length)];
             question = `비율 ${r}을 백분율(%)로 나타내면?`;
             answer = (r * 100).toString();
             placeholder = "숫자만 입력";
-        } else if (type === 'find-rate') {
-            const base = [10, 20, 50, 100][Math.floor(Math.random() * 4)];
-            const compare = Math.floor(Math.random() * (base - 1)) + 1;
-            question = `기준량이 ${base}, 비교하는 양이 ${compare}일 때의 비율은? (소수로)`;
-            answer = (compare / base).toString();
-            placeholder = "예: 0.5";
+        } else if (type === 'find-compare') {
+            // 비교하는 양 = 기준량 * 비율
+            const base = [10, 20, 50, 100, 200][Math.floor(Math.random() * 5)];
+            const rate = [0.1, 0.2, 0.25, 0.5][Math.floor(Math.random() * 4)];
+            question = `기준량이 ${base}이고 비율이 ${rate}일 때, 비교하는 양은 얼마인가요?`;
+            answer = (base * rate).toString();
+            placeholder = "숫자 입력";
+        } else if (type === 'find-base') {
+            // 기준량 = 비교하는 양 / 비율
+            const compare = [5, 10, 20, 25, 50][Math.floor(Math.random() * 5)];
+            const rate = [0.1, 0.2, 0.25, 0.5][Math.floor(Math.random() * 4)];
+            question = `비교하는 양이 ${compare}이고 비율이 ${rate}일 때, 기준량은 얼마인가요?`;
+            answer = (compare / rate).toString();
+            placeholder = "숫자 입력";
         } else {
             const val = (Math.floor(Math.random() * 99) + 1);
             question = `${val}%를 소수로 나타내면?`;
@@ -46,6 +54,7 @@ const RatioProportion6th = () => {
         setUserAnswer('');
         setFeedback(null);
     };
+
 
     const checkAnswer = () => {
         if (!quiz) return;

@@ -30,14 +30,20 @@ const FactorsMultiples5th = () => {
     // Quiz states
     const [quizData, setQuizData] = useState(null);
     const [feedback, setFeedback] = useState(null);
+    const [userAnswer, setUserAnswer] = useState('');
+
+
+    const getGCD = (a, b) => b ? getGCD(b, a % b) : a;
+    const getLCM = (a, b) => (a * b) / getGCD(a, b);
 
     const generateQuiz = () => {
-        const type = Math.random() > 0.5 ? 'factor' : 'multiple';
+        const types = ['factor', 'multiple', 'gcd', 'lcm'];
+        const type = types[Math.floor(Math.random() * types.length)];
         const base = Math.floor(Math.random() * 15) + 2;
 
         if (type === 'factor') {
-            const factors = getFactors(base * (Math.floor(Math.random() * 3) + 2));
             const target = base * (Math.floor(Math.random() * 3) + 2);
+            const factors = getFactors(target);
             const isCorrect = Math.random() > 0.5;
             const choice = isCorrect
                 ? factors[Math.floor(Math.random() * factors.length)]
@@ -48,7 +54,7 @@ const FactorsMultiples5th = () => {
                 answer: isCorrect ? 'O' : 'X',
                 choices: ['O', 'X']
             });
-        } else {
+        } else if (type === 'multiple') {
             const target = base;
             const isCorrect = Math.random() > 0.5;
             const multiple = isCorrect ? target * (Math.floor(Math.random() * 5) + 1) : target * 5 + 1;
@@ -58,9 +64,30 @@ const FactorsMultiples5th = () => {
                 answer: isCorrect ? 'O' : 'X',
                 choices: ['O', 'X']
             });
+        } else if (type === 'gcd') {
+            const a = (Math.floor(Math.random() * 5) + 2) * base;
+            const b = (Math.floor(Math.random() * 5) + 2) * base;
+            const gcd = getGCD(a, b);
+            setQuizData({
+                question: `${a}와 ${b}의 최대공약수는 얼마인가요?`,
+                answer: gcd.toString(),
+                type: 'input'
+            });
+        } else {
+            const a = Math.floor(Math.random() * 5) + 2;
+            const b = Math.floor(Math.random() * 4) + 2;
+            const lcm = getLCM(a, b);
+            setQuizData({
+                question: `${a}와 ${b}의 최소공배수는 얼마인가요?`,
+                answer: lcm.toString(),
+                type: 'input'
+            });
         }
         setFeedback(null);
+        setUserAnswer('');
     };
+
+
 
     useEffect(() => {
         if (mode === 'quiz' && !quizData) generateQuiz();
@@ -156,21 +183,36 @@ const FactorsMultiples5th = () => {
                     {quizData && (
                         <div className={styles.quizCard}>
                             <div className={styles.question}>{quizData.question}</div>
-                            <div className={styles.oxButtons}>
-                                {quizData.choices.map(c => (
-                                    <button
-                                        key={c}
-                                        onClick={() => checkAnswer(c)}
-                                        className={`${styles.oxButton} ${c === 'O' ? styles.oBtn : styles.xBtn}`}
-                                    >
-                                        {c}
-                                    </button>
-                                ))}
-                            </div>
+                            {quizData.type === 'input' ? (
+                                <div className={styles.inputArea}>
+                                    <input
+                                        type="number"
+                                        className={styles.quizInput}
+                                        placeholder="정답 입력"
+                                        onChange={(e) => setUserAnswer(e.target.value)}
+                                        value={userAnswer}
+                                        onKeyDown={(e) => e.key === 'Enter' && checkAnswer(userAnswer)}
+                                    />
+                                    <Button onClick={() => checkAnswer(userAnswer)} variant="primary">확인</Button>
+                                </div>
+                            ) : (
+                                <div className={styles.oxButtons}>
+                                    {quizData.choices.map(c => (
+                                        <button
+                                            key={c}
+                                            onClick={() => checkAnswer(c)}
+                                            className={`${styles.oxButton} ${c === 'O' ? styles.oBtn : styles.xBtn}`}
+                                        >
+                                            {c}
+                                        </button>
+                                    ))}
+                                </div>
+                            )}
                             <AnimatePresence>
-                                {feedback === 'correct' && <motion.div className={styles.feedbackCorrect}>정답입니다! 🎉</motion.div>}
+                                {feedback === 'correct' && <motion.div className={styles.feedbackCorrect}>정답입니다! 🎉 (+5 코인)</motion.div>}
                                 {feedback === 'incorrect' && <motion.div className={styles.feedbackIncorrect}>다시 생각해보세요! 😅</motion.div>}
                             </AnimatePresence>
+
                         </div>
                     )}
                 </div>
