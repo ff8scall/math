@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Button from '../../common/Button';
+import PageHeader from '../../common/PageHeader';
 import confetti from 'canvas-confetti';
 import { updateCoins } from '../../../utils/storage/storageManager';
 import { JsonLd, generateCourseSchema } from '../../seo/JsonLd';
@@ -136,7 +137,7 @@ const LargeNumbers4th = () => {
 
             {mode === 'explore' ? (
                 <div className={styles.explore}>
-                    <h2 className={styles.title}>큰 수의 단위를 배워요 🔢</h2>
+                    <PageHeader />
                     <p className={styles.subtitle}>숫자가 커 가면서 이름이 어떻게 바뀌는지 확인해봐요.</p>
 
                     <div className={styles.displayBoard}>
@@ -195,7 +196,7 @@ const LargeNumbers4th = () => {
                 </div>
             ) : (
                 <div className={styles.practice}>
-                    <h2 className={styles.title}>큰 수 퀴즈 ✏️</h2>
+                    <PageHeader title="큰 수 실전 퀴즈 ✏️" />
                     {quizData && (
                         <div className={styles.problemCard}>
                             <h3 className={styles.question}>{quizData.question}</h3>

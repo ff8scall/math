@@ -1,5 +1,8 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import Button from '../components/common/Button';
+import PageHeader from '../components/common/PageHeader';
 import SEOHead from '../components/seo/SEOHead';
 import styles from './Curriculum.module.css';
 
@@ -123,6 +126,8 @@ const Curriculum = () => {
             ],
             tools: [
                 { id: 'quiz', title: '🏆 종합 퀴즈왕', description: '4학년 모든 문제를 풀어보세요!', link: '/grade/4/quiz', status: 'available' },
+                { id: 'word-problem', title: '🧠 심화 문장제', description: '논리와 사고력을 키우는 4학년 문장제 문제!', link: '/grade/4/word-problem', status: 'available' },
+                { id: 'word-print', title: '🖨️ 문장제 학습지', description: '4학년 심화 문제를 종이로 출력해요.', link: '/grade/4/word-problem-worksheet', status: 'available' },
                 { id: 'game', title: '🏁 수학 레이스', description: '60초 동안 달리는 스피드 수학 게임!', link: '/grade/4/game', status: 'available' },
                 { id: 'print', title: '🖨️ 학습지 출력', description: '단원평가 준비! 종이 학습지로 해봐요.', link: '/grade/4/worksheet', status: 'available' },
             ]
@@ -154,6 +159,8 @@ const Curriculum = () => {
             ],
             tools: [
                 { id: 'quiz', title: '🏆 종합 퀴즈왕', description: '5학년 모든 문제를 풀어보세요!', link: '/grade/5/quiz', status: 'available' },
+                { id: 'word-problem', title: '🧠 심화 문장제', description: '복합 연산과 원리를 활용한 5학년 문장제!', link: '/grade/5/word-problem', status: 'available' },
+                { id: 'word-print', title: '🖨️ 문장제 학습지', description: '5학년 심화 문제를 종이로 출력해요.', link: '/grade/5/word-problem-worksheet', status: 'available' },
                 { id: 'game', title: '🏁 수학 레이스', description: '60초 동안 달리는 스피드 수학 게임!', link: '/grade/5/game', status: 'available' },
                 { id: 'print', title: '🖨️ 학습지 출력', description: '5학년 실력을 종이로 확인해봐요!', link: '/grade/5/worksheet', status: 'available' },
             ]
@@ -182,6 +189,8 @@ const Curriculum = () => {
             ],
             tools: [
                 { id: 'quiz', title: '🏆 종합 퀴즈왕', description: '6학년 모든 문제를 풀어보세요!', link: '/grade/6/quiz', status: 'available' },
+                { id: 'word-problem', title: '🧠 심화 문장제', description: '6학년 사고력 쑥쑥 문장제 도전!', link: '/grade/6/word-problem', status: 'available' },
+                { id: 'word-print', title: '🖨️ 문장제 학습지', description: '6학년 심화 문제를 종이로 출력해요.', link: '/grade/6/word-problem-worksheet', status: 'available' },
                 { id: 'game', title: '🏁 수학 레이스', description: '60초 동안 달리는 스피드 수학 게임!', link: '/grade/6/game', status: 'available' },
                 { id: 'print', title: '🖨️ 학습지 출력', description: '중학교 가기 전, 종이로 최종 점검!', link: '/grade/6/worksheet', status: 'available' },
             ]
@@ -194,54 +203,55 @@ const Curriculum = () => {
         <div className={styles.container}>
             <SEOHead title={`${gradeId}학년 수학 목차`} />
             <div className={styles.header}>
-                <Link to="/" className={styles.backButton}>← 학년 선택으로</Link>
-                <h1 className={styles.pageTitle}>{gradeId}학년 수학 탐험 지도 🗺️</h1>
+                <PageHeader title={`${gradeId}학년 수학 탐험 지도 🗺️`} />
             </div>
 
-            {/* Semesters */}
-            {currentCurriculum.semesters && currentCurriculum.semesters.map((sem, index) => (
-                <section key={index} className={styles.semesterSection}>
-                    <h2 className={styles.semesterTitle}>{sem.semester}학기</h2>
-                    <div className={styles.topicGrid}>
-                        {sem.topics.map((topic) => (
-                            <Link
-                                key={topic.id}
-                                to={topic.link}
-                                className={`${styles.topicCard} ${topic.status === 'coming-soon' ? styles.disabled : ''}`}
-                                onClick={(e) => topic.status === 'coming-soon' && e.preventDefault()}
-                            >
-                                <h3 className={styles.topicTitle}>{topic.title}</h3>
-                                <p className={styles.topicDesc}>{topic.description}</p>
-                                {topic.status === 'available' ? (
-                                    <span className={styles.playButton}>탐험하기 ▶</span>
-                                ) : (
-                                    <span className={styles.soonBadge}>준비 중</span>
-                                )}
-                            </Link>
-                        ))}
-                    </div>
-                </section>
-            ))}
+            <div className={styles.content}>
+                {/* Semesters */}
+                {currentCurriculum.semesters && currentCurriculum.semesters.map((sem, index) => (
+                    <section key={index} className={styles.semesterSection}>
+                        <h2 className={styles.semesterTitle}>{sem.semester}학기</h2>
+                        <div className={styles.topicGrid}>
+                            {sem.topics.map((topic) => (
+                                <Link
+                                    key={topic.id}
+                                    to={topic.link}
+                                    className={`${styles.topicCard} ${topic.status === 'coming-soon' ? styles.disabled : ''}`}
+                                    onClick={(e) => topic.status === 'coming-soon' && e.preventDefault()}
+                                >
+                                    <h3 className={styles.topicTitle}>{topic.title}</h3>
+                                    <p className={styles.topicDesc}>{topic.description}</p>
+                                    {topic.status === 'available' ? (
+                                        <span className={styles.playButton}>탐험하기 ▶</span>
+                                    ) : (
+                                        <span className={styles.soonBadge}>준비 중</span>
+                                    )}
+                                </Link>
+                            ))}
+                        </div>
+                    </section>
+                ))}
 
-            {/* Additional Tools */}
-            {currentCurriculum.tools && currentCurriculum.tools.length > 0 && (
-                <section className={styles.semesterSection}>
-                    <h2 className={styles.semesterTitle}>📚 추가 학습 도구</h2>
-                    <div className={styles.topicGrid}>
-                        {currentCurriculum.tools.map((tool) => (
-                            <Link
-                                key={tool.id}
-                                to={tool.link}
-                                className={`${styles.topicCard} ${styles.toolCard}`}
-                            >
-                                <h3 className={styles.topicTitle}>{tool.title}</h3>
-                                <p className={styles.topicDesc}>{tool.description}</p>
-                                <span className={styles.playButton}>시작하기 ▶</span>
-                            </Link>
-                        ))}
-                    </div>
-                </section>
-            )}
+                {/* Additional Tools */}
+                {currentCurriculum.tools && currentCurriculum.tools.length > 0 && (
+                    <section className={styles.semesterSection}>
+                        <h2 className={styles.semesterTitle}>📚 추가 학습 도구</h2>
+                        <div className={styles.topicGrid}>
+                            {currentCurriculum.tools.map((tool) => (
+                                <Link
+                                    key={tool.id}
+                                    to={tool.link}
+                                    className={`${styles.topicCard} ${styles.toolCard}`}
+                                >
+                                    <h3 className={styles.topicTitle}>{tool.title}</h3>
+                                    <p className={styles.topicDesc}>{tool.description}</p>
+                                    <span className={styles.playButton}>시작하기 ▶</span>
+                                </Link>
+                            ))}
+                        </div>
+                    </section>
+                )}
+            </div>
         </div>
     );
 };

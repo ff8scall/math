@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Button from '../common/Button';
+import PageHeader from '../common/PageHeader';
 import confetti from 'canvas-confetti';
 import { JsonLd, generateHowToSchema } from '../seo/JsonLd';
 
@@ -111,7 +112,7 @@ const AdditionWithCarry = () => {
 
             {mode === 'explore' ? (
                 <>
-                    <h2>세 자리 수의 덧셈 (받아올림)</h2>
+                    <PageHeader />
                     <p style={{ marginBottom: '40px', color: '#666', minHeight: '3em' }}>
                         {step === 0 && "3학년 수학의 핵심! 세 자리 수 덧셈을 시작해볼까요? 일의 자리부터 더해요."}
                         {step === 1 && `일의 자리: ${o1} + ${o2} = ${onesSum}. 10이 넘으면 십의 자리로 1을 보내요!`}
@@ -180,7 +181,7 @@ const AdditionWithCarry = () => {
                 </>
             ) : (
                 <div style={{ maxWidth: '500px', margin: '0 auto' }}>
-                    <h2>세 자리 수 덧셈 연습 ✍️</h2>
+                    <PageHeader title="세 자리 수 덧셈 실전 연습" />
 
                     <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginBottom: '20px', justifyContent: 'center' }}>
                         <Button onClick={() => { setDifficulty('random'); startPractice(); }} size="small" variant={difficulty === 'random' ? 'primary' : 'outline'}>랜덤</Button>

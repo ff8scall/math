@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import Button from '../common/Button';
+import PageHeader from '../common/PageHeader';
 import { updateCoins } from '../../utils/storage/storageManager';
 import confetti from 'canvas-confetti';
 import styles from './MathQuiz.module.css'; // Reuse quiz styles
@@ -47,7 +48,7 @@ const WordProblemQuiz = () => {
         <div className={styles.container}>
             <div className={styles.header}>
                 <Link to={`/grade/${gradeId || '1'}`} className={styles.backLink}>← 목차로 돌아가기</Link>
-                <h2 className={styles.title}>{gradeId || '1'}학년 심화 문장제 🧠</h2>
+                <PageHeader />
                 <div className={styles.scoreBadge}>점수: {score}</div>
             </div>
 

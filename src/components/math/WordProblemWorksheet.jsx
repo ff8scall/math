@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import Button from '../common/Button';
+import PageHeader from '../common/PageHeader';
 import styles from './WordProblemWorksheet.module.css';
 import { generateProblemData } from '../../utils/math/wordProblemGenerator';
 
@@ -34,8 +35,7 @@ const WordProblemWorksheet = () => {
     return (
         <div className={styles.container}>
             <div className={styles.noPrint}>
-                <Link to={`/grade/${gradeId || '1'}`} className={styles.backLink}>← 돌아가기</Link>
-                <h1>{gradeId || '1'}학년 심화 문장제 학습지 🖨️</h1>
+                <PageHeader title={`${gradeId || '1'}학년 심화 문장제 학습지 🖨️`} />
                 <p>문장형 문제를 종이에 직접 풀며 사고력을 키워보세요.</p>
                 <div className={styles.actions}>
                     <Button onClick={generateWorksheet} variant="secondary">문제 새로 만들기</Button>
