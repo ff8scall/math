@@ -24,12 +24,25 @@ if (!fs.existsSync(publicDir)) {
   fs.mkdirSync(publicDir, { recursive: true });
 }
 
+// Helper to escape XML special characters
+const escapeXml = (unsafe) => {
+  return unsafe.replace(/[<>&'"]/g, (c) => {
+    switch (c) {
+      case '<': return '&lt;';
+      case '>': return '&gt;';
+      case '&': return '&amp;';
+      case '\'': return '&apos;';
+      case '"': return '&quot;';
+    }
+  });
+};
+
 // 1. Generate Sitemap
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${routes.map(route => `
   <url>
-    <loc>${DOMAIN}${route.path}</loc>
+    <loc>${escapeXml(`${DOMAIN}${route.path}`)}</loc>
     <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>
     <changefreq>${route.changefreq}</changefreq>
     <priority>${route.priority}</priority>
@@ -44,15 +57,15 @@ console.log('✅ sitemap.xml generated');
 const rss = `<?xml version="1.0" encoding="UTF-8" ?>
 <rss version="2.0">
 <channel>
-  <title>${SITE_TITLE}</title>
-  <link>${DOMAIN}</link>
-  <description>${SITE_DESC}</description>
+  <title>${escapeXml(SITE_TITLE)}</title>
+  <link>${escapeXml(DOMAIN)}</link>
+  <description>${escapeXml(SITE_DESC)}</description>
   <language>ko</language>
   ${routes.map(route => `
   <item>
-    <title>${route.title}</title>
-    <link>${DOMAIN}${route.path}</link>
-    <description>${route.title} - ${SITE_DESC}</description>
+    <title>${escapeXml(route.title)}</title>
+    <link>${escapeXml(`${DOMAIN}${route.path}`)}</link>
+    <description>${escapeXml(`${route.title} - ${SITE_DESC}`)}</description>
     <pubDate>${new Date().toUTCString()}</pubDate>
   </item>
   `).join('')}
