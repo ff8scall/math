@@ -4,7 +4,7 @@ import { useLocation } from 'react-router-dom';
 import { seoData } from '../../data/seoData';
 
 const SEOHead = ({ title, description, keywords, image, canonicalPath }) => {
-  const DOMAIN = "https://free-math.vercel.app";
+  const DOMAIN = "https://math.lego-sia.com";
   const location = useLocation();
   const currentPath = location.pathname;
 

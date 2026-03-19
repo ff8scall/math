@@ -9,7 +9,7 @@ const __dirname = path.dirname(__filename);
 
 import { seoData } from '../src/data/seoData.js';
 
-const DOMAIN = 'https://free-math.vercel.app';
+const DOMAIN = 'https://math.lego-sia.com';
 const SITE_TITLE = '매쓰 펫토리 (Math Petory) | 초등 수학 원리 & 펫 키우기';
 const SITE_DESC = '초등학교 1학년부터 6학년까지, 공식 암기가 아닌 원리로 배우는 수학 학습 플랫폼 매쓰 펫토리! 나만의 펫을 키우고 방을 꾸미며 즐겁게 수학 실력을 키워보세요.';
 
