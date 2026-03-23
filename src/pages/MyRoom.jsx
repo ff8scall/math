@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react';
-import SEOHead from '../components/seo/SEOHead';
 import { motion, AnimatePresence } from 'framer-motion';
 import Button from '../components/common/Button';
 import { getStorageData, updateAvatar, updateCoins, buyFood, feedPet, getActiveMultiplier } from '../utils/storage/storageManager';
@@ -198,7 +197,6 @@ const MyRoom = () => {
 
     return (
         <div className={styles.container}>
-            <SEOHead title="내 방 꾸미기" description="동물 친구들과 함께 즐거운 시간!" />
 
             <header className={styles.header}>
                 <div className={styles.titleBox}>

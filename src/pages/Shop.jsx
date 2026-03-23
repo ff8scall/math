@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import SEOHead from '../components/seo/SEOHead';
 import Button from '../components/common/Button';
 import { getStorageData, updateCoins, addToInventory, setStorageData, updateAvatar, updatePet } from '../utils/storage/storageManager';
 import { generateSaveCode, parseSaveCode, generateCouponCode } from '../utils/storage/codeGenerator';
@@ -250,7 +249,6 @@ const Shop = () => {
 
     return (
         <div className={styles.container}>
-            <SEOHead title="수학 상점" description="열심히 공부한 코인으로 귀여운 펫 친구들을 만나보세요!" />
 
             <header className={styles.header}>
                 <div className={styles.info}>

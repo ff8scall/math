@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import SEOHead from '../components/seo/SEOHead';
 import Button from '../components/common/Button';
 import { updateCoins, getActiveMultiplier } from '../utils/storage/storageManager';
 import styles from './MathGame.module.css';
@@ -162,7 +161,6 @@ const MathGame = () => {
 
     return (
         <div className={styles.container}>
-            <SEOHead title={`${gradeId}학년 수학 레이스`} />
 
             <div className={styles.header}>
                 <Button onClick={() => navigate(-1)} variant="ghost" size="small"><ArrowLeft size={16} /> 뒤로</Button>

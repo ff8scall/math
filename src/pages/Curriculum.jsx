@@ -3,7 +3,6 @@ import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import Button from '../components/common/Button';
 import PageHeader from '../components/common/PageHeader';
-import SEOHead from '../components/seo/SEOHead';
 import styles from './Curriculum.module.css';
 
 const Curriculum = () => {
@@ -201,7 +200,6 @@ const Curriculum = () => {
 
     return (
         <div className={styles.container}>
-            <SEOHead title={`${gradeId}학년 수학 목차`} />
             <div className={styles.header}>
                 <PageHeader title={`${gradeId}학년 수학 탐험 지도 🗺️`} />
             </div>
