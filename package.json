@@ -7,6 +7,7 @@
     "dev": "vite",
     "build": "node scripts/generate-seo.js && vite build",
     "lint": "eslint .",
+    "indexnow": "node scripts/generate-seo.js",
     "preview": "vite preview"
   },
   "dependencies": {
