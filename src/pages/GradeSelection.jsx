@@ -13,7 +13,7 @@ const GradeSelection = () => {
 
     return (
         <div className={styles.container}>
-            <h1 className={styles.title}>몇 학년인가요? 🏫</h1>
+            <h1 className={styles.title}>매쓰 펫토리 초등 수학 여행! 몇 학년인가요? 🎒</h1>
             <p className={styles.subtitle}>자신의 학년을 선택하고 수학 여행을 떠나요!</p>
 
             <div className={styles.grid}>
