@@ -24,6 +24,15 @@ if (!fs.existsSync(publicDir)) {
   fs.mkdirSync(publicDir, { recursive: true });
 }
 
+// 0. IndexNow Configuration
+const INDEXNOW_KEY = 'c6e8260628d349a68cb9d68d6e4a891c';
+const INDEXNOW_KEY_FILE = `${INDEXNOW_KEY}.txt`;
+const INDEXNOW_KEY_LOCATION = `${DOMAIN}/${INDEXNOW_KEY_FILE}`;
+
+// Generate IndexNow Key File in public root
+fs.writeFileSync(path.join(publicDir, INDEXNOW_KEY_FILE), INDEXNOW_KEY);
+console.log(`✅ IndexNow Key File (${INDEXNOW_KEY_FILE}) generated`);
+
 // Helper to escape XML special characters
 const escapeXml = (unsafe) => {
   return unsafe.replace(/[<>&'"]/g, (c) => {
@@ -92,3 +101,39 @@ try {
 } catch (error) {
   console.error('❌ Failed to generate 404.html:', error.message);
 }
+
+// 5. Submit to IndexNow (Bing, Yandex, etc.)
+const submitToIndexNow = async () => {
+  const urlList = routes.map(route => `${DOMAIN}${route.path}`);
+  const data = JSON.stringify({
+    host: DOMAIN.replace(/^https?:\/\//, ''),
+    key: INDEXNOW_KEY,
+    keyLocation: INDEXNOW_KEY_LOCATION,
+    urlList: urlList
+  });
+
+  console.log(`🚀 Submitting ${urlList.length} URLs to IndexNow...`);
+
+  try {
+    const response = await fetch('https://api.indexnow.org/IndexNow', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json; charset=utf-8',
+      },
+      body: data
+    });
+
+    if (response.ok) {
+      console.log('✅ IndexNow submission successful!');
+    } else {
+      console.error(`❌ IndexNow submission failed with status: ${response.status}`);
+      const text = await response.text();
+      console.error('Response:', text);
+    }
+  } catch (error) {
+    console.error('❌ IndexNow submission error:', error.message);
+  }
+};
+
+// Execute IndexNow submission
+submitToIndexNow();
