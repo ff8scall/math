@@ -25,7 +25,7 @@ if (!fs.existsSync(publicDir)) {
 }
 
 // 0. IndexNow Configuration
-const INDEXNOW_KEY = 'c6e8260628d349a68cb9d68d6e4a891c';
+const INDEXNOW_KEY = '0efd7b4640e34f48b3761ae6215ac084';
 const INDEXNOW_KEY_FILE = `${INDEXNOW_KEY}.txt`;
 const INDEXNOW_KEY_LOCATION = `${DOMAIN}/${INDEXNOW_KEY_FILE}`;
 
