@@ -10,7 +10,7 @@ const __dirname = path.dirname(__filename);
 import { seoData } from '../src/data/seoData.js';
 
 const DOMAIN = 'https://math.lego-sia.com';
-const SITE_TITLE = '매쓰 펫토리 (Math Petory) | 초등 수학 원리 & 펫 키이우기';
+const SITE_TITLE = '매쓰 펫토리 (Math Petory) | 초등 수학 원리 & 펫 키우기';
 const SITE_DESC = '초등학교 1학년부터 6학년까지, 공식 암기가 아닌 원리로 배우는 수학 학습 플랫폼 매쓰 펫토리! 나만의 펫을 키우고 방을 꾸미며 즐겁게 수학 실력을 키워보세요.';
 
 const routes = seoData;
@@ -104,34 +104,77 @@ try {
 
 // 5. Submit to IndexNow (Bing, Yandex, etc.)
 const submitToIndexNow = async () => {
-  const urlList = routes.map(route => `${DOMAIN}${route.path}`);
-  const data = JSON.stringify({
-    host: DOMAIN.replace(/^https?:\/\//, ''),
+  const sitemapPath = path.join(publicDir, 'sitemap.xml');
+  console.log(`🚀 Reading URLs from ${sitemapPath}...`);
+
+  if (!fs.existsSync(sitemapPath)) {
+    console.error(`❌ sitemap.xml not found!`);
+    return;
+  }
+
+  const sitemapContent = fs.readFileSync(sitemapPath, 'utf8');
+  const urlMatches = sitemapContent.matchAll(/<loc>(https?:\/\/[^<]+)<\/loc>/g);
+  const urlList = Array.from(urlMatches).map(match => match[1]);
+
+  if (urlList.length === 0) {
+    console.error('❌ No URLs found in sitemap.xml');
+    return;
+  }
+
+  const data = {
+    host: new URL(DOMAIN).hostname,
     key: INDEXNOW_KEY,
     keyLocation: INDEXNOW_KEY_LOCATION,
     urlList: urlList
-  });
+  };
 
+  console.log(`🚀 Host: ${data.host}`);
+  console.log(`🚀 Key Location: ${data.keyLocation}`);
   console.log(`🚀 Submitting ${urlList.length} URLs to IndexNow...`);
 
+  // Verify key file accessibility first
   try {
-    const response = await fetch('https://api.indexnow.org/IndexNow', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json; charset=utf-8',
-      },
-      body: data
-    });
-
-    if (response.ok) {
-      console.log('✅ IndexNow submission successful!');
+    const keyCheck = await fetch(data.keyLocation);
+    if (!keyCheck.ok) {
+      console.warn(`⚠️ Warning: Key file at ${data.keyLocation} returned status ${keyCheck.status}. Submission might fail.`);
     } else {
-      console.error(`❌ IndexNow submission failed with status: ${response.status}`);
-      const text = await response.text();
-      console.error('Response:', text);
+      const content = (await keyCheck.text()).trim();
+      if (content !== INDEXNOW_KEY) {
+        console.warn(`⚠️ Warning: Key file content mismatch! Found: "${content}", Expected: "${INDEXNOW_KEY}"`);
+      } else {
+        console.log(`✅ Key file verified at ${data.keyLocation}`);
+      }
     }
-  } catch (error) {
-    console.error('❌ IndexNow submission error:', error.message);
+  } catch (e) {
+    console.warn(`⚠️ Warning: Could not verify key file: ${e.message}`);
+  }
+
+  const endpoints = [
+    'https://www.bing.com/indexnow',
+    'https://api.indexnow.org/indexnow'
+  ];
+
+  for (const endpoint of endpoints) {
+    console.log(`📡 Sending to ${endpoint}...`);
+    try {
+      const response = await fetch(endpoint, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json; charset=utf-8',
+        },
+        body: JSON.stringify(data)
+      });
+
+      if (response.ok) {
+        console.log(`✅ IndexNow submission to ${new URL(endpoint).hostname} successful!`);
+      } else {
+        console.error(`❌ IndexNow submission to ${new URL(endpoint).hostname} failed with status: ${response.status}`);
+        const text = await response.text();
+        console.error('Response:', text);
+      }
+    } catch (error) {
+      console.error(`❌ IndexNow submission to ${new URL(endpoint).hostname} error:`, error.message);
+    }
   }
 };
 

@@ -72,6 +72,7 @@ const Curriculum = () => {
                     topics: [
                         { id: 'addition-subtraction', title: '덧셈과 뺄셈', description: '원리 탐험부터 실전 연습까지!', link: '/grade/3/arithmetic', status: 'available' },
                         { id: 'subtraction-borrow', title: '받아내림 뺄셈', description: '빌려오는 뺄셈, 원리를 보고 풀어요.', link: '/grade/3/subtraction', status: 'available' },
+                        { id: 'arithmetic-advanced', title: '덧셈과 뺄셈 심화', description: '문장제와 사고력 수학 도전!', link: '/grade/3/word-problem', status: 'available' },
                         { id: 'multiplication', title: '곱셈 (구구단)', description: '구구단 원리를 보고 퀴즈로 마스터!', link: '/grade/3/multiplication', status: 'available' },
                         { id: 'division', title: '나눗셈', description: '사탕 나누기로 원리를 익히고 연습해요.', link: '/grade/3/division', status: 'available' },
                         { id: 'fractions', title: '분수와 소수', description: '피자 나누기로 배우는 분수의 세계.', link: '/grade/3/fraction', status: 'available' },
