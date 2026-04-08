@@ -2,6 +2,8 @@ import React from 'react';
 import { useLocation, Link, useParams } from 'react-router-dom';
 import { ChevronLeft } from 'lucide-react';
 import { seoData } from '../../data/seoData';
+import SEOHead from '../seo/SEOHead';
+import { JsonLd, generateBreadcrumbSchema } from '../seo/JsonLd';
 import styles from './PageHeader.module.css';
 
 const PageHeader = ({ title: propTitle, grade: propGrade }) => {
@@ -20,8 +22,19 @@ const PageHeader = ({ title: propTitle, grade: propGrade }) => {
     const rawTitle = propTitle || routeData.title || "매쓰 펫토리";
     const cleanedTitle = rawTitle.includes(': ') ? rawTitle.split(': ')[1] : rawTitle;
 
+    // Build Breadcrumbs for SEO
+    const breadcrumbs = [
+        { name: "홈", item: "/" }
+    ];
+    if (gradeId) {
+        breadcrumbs.push({ name: `${gradeId}학년`, item: `/grade/${gradeId}` });
+    }
+    breadcrumbs.push({ name: cleanedTitle, item: currentPath });
+
     return (
         <div className={styles.header}>
+            <SEOHead />
+            <JsonLd data={generateBreadcrumbSchema(breadcrumbs)} />
             <div className={styles.topRow}>
                 <Link to={gradeId ? `/grade/${gradeId}` : "/"} className={styles.backLink}>
                     <ChevronLeft size={20} />

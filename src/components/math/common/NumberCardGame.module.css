@@ -1,0 +1,149 @@
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 30px;
+    background: #fdfdfd;
+    border-radius: 40px;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.title {
+    font-size: 2.2rem;
+    color: #444;
+}
+
+.subtitle {
+    color: #888;
+    margin-bottom: 20px;
+}
+
+.levelBtns {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.gameBoard {
+    background: #f8fbff;
+    padding: 40px;
+    border-radius: 30px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+}
+
+.conditionBox {
+    background: white;
+    padding: 20px;
+    border-radius: 20px;
+    text-align: center;
+    margin-bottom: 40px;
+    border: 2px dashed #4A90E2;
+}
+
+.badge {
+    background: #FF6B6B;
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    display: inline-block;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+}
+
+.conditionBox p {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.slotsArea {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 40px;
+}
+
+.slot {
+    width: 80px;
+    height: 100px;
+    background: #edf2f7;
+    border: 3px dashed #cbd5e0;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    font-weight: 900;
+    color: #a0aec0;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.slot.filled {
+    background: white;
+    border: 3px solid #4A90E2;
+    color: #4A90E2;
+    box-shadow: 0 5px 15px rgba(74, 144, 226, 0.2);
+}
+
+.cardsArea {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+}
+
+.card {
+    width: 60px;
+    height: 80px;
+    background: white;
+    border: 2px solid #ddd;
+    border-radius: 12px;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #444;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.used {
+    background: #f0f0f0;
+    color: #ccc;
+    border-color: #eee;
+    box-shadow: none;
+    cursor: default;
+}
+
+.actionArea {
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+.fbCorrect {
+    background: #f0fff4;
+    padding: 20px;
+    border-radius: 15px;
+    color: #38a169;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 25px;
+}
+
+.fbError {
+    background: #fff5f5;
+    padding: 20px;
+    border-radius: 15px;
+    color: #e53e3e;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 25px;
+}

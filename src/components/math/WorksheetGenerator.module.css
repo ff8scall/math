@@ -125,25 +125,82 @@
     padding-top: 10px;
 }
 
+.wordProblemGrid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+}
+
+.wordProblemItem {
+    border-bottom: 1px solid #eee;
+    padding-bottom: 20px;
+    align-items: flex-start;
+}
+
+.wordContent {
+    font-size: 13pt;
+    line-height: 1.6;
+    flex: 1;
+    word-break: keep-all;
+}
+
+.wordAnswerSpace {
+    margin-top: 15px;
+    text-align: right;
+    font-weight: bold;
+    font-size: 11pt;
+}
+
 /* Print Media Query */
 @media print {
     @page {
-        size: A4;
+        size: A4 portrait;
         margin: 0;
     }
 
     body {
         margin: 0;
         padding: 0;
-        background: white;
+        background: white !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
     }
 
-    .container {
-        padding: 0;
-        margin: 0;
-        background: white;
-        display: block;
-        width: 100%;
+    /* Hide EVERYTHING by default */
+    body * {
+        visibility: hidden;
+    }
+
+    /* Only show the printable area and its children */
+    #printable-area,
+    #printable-area * {
+        visibility: visible;
+    }
+
+    /* Position the printable area at the top left */
+    #printable-area {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 210mm !important;
+        height: 297mm !important;
+        margin: 0 !important;
+        padding: 20mm !important; /* Proper margin for A4 */
+        box-shadow: none !important;
+        border: none !important;
+        box-sizing: border-box;
+        background: white !important;
+        overflow: hidden;
+    }
+
+    /* Ensure parent containers don't add padding/margin */
+    .container,
+    :global(#root),
+    :global(main) {
+        padding: 0 !important;
+        margin: 0 !important;
+        background: white !important;
+        min-height: auto !important;
+        display: block !important;
     }
 
     .controls,
@@ -155,18 +212,11 @@
         display: none !important;
     }
 
-    :global(main) {
-        padding: 0 !important;
-        margin: 0 !important;
-    }
-
-    .sheetPage {
-        width: 210mm !important;
-        height: 297mm !important;
-        box-shadow: none;
-        margin: 0;
-        padding: 15mm !important;
-        page-break-after: always;
-        border: none;
+    .sheetFooter {
+        position: absolute;
+        bottom: 15mm;
+        left: 0;
+        right: 0;
+        border-top: 1px solid #eee;
     }
 }

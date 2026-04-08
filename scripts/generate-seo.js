@@ -35,13 +35,15 @@ console.log(`✅ IndexNow Key File (${INDEXNOW_KEY_FILE}) generated`);
 
 // Helper to escape XML special characters
 const escapeXml = (unsafe) => {
-  return unsafe.replace(/[<>&'"]/g, (c) => {
+  if (unsafe === null || unsafe === undefined) return '';
+  return String(unsafe).replace(/[<>&'"]/g, (c) => {
     switch (c) {
       case '<': return '&lt;';
       case '>': return '&gt;';
       case '&': return '&amp;';
       case '\'': return '&apos;';
       case '"': return '&quot;';
+      default: return c;
     }
   });
 };
@@ -74,7 +76,7 @@ const rss = `<?xml version="1.0" encoding="UTF-8" ?>
   <item>
     <title>${escapeXml(route.title)}</title>
     <link>${escapeXml(`${DOMAIN}${route.path}`)}</link>
-    <description>${escapeXml(`${route.title} - ${SITE_DESC}`)}</description>
+    <description>${escapeXml(route.description || SITE_DESC)}</description>
     <pubDate>${new Date().toUTCString()}</pubDate>
   </item>
   `).join('')}

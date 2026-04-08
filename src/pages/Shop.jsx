@@ -3,6 +3,7 @@ import Button from '../components/common/Button';
 import { getStorageData, updateCoins, addToInventory, setStorageData, updateAvatar, updatePet } from '../utils/storage/storageManager';
 import { generateSaveCode, parseSaveCode, generateCouponCode } from '../utils/storage/codeGenerator';
 import styles from './Shop.module.css';
+import SEOHead from '../components/seo/SEOHead';
 import confetti from 'canvas-confetti';
 
 // Avatars (Original)
@@ -249,6 +250,7 @@ const Shop = () => {
 
     return (
         <div className={styles.container}>
+            <SEOHead />
 
             <header className={styles.header}>
                 <div className={styles.info}>
@@ -276,7 +278,7 @@ const Shop = () => {
                         {avatarItems.map(item => (
                             <div key={item.id} className={`${styles.itemCard} ${data.inventory.includes(item.id) || item.price === 0 ? styles.owned : ''} ${data.selectedAvatar === item.id ? styles.selected : ''}`}>
                                 <div className={styles.avatarImgBox}>
-                                    <img src={item.img} alt={item.name} className={styles.avatarImg} />
+                                    <img src={item.img} alt={item.name} className={styles.avatarImg} loading="lazy" />
                                 </div>
                                 <h3>{item.name}</h3>
                                 <p>{item.desc}</p>
@@ -300,7 +302,7 @@ const Shop = () => {
                         {petItems.map(item => (
                             <div key={item.id} className={`${styles.itemCard} ${data.inventory.includes(item.id) ? styles.owned : ''} ${data.selectedPet === item.id ? styles.selected : ''}`}>
                                 <div className={styles.petIconBox}>
-                                    <img src={item.img} alt={item.name} className={styles.petItemImg} />
+                                    <img src={item.img} alt={item.name} className={styles.petItemImg} loading="lazy" />
                                 </div>
                                 <h3>{item.name}</h3>
                                 <p style={{ fontSize: '0.9rem', color: '#666', height: '40px' }}>{item.desc}</p>

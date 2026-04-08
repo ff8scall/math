@@ -19,3 +19,22 @@
     color: var(--text-sub);
     font-size: 0.9rem;
 }
+
+.footerLinks {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+}
+
+.footerLinks a {
+    color: #666;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.footerLinks a:hover {
+    color: #1a73e8;
+    text-decoration: underline;
+}

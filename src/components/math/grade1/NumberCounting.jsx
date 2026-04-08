@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Button from '../../common/Button';
 import confetti from 'canvas-confetti';
 import { updateCoins } from '../../../utils/storage/storageManager';
+import PageHeader from '../../common/PageHeader';
 import { JsonLd, generateCourseSchema } from '../../seo/JsonLd';
 import styles from './NumberCounting.module.css';
 
@@ -87,6 +88,7 @@ const NumberCounting = () => {
 
     return (
         <div className={styles.container}>
+            <PageHeader />
             {/* 모드 전환 탭 */}
             <div className={styles.modeTabs}>
                 <Button
@@ -107,7 +109,7 @@ const NumberCounting = () => {
 
             {mode === 'explore' ? (
                 <div className={styles.explore}>
-                    <h2 className={styles.title}>9까지의 수 세기 🔢</h2>
+                    <h3 className={styles.title}>9까지의 수 세기 🔢</h3>
                     <p className={styles.subtitle}>물건을 추가하거나 빼면서 수를 세어봐요!</p>
 
                     {/* 아이템 선택 */}

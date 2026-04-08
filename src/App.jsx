@@ -21,6 +21,7 @@ import WorksheetGenerator from './components/math/WorksheetGenerator';
 import MyRoom from './pages/MyRoom';
 import CircleExplorer from './components/math/CircleExplorer';
 import WeightVolumeConverter from './components/math/WeightVolumeConverter';
+import NotFound from './pages/NotFound';
 
 // 1학년 컴포넌트
 import NumberCounting from './components/math/grade1/NumberCounting';
@@ -86,20 +87,16 @@ import RoundGeometry6th from './components/math/grade6/RoundGeometry6th';
 import Grade6Quiz from './components/math/Grade6Quiz';
 import MathGame from './pages/MathGame';
 
+// 신규 추가 공통 및 고학년 도구
+import BlockBuilder3D from './components/math/grade6/BlockBuilder3D';
+import NumberCardGame from './components/math/common/NumberCardGame';
+import WordProblemDefenseGame from './components/math/common/WordProblemDefenseGame';
+
 function App() {
   return (
     <div className="App">
       <MainLayout>
         <Routes>
-          {/* The provided code snippet seems to be a mix of JS logic and JSX routes.
-              Assuming the intent was to add the JS logic within a component and then define routes.
-              Since this is App.js, the JS logic cannot be placed directly here.
-              I will only apply the route definitions as they are syntactically valid for this file.
-              The instruction about coin rewards implies changes within specific components, not App.js itself.
-              The provided snippet `setScore(score + 10); updateCoins(10); confetti();e path="/" element={<GradeSelection />} />`
-              is syntactically incorrect. I will correct the route part and ignore the JS logic
-              as it cannot be placed here.
-          */}
           <Route path="/" element={<GradeSelection />} />
           <Route path="/grade/:gradeId" element={<Curriculum />} />
           <Route path="/grade/3/arithmetic" element={<AdditionWithCarry />} />
@@ -177,12 +174,20 @@ function App() {
           <Route path="/grade/6/circle-area" element={<CircleArea6th />} />
           <Route path="/grade/6/round-geometry" element={<RoundGeometry6th />} />
           <Route path="/grade/6/quiz" element={<Grade6Quiz />} />
+          <Route path="/grade/6/block-builder" element={<BlockBuilder3D />} />
           <Route path="/grade/:gradeId/game" element={<MathGame />} />
+          
+          {/* 공통 심화/게임 모드 */}
+          <Route path="/grade/:gradeId/number-card" element={<NumberCardGame />} />
+          <Route path="/grade/:gradeId/defense-game" element={<WordProblemDefenseGame />} />
 
           <Route path="/myroom" element={<MyRoom />} />
           <Route path="/shop" element={<Shop />} />
           {/* Legacy or Direct routes can be redirected or kept for testing */}
           <Route path="/arithmetic" element={<AdditionWithCarry />} />
+          
+          {/* 404 Catch-all Route */}
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </MainLayout>
     </div>

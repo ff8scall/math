@@ -13,6 +13,8 @@ const MathQuiz = () => {
     const [score, setScore] = useState(0);
     const inputRef = useRef(null);
     const [showAnswer, setShowAnswer] = useState(false);
+    const [problemsSolved, setProblemsSolved] = useState(0);
+    const [showMilestone, setShowMilestone] = useState(false);
 
     // Coin animation state
     const [coinsEarned, setCoinsEarned] = useState(0);
@@ -141,18 +143,27 @@ const MathQuiz = () => {
 
     const handleCorrect = () => {
         setFeedback('correct');
+        const newSolved = problemsSolved + 1;
+        setProblemsSolved(newSolved);
+        
         setScore(score + 5);
-        updateCoins(5); // +5 Coins!
-        setCoinsEarned(prev => prev + 5);
+        let bonus = (newSolved % 10 === 0) ? 50 : 5;
+        updateCoins(bonus); // Standard +5, Bonus +50
+        setCoinsEarned(prev => prev + bonus);
+
         confetti({
-            particleCount: 100,
-            spread: 70,
+            particleCount: 150,
+            spread: 100,
             origin: { y: 0.6 }
         });
 
-        setTimeout(() => {
-            generateProblem();
-        }, 1500);
+        if (newSolved % 10 === 0) {
+            setShowMilestone(true);
+        } else {
+            setTimeout(() => {
+                generateProblem();
+            }, 1500);
+        }
     };
 
     const handleIncorrect = () => {
@@ -283,6 +294,34 @@ const MathQuiz = () => {
                     )}
                 </AnimatePresence>
             </div>
+
+            {showMilestone && (
+                <div className={styles.modalOverlay}>
+                    <motion.div 
+                        className={styles.milestoneModal}
+                        initial={{ scale: 0.5, opacity: 0 }}
+                        animate={{ scale: 1, opacity: 1 }}
+                    >
+                        <div className={styles.milestoneIcon}>🏆</div>
+                        <h2>대단해요! 10문제를 풀었어요!</h2>
+                        <p>꾸준히 노력하는 모습이 정말 멋져요!</p>
+                        <div className={styles.rewardBanner}>
+                            <span className={styles.rewardCoin}>🪙 +50 보너스 코인!</span>
+                        </div>
+                        <Button 
+                            onClick={() => {
+                                setShowMilestone(false);
+                                generateProblem();
+                            }}
+                            variant="primary"
+                            size="large"
+                            fullWidth
+                        >
+                            계속해서 공부하기 👉
+                        </Button>
+                    </motion.div>
+                </div>
+            )}
         </div>
     );
 };

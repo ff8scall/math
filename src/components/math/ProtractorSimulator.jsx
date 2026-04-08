@@ -1,17 +1,17 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import Button from '../../common/Button';
-import { updateCoins } from '../../../utils/storage/storageManager';
+import Button from '../common/Button';
+import { updateCoins } from '../../utils/storage/storageManager';
 import confetti from 'canvas-confetti';
-import { JsonLd, generateCourseSchema } from '../../seo/JsonLd';
-import styles from './Angles4th.module.css';
+import styles from './ProtractorSimulator.module.css';
 
-const Angles4th = () => {
+const ProtractorSimulator = () => {
     const [angle, setAngle] = useState(45);
     const [targetAngle, setTargetAngle] = useState(null);
     const [mode, setMode] = useState('explore'); // 'explore', 'game'
     const [isDragging, setIsDragging] = useState(false);
     const [showProtractor, setShowProtractor] = useState(true);
+    const [protractorRotation, setProtractorRotation] = useState(0);
 
     const containerRef = useRef(null);
 
@@ -27,6 +27,7 @@ const Angles4th = () => {
         deg = -deg; // Invert y for standard math coords
         if (deg < 0) deg += 360;
         
+        // Snap to whole degrees
         return Math.round(deg);
     };
 
@@ -45,10 +46,10 @@ const Angles4th = () => {
     };
 
     const startNewGame = () => {
-        setTargetAngle(Math.floor(Math.random() * 17) * 10 + 10);
+        setTargetAngle(Math.floor(Math.random() * 17) * 10 + 10); // 10, 20... 170
         setMode('game');
         setAngle(0);
-        setShowProtractor(false);
+        setShowProtractor(false); // Hide protractor for game challenge
     };
 
     const checkGameAnswer = () => {
@@ -90,35 +91,62 @@ const Angles4th = () => {
                 onMouseUp={handleMouseUp}
                 onMouseLeave={handleMouseUp}
             >
+                {/* Center Point */}
                 <div className={styles.origin}></div>
+
+                {/* Base Ray (0 degrees) */}
                 <div className={styles.baseRay}></div>
-                <motion.div className={styles.movingRay} style={{ transform: `rotate(${-angle}deg)` }}>
+
+                {/* Moving Ray */}
+                <motion.div 
+                    className={styles.movingRay}
+                    style={{ transform: `rotate(${-angle}deg)` }}
+                >
                     <div className={styles.rayLabel}>{angle}°</div>
                 </motion.div>
 
+                {/* Protractor Overlay */}
                 <AnimatePresence>
                     {showProtractor && (
                         <motion.div 
                             initial={{ opacity: 0, scale: 0.8 }}
-                            animate={{ opacity: 0.7, scale: 1 }}
+                            animate={{ opacity: 0.6, scale: 1, rotate: protractorRotation }}
                             exit={{ opacity: 0, scale: 0.8 }}
                             className={styles.protractor}
                             drag
                             dragMomentum={false}
                         >
+                            {/* SVG Protractor Body */}
                             <svg viewBox="0 0 400 200" width="100%" height="100%">
                                 <path d="M 0 200 A 200 200 0 0 1 400 200 Z" fill="none" stroke="#333" strokeWidth="2" />
                                 {Array.from({ length: 19 }, (_, i) => i * 10).map(deg => {
                                     const rad = (deg * Math.PI) / 180;
+                                    const x1 = 200 + 180 * Math.cos(rad);
+                                    const y1 = 200 - 180 * Math.sin(rad);
+                                    const x2 = 200 + 200 * Math.cos(rad);
+                                    const y2 = 200 - 200 * Math.sin(rad);
                                     const tx = 200 + 160 * Math.cos(rad);
                                     const ty = 200 - 160 * Math.sin(rad);
                                     return (
                                         <g key={deg}>
-                                            <line x1={200 + 180 * Math.cos(rad)} y1={200 - 180 * Math.sin(rad)} x2={200 + 200 * Math.cos(rad)} y2={200 - 200 * Math.sin(rad)} stroke="#333" strokeWidth="2" />
+                                            <line x1={x1} y1={y1} x2={x2} y2={y2} stroke="#333" strokeWidth="2" />
                                             <text x={tx} y={ty} textAnchor="middle" fontSize="12" fill="#333" transform={`rotate(${90-deg}, ${tx}, ${ty})`}>{deg}</text>
                                         </g>
                                     );
                                 })}
+                                {/* Mid markings */}
+                                {Array.from({ length: 180 }, (_, i) => i).map(deg => (
+                                    (deg % 10 !== 0) && (
+                                        <line 
+                                            key={deg}
+                                            x1={200 + 190 * Math.cos(deg * Math.PI / 180)}
+                                            y1={200 - 190 * Math.sin(deg * Math.PI / 180)}
+                                            x2={200 + 200 * Math.cos(deg * Math.PI / 180)}
+                                            y2={200 - 200 * Math.sin(deg * Math.PI / 180)}
+                                            stroke="#666" strokeWidth="1"
+                                        />
+                                    )
+                                ))}
                             </svg>
                         </motion.div>
                     )}
@@ -143,9 +171,8 @@ const Angles4th = () => {
                     </div>
                 )}
             </footer>
-            <JsonLd data={generateCourseSchema("각도", "각의 크기를 재고 예각, 직각, 둔각의 개념을 배웁니다.")} />
         </div>
     );
 };
 
-export default Angles4th;
+export default ProtractorSimulator;

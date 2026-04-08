@@ -1,97 +1,82 @@
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 import Button from '../../common/Button';
 import { JsonLd, generateCourseSchema } from '../../seo/JsonLd';
-import { updateCoins } from '../../../utils/storage/storageManager';
-import confetti from 'canvas-confetti';
 import styles from './Cuboids5th.module.css';
 
 const Cuboids5th = () => {
-    const [mode, setMode] = useState('explore'); // 'explore' | 'practice'
-    const [quiz, setQuiz] = useState(null);
-    const [feedback, setFeedback] = useState(null);
+    const [l, setL] = useState(100); // Length
+    const [w, setW] = useState(80);  // Width
+    const [h, setH] = useState(60);  // Height
+    const [rotate, setRotate] = useState({ x: -20, y: 35 });
 
-    const generateQuiz = () => {
-        const questions = [
-            { q: "직육면체의 면은 모두 몇 개인가요?", a: "6" },
-            { q: "직육면체의 모서리는 모두 몇 개인가요?", a: "12" },
-            { q: "직육면체의 꼭짓점은 모두 몇 개인가요?", a: "8" },
-            { q: "정사각형 6개로 둘러싸인 직육면체를 뭐라고 하나요?", a: "정육면체" },
-            { q: "직육면체에서 서로 마주보고 있는 면은 서로 어떤가요?", a: "평행하다" }
-        ];
-        const randomQ = questions[Math.floor(Math.random() * questions.length)];
-        setQuiz(randomQ);
-        setFeedback(null);
-    };
-
-    const checkAnswer = (ans) => {
-        if (ans.toString().trim() === quiz.a) {
-            setFeedback('correct');
-            confetti();
-            updateCoins(10);
-            setTimeout(generateQuiz, 2000);
-        } else {
-            setFeedback('incorrect');
-        }
-    };
-
-    useEffect(() => {
-        if (mode === 'practice' && !quiz) generateQuiz();
-    }, [mode]);
+    const surfaceArea = 2 * (l * w + w * h + h * l);
 
     return (
         <div className={styles.container}>
-            <div className={styles.tabHeader}>
-                <Button onClick={() => setMode('explore')} variant={mode === 'explore' ? 'primary' : 'secondary'}>🔍 원리 탐험</Button>
-                <Button onClick={() => setMode('practice')} variant={mode === 'practice' ? 'primary' : 'secondary'}>✏️ 실전 연습</Button>
+            <header className={styles.header}>
+                <h1 className={styles.title}>📦 5학년 수학: 직육면체 탐험</h1>
+                <p className={styles.subtitle}>입체도형의 부피와 겉넓이를 입체적으로 이해해봐요!</p>
+            </header>
+
+            <div className={styles.mainLayout}>
+                <div className={styles.visualizer}>
+                    <div className={styles.scene}>
+                        <motion.div 
+                            className={styles.cube}
+                            animate={{ rotateX: rotate.x, rotateY: rotate.y }}
+                            transition={{ type: 'spring', stiffness: 50 }}
+                        >
+                            {/* Faces */}
+                            <div className={`${styles.face} ${styles.front}`} style={{ width: l, height: h, transform: `translateZ(${w/2}px)` }}>앞</div>
+                            <div className={`${styles.face} ${styles.back}`} style={{ width: l, height: h, transform: `rotateY(180deg) translateZ(${w/2}px)` }}>뒤</div>
+                            <div className={`${styles.face} ${styles.right}`} style={{ width: w, height: h, transform: `rotateY(90deg) translateZ(${l/2}px)` }}>우</div>
+                            <div className={`${styles.face} ${styles.left}`} style={{ width: w, height: h, transform: `rotateY(-90deg) translateZ(${l/2}px)` }}>좌</div>
+                            <div className={`${styles.face} ${styles.top}`} style={{ width: l, height: w, transform: `rotateX(90deg) translateZ(${h/2}px)` }}>상</div>
+                            <div className={`${styles.face} ${styles.bottom}`} style={{ width: l, height: w, transform: `rotateX(-90deg) translateZ(${h/2}px)` }}>하</div>
+                        </motion.div>
+                    </div>
+
+                    <div className={styles.rotationControls}>
+                        <input type="range" min="-180" max="180" value={rotate.y} onChange={(e) => setRotate({...rotate, y: parseInt(e.target.value)})} />
+                        <p>좌우 회전 (Y-axis)</p>
+                    </div>
+                </div>
+
+                <div className={styles.sidebar}>
+                    <div className={styles.controlCard}>
+                        <h3>📏 크기 조절 (px)</h3>
+                        <div className={styles.inputItem}>
+                            <label>가로 (Length): {l}</label>
+                            <input type="range" min="40" max="150" value={l} onChange={(e) => setL(parseInt(e.target.value))} />
+                        </div>
+                        <div className={styles.inputItem}>
+                            <label>세로 (Width): {w}</label>
+                            <input type="range" min="40" max="150" value={w} onChange={(e) => setW(parseInt(e.target.value))} />
+                        </div>
+                        <div className={styles.inputItem}>
+                            <label>높이 (Height): {h}</label>
+                            <input type="range" min="40" max="150" value={h} onChange={(e) => setH(parseInt(e.target.value))} />
+                        </div>
+                    </div>
+
+                    <div className={styles.statsCard}>
+                        <h3>📐 계산 결과</h3>
+                        <p>겉넓이: <strong>{surfaceArea.toLocaleString()} px²</strong></p>
+                        <p>입체도형 요소:</p>
+                        <ul>
+                            <li>면의 개수: <strong>6개</strong></li>
+                            <li>모서리의 개수: <strong>12개</strong></li>
+                            <li>꼭짓점의 개수: <strong>8개</strong></li>
+                        </ul>
+                    </div>
+                    
+                    <div className={styles.proTip}>
+                        💡 <strong>직육면체 팁:</strong> 마주 보는 두 면은 서로 평행하고 크기가 같아요!
+                    </div>
+                </div>
             </div>
-
-            <AnimatePresence mode="wait">
-                {mode === 'explore' ? (
-                    <motion.div key="explore" initial={{ opacity: 0 }} animate={{ opacity: 1 }} className={styles.content}>
-                        <h1>직육면체 🧊</h1>
-                        <p>직사각형 6개로 둘러싸인 도형을 **직육면체**라고 합니다.</p>
-                        <div className={styles.parts}>
-                            <div className={styles.pCard}>면 (6개)</div>
-                            <div className={styles.pCard}>모서리 (12개)</div>
-                            <div className={styles.pCard}>꼭짓점 (8개)</div>
-                        </div>
-                        <div className={styles.visual}>
-                            <div className={styles.cubeFrame}>
-                                <motion.div className={styles.cube} animate={{ rotateY: 360, rotateX: 20 }} transition={{ repeat: Infinity, duration: 10, ease: "linear" }}>
-                                    <div className={styles.front}>앞</div>
-                                    <div className={styles.back}>뒤</div>
-                                    <div className={styles.top}>위</div>
-                                    <div className={styles.bottom}>아래</div>
-                                    <div className={styles.left}>왼</div>
-                                    <div className={styles.right}>오</div>
-                                </motion.div>
-                            </div>
-                        </div>
-                        <p className={styles.infoText}>💡 정육면체는 모든 면이 정사각형인 직육면체예요!</p>
-                    </motion.div>
-                ) : (
-                    <motion.div key="practice" initial={{ opacity: 0 }} animate={{ opacity: 1 }} className={styles.quizCard}>
-                        <h2>직육면체 퀴즈 💯</h2>
-                        {quiz && (
-                            <div className={styles.problemBox}>
-                                <p className={styles.question}>{quiz.q}</p>
-                                <div className={styles.optionsGrid}>
-                                    {["4", "6", "8", "12", "정육면체", "평행하다", "수직이다"].map(opt => (
-                                        <Button key={opt} onClick={() => checkAnswer(opt)} variant="outline">{opt}</Button>
-                                    ))}
-                                </div>
-                                <AnimatePresence>
-                                    {feedback === 'correct' && <p className={styles.correct}>정답입니다! 공간 지각력이 뛰어나시네요 🎉</p>}
-                                    {feedback === 'incorrect' && <p className={styles.incorrect}>다시 한번 세어보거나 생각해보세요 🤔</p>}
-                                </AnimatePresence>
-                            </div>
-                        )}
-                    </motion.div>
-                )}
-            </AnimatePresence>
-
-            <JsonLd data={generateCourseSchema("직육면체", "직육면체와 정육면체의 구성 요소와 성질을 배웁니다.")} />
+            <JsonLd data={generateCourseSchema("직육면체", "직육면체의 구성 요소와 성질을 입체적으로 배웁니다.")} />
         </div>
     );
 };

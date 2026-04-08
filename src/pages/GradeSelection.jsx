@@ -2,6 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import styles from './GradeSelection.module.css';
+import SEOHead from '../components/seo/SEOHead';
 
 const GradeSelection = () => {
     const navigate = useNavigate();
@@ -13,6 +14,7 @@ const GradeSelection = () => {
 
     return (
         <div className={styles.container}>
+            <SEOHead />
             <h1 className={styles.title}>매쓰 펫토리 초등 수학 여행! 몇 학년인가요? 🎒</h1>
             <p className={styles.subtitle}>자신의 학년을 선택하고 수학 여행을 떠나요!</p>
 

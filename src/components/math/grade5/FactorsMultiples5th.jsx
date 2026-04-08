@@ -1,247 +1,124 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Button from '../../common/Button';
-import confetti from 'canvas-confetti';
 import { updateCoins } from '../../../utils/storage/storageManager';
+import confetti from 'canvas-confetti';
 import { JsonLd, generateCourseSchema } from '../../seo/JsonLd';
 import styles from './FactorsMultiples5th.module.css';
 
 const FactorsMultiples5th = () => {
-    const [mode, setMode] = useState('factors'); // factors, multiples, quiz
-    const [number, setNumber] = useState(12);
-
-    // 계산 로직
-    const getFactors = (n) => {
-        const factors = [];
-        for (let i = 1; i <= n; i++) {
-            if (n % i === 0) factors.push(i);
-        }
-        return factors;
-    };
-
-    const getMultiples = (n, count = 10) => {
-        const multiples = [];
-        for (let i = 1; i <= count; i++) {
-            multiples.push(n * i);
-        }
-        return multiples;
-    };
-
-    // Quiz states
-    const [quizData, setQuizData] = useState(null);
-    const [feedback, setFeedback] = useState(null);
-    const [userAnswer, setUserAnswer] = useState('');
-
-
-    const getGCD = (a, b) => b ? getGCD(b, a % b) : a;
-    const getLCM = (a, b) => (a * b) / getGCD(a, b);
-
-    const generateQuiz = () => {
-        const types = ['factor', 'multiple', 'gcd', 'lcm'];
-        const type = types[Math.floor(Math.random() * types.length)];
-        const base = Math.floor(Math.random() * 15) + 2;
-
-        if (type === 'factor') {
-            const target = base * (Math.floor(Math.random() * 3) + 2);
-            const factors = getFactors(target);
-            const isCorrect = Math.random() > 0.5;
-            const choice = isCorrect
-                ? factors[Math.floor(Math.random() * factors.length)]
-                : factors[factors.length - 1] + 1;
-
-            setQuizData({
-                question: `${choice}은(는) ${target}의 약수일까요?`,
-                answer: isCorrect ? 'O' : 'X',
-                choices: ['O', 'X']
-            });
-        } else if (type === 'multiple') {
-            const target = base;
-            const isCorrect = Math.random() > 0.5;
-            const multiple = isCorrect ? target * (Math.floor(Math.random() * 5) + 1) : target * 5 + 1;
-
-            setQuizData({
-                question: `${multiple}은(는) ${target}의 배수일까요?`,
-                answer: isCorrect ? 'O' : 'X',
-                choices: ['O', 'X']
-            });
-        } else if (type === 'gcd') {
-            const a = (Math.floor(Math.random() * 5) + 2) * base;
-            const b = (Math.floor(Math.random() * 5) + 2) * base;
-            const gcd = getGCD(a, b);
-            setQuizData({
-                question: `${a}와 ${b}의 최대공약수는 얼마인가요?`,
-                answer: gcd.toString(),
-                type: 'input'
-            });
-        } else {
-            const a = Math.floor(Math.random() * 5) + 2;
-            const b = Math.floor(Math.random() * 4) + 2;
-            const lcm = getLCM(a, b);
-            setQuizData({
-                question: `${a}와 ${b}의 최소공배수는 얼마인가요?`,
-                answer: lcm.toString(),
-                type: 'input'
-            });
-        }
-        setFeedback(null);
-        setUserAnswer('');
-    };
-
-
+    const [num1, setNum1] = useState(12);
+    const [num2, setNum2] = useState(18);
+    const [mode, setMode] = useState('divisor'); // 'divisor', 'multiple', 'common'
+    const [divisors1, setDivisors1] = useState([]);
+    const [divisors2, setDivisors2] = useState([]);
+    const [commonDivisors, setCommonDivisors] = useState([]);
+    const [multiples1, setMultiples1] = useState([]);
+    const [multiples2, setMultiples2] = useState([]);
+    const [commonMultiples, setCommonMultiples] = useState([]);
 
     useEffect(() => {
-        if (mode === 'quiz' && !quizData) generateQuiz();
-    }, [mode]);
+        const d1 = getDivisors(num1);
+        const d2 = getDivisors(num2);
+        setDivisors1(d1);
+        setDivisors2(d2);
+        setCommonDivisors(d1.filter(d => d2.includes(d)));
 
-    const checkAnswer = (choice) => {
-        if (choice === quizData.answer) {
-            setFeedback('correct');
-            confetti();
-            updateCoins(2);
-            setTimeout(generateQuiz, 2000);
-        } else {
-            setFeedback('incorrect');
+        const m1 = Array.from({ length: 15 }, (_, i) => num1 * (i + 1));
+        const m2 = Array.from({ length: 15 }, (_, i) => num2 * (i + 1));
+        setMultiples1(m1);
+        setMultiples2(m2);
+        setCommonMultiples(m1.filter(m => m2.includes(m)));
+    }, [num1, num2]);
+
+    const getDivisors = (n) => {
+        const divs = [];
+        for (let i = 1; i <= n; i++) {
+            if (n % i === 0) divs.push(i);
         }
+        return divs;
     };
+
+    const gcd = commonDivisors.length > 0 ? Math.max(...commonDivisors) : 1;
+    const lcm = commonMultiples.length > 0 ? Math.min(...commonMultiples) : (num1 * num2);
 
     return (
         <div className={styles.container}>
-            <div className={styles.modeTabs}>
-                <Button onClick={() => setMode('factors')} variant={mode === 'factors' ? 'primary' : 'secondary'}>🔍 약수 찾기</Button>
-                <Button onClick={() => setMode('multiples')} variant={mode === 'multiples' ? 'primary' : 'secondary'}>🚀 배수 찾기</Button>
-                <Button onClick={() => setMode('quiz')} variant={mode === 'quiz' ? 'primary' : 'secondary'}>👑 OX 퀴즈</Button>
+            <header className={styles.header}>
+                <h1 className={styles.title}>🔍 5학년 수학: 약수와 배수 탐험대</h1>
+                <div className={styles.tabGroup}>
+                    <Button onClick={() => setMode('divisor')} variant={mode === 'divisor' ? 'primary' : 'secondary'}>약수</Button>
+                    <Button onClick={() => setMode('multiple')} variant={mode === 'multiple' ? 'primary' : 'secondary'}>배수</Button>
+                    <Button onClick={() => setMode('common')} variant={mode === 'common' ? 'primary' : 'secondary'}>공약수&공배수</Button>
+                </div>
+            </header>
+
+            <div className={styles.controls}>
+                <div className={styles.inputGroup}>
+                    <label>숫자1: <input type="number" value={num1} onChange={(e) => setNum1(Math.min(100, Math.max(1, parseInt(e.target.value) || 1)))} /></label>
+                    <label>숫자2: <input type="number" value={num2} onChange={(e) => setNum2(Math.min(100, Math.max(1, parseInt(e.target.value) || 1)))} /></label>
+                </div>
             </div>
 
-            {mode === 'factors' && (
-                <div className={styles.content}>
-                    <h1 className={styles.title}>약수 탐험대 🔍</h1>
-                    <p className={styles.subtitle}>어떤 수를 나누어 떨어지게 하는 수를 <strong>약수</strong>라고 해요.</p>
-
-                    <div className={styles.inputSection}>
-                        <label>숫자를 선택하세요: {number}</label>
-                        <input
-                            type="range" min="1" max="50" value={number}
-                            onChange={(e) => setNumber(parseInt(e.target.value))}
-                            className={styles.slider}
-                        />
-                    </div>
-
-                    <div className={styles.visualArea}>
-                        <div className={styles.factorGrid}>
-                            {getFactors(number).map(f => (
-                                <motion.div
-                                    key={f}
-                                    className={styles.factorCard}
-                                    initial={{ scale: 0 }}
-                                    animate={{ scale: 1 }}
-                                >
-                                    {f}
-                                </motion.div>
-                            ))}
-                        </div>
-                        <p className={styles.resultText}>{number}의 약수는 총 {getFactors(number).length}개 입니다!</p>
-                    </div>
-                </div>
-            )}
-
-            {mode === 'multiples' && (
-                <div className={styles.content}>
-                    <h1 className={styles.title}>배수 로켓 🚀</h1>
-                    <p className={styles.subtitle}>어떤 수를 1배, 2배, 3배... 한 수를 <strong>배수</strong>라고 해요.</p>
-
-                    <div className={styles.inputSection}>
-                        <label>숫자를 선택하세요: {number}</label>
-                        <input
-                            type="range" min="1" max="20" value={number}
-                            onChange={(e) => setNumber(parseInt(e.target.value))}
-                            className={styles.slider}
-                        />
-                    </div>
-
-                    <div className={styles.visualArea}>
-                        <div className={styles.multipleList}>
-                            {getMultiples(number).map((m, i) => (
-                                <motion.div
-                                    key={m}
-                                    className={styles.multipleItem}
-                                    initial={{ x: -50, opacity: 0 }}
-                                    animate={{ x: 0, opacity: 1 }}
-                                    transition={{ delay: i * 0.1 }}
-                                >
-                                    <span className={styles.multipleIndex}>{i + 1}배</span>
-                                    <span className={styles.multipleValue}>{m}</span>
-                                </motion.div>
-                            ))}
-                        </div>
-                    </div>
-                </div>
-            )}
-
-            {mode === 'quiz' && (
-                <div className={styles.quizContent}>
-                    <h2 className={styles.title}>약수와 배수 퀴즈 🏁</h2>
-                    {quizData && (
-                        <div className={styles.quizCard}>
-                            <div className={styles.question}>{quizData.question}</div>
-                            {quizData.type === 'input' ? (
-                                <div className={styles.inputArea}>
-                                    <input
-                                        type="number"
-                                        className={styles.quizInput}
-                                        placeholder="정답 입력"
-                                        onChange={(e) => setUserAnswer(e.target.value)}
-                                        value={userAnswer}
-                                        onKeyDown={(e) => e.key === 'Enter' && checkAnswer(userAnswer)}
-                                    />
-                                    <Button onClick={() => checkAnswer(userAnswer)} variant="primary">확인</Button>
-                                </div>
-                            ) : (
-                                <div className={styles.oxButtons}>
-                                    {quizData.choices.map(c => (
-                                        <button
-                                            key={c}
-                                            onClick={() => checkAnswer(c)}
-                                            className={`${styles.oxButton} ${c === 'O' ? styles.oBtn : styles.xBtn}`}
-                                        >
-                                            {c}
-                                        </button>
-                                    ))}
-                                </div>
-                            )}
-                            <AnimatePresence>
-                                {feedback === 'correct' && <motion.div className={styles.feedbackCorrect}>정답입니다! 🎉 (+5 코인)</motion.div>}
-                                {feedback === 'incorrect' && <motion.div className={styles.feedbackIncorrect}>다시 생각해보세요! 😅</motion.div>}
-                            </AnimatePresence>
-
-                        </div>
+            <main className={styles.visualBoard}>
+                <AnimatePresence mode="wait">
+                    {mode === 'divisor' && (
+                        <motion.div key="div" initial={{ opacity: 0 }} animate={{ opacity: 1 }} className={styles.modeSection}>
+                            <h3>{num1}의 약수</h3>
+                            <div className={styles.divisorGrid}>
+                                {divisors1.map(d => (
+                                    <div key={d} className={styles.divisorCloud}>
+                                        <span className={styles.divNum}>{d}</span>
+                                    </div>
+                                ))}
+                            </div>
+                        </motion.div>
                     )}
-                </div>
-            )}
 
-            <div className={styles.infoBox}>
-                <h3>💡 꼭 기억해요!</h3>
-                <p>• <strong>1</strong>은 모든 수의 약수예요.</p>
-                <p>• 어떤 수의 가장 작은 배수는 <strong>자기 자신</strong>이에요.</p>
-                <p>• 약수와 배수는 서로 반대되는 관계가 있어요! (예: 3은 6의 약수, 6은 3의 배수)</p>
-            </div>
+                    {mode === 'multiple' && (
+                        <motion.div key="mult" initial={{ opacity: 0 }} animate={{ opacity: 1 }} className={styles.modeSection}>
+                            <h3>{num1}의 배수</h3>
+                            <div className={styles.mobileMultipleList}>
+                                {multiples1.map((m, i) => (
+                                    <div key={m} className={styles.multipleItem}>
+                                        <span className={styles.mIdx}>{i+1}배</span>
+                                        <span className={styles.mVal}>{m}</span>
+                                    </div>
+                                ))}
+                            </div>
+                        </motion.div>
+                    )}
 
-            <div className={styles.magicNumber}>
-                <h3>✨ 우주의 신비: 완전수(Perfect Number)</h3>
-                <p>어떤 수의 약수 중에서 자기 자신을 뺀 나머지 약수들을 모두 더했을 때, 다시 자기 자신이 되는 신기한 숫자들이 있어요!</p>
-                <div className={styles.magicFormula}>
-                    <strong>6</strong>의 약수: 1, 2, 3 ➡️ 1 + 2 + 3 = <strong>6</strong> !
-                </div>
-                <p>이런 숫자를 '완전수'라고 부르며, 6 다음에는 28이 있답니다. 정말 완벽하죠?</p>
-            </div>
-
-            <div className={styles.atomsNumber}>
-                <h3>⚛️ 수학의 원자: 소수(Prime Number)</h3>
-                <p>수학에도 더 이상 쪼개지지 않는 <strong>'레고 블록'</strong> 같은 숫자들이 있어요. 약수가 1과 자기 자신뿐인 수들이죠!</p>
-                <div className={styles.atomList}>
-                    2, 3, 5, 7, 11, 13, 17...
-                </div>
-                <p>우주에 있는 모든 숫자는 이 '소수'들의 곱으로 만들어져 있답니다. 마치 원자가 모여 세상을 만드는 것처럼요!</p>
-            </div>
+                    {mode === 'common' && (
+                        <motion.div key="common" initial={{ opacity: 0 }} animate={{ opacity: 1 }} className={styles.modeSection}>
+                             <div className={styles.vennContainer}>
+                                <div className={styles.vennCircle}>
+                                    <div className={styles.vennLabel}>{num1}</div>
+                                    <div className={styles.vennList}>
+                                        {divisors1.filter(d => !commonDivisors.includes(d)).map(d => <span key={d}>{d}</span>)}
+                                    </div>
+                                </div>
+                                <div className={styles.vennCenter}>
+                                    <div className={styles.vennLabel}>공약수</div>
+                                    <div className={styles.vennList}>
+                                        {commonDivisors.map(d => <strong key={d} className={d === gcd ? styles.gcd : ''}>{d}</strong>)}
+                                    </div>
+                                </div>
+                                <div className={styles.vennCircle}>
+                                    <div className={styles.vennLabel}>{num2}</div>
+                                    <div className={styles.vennList}>
+                                        {divisors2.filter(d => !commonDivisors.includes(d)).map(d => <span key={d}>{d}</span>)}
+                                    </div>
+                                </div>
+                             </div>
+                             <div className={styles.results}>
+                                <p>최대공약수(GCD): <strong>{gcd}</strong></p>
+                                <p>최소공배수(LCM): <strong>{lcm}</strong></p>
+                             </div>
+                        </motion.div>
+                    )}
+                </AnimatePresence>
+            </main>
 
             <JsonLd data={generateCourseSchema("약수와 배수", "약수와 배수의 정의를 배우고 직접 계산해봅니다.")} />
         </div>

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Button from '../common/Button';
 import confetti from 'canvas-confetti';
+import PageHeader from '../common/PageHeader';
 import styles from './FractionVisualizer.module.css';
 import { JsonLd, generateCourseSchema } from '../seo/JsonLd';
 
@@ -100,6 +101,7 @@ const FractionVisualizer = () => {
 
     return (
         <div className={styles.container}>
+            <PageHeader />
             <div className={styles.headerTabs}>
                 <Button
                     onClick={() => setMode('explore')}
@@ -117,7 +119,7 @@ const FractionVisualizer = () => {
 
             {mode === 'explore' ? (
                 <>
-                    <h2 className={styles.title}>맛있는 분수 피자 🍕</h2>
+                    <h3 className={styles.title}>맛있는 분수 피자 🍕</h3>
                     <p className={styles.description}>
                         피자를 <strong>{denominator}</strong>조각으로 나눈 것 중 <strong>{numerator}</strong>조각을 먹어요!
                     </p>

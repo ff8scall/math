@@ -7,26 +7,27 @@ import { generateProblemData } from '../../utils/math/wordProblemGenerator';
 
 const WordProblemWorksheet = () => {
     const { gradeId } = useParams();
+    const [difficulty, setDifficulty] = useState('advanced'); // Default to advanced as per user request
     const [problems, setProblems] = useState([]);
     const [date] = useState(new Date().toLocaleDateString('ko-KR'));
 
-    const generateOneProblem = (grade) => {
+    const generateOneProblem = (grade, diff) => {
         const gradeNum = parseInt(grade) || 1;
-        return generateProblemData(gradeNum);
+        return generateProblemData(gradeNum, diff);
     };
 
     const generateWorksheet = () => {
         const newProblems = [];
         const currentGrade = gradeId || "1";
         for (let i = 0; i < 6; i++) {
-            newProblems.push({ id: i + 1, ...generateOneProblem(currentGrade) });
+            newProblems.push({ id: i + 1, ...generateOneProblem(currentGrade, difficulty) });
         }
         setProblems(newProblems);
     };
 
     useEffect(() => {
         generateWorksheet();
-    }, [gradeId]);
+    }, [gradeId, difficulty]);
 
     const handlePrint = () => {
         window.print();
@@ -35,8 +36,22 @@ const WordProblemWorksheet = () => {
     return (
         <div className={styles.container}>
             <div className={styles.noPrint}>
-                <PageHeader title={`${gradeId || '1'}학년 심화 문장제 학습지 🖨️`} />
+                <PageHeader title={`${gradeId || '1'}학년 ${difficulty === 'advanced' ? '심화 ' : (difficulty === 'basic' ? '기본 ' : '')}문장제 학습지 🖨️`} />
                 <p>문장형 문제를 종이에 직접 풀며 사고력을 키워보세요.</p>
+                
+                <div className={styles.configBox}>
+                    <label>난이도 선택: </label>
+                    <select 
+                        value={difficulty} 
+                        onChange={(e) => setDifficulty(e.target.value)}
+                        className={styles.difficultySelect}
+                    >
+                        <option value="basic">기본 (원리 이해)</option>
+                        <option value="advanced">심화 (사고력 도전)</option>
+                        <option value="mixed">무작위 섞기</option>
+                    </select>
+                </div>
+
                 <div className={styles.actions}>
                     <Button onClick={generateWorksheet} variant="secondary">문제 새로 만들기</Button>
                     <Button onClick={handlePrint} variant="primary">출력 / PDF 저장</Button>

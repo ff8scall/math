@@ -1,0 +1,169 @@
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 30px;
+    background: #1a202c; /* Darker theme for game feel */
+    border-radius: 40px;
+    color: white;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.title {
+    font-size: 2.2rem;
+    color: #edf2f7;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    color: #a0aec0;
+    margin-bottom: 20px;
+}
+
+.healthBar {
+    background: #2d3748;
+    padding: 10px 20px;
+    border-radius: 20px;
+    display: inline-flex;
+    gap: 10px;
+    font-size: 1.5rem;
+    border: 2px solid #4a5568;
+}
+
+.heartAlive { opacity: 1; }
+.heartDead { opacity: 0.3; filter: grayscale(1); }
+
+.gameBoard {
+    background: #2d3748;
+    padding: 40px;
+    border-radius: 30px;
+    box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
+    position: relative;
+    overflow: hidden;
+}
+
+.monsterArea {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.monster {
+    font-size: 3rem;
+    background: #4a5568;
+    padding: 20px 40px;
+    border-radius: 20px;
+    border: 4px solid #718096;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.problemBox {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 25px;
+    border-radius: 20px;
+    margin-bottom: 30px;
+    border-left: 8px solid #FF6B6B;
+}
+
+.problemText {
+    font-size: 1.2rem;
+    color: #2d3748;
+    line-height: 1.6;
+    font-weight: bold;
+}
+
+.stageBox {
+    background: #4a5568;
+    padding: 30px;
+    border-radius: 20px;
+}
+
+.stageBox h3 {
+    margin-bottom: 20px;
+    color: #e2e8f0;
+    font-size: 1.1rem;
+}
+
+.stageBox h3 strong {
+    color: #FFD93D;
+}
+
+.options {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.options button {
+    background: #2d3748;
+    color: white;
+    border: 2px solid #718096;
+    padding: 15px;
+    font-size: 1.1rem;
+    text-align: left;
+}
+
+.options button:hover {
+    background: #FF6B6B;
+    border-color: #FF6B6B;
+}
+
+.hintText {
+    margin-bottom: 15px;
+    color: #FFD93D;
+    font-size: 0.95rem;
+}
+
+.solveArea {
+    display: flex;
+    gap: 15px;
+}
+
+.answerInput {
+    flex: 1;
+    padding: 15px 20px;
+    border-radius: 12px;
+    border: 2px solid #718096;
+    font-size: 1.2rem;
+    background: #2d3748;
+    color: white;
+}
+
+.fbCorrect {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(56, 161, 105, 0.9);
+    padding: 20px 40px;
+    border-radius: 20px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    z-index: 100;
+}
+
+.fbVictory {
+    background: #2f855a;
+    padding: 30px;
+    border-radius: 20px;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.fbError {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(229, 62, 62, 0.9);
+    padding: 20px 40px;
+    border-radius: 20px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    z-index: 100;
+}

@@ -9,7 +9,20 @@ const SEOHead = ({ title, description, keywords, image, canonicalPath }) => {
   const currentPath = location.pathname;
 
   // Find matching SEO data from centralized data
-  const routeData = seoData.find(item => item.path === currentPath) || {};
+  let routeData = seoData.find(item => item.path === currentPath) || {};
+
+  // Auto-generation for unknown routes (e.g., newly added curriculum topics)
+  if (!routeData.path) {
+    const pathParts = currentPath.split('/').filter(p => p);
+    if (pathParts[0] === 'grade' && pathParts[1]) {
+      const grade = pathParts[1];
+      const topic = pathParts[2] ? pathParts[2].replace(/-/g, ' ') : '';
+      routeData = {
+        title: `${grade}학년 수학 ${topic ? ': ' + topic : '커리큘럼'} - 매쓰 펫토리`,
+        description: `${grade}학년 수학 ${topic || ''} 과정을 재미있게 배워보세요. 원리부터 심화 문제까지 아이들의 눈높이에 맞춘 교육 콘텐츠가 준비되어 있습니다.`
+      };
+    }
+  }
 
   const baseTitle = "매쓰 펫토리 | 초등 전학년 수학 원리 & 펫 키우기";
 

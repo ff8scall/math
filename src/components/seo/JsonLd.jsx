@@ -20,7 +20,7 @@ export const generateCourseSchema = (name, description, provider = "매쓰 펫�
         "provider": {
             "@type": "Organization",
             "name": provider,
-            "sameAs": "https://freemath.example.com" // Replace with actual URL
+            "sameAs": "https://math.lego-sia.com"
         }
     };
 };
@@ -54,6 +54,24 @@ export const generateHowToSchema = (name, stepList) => {
             "name": step.title,
             "text": step.text,
             // "image": step.image // visual guide image url
+        }))
+    };
+};
+
+/**
+ * Generates BreadcrumbList schema to show the path to the page
+ * @param {Array} items - List of { name, item (url) }
+ */
+export const generateBreadcrumbSchema = (items) => {
+    const DOMAIN = "https://math.lego-sia.com";
+    return {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": items.map((item, index) => ({
+            "@type": "ListItem",
+            "position": index + 1,
+            "name": item.name,
+            "item": item.item.startsWith('http') ? item.item : `${DOMAIN}${item.item}`
         }))
     };
 };

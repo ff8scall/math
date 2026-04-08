@@ -1,0 +1,232 @@
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 30px;
+    background: #fdfdfd;
+    border-radius: 40px;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.title {
+    font-size: 2.2rem;
+    color: #444;
+}
+
+.subtitle {
+    color: #888;
+}
+
+.nav {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 40px;
+}
+
+.nav button {
+    padding: 12px 25px;
+    border: none;
+    background: #f0f0f0;
+    border-radius: 100px;
+    font-weight: bold;
+    color: #666;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.nav button.active {
+    background: #FF6B6B;
+    color: white;
+    box-shadow: 0 10px 20px rgba(255, 107, 107, 0.3);
+}
+
+.card {
+    background: white;
+    padding: 40px;
+    border-radius: 30px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.05);
+}
+
+/* Ratio Styles */
+.ratioDisplay {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.ratioTitle {
+    font-size: 1.1rem;
+    color: #888;
+    margin-bottom: 15px;
+}
+
+.ratioNumbers {
+    font-size: 4rem;
+    font-weight: 900;
+}
+
+.valA { color: #FF6B6B; }
+.valB { color: #4A90E2; }
+
+.ratioText {
+    font-size: 1.5rem;
+    margin-top: 15px;
+    color: #444;
+}
+
+.ratioText strong {
+    color: #333;
+}
+
+.visualComparison {
+    margin-bottom: 40px;
+}
+
+.barContainer {
+    margin-bottom: 25px;
+}
+
+.barLabel {
+    font-size: 0.9rem;
+    color: #888;
+    margin-bottom: 8px;
+}
+
+.barA, .barB {
+    height: 35px;
+    border-radius: 10px;
+    margin-bottom: 8px;
+}
+
+.barA { background: linear-gradient(90deg, #FF6B6B, #FF8E8E); }
+.barB { background: linear-gradient(90deg, #4A90E2, #7CB0FF); }
+
+.barValue {
+    font-weight: bold;
+    color: #444;
+}
+
+.inputs {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 40px;
+}
+
+.inputGroup {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.exampleTip {
+    margin-top: 30px;
+    padding: 20px;
+    background: #fff8e1;
+    border-radius: 20px;
+    color: #ff8f00;
+    line-height: 1.5;
+}
+
+/* Percent Styles */
+.percentHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.percentValue {
+    font-size: 3.5rem;
+    font-weight: 900;
+    color: #FFD93D;
+    text-shadow: 2px 2px 0 rgba(0,0,0,0.05);
+}
+
+.grid100 {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    gap: 5px;
+    margin-bottom: 40px;
+}
+
+.gridCell {
+    aspect-ratio: 1;
+    background: #f0f0f0;
+    border-radius: 4px;
+    transition: background 0.1s;
+}
+
+.gridCell.filled {
+    background: #FFD93D;
+}
+
+.sliderBox {
+    margin-bottom: 40px;
+}
+
+.percentSlider {
+    width: 100%;
+}
+
+.realWorld {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.rwItem {
+    background: #f8fbff;
+    padding: 20px;
+    border-radius: 20px;
+}
+
+.rwItem span {
+    display: block;
+    font-weight: bold;
+    color: #4A90E2;
+    margin-bottom: 10px;
+}
+
+/* Game Styles */
+.gameTarget {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.gameTarget strong {
+    font-size: 2.5rem;
+    color: #FF6B6B;
+    display: block;
+    margin-top: 10px;
+}
+
+.gamePlay {
+    text-align: center;
+}
+
+.currentRatioDisplay {
+    font-size: 3rem;
+    font-weight: 900;
+    margin-bottom: 30px;
+}
+
+.fbCorrect {
+    margin-top: 30px;
+    background: #f0fff4;
+    padding: 20px;
+    border-radius: 20px;
+    color: #38a169;
+    font-weight: bold;
+    text-align: center;
+}
+
+.fbIncorrect {
+    margin-top: 20px;
+    color: #e53e3e;
+    text-align: center;
+}

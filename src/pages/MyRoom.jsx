@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Button from '../components/common/Button';
 import { getStorageData, updateAvatar, updateCoins, buyFood, feedPet, getActiveMultiplier } from '../utils/storage/storageManager';
+import SEOHead from '../components/seo/SEOHead';
 import styles from './MyRoom.module.css';
 import confetti from 'canvas-confetti';
 import { ShoppingCart, Heart, Sparkles, MessageCircle, UtensilsCrossed, Timer, Star } from 'lucide-react';
@@ -118,15 +119,24 @@ const petImgMap = {
     'pet_parrot': pet_parrot, 'pet_red_panda': pet_red_panda, 'pet_frog': pet_frog
 };
 
-const defaultTalks = ['주인님! 수학 공부 화이팅!', '간식 먹으면 기분이 너무 좋아져요!', '함께 있어서 즐거워요!', '수학은 정말 재밌는 것 같아요!'];
+const defaultTalks = [
+    '주인님! 수학 공부 화이팅! 📚',
+    '간식 먹으면 기분이 너무 좋아져요! ✨',
+    '함께 있어서 즐거워요! 🥰',
+    '수학은 정말 재밌는 것 같아요! 🧠',
+    '문제를 풀 때마다 똑똑해지는 기분이에요! 🌟',
+    '상점에 귀여운 친구들이 더 많대요! 🏪',
+    '나랑 같이 공부해요! 🐾'
+];
 
 const petDefs = {
-    'hamster': { name: '쫀득 햄찌', talks: ['찍찍! 간식 줄거야?', '볼따구가 빵빵해서 기분 좋아!', '쳇바퀴 한 바퀴만 더 돌고 올게!'] },
-    'cat_siamese': { name: '샴 고양이', talks: ['야아옹~ 맛있는 냄새가 나는데?', '그루밍은 중요하다고.', '나랑 놀자!'] },
-    'forest_bear': { name: '아기 곰', talks: ['크와앙! 꿀주세요 꿀!', '겨울잠 자기엔 아직 일러요!'] },
-    'safari_lion': { name: '정글 왕 사자', talks: ['어흥! 내가 바로 정글의 왕이다!', '나의 멋진 갈기를 보라고!'] },
-    'sea_whale': { name: '푸른 고래', talks: ['푸우~ 시원한 물줄기를 받아라!', '바다는 정말 넓고 푸르러요.'] },
-    'farm_pig': { name: '핑크 돼지', talks: ['꿀꿀! 간식 더 없나요?', '진흙 목욕이 최고예요!'] }
+    'hamster': { name: '쫀득 햄찌', talks: ['찍찍! 간식 줄거야?', '볼따구가 빵빵해서 기분 좋아!', '쳇바퀴 한 바퀴만 더 돌고 올게!', '해바라기씨 최고! 🌻'] },
+    'cat_siamese': { name: '샴 고양이', talks: ['야아옹~ 맛있는 냄새가 나는데?', '그루밍은 중요하다고.', '나랑 놀자!', '수학 천재 고양이가 여기 있지! 🐈'] },
+    'forest_bear': { name: '아기 곰', talks: ['크와앙! 꿀주세요 꿀! 🍯', '겨울잠 자기엔 아직 일러요!', '힘찬 하루 보내세요! 🐻'] },
+    'safari_lion': { name: '정글 왕 사자', talks: ['어흥! 내가 바로 정글의 왕이다! 🦁', '나의 멋진 갈기를 보라고!', '용기를 북돋아 줄게! ✨'] },
+    'sea_whale': { name: '푸른 고래', talks: ['푸우~ 시원한 물줄기를 받아라! 🐳', '바다는 정말 넓고 푸르러요.', '깊은 바다 속 원리도 알고 싶어!'] },
+    'farm_pig': { name: '핑크 돼지', talks: ['꿀꿀! 간식 더 없나요? 🍎', '진흙 목욕이 최고예요!', '뚠뚠해서 너무 귀엽죠? 🐷'] },
+    'pet_red_panda': { name: '레서판다', talks: ['우와! 나랑 눈 마주쳤다! 🥰', '나무 타기만큼 수학도 재밌어!', '귀염둥이 출동! 🐾'] }
 };
 
 const getPetDef = (petId) => {
@@ -136,6 +146,7 @@ const getPetDef = (petId) => {
 const MyRoom = () => {
     const [data, setData] = useState(getStorageData());
     const [activeTalk, setActiveTalk] = useState({ id: null, text: '' });
+    const [jumpingPet, setJumpingPet] = useState(null);
     const [wallColor, setWallColor] = useState('#ffffff');
     const [floorColor, setFloorColor] = useState('#f8edeb');
     const [showFoodShop, setShowFoodShop] = useState(false);
@@ -159,6 +170,10 @@ const MyRoom = () => {
         const talks = def.talks;
         const randomText = talks[Math.floor(Math.random() * talks.length)];
         setActiveTalk({ id: petId, text: randomText });
+        setJumpingPet(petId);
+        
+        // Reset state after animation/talk duration
+        setTimeout(() => setJumpingPet(null), 1000);
         setTimeout(() => setActiveTalk({ id: null, text: '' }), 4000);
     };
 
@@ -197,6 +212,7 @@ const MyRoom = () => {
 
     return (
         <div className={styles.container}>
+            <SEOHead />
 
             <header className={styles.header}>
                 <div className={styles.titleBox}>
@@ -239,7 +255,7 @@ const MyRoom = () => {
                 <div className={styles.floor} style={{ background: floorColor }}></div>
 
                 <div className={styles.characterContainer}>
-                    <img src={avatarMap[data.selectedAvatar]} alt="Character" className={styles.avatarImg} />
+                    <img src={avatarMap[data.selectedAvatar]} alt={`${data.userName}의 학습 캐릭터`} className={styles.avatarImg} loading="lazy" />
                     <div className={styles.nameTag}>{data.userName}</div>
                 </div>
 
@@ -257,7 +273,15 @@ const MyRoom = () => {
                                 key={`${petId}-${index}`}
                                 className={styles.petContainer}
                                 initial={{ scale: 0, opacity: 0 }}
-                                animate={{ scale: 1, opacity: 1, ...pos }}
+                                animate={{ 
+                                    scale: 1, 
+                                    opacity: 1, 
+                                    y: jumpingPet === petId ? [pos.y, pos.y - 40, pos.y] : pos.y,
+                                    x: pos.x
+                                }}
+                                transition={{
+                                    y: jumpingPet === petId ? { duration: 0.4, repeat: 1 } : { duration: 0.3 }
+                                }}
                                 exit={{ scale: 0, opacity: 0 }}
                                 drag
                                 dragConstraints={constraintRef}
@@ -281,7 +305,7 @@ const MyRoom = () => {
                                     </div>
                                 )}
 
-                                <img src={petImgMap[petId]} alt={petId} className={`${styles.petImg} ${timeLeft ? styles.buffed : ''}`} />
+                                <img src={petImgMap[petId]} alt={getPetDef(petId).name} className={`${styles.petImg} ${timeLeft ? styles.buffed : ''}`} loading="lazy" />
                                 <div className={styles.petName}>{getPetDef(petId).name}</div>
                             </motion.div>
                         );
@@ -295,7 +319,7 @@ const MyRoom = () => {
                     <div className={styles.petList}>
                         {myPets.map((petId, i) => (
                             <div key={i} className={styles.petMiniCard} onClick={() => handlePetClick(petId)}>
-                                <img src={petImgMap[petId]} alt={petId} />
+                                <img src={petImgMap[petId]} alt={getPetDef(petId).name} />
                                 <span>{getPetDef(petId).name}</span>
                             </div>
                         ))}
@@ -320,7 +344,7 @@ const MyRoom = () => {
                                         window.location.href = '/shop';
                                     }
                                 }} className={data.selectedAvatar === id ? styles.active : ''}>
-                                    <img src={avatarMap[id]} alt={id} style={{ width: '40px' }} />
+                                    <img src={avatarMap[id]} alt={`캐릭터 스타일: ${id.replace(/_/g, ' ')}`} style={{ width: '40px' }} />
                                 </button>
                             ))}
                         </div>
