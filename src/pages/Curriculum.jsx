@@ -76,9 +76,12 @@ const Curriculum = () => {
                         { id: 'addition-subtraction', title: '덧셈과 뺄셈', description: '원리 탐험부터 실전 연습까지!', link: '/grade/3/arithmetic', status: 'available' },
                         { id: 'subtraction-borrow', title: '받아내림 뺄셈', description: '빌려오는 뺄셈, 원리를 보고 풀어요.', link: '/grade/3/subtraction', status: 'available' },
                         { id: 'arithmetic-advanced', title: '덧셈과 뺄셈 심화', description: '문장제와 사고력 수학 도전!', link: '/grade/3/word-problem', status: 'available' },
+                        { id: 'architect', title: '문장제 설계소', description: '문제를 읽고 수학 식을 설계해봐요.', link: '/grade/3/architect', status: 'available' },
                         { id: 'multiplication', title: '곱셈 (구구단)', description: '구구단 원리를 보고 퀴즈로 마스터!', link: '/grade/3/multiplication', status: 'available' },
                         { id: 'division', title: '나눗셈', description: '사탕 나누기로 원리를 익히고 연습해요.', link: '/grade/3/division', status: 'available' },
+                        { id: 'division-multi', title: '나눗셈과 곱셈', description: '곱셈구구로 나눗셈의 정답을 빨리 찾아요.', link: '/grade/3/division-multi', status: 'available' },
                         { id: 'fractions', title: '분수와 소수', description: '피자 나누기로 배우는 분수의 세계.', link: '/grade/3/fraction', status: 'available' },
+                        { id: 'fraction-decimal', title: '분수와 소수의 관계', description: '수직선 위에서 분수와 소수의 크기를 비교해요.', link: '/grade/3/fraction-decimal', status: 'available' },
                         { id: 'plane-figures', title: '평면도형', description: '직각삼각형, 직사각형을 그려봐요.', link: '/grade/3/geometry', status: 'available' },
                         { id: 'length-time', title: '길이와 시간', description: '시계 보기와 길이 변환하기.', link: '/grade/3/length', status: 'available' },
                     ]
@@ -89,6 +92,7 @@ const Curriculum = () => {
                         { id: 'multiplication-2', title: '곱셈 (심화)', description: '더 큰 수의 곱셈을 도전해요.', link: '/grade/3/multiplication', status: 'available' },
                         { id: 'division-2', title: '나눗셈 (심화)', description: '나머지가 있는 나눗셈!', link: '/grade/3/division', status: 'available' },
                         { id: 'circle', title: '원', description: '중심, 반지름, 지름을 배워요.', link: '/grade/3/circle', status: 'available' },
+                        { id: 'compass', title: '컴퍼스로 원 그리기', description: '컴퍼스를 사용해 직접 원을 그려봐요!', link: '/grade/3/compass', status: 'available' },
                         { id: 'fraction-2', title: '분수 (심화)', description: '분수의 크기를 비교해요.', link: '/grade/3/fraction', status: 'available' },
                         { id: 'weight-volume', title: '들이와 무게', description: 'L, mL, kg, g 단위를 배워요.', link: '/grade/3/weight-volume', status: 'available' },
                     ]

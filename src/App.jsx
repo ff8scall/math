@@ -91,6 +91,10 @@ import MathGame from './pages/MathGame';
 import BlockBuilder3D from './components/math/grade6/BlockBuilder3D';
 import NumberCardGame from './components/math/common/NumberCardGame';
 import WordProblemDefenseGame from './components/math/common/WordProblemDefenseGame';
+import FractionDecimalVisualizer from './components/math/grade3/FractionDecimalVisualizer';
+import DivisionMultiLinker from './components/math/grade3/DivisionMultiLinker';
+import CompassSimulator from './components/math/grade3/CompassSimulator';
+import WordProblemArchitect from './components/math/grade3/WordProblemArchitect';
 
 function App() {
   return (
@@ -113,6 +117,10 @@ function App() {
           <Route path="/grade/:gradeId/worksheet" element={<WorksheetGenerator />} />
           <Route path="/grade/3/circle" element={<CircleExplorer />} />
           <Route path="/grade/3/weight-volume" element={<WeightVolumeConverter />} />
+          <Route path="/grade/3/fraction-decimal" element={<FractionDecimalVisualizer />} />
+          <Route path="/grade/3/division-multi" element={<DivisionMultiLinker />} />
+          <Route path="/grade/3/compass" element={<CompassSimulator />} />
+          <Route path="/grade/3/architect" element={<WordProblemArchitect />} />
 
           {/* 1학년 Routes */}
           <Route path="/grade/1/number-counting" element={<NumberCounting />} />

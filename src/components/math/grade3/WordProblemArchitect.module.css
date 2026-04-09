@@ -1,0 +1,126 @@
+.container {
+    padding: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.workspace {
+    background: #fff;
+    border-radius: 30px;
+    padding: 2rem;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.06);
+    min-height: 600px;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.problemBox {
+    background: #fdf2f2;
+    padding: 2rem;
+    border-radius: 20px;
+    border-left: 8px solid #fecaca;
+    font-size: 1.25rem;
+    line-height: 1.8;
+}
+
+.clickableWord {
+    display: inline-block;
+    padding: 2px 4px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.clickableWord:hover {
+    background: #fee2e2;
+    color: #ef4444;
+}
+
+.extractedData {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    min-height: 60px;
+    padding: 1rem;
+    background: #f9fafb;
+    border-radius: 12px;
+    border: 2px dashed #e5e7eb;
+}
+
+.dataBlock {
+    padding: 0.5rem 1rem;
+    background: #fff;
+    border: 2px solid var(--primary);
+    border-radius: 8px;
+    font-weight: 700;
+    cursor: move;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.builderArea {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 2rem;
+    background: #eff6ff;
+    border-radius: 20px;
+    align-items: center;
+}
+
+.dropZone {
+    display: flex;
+    gap: 10px;
+    min-height: 80px;
+    width: 100%;
+    background: #fff;
+    border-radius: 16px;
+    border: 3px solid #bfdbfe;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.operatorTray {
+    display: flex;
+    gap: 10px;
+}
+
+.opBlock {
+    padding: 1rem;
+    background: #fff;
+    border: 2px solid #ed64a6;
+    border-radius: 12px;
+    font-size: 1.5rem;
+    font-weight: 900;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.opBlock:hover {
+    transform: scale(1.1);
+    background: #fff5f7;
+}
+
+.resultSection {
+    text-align: center;
+    padding: 2rem;
+    border-top: 2px solid #f3f4f6;
+}
+
+.equationPreview {
+    font-size: 2.5rem;
+    font-weight: 900;
+    margin-bottom: 1rem;
+    color: #1e3a8a;
+}
+
+.feedback {
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.correct { color: #059669; }
+.incorrect { color: #dc2626; }
