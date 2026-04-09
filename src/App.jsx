@@ -10,7 +10,9 @@ import Shop from './pages/Shop';
 import MainLayout from './components/layout/MainLayout';
 
 import FractionVisualizer from './components/math/FractionVisualizer';
+import FractionIsDivision from './components/math/grade4/FractionIsDivision';
 import MultiplicationVisualizer from './components/math/MultiplicationVisualizer';
+import AreaFormulaDeriver from './components/math/grade5/AreaFormulaDeriver';
 import GeometryExplorer from './components/math/GeometryExplorer';
 import GeometryMaster4 from './components/math/grade4/GeometryMaster4';
 import DivisionVisualizer from './components/math/DivisionVisualizer';
@@ -155,6 +157,7 @@ function App() {
           <Route path="/grade/4/bar-graph" element={<BarGraph4th />} />
           <Route path="/grade/4/rules" element={<FindingRules4th />} />
           <Route path="/grade/4/fraction" element={<FractionArithmetic4th />} />
+          <Route path="/grade/4/fraction-division-link" element={<FractionIsDivision />} />
           <Route path="/grade/4/triangle" element={<TriangleExplorer4th />} />
           <Route path="/grade/4/decimal" element={<DecimalArithmetic4th />} />
           <Route path="/grade/4/quadrilateral" element={<QuadrilateralExplorer4th />} />
@@ -170,6 +173,7 @@ function App() {
           <Route path="/grade/5/common-denominator" element={<CommonDenomVisualizer />} />
           <Route path="/grade/5/fraction-arithmetic" element={<FractionArithmetic5th />} />
           <Route path="/grade/5/area" element={<PerimeterArea5th />} />
+          <Route path="/grade/5/area-formula" element={<AreaFormulaDeriver />} />
           <Route path="/grade/5/range" element={<NumbersRange5th />} />
           <Route path="/grade/5/fraction-multiplication" element={<FractionMultiplication5th />} />
           <Route path="/grade/5/congruence" element={<CongruenceSymmetry5th />} />

@@ -126,6 +126,7 @@ const Curriculum = () => {
                 {
                     semester: 2,
                     topics: [
+                        { id: 'fraction-division-link', title: '분수와 나눗셈', description: '나눗셈의 몫을 분수로 바꿔봐요!', link: '/grade/4/fraction-division-link', status: 'available' },
                         { id: 'fraction-calc', title: '분수의 덧셈과 뺄셈', description: '대분수의 계산을 배워요.', link: '/grade/4/fraction', status: 'available' },
                         { id: 'triangles', title: '삼각형', description: '삼각형의 성질과 종류를 배워요.', link: '/grade/4/triangle', status: 'available' },
                         { id: 'decimal-calc', title: '소수의 덧셈과 뺄셈', description: '소수의 자릿값을 알고 더하고 빼요.', link: '/grade/4/decimal', status: 'available' },
@@ -156,6 +157,7 @@ const Curriculum = () => {
                         { id: 'reduction', title: '약분과 통분', description: '분수를 간단하게 만들고 분모를 맞춰요.', link: '/grade/5/reduction', status: 'available' },
                         { id: 'common-denominator', title: '통분 원리 탐험', description: '다른 분모의 분수를 더하는 원리!', link: '/grade/5/common-denominator', status: 'available' },
                         { id: 'fraction-addition-subtraction', title: '분수의 덧셈과 뺄셈', description: '분모가 다른 분수의 계산을 배워요.', link: '/grade/5/fraction-arithmetic', status: 'available' },
+                        { id: 'area-formula', title: '넓이 공식 유도기', description: '도형을 잘라 붙이며 공식을 만들어요.', link: '/grade/5/area-formula', status: 'available' },
                         { id: 'perimeters-areas', title: '다각형의 둘레와 넓이', description: '다각형의 둘레와 넓이 구하는 방법을 배워요.', link: '/grade/5/area', status: 'available' },
                     ]
                 },

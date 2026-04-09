@@ -1,0 +1,146 @@
+.container {
+    padding: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.workspace {
+    background: #fff;
+    border-radius: 32px;
+    padding: 3rem;
+    box-shadow: 0 10px 50px rgba(0,0,0,0.06);
+}
+
+.intro {
+    text-align: center;
+    margin-bottom: 3rem;
+    color: #4a5568;
+}
+
+.visualZone {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.pizzaBox {
+    background: #f8fafc;
+    border-radius: 50%;
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.pizzaBox:active {
+    transform: scale(0.95);
+}
+
+.knife {
+    position: absolute;
+    top: -30px;
+    right: -30px;
+    font-size: 2rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s;
+}
+
+.pizzaBox:hover .knife {
+    opacity: 1;
+}
+
+.mathSection {
+    background: #fffcf0;
+    padding: 2rem;
+    border-radius: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.equation {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 2.5rem;
+    font-weight: 900;
+    font-family: 'Outfit', sans-serif;
+    color: #2d3748;
+}
+
+.fraction {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.fractionLine {
+    width: 2.5rem;
+    height: 4px;
+    background: #2d3748;
+    margin: 4px 0;
+}
+
+.badge {
+    background: var(--primary);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.plateArea {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+}
+
+.plate {
+    width: 150px;
+    height: 150px;
+    border: 3px dashed #cbd5e0;
+    border-radius: 50%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.plateTitle {
+    position: absolute;
+    bottom: -25px;
+    font-weight: bold;
+    color: #718096;
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    margin-top: 2rem;
+}
+
+.controlGroup {
+    text-align: center;
+}
+
+.controlGroup label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    color: #4a5568;
+}
