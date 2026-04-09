@@ -99,8 +99,11 @@ import DivisionMultiLinker from './components/math/grade3/DivisionMultiLinker';
 import CompassSimulator from './components/math/grade3/CompassSimulator';
 import WordProblemArchitect from './components/math/grade3/WordProblemArchitect';
 import NumberDecomposer from './components/math/grade1/NumberDecomposer';
+import SubitizingGame from './components/math/grade1/SubitizingGame';
 import CommonDenomVisualizer from './components/math/grade5/CommonDenomVisualizer';
 import MultiplicationLinker from './components/math/grade2/MultiplicationLinker';
+import DivisionMeaning from './components/math/grade3/DivisionMeaning';
+import RatioBarModel from './components/math/grade6/RatioBarModel';
 
 function App() {
   return (
@@ -127,10 +130,12 @@ function App() {
           <Route path="/grade/3/division-multi" element={<DivisionMultiLinker />} />
           <Route path="/grade/3/compass" element={<CompassSimulator />} />
           <Route path="/grade/3/architect" element={<WordProblemArchitect />} />
+          <Route path="/grade/3/division-meaning" element={<DivisionMeaning />} />
 
           {/* 1학년 Routes */}
           <Route path="/grade/1/number-counting" element={<NumberCounting />} />
           <Route path="/grade/1/decomposer" element={<NumberDecomposer />} />
+          <Route path="/grade/1/subitizing" element={<SubitizingGame />} />
           <Route path="/grade/1/shapes" element={<ShapeExplorer1st />} />
           <Route path="/grade/1/arithmetic" element={<SimpleArithmetic1st />} />
           <Route path="/grade/1/number-50" element={<NumberTo50 />} />
@@ -184,6 +189,7 @@ function App() {
 
           {/* 6학년 Routes */}
           <Route path="/grade/6/fraction-division" element={<FractionDivision6th />} />
+          <Route path="/grade/6/ratio-bar" element={<RatioBarModel />} />
           <Route path="/grade/6/geometry" element={<Geometry6th />} />
           <Route path="/grade/6/decimal-division" element={<DecimalDivision6th />} />
           <Route path="/grade/6/ratio" element={<RatioProportion6th />} />

@@ -16,6 +16,7 @@ const Curriculum = () => {
                     semester: 1,
                     topics: [
                         { id: 'number-counting', title: '9까지의 수', description: '숫자를 세고 읽고 쓰는 법을 배워요.', link: '/grade/1/number-counting', status: 'available' },
+                        { id: 'subitizing', title: '순간 수 인식 게임', description: '반짝 보이는 개수를 눈 깜짝할 새 알아봐요!', link: '/grade/1/subitizing', status: 'available' },
                         { id: 'decomposer', title: '가르기와 모으기', description: '숫자를 나누고 합치는 연습을 해요.', link: '/grade/1/decomposer', status: 'available' },
                         { id: 'shapes', title: '여러 가지 모양', description: '동그라미, 세모, 네모를 찾아요.', link: '/grade/1/shapes', status: 'available' },
                         { id: 'addition-subtraction', title: '덧셈과 뺄셈', description: '한 자리 수 덧셈과 뺄셈을 배워요.', link: '/grade/1/arithmetic', status: 'available' },
@@ -81,6 +82,7 @@ const Curriculum = () => {
                         { id: 'architect', title: '문장제 설계소', description: '문제를 읽고 수학 식을 설계해봐요.', link: '/grade/3/architect', status: 'available' },
                         { id: 'multiplication', title: '곱셈 (구구단)', description: '구구단 원리를 보고 퀴즈로 마스터!', link: '/grade/3/multiplication', status: 'available' },
                         { id: 'division', title: '나눗셈', description: '사탕 나누기로 원리를 익히고 연습해요.', link: '/grade/3/division', status: 'available' },
+                        { id: 'division-meaning', title: '나눗셈의 두 얼굴', description: '등분제와 포함제, 두 가지 나눗셈의 의미!', link: '/grade/3/division-meaning', status: 'available' },
                         { id: 'division-multi', title: '나눗셈과 곱셈', description: '곱셈구구로 나눗셈의 정답을 빨리 찾아요.', link: '/grade/3/division-multi', status: 'available' },
                         { id: 'fractions', title: '분수와 소수', description: '피자 나누기로 배우는 분수의 세계.', link: '/grade/3/fraction', status: 'available' },
                         { id: 'fraction-decimal', title: '분수와 소수의 관계', description: '수직선 위에서 분수와 소수의 크기를 비교해요.', link: '/grade/3/fraction-decimal', status: 'available' },
@@ -191,6 +193,7 @@ const Curriculum = () => {
                         { id: 'prism-pyramid', title: '각기둥과 각뿔', description: '입체도형의 특징을 탐구해요.', link: '/grade/6/geometry', status: 'available' },
                         { id: 'decimal-division', title: '소수의 나눗셈', description: '소수의 나눗셈을 소수점 맞춰 계산해요.', link: '/grade/6/decimal-division', status: 'available' },
                         { id: 'ratio-proportion', title: '비와 비율', description: '비의 뜻과 백분율을 배워요.', link: '/grade/6/ratio', status: 'available' },
+                        { id: 'ratio-bar', title: '비율 매직 바', description: '막대로 보는 할인율·농도 계산!', link: '/grade/6/ratio-bar', status: 'available' },
                         { id: 'graphs', title: '여러 가지 그래프', description: '띠그래프와 원그래프를 그려요.', link: '/grade/6/graphs', status: 'available' },
                         { id: 'volume-area', title: '직육면체의 부피와 겉넓이', description: '부피와 겉넓이 구하는 법을 배워요.', link: '/grade/6/volume', status: 'available' },
                     ]
