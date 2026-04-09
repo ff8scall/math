@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Button from '../common/Button';
 import { updateCoins } from '../../utils/storage/storageManager';
 import confetti from 'canvas-confetti';
+import PageHeader from '../common/PageHeader';
 import styles from './ProtractorSimulator.module.css';
 
 const ProtractorSimulator = () => {
@@ -67,10 +68,11 @@ const ProtractorSimulator = () => {
 
     return (
         <div className={styles.container}>
-            <header className={styles.header}>
-                <h1 className={styles.title}>📐 4학년 수학: 각도 마스터! 각도기 탐험</h1>
-                <p className={styles.subtitle}>각도기를 자유자재로 움직이며 여러 가지 각을 만들어보세요.</p>
-            </header>
+            <PageHeader title="각도 마스터! 각도기 탐험" grade="4" />
+            
+            <div className={styles.intro}>
+                <h3 className={styles.subtitle}>각도기를 자유자재로 움직이며 여러 가지 각을 만들어보세요.</h3>
+            </div>
 
             <div className={styles.toolbar}>
                 <Button onClick={() => { setMode('explore'); setTargetAngle(null); setShowProtractor(true); }} variant={mode === 'explore' ? 'primary' : 'secondary'}>자유 탐색</Button>

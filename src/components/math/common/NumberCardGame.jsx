@@ -4,6 +4,7 @@ import Button from '../../common/Button';
 import { updateCoins } from '../../../utils/storage/storageManager';
 import confetti from 'canvas-confetti';
 import { JsonLd, generateCourseSchema } from '../../seo/JsonLd';
+import PageHeader from '../../common/PageHeader';
 import styles from './NumberCardGame.module.css';
 
 const NumberCardGame = () => {
@@ -115,14 +116,15 @@ const NumberCardGame = () => {
 
     return (
         <div className={styles.container}>
-            <header className={styles.header}>
-                <h1 className={styles.title}>🃏 숫자 카드 추리 게임</h1>
-                <p className={styles.subtitle}>주어진 숫자 카드를 조건에 맞게 배열해 최고/최저의 수를 찾아내세요!</p>
+            <PageHeader title="숫자 카드 추리 게임" />
+            
+            <div className={styles.intro}>
+                <h3 className={styles.subtitle}>주어진 숫자 카드를 조건에 맞게 배열해 최고/최저의 수를 찾아내세요!</h3>
                 <div className={styles.levelBtns}>
                     <Button onClick={() => setDifficulty(3)} variant={difficulty === 3 ? 'primary' : 'secondary'}>3자리 수 (초급)</Button>
                     <Button onClick={() => setDifficulty(4)} variant={difficulty === 4 ? 'primary' : 'secondary'}>4자리 수 (중급)</Button>
                 </div>
-            </header>
+            </div>
 
             <main className={styles.gameBoard}>
                 <div className={styles.conditionBox}>

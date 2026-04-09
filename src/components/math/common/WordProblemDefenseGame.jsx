@@ -4,6 +4,7 @@ import Button from '../../common/Button';
 import { updateCoins } from '../../../utils/storage/storageManager';
 import confetti from 'canvas-confetti';
 import { JsonLd, generateCourseSchema } from '../../seo/JsonLd';
+import PageHeader from '../../common/PageHeader';
 import styles from './WordProblemDefenseGame.module.css';
 
 const WordProblemDefenseGame = () => {
@@ -106,16 +107,17 @@ const WordProblemDefenseGame = () => {
 
     return (
         <div className={styles.container}>
-            <header className={styles.header}>
-                <h1 className={styles.title}>🛡️ 문장제 방어 게임</h1>
-                <p className={styles.subtitle}>숫자만 보고 무작정 계산하는 습관은 NO! 문제의 진짜 의도를 파악하세요.</p>
+            <PageHeader title="문장제 방어 게임" />
+            
+            <div className={styles.intro}>
+                <h3 className={styles.subtitle}>숫자만 보고 무작정 계산하는 습관은 NO! 문제의 진짜 의도를 파악하세요.</h3>
                 
                 <div className={styles.healthBar}>
                     생명력: {Array.from({ length: 3 }).map((_, i) => (
                         <span key={i} className={i < health ? styles.heartAlive : styles.heartDead}>❤️</span>
                     ))}
                 </div>
-            </header>
+            </div>
 
             <main className={styles.gameBoard}>
                 <div className={styles.monsterArea}>

@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Button from '../common/Button';
 import { updateCoins } from '../../utils/storage/storageManager';
 import confetti from 'canvas-confetti';
+import PageHeader from '../common/PageHeader';
 import styles from './RatioVisualizer.module.css';
 
 const RatioVisualizer = () => {
@@ -44,10 +45,11 @@ const RatioVisualizer = () => {
 
     return (
         <div className={styles.container}>
-            <header className={styles.header}>
-                <h1 className={styles.title}>📊 6학년 수학: 비와 비율 탐험대</h1>
-                <p className={styles.subtitle}>세상의 모든 관계를 숫자로 표현하는 마법, 비율을 배워보세요.</p>
-            </header>
+            <PageHeader title="비와 비율 탐험대" grade="6" />
+            
+            <div className={styles.intro}>
+                <h3 className={styles.subtitle}>세상의 모든 관계를 숫자로 표현하는 마법, 비율을 배워보세요.</h3>
+            </div>
 
             <nav className={styles.nav}>
                 <button className={mode === 'ratio' ? styles.active : ''} onClick={() => setMode('ratio')}>비와 비율 (Ratio)</button>

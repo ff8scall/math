@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Button from '../common/Button';
 import { updateCoins } from '../../utils/storage/storageManager';
 import confetti from 'canvas-confetti';
+import PageHeader from '../common/PageHeader';
 import styles from './DivisorVisualizer.module.css';
 
 const DivisorVisualizer = () => {
@@ -49,10 +50,11 @@ const DivisorVisualizer = () => {
 
     return (
         <div className={styles.container}>
-            <header className={styles.header}>
-                <h1 className={styles.title}>🔍 5학년 수학: 약수와 배수 탐험대</h1>
-                <p className={styles.subtitle}>숫자 속에 숨겨진 약수와 배수를 눈으로 확인해보세요!</p>
-            </header>
+            <PageHeader title="약수와 배수 탐험대" grade="5" />
+            
+            <div className={styles.intro}>
+                <h3 className={styles.subtitle}>숫자 속에 숨겨진 약수와 배수를 눈으로 확인해보세요!</h3>
+            </div>
 
             <div className={styles.controls}>
                 <div className={styles.inputGroup}>

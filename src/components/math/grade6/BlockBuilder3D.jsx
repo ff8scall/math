@@ -4,6 +4,7 @@ import Button from '../../common/Button';
 import { updateCoins } from '../../../utils/storage/storageManager';
 import confetti from 'canvas-confetti';
 import { JsonLd, generateCourseSchema } from '../../seo/JsonLd';
+import PageHeader from '../../common/PageHeader';
 import styles from './BlockBuilder3D.module.css';
 
 const BlockBuilder3D = () => {
@@ -83,14 +84,15 @@ const BlockBuilder3D = () => {
 
     return (
         <div className={styles.container}>
-            <header className={styles.header}>
-                <h1 className={styles.title}>🧱 6학년: 쌓기나무 3D 시뮬레이터</h1>
-                <p className={styles.subtitle}>위, 앞, 옆에서 본 모양을 통해 입체도형의 구조를 완벽하게 파악해봐요!</p>
+            <PageHeader title="쌓기나무 3D 시뮬레이터" grade="6" />
+            
+            <div className={styles.intro}>
+                <h3 className={styles.subtitle}>위, 앞, 옆에서 본 모양을 통해 입체도형의 구조를 완벽하게 파악해봐요!</h3>
                 <div className={styles.nav}>
                     <Button onClick={() => { setMode('explore'); setTargetViews(null); setGrid(initialGrid); }} variant={mode === 'explore' ? 'primary' : 'secondary'}>🔍 자유 조립</Button>
                     <Button onClick={generateChallenge} variant={mode === 'challenge' ? 'primary' : 'secondary'}>🎯 모양 맞추기 챌린지</Button>
                 </div>
-            </header>
+            </div>
 
             <main className={styles.mainContent}>
                 <div className={styles.builderArea}>
