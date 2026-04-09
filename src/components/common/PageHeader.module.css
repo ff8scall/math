@@ -4,6 +4,30 @@
     width: 100%;
 }
 
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    color: #a0aec0;
+    margin-bottom: 0.75rem;
+}
+
+.breadcrumbLink {
+    color: #a0aec0;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.breadcrumbLink:hover {
+    color: var(--primary);
+    text-decoration: underline;
+}
+
+.separator {
+    color: #cbd5e0;
+}
+
 .topRow {
     display: flex;
     justify-content: space-between;

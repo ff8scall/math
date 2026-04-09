@@ -47,6 +47,11 @@ const SEOHead = ({ title, description, keywords, image, canonicalPath }) => {
       <title>{finalTitle}</title>
       <meta name="description" content={finalDesc} />
       <meta name="keywords" content={finalKeywords} />
+      
+      {/* Robots Advanced Signals for better indexing */}
+      <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+      
+      {/* Canonical URL */}
       <link rel="canonical" href={finalCanonical} />
 
       {/* Open Graph / Facebook */}

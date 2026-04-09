@@ -35,6 +35,18 @@ const PageHeader = ({ title: propTitle, grade: propGrade }) => {
         <div className={styles.header}>
             <SEOHead />
             <JsonLd data={generateBreadcrumbSchema(breadcrumbs)} />
+            
+            <nav className={styles.breadcrumb} aria-label="Breadcrumb">
+                {breadcrumbs.map((crumb, index) => (
+                    <React.Fragment key={crumb.item}>
+                        <Link to={crumb.item} className={styles.breadcrumbLink}>
+                            {crumb.name}
+                        </Link>
+                        {index < breadcrumbs.length - 1 && <span className={styles.separator}>/</span>}
+                    </React.Fragment>
+                ))}
+            </nav>
+
             <div className={styles.topRow}>
                 <Link to={gradeId ? `/grade/${gradeId}` : "/"} className={styles.backLink}>
                     <ChevronLeft size={20} />

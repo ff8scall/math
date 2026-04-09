@@ -131,6 +131,26 @@ export const seoData = [
     { path: '/grade/3/word-problem-worksheet', title: '3학년 문장제 수학 학습지 출력', description: '나눗셈과 분수 개념을 실생활 문장으로 풀어낸 3학년 사고력 학습지 출력 서비스! 복합적인 문제 상황을 논리적으로 분석하여 단계별 식을 세우는 훈련에 최적화되어 있습니다. 종이 위에 풀이의 흔적을 남기며 사고의 깊이를 더하고 수학적 문제 해결 능력의 고수 단계로 진입하세요.', keywords: '문장제학습지, 서술형학습지, 3학년수학', priority: 0.8, changefreq: 'weekly' },
     { path: '/grade/4/word-problem-worksheet', title: '4학년 문장제 수학 학습지 출력', description: '각도와 큰 수, 그래프 해석력이 필요한 4학년 심화 문장제를 무한으로 생성하여 풀어보세요! 서술형 평가의 비중이 높은 4학년 과정에서 풀이 과정을 체계적으로 기술하는 능력은 필수입니다. 깔끔한 여백과 명확한 구성으로 아이들이 스스로 사고의 과정을 정리할 수 있도록 돕습니다.', keywords: '문장제학습지, 서술형학습지, 4학년수학', priority: 0.8, changefreq: 'weekly' },
     { path: '/grade/5/word-problem-worksheet', title: '5학년 문장제 수학 학습지 출력', description: '약수와 배수, 혼합 계산 원리를 활용하는 5학년 고급 사고력 문장제 학습지! 복합적인 문제의 조건을 구조화하여 수식으로 표현하는 수학적 모델링 능력을 길러줍니다. 난이도 높은 문장제를 종이 위에서 치열하게 고민하며 해결하는 과정은 중학교 상위권 수학 실력의 원동력이 됩니다.', keywords: '문장제학습지, 서술형학습지, 5학년수학', priority: 0.8, changefreq: 'weekly' },
-    { path: '/grade/6/word-problem-worksheet', title: '6학년 문장제 수학 학습지 출력', description: '비율, 비례식, 원의 넓이 등 6학년 핵심 개념을 아우르는 최종 사고력 문장제 프린트 서비스! 실생활의 수학적 문제를 창의적으로 해결하는 능력을 완성하세요. 초등 과정을 마무리하며 중등 서술형 평가의 기초 체력을 탄탄하게 다지고 최고 수준의 수학적 자신감을 완성하는 단계입니다.', keywords: '문장제학습지, 서술형학습지, 6학년수학', priority: 0.8, changefreq: 'weekly' }
+    { path: '/grade/6/word-problem-worksheet', title: '6학년 문장제 수학 학습지 출력', description: '비율, 비례식, 원의 넓이 등 6학년 핵심 개념을 아우르는 최종 사고력 문장제 프린트 서비스! 실생활의 수학적 문제를 창의적으로 해결하는 능력을 완성하세요. 초등 과정을 마무리하며 중등 서술형 평가의 기초 체력을 탄탄하게 다지고 최고 수준의 수학적 자신감을 완성하는 단계입니다.', keywords: '문장제학습지, 서술형학습지, 6학년수학', priority: 0.8, changefreq: 'weekly' },
+
+    // 신규 추가 고학년 도구 및 게임
+    { path: '/grade/6/block-builder', title: '6학년 수학: 쌓기나무 3D 시뮬레이터', description: '위, 앞, 옆에서 본 모양을 통해 입체도형의 구조를 완벽하게 파악해보세요. 직접 쌓기나무를 쌓고 돌려보며 공간 지각력을 키울 수 있는 인터랙티브 3D 도구입니다.', keywords: '쌓기나무, 3D시뮬레이터, 공간지각력, 6학년수학', priority: 0.9, changefreq: 'weekly' },
+    
+    // 숫자 카드 추리 게임 (모든 학년)
+    { path: '/grade/1/number-card', title: '1학년 수학: 숫자 카드 추리 게임', description: '숫자 카드를 조합하여 조건에 맞는 가장 큰 수나 작은 수를 만들어보세요. 수의 크기 비교와 자릿값의 기초를 재미있게 익힐 수 있습니다.', keywords: '숫자카드게임, 수크기비교, 1학년수학', priority: 0.8, changefreq: 'weekly' },
+    { path: '/grade/2/number-card', title: '2학년 수학: 숫자 카드 추리 게임', description: '세 자리 수와 네 자리 수를 카드로 직접 만들어보며 자릿값 원리를 탐구합니다. 논리적인 추론 능력을 키워주는 수학 게임입니다.', keywords: '숫자카드게임, 자릿값, 2학년수학', priority: 0.8, changefreq: 'weekly' },
+    { path: '/grade/3/number-card', title: '3학년 수학: 숫자 카드 추리 게임', description: '큰 수의 배열을 통해 수 감각을 극대화합니다. 주어진 조건에 딱 맞는 숫자를 찾아내는 성취감을 느껴보세요.', keywords: '숫자카드게임, 수감각, 3학년수학', priority: 0.8, changefreq: 'weekly' },
+    { path: '/grade/4/number-card', title: '4학년 수학: 숫자 카드 추리 게임', description: '억, 조 단위의 큰 수도 카드로 척척! 거대한 수의 체계를 게임으로 재미있게 마스터하는 고급 숫자 추리 게임입니다.', keywords: '숫자카드게임, 큰수, 4학년수학', priority: 0.8, changefreq: 'weekly' },
+    { path: '/grade/5/number-card', title: '5학년 수학: 숫자 카드 추리 게임', description: '약수와 배수의 성질을 활용한 고급 숫자 카드 퍼즐에 도전하세요. 창의적인 문제 해결 능력을 키워주는 최고의 도구입니다.', keywords: '숫자카드게임, 약수배수, 5학년수학', priority: 0.8, changefreq: 'weekly' },
+    { path: '/grade/6/number-card', title: '6학년 수학: 숫자 카드 추리 게임', description: '비율과 백분율 조건이 포함된 최고난도 숫자 카드 챌린지! 초등 수학의 논리력을 최종 점검하고 중등 수학을 준비하세요.', keywords: '숫자카드게임, 논리력, 6학년수학', priority: 0.8, changefreq: 'weekly' },
+
+    // 문장제 방어 게임 (모든 학년)
+    { path: '/grade/1/defense-game', title: '1학년 수학: 문장제 방어 게임', description: '짧은 문제를 읽고 핵심 정보를 찾아내는 훈련! 몬스터로부터 내 방을 지키며 문장제 문제에 대한 자신감을 키우세요.', keywords: '문장제게임, 1학년수학, 수학방어', priority: 0.8, changefreq: 'weekly' },
+    { path: '/grade/2/defense-game', title: '2학년 수학: 문장제 방어 게임', description: '상황 속에 숨겨진 덧셈, 뺄셈, 곱셈의 단서를 찾아 몬스터를 처치하세요. 수학적 독해력을 높여주는 즐거운 게임입니다.', keywords: '문장제게임, 2학년수학, 독해력', priority: 0.8, changefreq: 'weekly' },
+    { path: '/grade/3/defense-game', title: '3학년 수학: 문장제 방어 게임', description: '나눗셈과 분수가 섞인 복잡한 문장제도 문제없어! 단계별 분석을 통해 몬스터를 효과적으로 방어하는 전략을 세우세요.', keywords: '문장제게임, 3학년수학, 논리수학', priority: 0.8, changefreq: 'weekly' },
+    { path: '/grade/4/defense-game', title: '4학년 수학: 문장제 방어 게임', description: '각도와 큰 수 미션을 해결하며 몬스터 군단을 막아내세요. 정보를 빠르게 처리하고 정확한 식을 세우는 능력을 기릅니다.', keywords: '문장제게임, 4학년수학, 전략게임', priority: 0.8, changefreq: 'weekly' },
+    { path: '/grade/5/defense-game', title: '5학년 수학: 문장제 방어 게임', description: '혼합 계산과 약수 배수가 포함된 지능형 몬스터들과의 대결! 고난도 문장제 문제를 해결하며 수학적 지구력을 키우세요.', keywords: '문장제게임, 5학년수학, 지능형수학', priority: 0.8, changefreq: 'weekly' },
+    { path: '/grade/6/defense-game', title: '6학년 수학: 문장제 방어 게임', description: '비율과 비례식이 난무하는 최종 보스 몬스터 등장! 초등 수학의 모든 지식을 동원하여 완벽한 방어 전략을 완성하세요.', keywords: '문장제게임, 6학년수학, 최종챌린지', priority: 0.8, changefreq: 'weekly' }
+
 ];
 
