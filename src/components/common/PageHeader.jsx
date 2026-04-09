@@ -2,7 +2,6 @@ import React from 'react';
 import { useLocation, Link, useParams } from 'react-router-dom';
 import { ChevronLeft } from 'lucide-react';
 import { seoData } from '../../data/seoData';
-import SEOHead from '../seo/SEOHead';
 import { JsonLd, generateBreadcrumbSchema } from '../seo/JsonLd';
 import styles from './PageHeader.module.css';
 
@@ -33,7 +32,6 @@ const PageHeader = ({ title: propTitle, grade: propGrade }) => {
 
     return (
         <div className={styles.header}>
-            <SEOHead />
             <JsonLd data={generateBreadcrumbSchema(breadcrumbs)} />
             
             <nav className={styles.breadcrumb} aria-label="Breadcrumb">

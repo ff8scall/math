@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Button from '../components/common/Button';
 import { getStorageData, updateAvatar, updateCoins, buyFood, feedPet, getActiveMultiplier } from '../utils/storage/storageManager';
-import SEOHead from '../components/seo/SEOHead';
 import styles from './MyRoom.module.css';
 import confetti from 'canvas-confetti';
 import { ShoppingCart, Heart, Sparkles, MessageCircle, UtensilsCrossed, Timer, Star } from 'lucide-react';
@@ -212,8 +211,6 @@ const MyRoom = () => {
 
     return (
         <div className={styles.container}>
-            <SEOHead />
-
             <header className={styles.header}>
                 <div className={styles.titleBox}>
                     <h1>🏠 {data.userName}의 방</h1>

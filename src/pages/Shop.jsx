@@ -3,7 +3,6 @@ import Button from '../components/common/Button';
 import { getStorageData, updateCoins, addToInventory, setStorageData, updateAvatar, updatePet } from '../utils/storage/storageManager';
 import { generateSaveCode, parseSaveCode, generateCouponCode } from '../utils/storage/codeGenerator';
 import styles from './Shop.module.css';
-import SEOHead from '../components/seo/SEOHead';
 import confetti from 'canvas-confetti';
 
 // Avatars (Original)
@@ -250,8 +249,6 @@ const Shop = () => {
 
     return (
         <div className={styles.container}>
-            <SEOHead />
-
             <header className={styles.header}>
                 <div className={styles.info}>
                     <h1>매쓰 펫토리 상점 🏪</h1>

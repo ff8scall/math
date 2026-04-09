@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "node scripts/generate-seo.js && vite build",
+    "build": "node scripts/generate-seo.js && vite build && node scripts/post-build.js",
     "lint": "eslint .",
     "indexnow": "node scripts/generate-seo.js",
     "preview": "vite preview"

@@ -44,15 +44,19 @@ const SEOHead = ({ title, description, keywords, image, canonicalPath }) => {
 
   return (
     <Helmet>
+      <html lang="ko" />
       <title>{finalTitle}</title>
       <meta name="description" content={finalDesc} />
       <meta name="keywords" content={finalKeywords} />
+      <meta name="author" content="매쓰 펫토리" />
       
-      {/* Robots Advanced Signals for better indexing */}
+      {/* Robots Advanced Signals */}
       <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
       
-      {/* Canonical URL */}
+      {/* Canonical & Hreflang */}
       <link rel="canonical" href={finalCanonical} />
+      <link rel="alternate" hreflang="ko" href={finalCanonical} />
+      <link rel="alternate" hreflang="x-default" href={DOMAIN} />
 
       {/* Open Graph / Facebook */}
       <meta property="og:title" content={finalTitle} />
@@ -61,9 +65,13 @@ const SEOHead = ({ title, description, keywords, image, canonicalPath }) => {
       <meta property="og:type" content="website" />
       <meta property="og:url" content={finalCanonical} />
       <meta property="og:image" content={finalImage} />
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
+      <meta property="og:image:type" content="image/png" />
 
       {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:site" content="@MathPetory" />
       <meta name="twitter:title" content={finalTitle} />
       <meta name="twitter:description" content={finalDesc} />
       <meta name="twitter:image" content={finalImage} />
