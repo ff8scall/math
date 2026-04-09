@@ -12,6 +12,7 @@ import MainLayout from './components/layout/MainLayout';
 import FractionVisualizer from './components/math/FractionVisualizer';
 import MultiplicationVisualizer from './components/math/MultiplicationVisualizer';
 import GeometryExplorer from './components/math/GeometryExplorer';
+import GeometryMaster4 from './components/math/grade4/GeometryMaster4';
 import DivisionVisualizer from './components/math/DivisionVisualizer';
 import ClockVisualizer from './components/math/ClockVisualizer';
 import SubtractionWithBorrow from './components/math/SubtractionWithBorrow';
@@ -95,6 +96,9 @@ import FractionDecimalVisualizer from './components/math/grade3/FractionDecimalV
 import DivisionMultiLinker from './components/math/grade3/DivisionMultiLinker';
 import CompassSimulator from './components/math/grade3/CompassSimulator';
 import WordProblemArchitect from './components/math/grade3/WordProblemArchitect';
+import NumberDecomposer from './components/math/grade1/NumberDecomposer';
+import CommonDenomVisualizer from './components/math/grade5/CommonDenomVisualizer';
+import MultiplicationLinker from './components/math/grade2/MultiplicationLinker';
 
 function App() {
   return (
@@ -124,6 +128,7 @@ function App() {
 
           {/* 1학년 Routes */}
           <Route path="/grade/1/number-counting" element={<NumberCounting />} />
+          <Route path="/grade/1/decomposer" element={<NumberDecomposer />} />
           <Route path="/grade/1/shapes" element={<ShapeExplorer1st />} />
           <Route path="/grade/1/arithmetic" element={<SimpleArithmetic1st />} />
           <Route path="/grade/1/number-50" element={<NumberTo50 />} />
@@ -138,6 +143,7 @@ function App() {
           <Route path="/grade/2/length" element={<LengthMeasure />} />
           <Route path="/grade/2/four-digit" element={<FourDigitNumber />} />
           <Route path="/grade/2/multiplication" element={<MultiplicationTable />} />
+          <Route path="/grade/2/multiplication-link" element={<MultiplicationLinker />} />
           <Route path="/grade/2/time" element={<TimeCalculation />} />
           <Route path="/grade/2/quiz" element={<Grade2Quiz />} />
 
@@ -145,7 +151,7 @@ function App() {
           <Route path="/grade/4/large-numbers" element={<LargeNumbers4th />} />
           <Route path="/grade/4/angles" element={<Angles4th />} />
           <Route path="/grade/4/arithmetic" element={<MultiDiv4th />} />
-          <Route path="/grade/4/geometry-move" element={<GeometryMove4th />} />
+          <Route path="/grade/4/geometry-move" element={<GeometryMaster4 />} />
           <Route path="/grade/4/bar-graph" element={<BarGraph4th />} />
           <Route path="/grade/4/rules" element={<FindingRules4th />} />
           <Route path="/grade/4/fraction" element={<FractionArithmetic4th />} />
@@ -161,6 +167,7 @@ function App() {
           <Route path="/grade/5/factors-multiples" element={<FactorsMultiples5th />} />
           <Route path="/grade/5/rules" element={<RulesResponse5th />} />
           <Route path="/grade/5/reduction" element={<ReductionCommonDenom5th />} />
+          <Route path="/grade/5/common-denominator" element={<CommonDenomVisualizer />} />
           <Route path="/grade/5/fraction-arithmetic" element={<FractionArithmetic5th />} />
           <Route path="/grade/5/area" element={<PerimeterArea5th />} />
           <Route path="/grade/5/range" element={<NumbersRange5th />} />

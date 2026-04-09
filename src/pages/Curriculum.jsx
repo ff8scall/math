@@ -15,7 +15,8 @@ const Curriculum = () => {
                 {
                     semester: 1,
                     topics: [
-                        { id: 'number-counting', title: '9까지의 수', description: '1부터 9까지 수를 세고 비교해요.', link: '/grade/1/number-counting', status: 'available' },
+                        { id: 'number-counting', title: '9까지의 수', description: '숫자를 세고 읽고 쓰는 법을 배워요.', link: '/grade/1/number-counting', status: 'available' },
+                        { id: 'decomposer', title: '가르기와 모으기', description: '숫자를 나누고 합치는 연습을 해요.', link: '/grade/1/decomposer', status: 'available' },
                         { id: 'shapes', title: '여러 가지 모양', description: '동그라미, 세모, 네모를 찾아요.', link: '/grade/1/shapes', status: 'available' },
                         { id: 'addition-subtraction', title: '덧셈과 뺄셈', description: '한 자리 수 덧셈과 뺄셈을 배워요.', link: '/grade/1/arithmetic', status: 'available' },
                     ]
@@ -52,8 +53,9 @@ const Curriculum = () => {
                 {
                     semester: 2,
                     topics: [
-                        { id: 'four-digit', title: '네 자리 수', description: '천까지 배워요.', link: '/grade/2/four-digit', status: 'available' },
-                        { id: 'multiplication-table', title: '곱셈구구', description: '2, 3, 5, 6단을 배워요.', link: '/grade/2/multiplication', status: 'available' },
+                        { id: 'four-digit', title: '네 자리 수', description: '천의 자리를 배워요.', link: '/grade/2/four-digit', status: 'available' },
+                        { id: 'multiplication-link', title: '곱셈의 원리', description: '왜 곱셈을 배울까요?', link: '/grade/2/multiplication-link', status: 'available' },
+                        { id: 'multiplication', title: '구구단', description: '구구단을 외우고 게임해요.', link: '/grade/2/multiplication', status: 'available' },
                         { id: 'time', title: '시각과 시간', description: '시간을 계산해요.', link: '/grade/2/time', status: 'available' },
                     ]
                 }
@@ -151,7 +153,8 @@ const Curriculum = () => {
                         { id: 'mixed-arithmetic', title: '자연수의 혼합 계산', description: '덧셈, 뺄셈, 곱셈, 나눗셈이 섞여 있는 식을 계산해요.', link: '/grade/5/mixed-arithmetic', status: 'available' },
                         { id: 'factors-multiples', title: '약수와 배수', description: '약수와 배수, 공약수와 공배수를 배워요.', link: '/grade/5/factors-multiples', status: 'available' },
                         { id: 'rules-response', title: '규칙과 대응', description: '두 양 사이의 관계를 찾아봐요.', link: '/grade/5/rules', status: 'available' },
-                        { id: 'reduction-common-denom', title: '약분과 통분', description: '분수를 간단하게 만들고 분모를 같게 해요.', link: '/grade/5/reduction', status: 'available' },
+                        { id: 'reduction', title: '약분과 통분', description: '분수를 간단하게 만들고 분모를 맞춰요.', link: '/grade/5/reduction', status: 'available' },
+                        { id: 'common-denominator', title: '통분 원리 탐험', description: '다른 분모의 분수를 더하는 원리!', link: '/grade/5/common-denominator', status: 'available' },
                         { id: 'fraction-addition-subtraction', title: '분수의 덧셈과 뺄셈', description: '분모가 다른 분수의 계산을 배워요.', link: '/grade/5/fraction-arithmetic', status: 'available' },
                         { id: 'perimeters-areas', title: '다각형의 둘레와 넓이', description: '다각형의 둘레와 넓이 구하는 방법을 배워요.', link: '/grade/5/area', status: 'available' },
                     ]
