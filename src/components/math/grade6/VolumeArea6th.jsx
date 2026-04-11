@@ -4,6 +4,7 @@ import Button from '../../common/Button';
 import { JsonLd, generateCourseSchema } from '../../seo/JsonLd';
 import { updateCoins } from '../../../utils/storage/storageManager';
 import confetti from 'canvas-confetti';
+import PageHeader from '../../common/PageHeader';
 import styles from './VolumeArea6th.module.css';
 
 const VolumeArea6th = () => {
@@ -54,6 +55,7 @@ const VolumeArea6th = () => {
 
     return (
         <div className={styles.container}>
+            <PageHeader />
             <div className={styles.tabHeader}>
                 <Button onClick={() => setMode('explore')} variant={mode === 'explore' ? 'primary' : 'secondary'}>🔍 원리 탐험</Button>
                 <Button onClick={() => setMode('practice')} variant={mode === 'practice' ? 'primary' : 'secondary'}>✏️ 실전 연습</Button>
@@ -67,7 +69,7 @@ const VolumeArea6th = () => {
                         animate={{ opacity: 1, scale: 1 }}
                         className={styles.content}
                     >
-                        <h1>직육면체의 부피와 겉넓이 📦</h1>
+                        <h2>직육면체의 부피와 겉넓이 원리 📦</h2>
                         <div className={styles.card}>
                             <h2>부피 (Volume)</h2>
                             <p className={styles.formula}>부피 = 가로 × 세로 × 높이</p>

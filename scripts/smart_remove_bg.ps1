@@ -64,11 +64,11 @@ function FloodFill-Background {
 
 # Apply only to the 5 main ones for now to be safe
 $targets = @(
-    "C:/AI/Antigravity/FreeMath/src/assets/images/avatar/boy.png",
-    "C:/AI/Antigravity/FreeMath/src/assets/images/avatar/girl.png",
-    "C:/AI/Antigravity/FreeMath/src/assets/images/pets/hamster.png",
-    "C:/AI/Antigravity/FreeMath/src/assets/images/pets/rabbit.png",
-    "C:/AI/Antigravity/FreeMath/src/assets/images/pets/cat_siamese.png"
+    "C:/AI/Antigravity/Math/src/assets/images/avatar/boy.png",
+    "C:/AI/Antigravity/Math/src/assets/images/avatar/girl.png",
+    "C:/AI/Antigravity/Math/src/assets/images/pets/hamster.png",
+    "C:/AI/Antigravity/Math/src/assets/images/pets/rabbit.png",
+    "C:/AI/Antigravity/Math/src/assets/images/pets/cat_siamese.png"
 )
 
 foreach ($t in $targets) {

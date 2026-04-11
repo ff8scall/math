@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Button from '../../common/Button';
+import PageHeader from '../../common/PageHeader';
 import confetti from 'canvas-confetti';
 import { updateCoins } from '../../../utils/storage/storageManager';
 import { JsonLd, generateCourseSchema } from '../../seo/JsonLd';
@@ -80,14 +81,15 @@ const MixedArithmetic5th = () => {
 
     return (
         <div className={styles.container}>
-            <div className={styles.modeTabs}>
+            <PageHeader />
+            <div className={styles.tabHeader}>
                 <Button onClick={() => setMode('learn')} variant={mode === 'learn' ? 'primary' : 'secondary'} size="large">📖 계산 순서 배우기</Button>
                 <Button onClick={() => setMode('practice')} variant={mode === 'practice' ? 'primary' : 'secondary'} size="large">✏️ 실전 연습</Button>
             </div>
 
             {mode === 'learn' ? (
                 <div className={styles.learnContent}>
-                    <h1 className={styles.title}>계산의 순서 약속 🤝</h1>
+                        <h2 className={styles.title}>복합 연산의 순서 약속 🤝</h2>
                     <div className={styles.ruleCard}>
                         <div className={styles.ruleItem}>
                             <span className={styles.ruleNumber}>1</span>

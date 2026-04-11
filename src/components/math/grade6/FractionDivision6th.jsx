@@ -4,6 +4,7 @@ import Button from '../../common/Button';
 import confetti from 'canvas-confetti';
 import { updateCoins } from '../../../utils/storage/storageManager';
 import { JsonLd, generateCourseSchema } from '../../seo/JsonLd';
+import PageHeader from '../../common/PageHeader';
 import styles from './FractionDivision6th.module.css';
 
 const FractionDivision6th = () => {
@@ -69,6 +70,7 @@ const FractionDivision6th = () => {
 
     return (
         <div className={styles.container}>
+            <PageHeader />
             <div className={styles.modeTabs}>
                 <Button onClick={() => setMode('learn')} variant={mode === 'learn' ? 'primary' : 'secondary'}>📖 학습하기</Button>
                 <Button onClick={() => { setMode('quiz'); generateQuiz(); }} variant={mode === 'quiz' ? 'primary' : 'secondary'}>✏️ 나눗셈 퀴즈</Button>
@@ -76,7 +78,7 @@ const FractionDivision6th = () => {
 
             {mode === 'learn' ? (
                 <div className={styles.content}>
-                    <h1>분수 ÷ 분수 📖</h1>
+                    <h2 className={styles.title}>분수 ÷ 분수의 원리 📖</h2>
                     <div className={styles.guide}>
                         <p>분수의 나눗셈은 **곱셈**으로 바꿔서 계산해요!</p>
                         <p>1. 나누는 분수의 **분모와 분자를 바꿉니다** (역수).</p>

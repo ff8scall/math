@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import PageHeader from '../../common/PageHeader';
 import Button from '../../common/Button';
 import { JsonLd, generateCourseSchema } from '../../seo/JsonLd';
 import { updateCoins } from '../../../utils/storage/storageManager';
@@ -58,6 +59,7 @@ const Proportion6th = () => {
 
     return (
         <div className={styles.container}>
+            <PageHeader />
             <div className={styles.tabHeader}>
                 <Button onClick={() => setMode('explore')} variant={mode === 'explore' ? 'primary' : 'secondary'}>🔍 원리 탐험</Button>
                 <Button onClick={() => setMode('practice')} variant={mode === 'practice' ? 'primary' : 'secondary'}>✏️ 실전 연습</Button>
@@ -66,7 +68,7 @@ const Proportion6th = () => {
             <AnimatePresence mode="wait">
                 {mode === 'explore' ? (
                     <motion.div key="explore" initial={{ opacity: 0 }} animate={{ opacity: 1 }} className={styles.content}>
-                        <h1>비례식과 비례배분 ⚖️</h1>
+                        <h2 className={styles.title}>비례식과 비례배분 원리 ⚖️</h2>
                         <p>비의 값이 같은 두 비를 = 를 사용하여 나타낸 식을 비례식이라고 합니다.</p>
                         <div className={styles.sec}>
                             <h3>비례식의 성질</h3>

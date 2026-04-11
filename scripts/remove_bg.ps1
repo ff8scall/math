@@ -36,7 +36,7 @@ function Remove-WhiteBackground {
 
 # Mapping
 $brainPath = "C:/Users/ff8sc/.gemini/antigravity/brain/02bd52fa-d2a8-42cc-a27f-4926c5b9823b"
-$projectRoot = "C:/AI/Antigravity/FreeMath"
+$projectRoot = "C:/AI/Antigravity/Math"
 
 # Latest versions
 Remove-WhiteBackground "$brainPath/avatar_boy_v4_1770179272068.png" "$projectRoot/src/assets/images/avatar/boy.png"

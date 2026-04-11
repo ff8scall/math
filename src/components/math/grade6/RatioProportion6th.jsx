@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import PageHeader from '../../common/PageHeader';
 import Button from '../../common/Button';
 import { updateCoins } from '../../../utils/storage/storageManager';
 import confetti from 'canvas-confetti';
@@ -37,14 +38,13 @@ const RatioProportion6th = () => {
 
     return (
         <div className={styles.container}>
-            <header className={styles.header}>
-                <h1 className={styles.title}>📊 6학년 수학: 비와 비율 탐험대</h1>
-                <nav className={styles.nav}>
-                    <Button onClick={() => setMode('ratio')} variant={mode === 'ratio' ? 'primary' : 'secondary'}>비와 비율</Button>
-                    <Button onClick={() => setMode('percent')} variant={mode === 'percent' ? 'primary' : 'secondary'}>백분율</Button>
-                    <Button onClick={() => { if (mode !== 'game') startNewGame(); }} variant={mode === 'game' ? 'primary' : 'secondary'}>도전 게임!</Button>
-                </nav>
-            </header>
+            <PageHeader />
+            <h2 className={styles.title}>비와 비율 탐험대 📊</h2>
+            <nav className={styles.nav}>
+                <Button onClick={() => setMode('ratio')} variant={mode === 'ratio' ? 'primary' : 'secondary'}>비와 비율</Button>
+                <Button onClick={() => setMode('percent')} variant={mode === 'percent' ? 'primary' : 'secondary'}>백분율</Button>
+                <Button onClick={() => { if (mode !== 'game') startNewGame(); }} variant={mode === 'game' ? 'primary' : 'secondary'}>도전 게임!</Button>
+            </nav>
 
             <AnimatePresence mode="wait">
                 {mode === 'ratio' && (

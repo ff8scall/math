@@ -62,7 +62,7 @@ function Slice-And-RemoveBackground {
     Write-Host "Sheet processed: $InputPath"
 }
 
-$projectRoot = "C:/AI/Antigravity/FreeMath"
+$projectRoot = "C:/AI/Antigravity/Math"
 $petsDir = "$projectRoot/src/assets/images/pets"
 $avatarDir = "$projectRoot/src/assets/images/avatar"
 $brain = "C:/Users/ff8sc/.gemini/antigravity/brain/0ca0c21e-2ff1-4dc7-aa06-161ba8ac1719"

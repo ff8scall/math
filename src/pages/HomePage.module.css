@@ -1,0 +1,113 @@
+.container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.hero {
+  padding: 80px 20px;
+  background: linear-gradient(135deg, #FFF9C4 0%, #FFD93D 100%);
+  text-align: center;
+  border-radius: 0 0 50px 50px;
+  box-shadow: var(--shadow-md);
+  margin-bottom: 60px;
+}
+
+.title {
+  font-size: clamp(2.5rem, 8vw, 4rem);
+  color: #333;
+  margin-bottom: 20px;
+  font-family: var(--font-main);
+  line-height: 1.2;
+}
+
+.subtitle {
+  font-size: clamp(1.2rem, 4vw, 1.8rem);
+  color: #555;
+  margin-bottom: 40px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.ctaArea {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.ctaButton {
+  padding: 18px 40px;
+  background-color: #333;
+  color: white;
+  border-radius: 99px;
+  font-size: 1.3rem;
+  font-weight: bold;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.ctaButton:hover {
+  transform: scale(1.05) translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+  background-color: #000;
+}
+
+.features {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.featureCard {
+  background: white;
+  padding: 40px;
+  border-radius: 30px;
+  box-shadow: var(--shadow-sm);
+  text-align: center;
+  border: 1px solid #eee;
+  transition: transform 0.3s ease;
+}
+
+.featureCard:hover {
+  transform: translateY(-10px);
+  border-color: var(--primary-color);
+}
+
+.featureIcon {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  display: block;
+}
+
+.featureCard h3 {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.featureCard p {
+  color: #777;
+  line-height: 1.6;
+}
+
+.trustBadges {
+  background-color: #fcfcfc;
+  padding: 60px 20px;
+  text-align: center;
+  margin-top: 60px;
+}
+
+.badgeGrid {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 30px;
+  opacity: 0.7;
+  filter: grayscale(1);
+}

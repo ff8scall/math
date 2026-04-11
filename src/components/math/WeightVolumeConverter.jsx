@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import PageHeader from '../common/PageHeader';
 import Button from '../common/Button';
 import confetti from 'canvas-confetti';
 import { updateCoins } from '../../utils/storage/storageManager';
@@ -97,14 +98,15 @@ const WeightVolumeConverter = () => {
 
     return (
         <div className={styles.container}>
-            <div className={styles.modeTabs}>
+            <PageHeader />
+            <div className={styles.tabHeader}>
                 <Button onClick={() => setMode('explore')} variant={mode === 'explore' ? 'primary' : 'secondary'} size="large">🔍 원리 탐구</Button>
                 <Button onClick={() => setMode('practice')} variant={mode === 'practice' ? 'primary' : 'secondary'} size="large">✏️ 문제 풀기</Button>
             </div>
 
             {mode === 'explore' ? (
                 <div className={styles.explore}>
-                    <h1 className={styles.title}>들이와 무게 측정 ⚖️</h1>
+                        <h2 className={styles.title}>들이와 무게 측정의 원리 ⚖️</h2>
                     <p className={styles.subtitle}>비커와 저울을 사용해서 양을 측정해보세요.</p>
 
                     <div className={styles.categoryTabs}>

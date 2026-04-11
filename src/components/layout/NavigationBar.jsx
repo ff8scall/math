@@ -1,10 +1,12 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Home, Calculator, Shapes, Trophy, ShoppingBag } from 'lucide-react';
+import { Home, Trophy, ShoppingBag, Coins } from 'lucide-react';
+import { useUser } from '../../context/UserContext';
 import styles from './NavigationBar.module.css';
 
 const NavigationBar = () => {
     const location = useLocation();
+    const { userData } = useUser();
 
     const navItems = [
         { path: '/', label: '홈', icon: <Home size={24} /> },
@@ -26,6 +28,10 @@ const NavigationBar = () => {
                         </Link>
                     </li>
                 ))}
+                <li className={styles.coinDisplay}>
+                    <Coins size={20} color="#FFD93D" />
+                    <span className={styles.coinValue}>{userData.coins.toLocaleString()}</span>
+                </li>
             </ul>
         </nav>
     );

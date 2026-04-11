@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import PageHeader from '../../common/PageHeader';
 import Button from '../../common/Button';
 import { JsonLd, generateCourseSchema } from '../../seo/JsonLd';
 import { updateCoins } from '../../../utils/storage/storageManager';
@@ -41,6 +42,7 @@ const RoundGeometry6th = () => {
 
     return (
         <div className={styles.container}>
+            <PageHeader />
             <div className={styles.tabHeader}>
                 <Button onClick={() => setMode('explore')} variant={mode === 'explore' ? 'primary' : 'secondary'}>🔍 모양 탐험</Button>
                 <Button onClick={() => setMode('quiz')} variant={mode === 'quiz' ? 'primary' : 'secondary'}>✏️ 퀴즈 도전</Button>
@@ -54,7 +56,7 @@ const RoundGeometry6th = () => {
                         animate={{ opacity: 1, y: 0 }}
                         className={styles.content}
                     >
-                        <h1>원기둥, 원뿔, 구 🗼</h1>
+                        <h2 className={styles.title}>원기둥, 원뿔, 구 원리 탐험 🗼</h2>
                         <p>굽은 면을 가진 입체도형들의 특징을 알아볼까요?</p>
                         <div className={styles.parts}>
                             <div className={styles.pCard}>

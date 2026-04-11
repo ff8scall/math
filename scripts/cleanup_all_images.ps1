@@ -40,8 +40,8 @@ function Remove-NearWhite {
     $bmp.Dispose()
 }
 
-$petsDir = "C:/AI/Antigravity/FreeMath/src/assets/images/pets"
-$avatarsDir = "C:/AI/Antigravity/FreeMath/src/assets/images/avatar"
+$petsDir = "C:/AI/Antigravity/Math/src/assets/images/pets"
+$avatarsDir = "C:/AI/Antigravity/Math/src/assets/images/avatar"
 
 Write-Host "Cleaning up Pet images..."
 Get-ChildItem $petsDir -Filter *.png | ForEach-Object {

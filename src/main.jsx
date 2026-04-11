@@ -5,12 +5,16 @@ import { HelmetProvider } from 'react-helmet-async';
 import App from './App';
 import './styles/global.css';
 
+import { UserProvider } from './context/UserContext';
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <HelmetProvider>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
+      <UserProvider>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </UserProvider>
     </HelmetProvider>
   </React.StrictMode>
 );

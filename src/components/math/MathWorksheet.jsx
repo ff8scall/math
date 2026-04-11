@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import Button from '../common/Button';
+import PageHeader from '../common/PageHeader';
 import styles from './MathWorksheet.module.css';
 
 const MathWorksheet = () => {
@@ -81,9 +82,10 @@ const MathWorksheet = () => {
 
     return (
         <div className={styles.container}>
+            <PageHeader />
             <div className={styles.noPrint}>
                 <Link to={`/grade/${grade}`} className={styles.back}>← 돌아가기</Link>
-                <h1>{grade}학년 수학 학습지 생성 🖨️</h1>
+                    <h2 className={styles.configTitle}>{grade}학년 수학 학습지 생성 🖨️</h2>
                 <p>프린터로 출력하거나 PDF로 저장하여 종이로 풀어보세요.</p>
                 <div className={styles.actions}>
                     <Button onClick={() => generateProblems(grade)} variant="secondary">문제 새로고침</Button>

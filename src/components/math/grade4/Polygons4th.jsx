@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import PageHeader from '../../common/PageHeader';
 import Button from '../../common/Button';
 import confetti from 'canvas-confetti';
 import { updateCoins } from '../../../utils/storage/storageManager';
@@ -85,6 +86,7 @@ const Polygons4th = () => {
 
     return (
         <div className={styles.container}>
+            <PageHeader />
             <div className={styles.modeTabs}>
                 <Button onClick={() => setMode('explore')} variant={mode === 'explore' ? 'primary' : 'secondary'} size="large">🔍 다각형 탐험</Button>
                 <Button onClick={() => setMode('practice')} variant={mode === 'practice' ? 'primary' : 'secondary'} size="large">✏️ 문제 풀기</Button>
@@ -92,7 +94,7 @@ const Polygons4th = () => {
 
             {mode === 'explore' ? (
                 <div className={styles.explore}>
-                    <h1 className={styles.title}>다각형 탐험 📐</h1>
+                        <h2 className={styles.title}>다각형의 성질 원리 탐험 📐</h2>
                     <p className={styles.subtitle}>변의 개수에 따라 이름이 달라지는 다각형을 만나요!</p>
 
                     <div className={styles.exploreCard}>

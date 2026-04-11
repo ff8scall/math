@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import PageHeader from '../../common/PageHeader';
 import Button from '../../common/Button';
 import { JsonLd, generateCourseSchema } from '../../seo/JsonLd';
 import { updateCoins } from '../../../utils/storage/storageManager';
@@ -69,6 +70,7 @@ const CircleArea6th = () => {
 
     return (
         <div className={styles.container}>
+            <PageHeader />
             <div className={styles.tabHeader}>
                 <Button onClick={() => setMode('explore')} variant={mode === 'explore' ? 'primary' : 'secondary'}>🔍 원리 탐험</Button>
                 <Button onClick={() => setMode('practice')} variant={mode === 'practice' ? 'primary' : 'secondary'}>✏️ 실전 연습</Button>
@@ -83,7 +85,7 @@ const CircleArea6th = () => {
                         exit={{ opacity: 0, x: 20 }}
                         className={styles.content}
                     >
-                        <h1>원의 넓이 🟣</h1>
+                        <h2 className={styles.title}>원의 넓이 구하기 🟣</h2>
                         <div className={styles.sec}>
                             <h3>원주와 원주율</h3>
                             <p>원주: 원의 둘레</p>

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import PageHeader from '../../common/PageHeader';
 import Button from '../../common/Button';
 import { updateCoins } from '../../../utils/storage/storageManager';
 import confetti from 'canvas-confetti';
@@ -44,14 +45,15 @@ const FactorsMultiples5th = () => {
 
     return (
         <div className={styles.container}>
-            <header className={styles.header}>
-                <h1 className={styles.title}>🔍 5학년 수학: 약수와 배수 탐험대</h1>
+            <PageHeader />
+            <div className={styles.header}>
+                <h2 className={styles.title}>약수와 배수 원리 탐험대 🔍</h2>
                 <div className={styles.tabGroup}>
                     <Button onClick={() => setMode('divisor')} variant={mode === 'divisor' ? 'primary' : 'secondary'}>약수</Button>
                     <Button onClick={() => setMode('multiple')} variant={mode === 'multiple' ? 'primary' : 'secondary'}>배수</Button>
                     <Button onClick={() => setMode('common')} variant={mode === 'common' ? 'primary' : 'secondary'}>공약수&공배수</Button>
                 </div>
-            </header>
+            </div>
 
             <div className={styles.controls}>
                 <div className={styles.inputGroup}>
