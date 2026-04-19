@@ -4,6 +4,7 @@ import Button from '../../common/Button';
 import confetti from 'canvas-confetti';
 import { updateCoins } from '../../../utils/storage/storageManager';
 import { JsonLd, generateCourseSchema } from '../../seo/JsonLd';
+import PageHeader from '../../common/PageHeader';
 import styles from './NumbersRange5th.module.css';
 
 const NumbersRange5th = () => {
@@ -51,6 +52,7 @@ const NumbersRange5th = () => {
 
     return (
         <div className={styles.container}>
+            <PageHeader />
             <div className={styles.modeTabs}>
                 <Button onClick={() => setMode('range')} variant={mode === 'range' ? 'primary' : 'secondary'}>📏 수의 범위</Button>
                 <Button onClick={() => setMode('rounding')} variant={mode === 'rounding' ? 'primary' : 'secondary'}>🎯 어림하기</Button>
@@ -59,7 +61,7 @@ const NumbersRange5th = () => {
 
             {mode === 'range' && (
                 <div className={styles.content}>
-                    <h1>이상, 이하, 초과, 미만 📏</h1>
+                    <h2>이상, 이하, 초과, 미만 정리</h2>
                     <div className={styles.rangeGrid}>
                         <div className={styles.rangeCard}><strong>이상</strong>: 같거나 큰 수 (● 포함)</div>
                         <div className={styles.rangeCard}><strong>이하</strong>: 같거나 작은 수 (● 포함)</div>
@@ -71,7 +73,7 @@ const NumbersRange5th = () => {
 
             {mode === 'rounding' && (
                 <div className={styles.content}>
-                    <h1>올림, 버림, 반올림 🎯</h1>
+                    <h2>올림, 버림, 반올림 원리</h2>
                     <div className={styles.roundBox}>
                         <p>• <strong>올림</strong>: 구하려는 자리 미만의 수를 1로 보고 올림</p>
                         <p>• <strong>버림</strong>: 구하려는 자리 미만의 수를 0으로 보고 버림</p>

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import Button from '../../common/Button';
 import { JsonLd, generateCourseSchema } from '../../seo/JsonLd';
+import PageHeader from '../../common/PageHeader';
 import styles from './Cuboids5th.module.css';
 
 const Cuboids5th = () => {
@@ -14,8 +15,9 @@ const Cuboids5th = () => {
 
     return (
         <div className={styles.container}>
+            <PageHeader />
             <header className={styles.header}>
-                <h1 className={styles.title}>📦 5학년 수학: 직육면체 탐험</h1>
+                <h2 className={styles.title}>5학년 수학: 직육면체 원리 탐험</h2>
                 <p className={styles.subtitle}>입체도형의 부피와 겉넓이를 입체적으로 이해해봐요!</p>
             </header>
 

@@ -4,6 +4,7 @@ import Button from '../../common/Button';
 import confetti from 'canvas-confetti';
 import { updateCoins } from '../../../utils/storage/storageManager';
 import { JsonLd, generateCourseSchema } from '../../seo/JsonLd';
+import PageHeader from '../../common/PageHeader';
 import styles from './TwoDigitArithmetic.module.css';
 
 const TwoDigitArithmetic = () => {
@@ -69,6 +70,7 @@ const TwoDigitArithmetic = () => {
 
     return (
         <div className={styles.container}>
+            <PageHeader />
             <div className={styles.modeTabs}>
                 <Button onClick={() => { setMode('explore'); reset(); }} variant={mode === 'explore' ? 'primary' : 'secondary'} size="large">🔍 원리 탐험</Button>
                 <Button onClick={() => setMode('practice')} variant={mode === 'practice' ? 'primary' : 'secondary'} size="large">✏️ 실전 연습</Button>
@@ -81,7 +83,7 @@ const TwoDigitArithmetic = () => {
 
             {mode === 'explore' ? (
                 <div className={styles.exploreSection}>
-                    <h2 className={styles.title}>{operation === 'addition' ? '자릿수 맞춰 더하기' : '자릿수 맞춰 빼기'}</h2>
+                    <h2 className={styles.title}>{operation === 'addition' ? '두 자리 수 덧셈의 원리' : '두 자리 수 뺄셈의 원리'}</h2>
 
                     <div className={styles.verticalGrid}>
                         {/* Carry/Borrow row */}

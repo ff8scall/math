@@ -4,6 +4,7 @@ import Button from '../../common/Button';
 import confetti from 'canvas-confetti';
 import { updateCoins } from '../../../utils/storage/storageManager';
 import { JsonLd, generateCourseSchema } from '../../seo/JsonLd';
+import PageHeader from '../../common/PageHeader';
 import styles from './DecimalMultiplication5th.module.css';
 
 const DecimalMultiplication5th = () => {
@@ -28,6 +29,7 @@ const DecimalMultiplication5th = () => {
 
     return (
         <div className={styles.container}>
+            <PageHeader />
             <div className={styles.modeTabs}>
                 <Button onClick={() => setMode('learn')} variant={mode === 'learn' ? 'primary' : 'secondary'}>📖 학습하기</Button>
                 <Button onClick={() => { setMode('quiz'); generateQuiz(); }} variant={mode === 'quiz' ? 'primary' : 'secondary'}>✏️ 퀴즈왕</Button>
@@ -35,7 +37,7 @@ const DecimalMultiplication5th = () => {
 
             {mode === 'learn' ? (
                 <div className={styles.content}>
-                    <h1>소수의 곱셈 📖</h1>
+                    <h2>소수의 곱셈 원리 학습</h2>
                     <p>자연수의 곱셈처럼 계산한 뒤, 소수점의 위치만 잘 찍어주면 돼요!</p>
                     <div className={styles.exp}>
                         <p>0.3 × 2 = ?</p>

@@ -4,6 +4,7 @@ import Button from '../../common/Button';
 import { updateCoins } from '../../../utils/storage/storageManager';
 import confetti from 'canvas-confetti';
 import { JsonLd, generateCourseSchema } from '../../seo/JsonLd';
+import PageHeader from '../../common/PageHeader';
 import styles from './Angles4th.module.css';
 
 const Angles4th = () => {
@@ -66,8 +67,9 @@ const Angles4th = () => {
 
     return (
         <div className={styles.container}>
+            <PageHeader />
             <header className={styles.header}>
-                <h1 className={styles.title}>📐 4학년 수학: 각도 마스터! 각도기 탐험</h1>
+                <h2 className={styles.title}>4학년 수학: 각도 마스터! 각도기 탐험</h2>
                 <p className={styles.subtitle}>각도기를 자유자재로 움직이며 여러 가지 각을 만들어보세요.</p>
             </header>
 

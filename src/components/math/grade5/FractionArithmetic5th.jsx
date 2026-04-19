@@ -4,6 +4,7 @@ import Button from '../../common/Button';
 import confetti from 'canvas-confetti';
 import { updateCoins } from '../../../utils/storage/storageManager';
 import { JsonLd, generateCourseSchema } from '../../seo/JsonLd';
+import PageHeader from '../../common/PageHeader';
 import styles from './FractionArithmetic5th.module.css';
 
 const FractionArithmetic5th = () => {
@@ -71,6 +72,7 @@ const FractionArithmetic5th = () => {
 
     return (
         <div className={styles.container}>
+            <PageHeader />
             <div className={styles.modeTabs}>
                 <Button onClick={() => setMode('plus')} variant={mode === 'plus' ? 'primary' : 'secondary'}>➕ 분수의 덧셈</Button>
                 <Button onClick={() => setMode('minus')} variant={mode === 'minus' ? 'primary' : 'secondary'}>➖ 분수의 뺄셈</Button>
@@ -79,7 +81,7 @@ const FractionArithmetic5th = () => {
 
             {mode !== 'quiz' ? (
                 <div className={styles.learningArea}>
-                    <h1 className={styles.title}>{mode === 'plus' ? '분모가 다른 분수의 덧셈' : '분모가 다른 분수의 뺄셈'}</h1>
+                    <h2 className={styles.title}>{mode === 'plus' ? '분모가 다른 분수의 덧셈 원리' : '분모가 다른 분수의 뺄셈 원리'}</h2>
                     <div className={styles.stepCard}>
                         <h3>💡 계산 방법 (통분하기)</h3>
                         <div className={styles.steps}>

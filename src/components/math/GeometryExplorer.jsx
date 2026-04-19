@@ -4,6 +4,7 @@ import Button from '../common/Button';
 import confetti from 'canvas-confetti';
 import { updateCoins } from '../../utils/storage/storageManager';
 import { JsonLd, generateCourseSchema } from '../seo/JsonLd';
+import PageHeader from '../common/PageHeader';
 import styles from './GeometryExplorer.module.css';
 
 const GeometryExplorer = () => {
@@ -125,6 +126,7 @@ const GeometryExplorer = () => {
 
     return (
         <div className={styles.container}>
+            <PageHeader />
             {/* Mode Tabs */}
             <div style={{ display: 'flex', justifyContent: 'center', gap: '20px', marginBottom: '30px' }}>
                 <Button onClick={() => setMode('explore')} variant={mode === 'explore' ? 'primary' : 'secondary'}>🔍 도형 그리기</Button>

@@ -4,6 +4,7 @@ import Button from '../../common/Button';
 import confetti from 'canvas-confetti';
 import { updateCoins } from '../../../utils/storage/storageManager';
 import { JsonLd, generateCourseSchema } from '../../seo/JsonLd';
+import PageHeader from '../../common/PageHeader';
 import styles from './AveragePossibility5th.module.css';
 
 const AveragePossibility5th = () => {
@@ -30,6 +31,7 @@ const AveragePossibility5th = () => {
 
     return (
         <div className={styles.container}>
+            <PageHeader />
             <div className={styles.modeTabs}>
                 <Button onClick={() => setMode('average')} variant={mode === 'average' ? 'primary' : 'secondary'}>📊 평균</Button>
                 <Button onClick={() => setMode('possibility')} variant={mode === 'possibility' ? 'primary' : 'secondary'}>🎲 가능성</Button>
@@ -38,7 +40,7 @@ const AveragePossibility5th = () => {
 
             {mode === 'average' && (
                 <div className={styles.content}>
-                    <h1>평균 구하기 📊</h1>
+                    <h2>평균의 의미와 계산</h2>
                     <p>평균은 자료의 값을 모두 더해서 자료의 수로 나눈 값이에요.</p>
                     <div className={styles.formula}>평균 = (자료의 합) ÷ (자료의 수)</div>
                 </div>
@@ -46,7 +48,7 @@ const AveragePossibility5th = () => {
 
             {mode === 'possibility' && (
                 <div className={styles.content}>
-                    <h1>일어날 가능성 🎲</h1>
+                    <h2>일어날 가능성 원리</h2>
                     <p>어떤 일이 일어날 가능성을 말로 표현해볼까요?</p>
                     <div className={styles.pGrid}>
                         <div className={styles.pItem}>불가능하다 (0)</div>

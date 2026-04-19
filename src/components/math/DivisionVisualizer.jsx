@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Button from '../common/Button';
 import { JsonLd, generateCourseSchema } from '../seo/JsonLd';
 import { updateCoins } from '../../utils/storage/storageManager';
+import PageHeader from '../common/PageHeader';
 import styles from './DivisionVisualizer.module.css';
 import confetti from 'canvas-confetti';
 
@@ -114,6 +115,7 @@ const DivisionVisualizer = () => {
 
     return (
         <div className={styles.container}>
+            <PageHeader />
             <div className={styles.headerTabs}>
                 <Button
                     onClick={() => setMode('explore')}

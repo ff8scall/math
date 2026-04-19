@@ -4,6 +4,7 @@ import Button from '../../common/Button';
 import confetti from 'canvas-confetti';
 import { updateCoins } from '../../../utils/storage/storageManager';
 import { JsonLd, generateCourseSchema } from '../../seo/JsonLd';
+import PageHeader from '../../common/PageHeader';
 import styles from './TriangleExplorer4th.module.css';
 
 const TriangleExplorer4th = () => {
@@ -85,6 +86,7 @@ const TriangleExplorer4th = () => {
 
     return (
         <div className={styles.container}>
+            <PageHeader />
             <div className={styles.modeTabs}>
                 <Button onClick={() => setMode('explore')} variant={mode === 'explore' ? 'primary' : 'secondary'} size="large">🔍 삼각형 탐험</Button>
                 <Button onClick={() => setMode('practice')} variant={mode === 'practice' ? 'primary' : 'secondary'} size="large">✏️ 문제 풀기</Button>
@@ -92,7 +94,7 @@ const TriangleExplorer4th = () => {
 
             {mode === 'explore' ? (
                 <div className={styles.explore}>
-                    <h1 className={styles.title}>삼각형의 세계 📐</h1>
+                    <h2 className={styles.title}>삼각형의 세계 📐</h2>
                     <p className={styles.subtitle}>다양한 삼각형의 성질을 직접 확인해 보세요.</p>
 
                     <div className={styles.exploreCard}>

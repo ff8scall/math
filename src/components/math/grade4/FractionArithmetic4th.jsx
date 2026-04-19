@@ -4,6 +4,7 @@ import Button from '../../common/Button';
 import confetti from 'canvas-confetti';
 import { updateCoins } from '../../../utils/storage/storageManager';
 import { JsonLd, generateCourseSchema } from '../../seo/JsonLd';
+import PageHeader from '../../common/PageHeader';
 import styles from './FractionArithmetic4th.module.css';
 
 const FractionArithmetic4th = () => {
@@ -107,6 +108,7 @@ const FractionArithmetic4th = () => {
 
     return (
         <div className={styles.container}>
+            <PageHeader />
             <div className={styles.modeTabs}>
                 <Button onClick={() => setMode('explore')} variant={mode === 'explore' ? 'primary' : 'secondary'} size="large">🔍 원리 탐구</Button>
                 <Button onClick={() => setMode('practice')} variant={mode === 'practice' ? 'primary' : 'secondary'} size="large">✏️ 문제 풀기</Button>
@@ -114,7 +116,7 @@ const FractionArithmetic4th = () => {
 
             {mode === 'explore' ? (
                 <div className={styles.explore}>
-                    <h1 className={styles.title}>분수의 덧셈과 뺄셈 🍕</h1>
+                    <h2 className={styles.title}>분수의 덧셈과 뺄셈 원리</h2>
                     <p className={styles.subtitle}>피자 조각을 모으고 나누며 계산 원리를 알아봐요.</p>
 
                     <div className={styles.exploreCard}>

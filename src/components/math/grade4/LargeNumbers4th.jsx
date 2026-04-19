@@ -130,6 +130,7 @@ const LargeNumbers4th = () => {
 
     return (
         <div className={styles.container}>
+            <PageHeader />
             <div className={styles.modeTabs}>
                 <Button onClick={() => setMode('explore')} variant={mode === 'explore' ? 'primary' : 'secondary'} size="large">🔍 큰 수 탐험</Button>
                 <Button onClick={() => setMode('practice')} variant={mode === 'practice' ? 'primary' : 'secondary'} size="large">✏️ 문제 풀기</Button>
@@ -137,7 +138,6 @@ const LargeNumbers4th = () => {
 
             {mode === 'explore' ? (
                 <div className={styles.explore}>
-                    <PageHeader />
                     <p className={styles.subtitle}>숫자가 커 가면서 이름이 어떻게 바뀌는지 확인해봐요.</p>
 
                     <div className={styles.displayBoard}>
@@ -196,7 +196,7 @@ const LargeNumbers4th = () => {
                 </div>
             ) : (
                 <div className={styles.practice}>
-                    <PageHeader title="큰 수 실전 퀴즈 ✏️" />
+                    <h2 className={styles.title}>큰 수 실전 퀴즈</h2>
                     {quizData && (
                         <div className={styles.problemCard}>
                             <h3 className={styles.question}>{quizData.question}</h3>

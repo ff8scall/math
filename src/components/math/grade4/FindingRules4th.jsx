@@ -4,6 +4,7 @@ import Button from '../../common/Button';
 import confetti from 'canvas-confetti';
 import { updateCoins } from '../../../utils/storage/storageManager';
 import { JsonLd, generateCourseSchema } from '../../seo/JsonLd';
+import PageHeader from '../../common/PageHeader';
 import styles from './FindingRules4th.module.css';
 
 const FindingRules4th = () => {
@@ -120,6 +121,7 @@ const FindingRules4th = () => {
 
     return (
         <div className={styles.container}>
+            <PageHeader />
             <div className={styles.modeTabs}>
                 <Button onClick={() => setMode('explore')} variant={mode === 'explore' ? 'primary' : 'secondary'} size="large">🔍 규칙 탐험</Button>
                 <Button onClick={() => setMode('practice')} variant={mode === 'practice' ? 'primary' : 'secondary'} size="large">✏️ 규칙 퀴즈</Button>
@@ -127,7 +129,7 @@ const FindingRules4th = () => {
 
             {mode === 'explore' ? (
                 <div className={styles.explore}>
-                    <h2 className={styles.title}>규칙을 찾아봐요 🕵️‍♀️</h2>
+                    <h2 className={styles.title}>규칙 패턴 탐험하기</h2>
                     <p className={styles.subtitle}>숫자나 모양의 배열에서 어떤 규칙이 숨어있는지 확인하세요.</p>
 
                     <div className={styles.exploreToggle}>

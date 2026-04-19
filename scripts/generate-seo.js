@@ -89,6 +89,7 @@ console.log('✅ rss.xml generated');
 // 3. Generate Robots.txt
 const robots = `User-agent: *
 Allow: /
+Allow: /${INDEXNOW_KEY}.txt
 Sitemap: ${DOMAIN}/sitemap.xml
 `;
 

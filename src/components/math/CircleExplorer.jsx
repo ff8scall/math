@@ -4,6 +4,7 @@ import Button from '../common/Button';
 import confetti from 'canvas-confetti';
 import { updateCoins } from '../../utils/storage/storageManager';
 import { JsonLd, generateCourseSchema } from '../seo/JsonLd';
+import PageHeader from '../common/PageHeader';
 import styles from './CircleExplorer.module.css';
 
 const CircleExplorer = () => {
@@ -83,6 +84,7 @@ const CircleExplorer = () => {
 
     return (
         <div className={styles.container}>
+            <PageHeader />
             <div className={styles.modeTabs}>
                 <Button onClick={() => setMode('explore')} variant={mode === 'explore' ? 'primary' : 'secondary'} size="large">🔍 원 탐험하기</Button>
                 <Button onClick={() => setMode('practice')} variant={mode === 'practice' ? 'primary' : 'secondary'} size="large">✏️ 문제 풀기</Button>
@@ -90,7 +92,7 @@ const CircleExplorer = () => {
 
             {mode === 'explore' ? (
                 <div className={styles.explore}>
-                    <h1 className={styles.title}>원의 세계 🔵</h1>
+                    <h2 className={styles.title}>원의 성질 탐험</h2>
                     <p className={styles.subtitle}>동그란 원의 비밀! 중심, 반지름, 지름을 직접 조절하며 배워봐요.</p>
 
                     <div className={styles.canvasCard}>

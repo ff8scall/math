@@ -4,6 +4,7 @@ import Button from '../../common/Button';
 import confetti from 'canvas-confetti';
 import { updateCoins } from '../../../utils/storage/storageManager';
 import { JsonLd, generateCourseSchema } from '../../seo/JsonLd';
+import PageHeader from '../../common/PageHeader';
 import styles from './SimpleArithmetic1st.module.css';
 
 const SimpleArithmetic1st = () => {
@@ -80,6 +81,7 @@ const SimpleArithmetic1st = () => {
 
     return (
         <div className={styles.container}>
+            <PageHeader />
             <div className={styles.modeTabs}>
                 <Button
                     onClick={() => setMode('explore')}
@@ -115,7 +117,7 @@ const SimpleArithmetic1st = () => {
             {mode === 'explore' ? (
                 <div className={styles.explore}>
                     <h2 className={styles.title}>
-                        {operation === 'addition' ? '덧셈 배우기 ➕' : '뺄셈 배우기 ➖'}
+                        {operation === 'addition' ? '덧셈의 원리 배우기' : '뺄셈의 원리 배우기'}
                     </h2>
                     <p className={styles.subtitle}>
                         {operation === 'addition' ? '구슬을 더해보세요!' : '구슬을 빼보세요!'}

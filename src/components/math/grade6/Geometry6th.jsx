@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Button from '../../common/Button';
 import { JsonLd, generateCourseSchema } from '../../seo/JsonLd';
 import { updateCoins } from '../../../utils/storage/storageManager';
+import PageHeader from '../../common/PageHeader';
 import confetti from 'canvas-confetti';
 import styles from './Geometry6th.module.css';
 
@@ -72,6 +73,7 @@ const Geometry6th = () => {
 
     return (
         <div className={styles.container}>
+            <PageHeader />
             <div className={styles.tabHeader}>
                 <Button onClick={() => setMode('explore')} variant={mode === 'explore' ? 'primary' : 'secondary'}>🔍 원리 탐험</Button>
                 <Button onClick={() => setMode('quiz')} variant={mode === 'quiz' ? 'primary' : 'secondary'}>✏️ 퀴즈 도전</Button>
@@ -93,7 +95,7 @@ const Geometry6th = () => {
                         <div className={styles.content}>
                             {type === 'prism' ? (
                                 <div className={styles.box}>
-                                    <h1>각기둥 (Prism) 🟦</h1>
+                                    <h2>각기둥(Prism)의 성질</h2>
                                     <p>위와 아래의 면이 서로 평행하고 합동인 다각형으로 이루어진 입체도형이에요.</p>
                                     <div className={styles.parts}>
                                         <div className={styles.pCard}>밑면: 2개</div>
@@ -108,7 +110,7 @@ const Geometry6th = () => {
                                 </div>
                             ) : (
                                 <div className={styles.box}>
-                                    <h1>각뿔 (Pyramid) 🔺</h1>
+                                    <h2>각뿔(Pyramid)의 성질</h2>
                                     <p>바닥면은 다각형이고, 옆면은 모두 삼각형이며 한 공통된 꼭짓점에서 만나는 입체도형이에요.</p>
                                     <div className={styles.parts}>
                                         <div className={styles.pCard}>밑면: 1개</div>

@@ -3,6 +3,8 @@ import React, { useState, useEffect } from 'react';
 import Button from '../../common/Button';
 import confetti from 'canvas-confetti';
 import { updateCoins } from '../../../utils/storage/storageManager';
+import PageHeader from '../../common/PageHeader';
+import { JsonLd, generateCourseSchema } from '../../seo/JsonLd';
 import styles from './TimeCalculation.module.css';
 
 const TimeCalculation = () => {
@@ -37,7 +39,8 @@ const TimeCalculation = () => {
 
     return (
         <div className={styles.container}>
-            <h2 className={styles.title}>시각과 시간 ⏰</h2>
+            <PageHeader />
+            <h2 className={styles.title}>시각과 시간 탐험</h2>
             <div className={styles.visual}>
                 <div className={styles.timeBox}><div className={styles.label}>시작</div><div className={styles.time}>{startHour}시</div></div>
                 <div className={styles.arrow}>+ {duration}시간 →</div>
@@ -61,6 +64,7 @@ const TimeCalculation = () => {
                     {feedback === 'incorrect' && <div className={styles.incorrect}>😅 다시!</div>}
                 </div>
             )}
+            <JsonLd data={generateCourseSchema("시각과 시간", "시각과 시간의 개념을 이해하고 시간의 흐름을 배웁니다.")} />
         </div>
     );
 };

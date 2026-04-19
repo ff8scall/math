@@ -4,6 +4,7 @@ import Button from '../../common/Button';
 import confetti from 'canvas-confetti';
 import { updateCoins } from '../../../utils/storage/storageManager';
 import { JsonLd, generateCourseSchema } from '../../seo/JsonLd';
+import PageHeader from '../../common/PageHeader';
 import styles from './FractionMultiplication5th.module.css';
 
 const FractionMultiplication5th = () => {
@@ -39,6 +40,7 @@ const FractionMultiplication5th = () => {
 
     return (
         <div className={styles.container}>
+            <PageHeader />
             <div className={styles.modeTabs}>
                 <Button onClick={() => setMode('learn')} variant={mode === 'learn' ? 'primary' : 'secondary'}>📖 학습하기</Button>
                 <Button onClick={() => { setMode('quiz'); generateQuiz(); }} variant={mode === 'quiz' ? 'primary' : 'secondary'}>✏️ 계산하기</Button>
@@ -46,7 +48,7 @@ const FractionMultiplication5th = () => {
 
             {mode === 'learn' ? (
                 <div className={styles.content}>
-                    <h1>분수 × 분수 📖</h1>
+                    <h2>분수 곱셈의 원리</h2>
                     <div className={styles.guide}>
                         <p>분수의 곱셈은 아주 쉬워요!</p>
                         <p>1. <strong>분모는 분모끼리</strong> 곱해요.</p>

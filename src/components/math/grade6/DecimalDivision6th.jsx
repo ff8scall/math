@@ -4,6 +4,7 @@ import Button from '../../common/Button';
 import confetti from 'canvas-confetti';
 import { updateCoins } from '../../../utils/storage/storageManager';
 import { JsonLd, generateCourseSchema } from '../../seo/JsonLd';
+import PageHeader from '../../common/PageHeader';
 import styles from './DecimalDivision6th.module.css';
 
 const DecimalDivision6th = () => {
@@ -45,6 +46,7 @@ const DecimalDivision6th = () => {
 
     return (
         <div className={styles.container}>
+            <PageHeader />
             <div className={styles.modeTabs}>
                 <Button onClick={() => setMode('learn')} variant={mode === 'learn' ? 'primary' : 'secondary'}>📖 학습하기</Button>
                 <Button onClick={() => { setMode('quiz'); generateQuiz(); }} variant={mode === 'quiz' ? 'primary' : 'secondary'}>✏️ 퀴즈왕</Button>
@@ -52,7 +54,7 @@ const DecimalDivision6th = () => {
 
             {mode === 'learn' ? (
                 <div className={styles.content}>
-                    <h1>소수의 나눗셈 📖</h1>
+                    <h2>소수의 나눗셈 원리 학습</h2>
                     <p>소수점의 위치를 옮겨서 자연수의 나눗셈처럼 계산해요.</p>
                     <div className={styles.expBox}>
                         <p>1.2 ÷ 0.3 = ?</p>

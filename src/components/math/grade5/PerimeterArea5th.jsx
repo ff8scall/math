@@ -4,6 +4,7 @@ import Button from '../../common/Button';
 import confetti from 'canvas-confetti';
 import { updateCoins } from '../../../utils/storage/storageManager';
 import { JsonLd, generateCourseSchema } from '../../seo/JsonLd';
+import PageHeader from '../../common/PageHeader';
 import styles from './PerimeterArea5th.module.css';
 
 const PerimeterArea5th = () => {
@@ -107,6 +108,7 @@ const PerimeterArea5th = () => {
 
     return (
         <div className={styles.container}>
+            <PageHeader />
             <div className={styles.modeTabs}>
                 {Object.keys(shapes).map(s => (
                     <Button key={s} onClick={() => setMode(s)} variant={mode === s ? 'primary' : 'secondary'} size="small">{shapes[s].title}</Button>
@@ -123,7 +125,7 @@ const PerimeterArea5th = () => {
                         className={styles.infoCard}
                         style={{ borderTop: `8px solid ${shapes[mode].color}` }}
                     >
-                        <h1 className={styles.title}>{shapes[mode].title} 탐험 📐</h1>
+                        <h2 className={styles.title}>{shapes[mode].title} 계산 원리</h2>
                         <p className={styles.description}>{shapes[mode].description}</p>
 
                         <div className={styles.formulaBox}>

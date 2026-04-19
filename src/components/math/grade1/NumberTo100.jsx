@@ -4,6 +4,7 @@ import Button from '../../common/Button';
 import confetti from 'canvas-confetti';
 import { updateCoins } from '../../../utils/storage/storageManager';
 import { JsonLd, generateCourseSchema } from '../../seo/JsonLd';
+import PageHeader from '../../common/PageHeader';
 import styles from './NumberTo100.module.css';
 
 const NumberTo100 = () => {
@@ -69,6 +70,7 @@ const NumberTo100 = () => {
 
     return (
         <div className={styles.container}>
+            <PageHeader />
             <div className={styles.modeTabs}>
                 <Button onClick={() => setMode('explore')} variant={mode === 'explore' ? 'primary' : 'secondary'} size="large">🔍 탐험하기</Button>
                 <Button onClick={() => setMode('practice')} variant={mode === 'practice' ? 'primary' : 'secondary'} size="large">✏️ 문제 풀기</Button>
@@ -76,7 +78,7 @@ const NumberTo100 = () => {
 
             {mode === 'explore' ? (
                 <div className={styles.explore}>
-                    <h2 className={styles.title}>100까지의 수 🎯</h2>
+                    <h2 className={styles.title}>100까지의 수 배우기</h2>
                     <p className={styles.subtitle}>100까지 세고 쓰기를 배워요!</p>
 
                     <div className={styles.numberDisplay}><span className={styles.bigNumber}>{currentNumber}</span></div>

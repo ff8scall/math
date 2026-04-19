@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Button from '../common/Button';
 import { JsonLd, generateCourseSchema } from '../seo/JsonLd';
+import PageHeader from '../common/PageHeader';
 import styles from './MultiplicationVisualizer.module.css';
 
 import { updateCoins } from '../../utils/storage/storageManager';
@@ -70,6 +71,7 @@ const MultiplicationVisualizer = () => {
 
     return (
         <div className={styles.container}>
+            <PageHeader />
             <div style={{ display: 'flex', justifyContent: 'center', gap: '20px', marginBottom: '30px' }}>
                 <Button onClick={() => setMode('explore')} variant={mode === 'explore' ? 'primary' : 'secondary'}>🔍 원리 탐험</Button>
                 <Button onClick={() => setMode('practice')} variant={mode === 'practice' ? 'primary' : 'secondary'}>⚡ 구구단 퀴즈</Button>

@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Button from '../common/Button';
 import { updateCoins, getStorageData } from '../../utils/storage/storageManager';
+import PageHeader from '../common/PageHeader';
 import confetti from 'canvas-confetti';
 import styles from './MathQuiz.module.css';
 
@@ -183,7 +184,8 @@ const MathQuiz = () => {
     if (!topic) {
         return (
             <div className={styles.container}>
-                <h2 className={styles.title}>도전! 수학 퀴즈왕 👑</h2>
+                <PageHeader />
+                <h2 className={styles.title}>도전! 수학 퀴즈왕</h2>
                 <p className={styles.subtitle}>1학기+2학기 전체 문제를 풀고 코인을 모아보세요!</p>
                 <div className={styles.topicGrid}>
                     <button className={styles.topicBtn} onClick={() => setTopic('addition')}>

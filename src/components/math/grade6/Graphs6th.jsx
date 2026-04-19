@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Button from '../../common/Button';
 import { updateCoins } from '../../../utils/storage/storageManager';
+import PageHeader from '../../common/PageHeader';
 import confetti from 'canvas-confetti';
 import styles from './Graphs6th.module.css';
 
@@ -53,6 +54,7 @@ const Graphs6th = () => {
 
     return (
         <div className={styles.container}>
+            <PageHeader />
             <div className={styles.tabHeader}>
                 <Button onClick={() => setMode('explore')} variant={mode === 'explore' ? 'primary' : 'secondary'}>🔍 그래프 탐험</Button>
                 <Button onClick={() => setMode('practice')} variant={mode === 'practice' ? 'primary' : 'secondary'}>✏️ 실전 연습</Button>
@@ -61,7 +63,7 @@ const Graphs6th = () => {
             <AnimatePresence mode="wait">
                 {mode === 'explore' ? (
                     <motion.div key="explore" initial={{ opacity: 0 }} animate={{ opacity: 1 }} className={styles.content}>
-                        <h1>여러 가지 그래프 📊</h1>
+                        <h2>띠그래프와 원그래프 탐구</h2>
                         <p>전체에 대한 각 부분의 비율을 한눈에 알아보기 쉬운 그래프들을 배워요.</p>
 
                         <div className={styles.sec}>

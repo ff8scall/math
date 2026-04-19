@@ -4,6 +4,7 @@ import Button from '../../common/Button';
 import confetti from 'canvas-confetti';
 import { updateCoins } from '../../../utils/storage/storageManager';
 import { JsonLd, generateCourseSchema } from '../../seo/JsonLd';
+import PageHeader from '../../common/PageHeader';
 import styles from './ReductionCommonDenom5th.module.css';
 
 const ReductionCommonDenom5th = () => {
@@ -70,6 +71,7 @@ const ReductionCommonDenom5th = () => {
 
     return (
         <div className={styles.container}>
+            <PageHeader />
             <div className={styles.modeTabs}>
                 <Button onClick={() => setMode('equivalent')} variant={mode === 'equivalent' ? 'primary' : 'secondary'}>🍕 크기가 같은 분수</Button>
                 <Button onClick={() => setMode('reduction')} variant={mode === 'reduction' ? 'primary' : 'secondary'}>✂️ 약분하기</Button>
@@ -78,7 +80,7 @@ const ReductionCommonDenom5th = () => {
 
             {mode === 'equivalent' && (
                 <div className={styles.content}>
-                    <h1 className={styles.title}>크기가 같은 분수 만들기 🍕</h1>
+                    <h2 className={styles.title}>크기가 같은 분수 만들기 원리</h2>
                     <p className={styles.subtitle}>분모와 분자에 0이 아닌 같은 수를 곱하거나 나누어도 분수의 크기는 변하지 않아요.</p>
 
                     <div className={styles.visualizer}>
@@ -129,7 +131,7 @@ const ReductionCommonDenom5th = () => {
 
             {mode === 'reduction' && (
                 <div className={styles.content}>
-                    <h1 className={styles.title}>분수를 간단하게! 약분 ✂️</h1>
+                    <h2 className={styles.title}>분수를 간단하게 만드는 약분</h2>
                     <p className={styles.subtitle}>분모와 분자를 그들의 공약수로 나누는 것을 <strong>약분</strong>이라고 해요.</p>
 
                     <div className={styles.card}>
@@ -149,7 +151,7 @@ const ReductionCommonDenom5th = () => {
 
             {mode === 'common' && (
                 <div className={styles.content}>
-                    <h1 className={styles.title}>분모를 같게! 통분 🤝</h1>
+                    <h2 className={styles.title}>분모를 같게 만드는 통분</h2>
                     <p className={styles.subtitle}>분모가 다른 분수들의 분모를 같게 하는 것을 <strong>통분</strong>이라고 해요.</p>
 
                     <div className={styles.card}>

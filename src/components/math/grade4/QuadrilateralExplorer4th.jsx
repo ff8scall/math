@@ -4,6 +4,7 @@ import Button from '../../common/Button';
 import confetti from 'canvas-confetti';
 import { updateCoins } from '../../../utils/storage/storageManager';
 import { JsonLd, generateCourseSchema } from '../../seo/JsonLd';
+import PageHeader from '../../common/PageHeader';
 import styles from './QuadrilateralExplorer4th.module.css';
 
 const QuadrilateralExplorer4th = () => {
@@ -87,6 +88,7 @@ const QuadrilateralExplorer4th = () => {
 
     return (
         <div className={styles.container}>
+            <PageHeader />
             <div className={styles.modeTabs}>
                 <Button onClick={() => setMode('explore')} variant={mode === 'explore' ? 'primary' : 'secondary'} size="large">🔍 사각형 탐험</Button>
                 <Button onClick={() => setMode('practice')} variant={mode === 'practice' ? 'primary' : 'secondary'} size="large">✏️ 문제 풀기</Button>
@@ -94,7 +96,7 @@ const QuadrilateralExplorer4th = () => {
 
             {mode === 'explore' ? (
                 <div className={styles.explore}>
-                    <h1 className={styles.title}>사각형의 종류 🔳</h1>
+                    <h2 className={styles.title}>사각형의 종류 🔳</h2>
                     <p className={styles.subtitle}>여러 가지 사각형의 이름을 알고 성질을 알아봐요.</p>
 
                     <div className={styles.exploreCard}>

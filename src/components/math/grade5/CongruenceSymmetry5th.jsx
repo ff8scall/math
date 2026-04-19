@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Button from '../../common/Button';
 import { JsonLd, generateCourseSchema } from '../../seo/JsonLd';
 import { updateCoins } from '../../../utils/storage/storageManager';
+import PageHeader from '../../common/PageHeader';
 import confetti from 'canvas-confetti';
 import styles from './CongruenceSymmetry5th.module.css';
 
@@ -42,6 +43,7 @@ const CongruenceSymmetry5th = () => {
 
     return (
         <div className={styles.container}>
+            <PageHeader />
             <div className={styles.tabHeader}>
                 <Button onClick={() => setMode('explore')} variant={mode === 'explore' ? 'primary' : 'secondary'}>🔍 원리 탐험</Button>
                 <Button onClick={() => setMode('practice')} variant={mode === 'practice' ? 'primary' : 'secondary'}>✏️ 실전 연습</Button>
@@ -58,7 +60,7 @@ const CongruenceSymmetry5th = () => {
                         <div className={styles.innerContent}>
                             {subMode === 'congruence' ? (
                                 <div className={styles.sec}>
-                                    <h1>도형의 합동 🤝</h1>
+                                    <h2>도형의 합동 원리</h2>
                                     <p>모양과 크기가 똑같아서 포개었을 때 완전히 겹쳐지는 두 도형을 **합동**이라고 합니다.</p>
                                     <div className={styles.visualBoard}>
                                         <motion.div className={styles.rect} animate={{ x: [0, 60, 0] }} transition={{ repeat: Infinity, duration: 2 }} />
@@ -68,7 +70,7 @@ const CongruenceSymmetry5th = () => {
                                 </div>
                             ) : (
                                 <div className={styles.sec}>
-                                    <h1>선대칭과 점대칭 🪞</h1>
+                                    <h2>선대칭과 점대칭 탐구</h2>
                                     <div className={styles.symmetryBox}>
                                         <h3>• 선대칭도형</h3>
                                         <p>한 직선(대칭축)을 따라 접었을 때 완전히 겹쳐지는 도형입니다.</p>

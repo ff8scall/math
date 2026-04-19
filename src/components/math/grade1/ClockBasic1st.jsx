@@ -4,6 +4,7 @@ import Button from '../../common/Button';
 import confetti from 'canvas-confetti';
 import { updateCoins } from '../../../utils/storage/storageManager';
 import { JsonLd, generateCourseSchema } from '../../seo/JsonLd';
+import PageHeader from '../../common/PageHeader';
 import styles from './ClockBasic1st.module.css';
 
 const ClockBasic1st = () => {
@@ -49,6 +50,7 @@ const ClockBasic1st = () => {
 
     return (
         <div className={styles.container}>
+            <PageHeader />
             <div className={styles.modeTabs}>
                 <Button onClick={() => setMode('explore')} variant={mode === 'explore' ? 'primary' : 'secondary'} size="large">🔍 탐험하기</Button>
                 <Button onClick={() => setMode('practice')} variant={mode === 'practice' ? 'primary' : 'secondary'} size="large">✏️ 문제 풀기</Button>
@@ -56,7 +58,7 @@ const ClockBasic1st = () => {
 
             {mode === 'explore' ? (
                 <div className={styles.explore}>
-                    <h2 className={styles.title}>시계 보기 ⏰</h2>
+                    <h2 className={styles.title}>시계 보기 원리</h2>
                     <p className={styles.subtitle}>시계 바늘을 움직여보세요!</p>
 
                     <div className={styles.clockContainer}>

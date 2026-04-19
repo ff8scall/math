@@ -4,6 +4,7 @@ import Button from '../../common/Button';
 import confetti from 'canvas-confetti';
 import { updateCoins } from '../../../utils/storage/storageManager';
 import { JsonLd, generateCourseSchema } from '../../seo/JsonLd';
+import PageHeader from '../../common/PageHeader';
 import styles from './RulesResponse5th.module.css';
 
 const RulesResponse5th = () => {
@@ -87,6 +88,7 @@ const RulesResponse5th = () => {
 
     return (
         <div className={styles.container}>
+            <PageHeader />
             <div className={styles.modeTabs}>
                 <Button onClick={() => setMode('explore')} variant={mode === 'explore' ? 'primary' : 'secondary'}>🔍 대응 관계 찾기</Button>
                 <Button onClick={() => setMode('quiz')} variant={mode === 'quiz' ? 'primary' : 'secondary'}>✏️ 규칙 퀴즈</Button>
@@ -94,7 +96,7 @@ const RulesResponse5th = () => {
 
             {mode === 'explore' ? (
                 <div className={styles.exploreContent}>
-                    <h1 className={styles.title}>규칙과 대응 ↔️</h1>
+                    <h2 className={styles.title}>규칙과 대응 관계 탐구</h2>
                     <div className={styles.scenarioSelector}>
                         {scenarios.map((s, i) => (
                             <button

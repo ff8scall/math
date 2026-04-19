@@ -4,6 +4,7 @@ import Button from '../../common/Button';
 import confetti from 'canvas-confetti';
 import { updateCoins } from '../../../utils/storage/storageManager';
 import { JsonLd, generateCourseSchema } from '../../seo/JsonLd';
+import PageHeader from '../../common/PageHeader';
 import styles from './BarGraph4th.module.css';
 
 const GraphView = ({ items, height = 300 }) => (
@@ -114,6 +115,7 @@ const BarGraph4th = () => {
 
     return (
         <div className={styles.container}>
+            <PageHeader />
             <div className={styles.modeTabs}>
                 <Button onClick={() => setMode('explore')} variant={mode === 'explore' ? 'primary' : 'secondary'} size="large">🔍 그래프 그리기</Button>
                 <Button onClick={() => setMode('practice')} variant={mode === 'practice' ? 'primary' : 'secondary'} size="large">✏️ 문제 풀기</Button>
@@ -121,7 +123,7 @@ const BarGraph4th = () => {
 
             {mode === 'explore' ? (
                 <div className={styles.explore}>
-                    <h2 className={styles.title}>막대그래프를 직접 그려요 📊</h2>
+                    <h2 className={styles.title}>막대그래프 직접 그리기</h2>
                     <p className={styles.subtitle}>수치를 입력해서 막대가 어떻게 변하는지 확인해보세요.</p>
 
                     <GraphView items={data} />

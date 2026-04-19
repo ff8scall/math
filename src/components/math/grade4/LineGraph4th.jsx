@@ -4,6 +4,7 @@ import Button from '../../common/Button';
 import confetti from 'canvas-confetti';
 import { updateCoins } from '../../../utils/storage/storageManager';
 import { JsonLd, generateCourseSchema } from '../../seo/JsonLd';
+import PageHeader from '../../common/PageHeader';
 import styles from './LineGraph4th.module.css';
 
 const SvgGraph = ({ items, width = 800, height = 250 }) => {
@@ -146,6 +147,7 @@ const LineGraph4th = () => {
 
     return (
         <div className={styles.container}>
+            <PageHeader />
             <div className={styles.modeTabs}>
                 <Button onClick={() => setMode('explore')} variant={mode === 'explore' ? 'primary' : 'secondary'} size="large">🔍 그래프 그리기</Button>
                 <Button onClick={() => setMode('practice')} variant={mode === 'practice' ? 'primary' : 'secondary'} size="large">✏️ 문제 풀기</Button>
@@ -153,7 +155,7 @@ const LineGraph4th = () => {
 
             {mode === 'explore' ? (
                 <div className={styles.explore}>
-                    <h1 className={styles.title}>꺾은선그래프 탐험 📉</h1>
+                    <h2 className={styles.title}>꺾은선그래프 탐험 📉</h2>
                     <p className={styles.subtitle}>시간에 따른 변화를 선으로 연결해 봐요.</p>
 
                     <div className={styles.exploreCard}>
