@@ -105,3 +105,48 @@
     font-size: 0.8rem;
     color: #888;
 }
+
+/* SEO Section */
+.seoSection {
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px dashed #ddd;
+}
+
+.guideCard {
+    background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+    border-radius: var(--radius-lg);
+    padding: 2.5rem;
+    border-left: 6px solid var(--primary-color);
+    box-shadow: var(--shadow-sm);
+}
+
+.guideTitle {
+    font-size: 1.8rem;
+    color: var(--text-main);
+    margin-bottom: 1.5rem;
+}
+
+.guideContent {
+    color: #444;
+    line-height: 1.8;
+    font-size: 1.05rem;
+}
+
+.guideContent p {
+    margin-bottom: 1.2rem;
+}
+
+.guideContent strong {
+    color: var(--primary-color);
+}
+
+@media (max-width: 768px) {
+    .guideCard {
+        padding: 1.5rem;
+    }
+    
+    .guideTitle {
+        font-size: 1.4rem;
+    }
+}
