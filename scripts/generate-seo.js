@@ -127,25 +127,24 @@ const submitToIndexNow = async () => {
   const data = {
     host: new URL(DOMAIN).hostname,
     key: INDEXNOW_KEY,
-    keyLocation: INDEXNOW_KEY_LOCATION,
     urlList: urlList
   };
 
   console.log(`🚀 Host: ${data.host}`);
-  console.log(`🚀 Key Location: ${data.keyLocation}`);
   console.log(`🚀 Submitting ${urlList.length} URLs to IndexNow...`);
+  console.log(`📡 Payload: ${JSON.stringify({ ...data, urlList: [urlList[0], '...'] })}`);
 
   // Verify key file accessibility first
   try {
-    const keyCheck = await fetch(data.keyLocation);
+    const keyCheck = await fetch(INDEXNOW_KEY_LOCATION);
     if (!keyCheck.ok) {
-      console.warn(`⚠️ Warning: Key file at ${data.keyLocation} returned status ${keyCheck.status}. Submission might fail.`);
+      console.warn(`⚠️ Warning: Key file at ${INDEXNOW_KEY_LOCATION} returned status ${keyCheck.status}. Submission might fail.`);
     } else {
       const content = (await keyCheck.text()).trim();
       if (content !== INDEXNOW_KEY) {
         console.warn(`⚠️ Warning: Key file content mismatch! Found: "${content}", Expected: "${INDEXNOW_KEY}"`);
       } else {
-        console.log(`✅ Key file verified at ${data.keyLocation}`);
+        console.log(`✅ Key file verified at ${INDEXNOW_KEY_LOCATION}`);
       }
     }
   } catch (e) {
@@ -164,6 +163,7 @@ const submitToIndexNow = async () => {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json; charset=utf-8',
+          'User-Agent': 'Mozilla/5.0 (compatible; IndexNow/1.0; +https://www.indexnow.org/)'
         },
         body: JSON.stringify(data)
       });
