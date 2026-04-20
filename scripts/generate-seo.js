@@ -146,6 +146,7 @@ const submitToIndexNow = async () => {
     const data = {
       host: host,
       key: key,
+      keyLocation: `${DOMAIN}/${key}.txt`,
       urlList: urlList
     };
 
