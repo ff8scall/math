@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
 Allow: /bbd0d9a6843c450eb3e9d811a0fd504a.txt
+Allow: /7c007da9c90cef3f9485956806191b31.txt
 Sitemap: https://math.lego-sia.com/sitemap.xml

@@ -42,8 +42,9 @@ graph TD
 - `*.ps1`: 이미지 배경 제거 및 자동화 처리를 위한 PowerShell 스크립트들.
 
 ## 🔗 외부 연동 정보
-- **IndexNow Key**: `bbd0d9a6843c450eb3e9d811a0fd504a`
-- **Indexing API**: Bing, IndexNow.org
+- **IndexNow Key (Bing)**: `bbd0d9a6843c450eb3e9d811a0fd504a`
+- **IndexNow Key (Naver)**: `7c007da9c90cef3f9485956806191b31`
+- **Indexing API**: Bing, IndexNow.org, Naver Search Advisor
 
 ## 🛡️ 가동 원칙
 1. 모든 페이지 추가 시 `src/data/seoData.js`에 먼저 등록할 것.

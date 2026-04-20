@@ -25,13 +25,21 @@ if (!fs.existsSync(publicDir)) {
 }
 
 // 0. IndexNow Configuration
-const INDEXNOW_KEY = 'bbd0d9a6843c450eb3e9d811a0fd504a';
-const INDEXNOW_KEY_FILE = `${INDEXNOW_KEY}.txt`;
-const INDEXNOW_KEY_LOCATION = `${DOMAIN}/${INDEXNOW_KEY_FILE}`;
+const BING_KEY = 'bbd0d9a6843c450eb3e9d811a0fd504a';
+const NAVER_KEY = '7c007da9c90cef3f9485956806191b31';
 
-// Generate IndexNow Key File in public root
-fs.writeFileSync(path.join(publicDir, INDEXNOW_KEY_FILE), INDEXNOW_KEY);
-console.log(`✅ IndexNow Key File (${INDEXNOW_KEY_FILE}) generated`);
+const INDEXNOW_CONFIG = [
+  { endpoint: 'https://www.bing.com/indexnow', key: BING_KEY },
+  { endpoint: 'https://api.indexnow.org/indexnow', key: BING_KEY },
+  { endpoint: 'https://searchadvisor.naver.com/indexnow', key: NAVER_KEY }
+];
+
+// Generate IndexNow Key Files in public root
+[BING_KEY, NAVER_KEY].forEach(key => {
+  const keyFile = `${key}.txt`;
+  fs.writeFileSync(path.join(publicDir, keyFile), key);
+  console.log(`✅ IndexNow Key File (${keyFile}) generated`);
+});
 
 // Helper to escape XML special characters
 const escapeXml = (unsafe) => {
@@ -89,7 +97,8 @@ console.log('✅ rss.xml generated');
 // 3. Generate Robots.txt
 const robots = `User-agent: *
 Allow: /
-Allow: /${INDEXNOW_KEY}.txt
+Allow: /${BING_KEY}.txt
+Allow: /${NAVER_KEY}.txt
 Sitemap: ${DOMAIN}/sitemap.xml
 `;
 
@@ -105,7 +114,7 @@ try {
   console.error('❌ Failed to generate 404.html:', error.message);
 }
 
-// 5. Submit to IndexNow (Bing, Yandex, etc.)
+// 5. Submit to IndexNow (Bing, Naver, etc.)
 const submitToIndexNow = async () => {
   const sitemapPath = path.join(publicDir, 'sitemap.xml');
   console.log(`🚀 Reading URLs from ${sitemapPath}...`);
@@ -124,40 +133,35 @@ const submitToIndexNow = async () => {
     return;
   }
 
-  const data = {
-    host: new URL(DOMAIN).hostname,
-    key: INDEXNOW_KEY,
-    urlList: urlList
-  };
-
-  console.log(`🚀 Host: ${data.host}`);
+  const host = new URL(DOMAIN).hostname;
+  console.log(`🚀 Host: ${host}`);
   console.log(`🚀 Submitting ${urlList.length} URLs to IndexNow...`);
-  console.log(`📡 Payload: ${JSON.stringify({ ...data, urlList: [urlList[0], '...'] })}`);
 
-  // Verify key file accessibility first
-  try {
-    const keyCheck = await fetch(INDEXNOW_KEY_LOCATION);
-    if (!keyCheck.ok) {
-      console.warn(`⚠️ Warning: Key file at ${INDEXNOW_KEY_LOCATION} returned status ${keyCheck.status}. Submission might fail.`);
-    } else {
-      const content = (await keyCheck.text()).trim();
-      if (content !== INDEXNOW_KEY) {
-        console.warn(`⚠️ Warning: Key file content mismatch! Found: "${content}", Expected: "${INDEXNOW_KEY}"`);
+  for (const config of INDEXNOW_CONFIG) {
+    const { endpoint, key } = config;
+    const endpointHost = new URL(endpoint).hostname;
+    
+    console.log(`📡 Sending to ${endpointHost}...`);
+    
+    const data = {
+      host: host,
+      key: key,
+      urlList: urlList
+    };
+
+    // Optional: Verify key file accessibility
+    const keyLocation = `${DOMAIN}/${key}.txt`;
+    try {
+      const keyCheck = await fetch(keyLocation);
+      if (keyCheck.ok) {
+        console.log(`✅ Key file verified for ${endpointHost} at ${keyLocation}`);
       } else {
-        console.log(`✅ Key file verified at ${INDEXNOW_KEY_LOCATION}`);
+        console.warn(`⚠️ Warning: Key file for ${endpointHost} at ${keyLocation} returned status ${keyCheck.status}`);
       }
+    } catch (e) {
+      console.warn(`⚠️ Warning: Could not verify key file for ${endpointHost}: ${e.message}`);
     }
-  } catch (e) {
-    console.warn(`⚠️ Warning: Could not verify key file: ${e.message}`);
-  }
 
-  const endpoints = [
-    'https://www.bing.com/indexnow',
-    'https://api.indexnow.org/indexnow'
-  ];
-
-  for (const endpoint of endpoints) {
-    console.log(`📡 Sending to ${endpoint}...`);
     try {
       const response = await fetch(endpoint, {
         method: 'POST',
@@ -169,14 +173,14 @@ const submitToIndexNow = async () => {
       });
 
       if (response.ok) {
-        console.log(`✅ IndexNow submission to ${new URL(endpoint).hostname} successful!`);
+        console.log(`✅ IndexNow submission to ${endpointHost} successful! (Status: ${response.status})`);
       } else {
-        console.error(`❌ IndexNow submission to ${new URL(endpoint).hostname} failed with status: ${response.status}`);
+        console.error(`❌ IndexNow submission to ${endpointHost} failed with status: ${response.status}`);
         const text = await response.text();
         console.error('Response:', text);
       }
     } catch (error) {
-      console.error(`❌ IndexNow submission to ${new URL(endpoint).hostname} error:`, error.message);
+      console.error(`❌ IndexNow submission to ${endpointHost} error:`, error.message);
     }
   }
 };
