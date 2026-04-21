@@ -33,7 +33,7 @@ const SEOHead = ({ title, description, keywords, image, canonicalPath }) => {
 
   const finalDesc = description
     || routeData.description
-    || "초등학교 1학년부터 6학년까지, 공식 암기가 아닌 원리로 배우는 수학 학습 플랫폼 매쓰 펫토리! 나만의 펫을 키우고 방을 꾸미며 즐겁게 수학 실력을 키워보세요.";
+    || "초등학교 1학년부터 6학년까지, 공식 암기가 아닌 원리로 배우는 혁신적인 수학 학습 플랫폼 매쓰 펫토리! 나만의 펫을 키우고 방을 꾸미며 수학 실력을 키우고 자신감을 높여보세요. 게임처럼 즐거운 인터랙티브 학습이 아이들을 기다립니다.";
 
   const finalKeywords = keywords
     ? `${keywords}, 매쓰펫토리, 초등수학, 전학년수학, 수학원리, 펫키우기`
