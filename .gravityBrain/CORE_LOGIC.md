@@ -40,11 +40,25 @@ sequenceDiagram
     - `activeBuffs` 객체에 `petId: expiryTimestamp` 형태로 저장하여 정밀한 시간 기반 만료 처리.
     - `Math.min(2.0, ...)`를 통해 보상 밸런스가 붕괴되지 않도록 상한선 설정.
 
-## 3. 예외 처리 및 확장 전략
-- **데이터 마이그레이션**: `getStorageData` 호출 시 이전 버전의 `foodInventory` 형식을 현재의 `snack` 통합 형식으로 자동 변환하여 데이터 유실 방지.
-- **동기화 전략**: React Context 내부에만 상태를 두지 않고 `localStorage`를 Source of Truth로 삼아, 페이지 새로고침이나 다중 탭 환경에서도 데이터 일관성 유지.
-- **컴포넌트 독립성**: `storageManager`는 순수 자바스크립트 함수로 구성되어 있어, React 컴포넌트 외부(예: SEO 스크립트 등)에서도 동일한 로직으로 데이터 접근 가능.
+## 3. SEO 자동화 및 실시간 인덱싱 (SEO Automation)
+매쓰 펫토리는 콘텐츠의 검색 가시성을 극대화하기 위해 다층적 SEO 자동화 시스템을 구축하고 있습니다.
 
-## 4. 의존성 관계
+### 🔄 SEO 파이프라인 흐름
+1.  **데이터 정의**: `src/data/seoData.js`에서 모든 서비스 경로의 메타데이터(Title, Desc, Priority 등)를 관리합니다. (Source of Truth)
+2.  **정적 자산 생성**: `scripts/generate-seo.js`를 통해 빌드 타임에 `sitemap.xml`, `rss.xml`, `robots.txt`를 생성합니다.
+3.  **IndexNow 전송**: 생성된 URL 리스트를 Bing, Naver 등의 IndexNow 엔드포인트에 즉시 전송합니다.
+4.  **Google Indexing API 호출**: `scripts/google-indexing.js`를 통해 Google Search Console에 실시간 색인 요청을 보냅니다.
+
+### 🛠️ 구현 특징
+- **중앙 집중식 관리**: 페이지 추가 시 `seoData.js`만 업데이트하면 모든 SEO 자산과 인덱싱 요청이 자동으로 처리됩니다.
+- **보안 및 이식성**: 민감한 API 키(`google-indexing-key.json`)는 프로젝트 루트에 보관하되 `.gitignore`로 제외하여 보안을 유지하며, 스크립트 내에서 상대 경로를 통해 유연하게 참조합니다.
+
+## 4. 예외 처리 및 확장 전략
+- **데이터 마이그레이션**: `getStorageData` 호출 시 이전 버전의 `foodInventory` 형식을 현재의 `snack` 통합 형식으로 자동 변환하여 데이터 유실 방지.
+- **동기화 전략**: React Context 내부에만 상태를 두지 않고 `localStorage`를 Source of Truth로 삼아 일관성 유지.
+- **확장성**: `scripts/google-indexing.js`는 `googleapis`를 사용하여 구현되었으며, 일일 할당량(200회) 초과 시 자동으로 중단되는 방어 로직이 포함되어 있습니다.
+
+## 5. 의존성 관계
 - **내부**: `UserContext` -> `storageManager` -> `localStorage`.
+- **자동화**: `scripts/` 내 도구들은 `googleapis`를 통해 외부 검색 엔진 API와 통신합니다.
 - **외부**: `canvas-confetti` (시각적 피드백), `framer-motion` (UI 전환 효과).

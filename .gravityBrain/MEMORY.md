@@ -5,6 +5,7 @@
 - **[2026-04-19]** IndexNow 403 이슈 분석 완료: 라이브 키 파일 확인 및 인증 대기 안내.
 - **[2026-04-20]** Naver IndexNow API 연동 완료: 전용 키 생성 및 멀티 엔드포인트 지원 로직 반영.
 - **[2026-04-20]** 배포 및 검증 완료: Naver(200 OK), Bing(403, 배포 후 재검증 대기).
+- **[2026-04-21]** Google Indexing API 연동 완료: `scripts/google-indexing.js` 통합 및 120개 URL 제출 성공.
 - **[2026-04-21]** Bing 서치콘솔 인증 메타 태그(msvalidate.01) 반영 상태 확인 완료.
 
 ## 🎯 단기 목표
@@ -16,8 +17,9 @@
 - [x] 최종 배포(Push) 및 자동화 파이프라인 가동 확인
 - [x] Naver IndexNow API 연동 및 멀티 키 시스템 구축 완료
 - [x] 운영 환경 배포 및 최종 인덱싱 테스트 완료
+- [x] Google Indexing API 연동 및 자동화 프로세스 구축 완료
 
 ## 📝 최근 결정 사항
 - 프로젝트 독립성 유지: `indexNow` 키를 제외한 외부 의존성 배제.
-- SEO 자동화 강조: `scripts/generate-seo.js`를 통한 빌드 타임 sitemap/rss 생성 및 IndexNow 제출.
+- SEO 자동화 강조: `scripts/generate-seo.js` 및 `google-indexing.js`를 통한 빌드 타임 자동 인덱싱.
 - 멀티 키 관리: Bing(`bbd0...`)과 Naver(`7c00...`) 키를 각각 별도의 .txt 파일로 관리.

@@ -26,3 +26,6 @@ dist-ssr
 # Project Internal Documentation
 _docs/
 scripts/logs/
+
+# Secrets
+google-indexing-key.json

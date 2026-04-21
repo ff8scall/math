@@ -13,7 +13,7 @@
 | **Animation** | Framer Motion |
 | **Icons** | Lucide React |
 | **Deployment** | Vercel |
-| **SEO** | custom scripts (Sitemap, RSS, IndexNow) |
+| **SEO** | custom scripts (Sitemap, RSS, IndexNow, Google Indexing) |
 
 ## 📁 디렉토리 구조
 ```mermaid
@@ -28,6 +28,7 @@ graph TD
     Src --> Context["context (State Management)"]
     
     Scripts --> SEOGen["generate-seo.js (SEO Automation)"]
+    Scripts --> GIndex["google-indexing.js (Google Indexing API)"]
     Scripts --> ImgProc["*.ps1 (Image Processing)"]
 ```
 
@@ -38,14 +39,15 @@ graph TD
 
 ### 2. `scripts/` (자동화)
 - `generate-seo.js`: 빌드 시 `sitemap.xml`, `rss.xml`, `robots.txt`를 자동 생성하고 IndexNow에 제출함.
+- `google-indexing.js`: Google Indexing API를 통해 실시간 색인 요청을 보냄.
 - `update-seo-descriptions.js`: 대규모 SEO 메타데이터 업데이트 스크립트.
-- `*.ps1`: 이미지 배경 제거 및 자동화 처리를 위한 PowerShell 스크립트들.
 
 ## 🔗 외부 연동 정보
 - **IndexNow Key (Bing)**: `bbd0d9a6843c450eb3e9d811a0fd504a`
 - **IndexNow Key (Naver)**: `7c007da9c90cef3f9485956806191b31`
-- **Indexing API**: Bing, IndexNow.org, Naver Search Advisor
+- **Indexing API**: Google Indexing API, Bing IndexNow, Naver Search Advisor
+- **Google Service Account**: `google-indexing-bot@lego-sia-index.iam.gserviceaccount.com`
 
 ## 🛡️ 가동 원칙
 1. 모든 페이지 추가 시 `src/data/seoData.js`에 먼저 등록할 것.
-2. 빌드 전 `npm run indexnow` 또는 `npm run build`를 통해 SEO 정보를 갱신할 것.
+2. 빌드 전 `npm run index` 또는 `npm run build`를 통해 SEO 정보를 갱신할 것.
