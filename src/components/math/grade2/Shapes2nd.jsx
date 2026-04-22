@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Button from '../../common/Button';
 import confetti from 'canvas-confetti';
 import { updateCoins } from '../../../utils/storage/storageManager';
+import PageHeader from '../../common/PageHeader';
 import { JsonLd, generateCourseSchema } from '../../seo/JsonLd';
 import styles from './Shapes2nd.module.css';
 
@@ -76,6 +77,7 @@ const Shapes2nd = () => {
 
     return (
         <div className={styles.container}>
+            <PageHeader title="여러 가지 도형 (삼각형, 사각형)" grade="2" />
             <div className={styles.modeTabs}>
                 <Button onClick={() => setMode('explore')} variant={mode === 'explore' ? 'primary' : 'secondary'} size="large">🔍 탐험하기</Button>
                 <Button onClick={() => setMode('practice')} variant={mode === 'practice' ? 'primary' : 'secondary'} size="large">✏️ 문제 풀기</Button>
@@ -83,7 +85,6 @@ const Shapes2nd = () => {
 
             {mode === 'explore' ? (
                 <div className={styles.explore}>
-                    <h2 className={styles.title}>여러 가지 도형 🔷</h2>
                     <p className={styles.subtitle}>도형의 변과 꼭짓점을 배워봐요!</p>
 
                     <div className={styles.shapeSelector}>
@@ -128,7 +129,6 @@ const Shapes2nd = () => {
                 </div>
             ) : (
                 <div className={styles.practice}>
-                    <h2 className={styles.title}>도형 문제</h2>
                     {quizData && (
                         <div className={styles.problemCard}>
                             <h3 className={styles.question}>{quizData.question}</h3>

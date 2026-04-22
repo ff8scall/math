@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import Button from '../../common/Button';
 import confetti from 'canvas-confetti';
 import { updateCoins } from '../../../utils/storage/storageManager';
+import PageHeader from '../../common/PageHeader';
 import styles from './MultiplicationTable.module.css';
 
 const MultiplicationTable = () => {
@@ -31,7 +32,7 @@ const MultiplicationTable = () => {
 
     return (
         <div className={styles.container}>
-            <h2 className={styles.title}>곱셈구구 ✖️</h2>
+            <PageHeader title="곱셈구구" grade="2" />
             <div className={styles.tabs}>
                 {[2, 3, 4, 5, 6, 7, 8, 9].map(d => (
                     <button key={d} onClick={() => setDan(d)} className={dan === d ? styles.active : ''}>{d}단</button>

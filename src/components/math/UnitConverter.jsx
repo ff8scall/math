@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Button from '../common/Button';
 import confetti from 'canvas-confetti';
 import { updateCoins } from '../../utils/storage/storageManager';
+import PageHeader from '../common/PageHeader';
 import { JsonLd, generateCourseSchema } from '../seo/JsonLd';
 
 const UnitConverter = () => {
@@ -124,6 +125,7 @@ const UnitConverter = () => {
 
     return (
         <div style={{ padding: '30px', maxWidth: '800px', margin: '0 auto', textAlign: 'center' }}>
+            <PageHeader title="길이 단위 변환" grade="3" />
             {/* Mode Tabs */}
             <div style={{ display: 'flex', justifyContent: 'center', gap: '20px', marginBottom: '30px' }}>
                 <Button onClick={() => setMode('explore')} variant={mode === 'explore' ? 'primary' : 'secondary'}>🔍 단위 변환기</Button>
@@ -132,7 +134,6 @@ const UnitConverter = () => {
 
             {mode === 'explore' ? (
                 <>
-                    <h2 style={{ fontSize: '2.5rem', marginBottom: '20px', fontFamily: 'Jua, sans-serif' }}>단위 변환기: 길이 📏</h2>
                     <p style={{ marginBottom: '40px', fontSize: '1.2rem', color: '#666' }}>
                         센티미터(cm)가 모이면 미터(m)가 되고, 쪼개지면 밀리미터(mm)가 돼요!
                     </p>
@@ -204,7 +205,6 @@ const UnitConverter = () => {
                 </>
             ) : (
                 <div style={{ maxWidth: '500px', margin: '0 auto' }}>
-                    <h2 style={{ fontSize: '2.5rem', marginBottom: '20px', fontFamily: 'Jua, sans-serif' }}>길이 문제 풀기 📏</h2>
                     {quizData && (
                         <div style={{ backgroundColor: 'white', padding: '40px', borderRadius: '20px', boxShadow: '0 10px 25px rgba(0,0,0,0.1)' }}>
                             <h3 style={{ fontSize: '1.5rem', marginBottom: '30px', color: '#333' }}>{quizData.question}</h3>

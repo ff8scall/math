@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Button from '../common/Button';
+import PageHeader from '../common/PageHeader';
 import { JsonLd, generateCourseSchema } from '../seo/JsonLd';
 import styles from './SubtractionWithBorrow.module.css';
 import confetti from 'canvas-confetti';
@@ -82,6 +83,7 @@ const SubtractionWithBorrow = () => {
 
     return (
         <div className={styles.container}>
+            <PageHeader title="세 자리 수 뺄셈: 받아내림" grade="3" />
             <div style={{ display: 'flex', justifyContent: 'center', gap: '20px', marginBottom: '30px' }}>
                 <Button onClick={() => setMode('explore')} variant={mode === 'explore' ? 'primary' : 'secondary'}>🔍 원리 탐험</Button>
                 <Button onClick={() => setMode('practice')} variant={mode === 'practice' ? 'primary' : 'secondary'}>✏️ 실전 연습</Button>
@@ -89,7 +91,6 @@ const SubtractionWithBorrow = () => {
 
             {mode === 'explore' ? (
                 <>
-                    <h2 className={styles.title}>세 자리 수 뺄셈: 받아내림 탐험 ➖</h2>
 
                     <div className={styles.stage}>
                         <div className={styles.grid}>
@@ -202,7 +203,6 @@ const SubtractionWithBorrow = () => {
                 </>
             ) : (
                 <div style={{ maxWidth: '400px', margin: '0 auto' }}>
-                    <h2>세 자리 수 뺄셈 연습 🔥</h2>
 
                     <div style={{ display: 'flex', gap: '10px', marginBottom: '20px', justifyContent: 'center' }}>
                         <Button onClick={() => { setDifficulty('random'); startPractice(); }} size="small" variant={difficulty === 'random' ? 'primary' : 'outline'}>랜덤</Button>

@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Button from '../../common/Button';
 import confetti from 'canvas-confetti';
 import { updateCoins } from '../../../utils/storage/storageManager';
+import PageHeader from '../../common/PageHeader';
 import styles from './FourDigitNumber.module.css';
 
 const FourDigitNumber = () => {
@@ -64,6 +65,7 @@ const FourDigitNumber = () => {
 
     return (
         <div className={styles.container}>
+            <PageHeader title="네 자리 수" grade="2" />
             <div className={styles.tabHeader}>
                 <Button onClick={() => setMode('explore')} variant={mode === 'explore' ? 'primary' : 'secondary'}>🔍 네 자리 수 탐험</Button>
                 <Button onClick={() => setMode('quiz')} variant={mode === 'quiz' ? 'primary' : 'secondary'}>✏️ 퀴즈 도전</Button>
@@ -77,7 +79,6 @@ const FourDigitNumber = () => {
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -10 }}
                     >
-                        <h2 className={styles.title}>네 자리 수 🔢</h2>
                         <div className={styles.numberDisplay}>
                             <span className={styles.bigNumber}>{num}</span>
                         </div>
@@ -128,7 +129,6 @@ const FourDigitNumber = () => {
                         exit={{ opacity: 0, y: -10 }}
                         className={styles.quizCard}
                     >
-                        <h2>자릿수 퀴즈 🎯</h2>
                         {quiz && (
                             <div className={styles.problemBox}>
                                 <p className={styles.question}>{quiz.question}</p>

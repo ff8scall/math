@@ -4,6 +4,7 @@ import Button from '../../common/Button';
 import confetti from 'canvas-confetti';
 import { updateCoins } from '../../../utils/storage/storageManager';
 import { JsonLd, generateCourseSchema } from '../../seo/JsonLd';
+import PageHeader from '../../common/PageHeader';
 import styles from './MultiDiv4th.module.css';
 
 const MultiDiv4th = () => {
@@ -90,6 +91,7 @@ const MultiDiv4th = () => {
 
     return (
         <div className={styles.container}>
+            <PageHeader title="곱셈과 나눗셈" grade="4" />
             <div className={styles.modeTabs}>
                 <Button onClick={() => setMode('explore')} variant={mode === 'explore' ? 'primary' : 'secondary'} size="large">🔍 원리 탐험</Button>
                 <Button onClick={() => setMode('practice')} variant={mode === 'practice' ? 'primary' : 'secondary'} size="large">✏️ 문제 풀기</Button>
@@ -114,7 +116,6 @@ const MultiDiv4th = () => {
                 <div className={styles.explore}>
                     {operation === 'multi' ? (
                         <div className={styles.multiExplore}>
-                            <h2 className={styles.title}>곱셈의 원리 💡</h2>
                             <div className={styles.setup}>
                                 <input type="number" value={n1} onChange={(e) => setN1(parseInt(e.target.value) || 0)} />
                                 <span>×</span>
@@ -143,7 +144,6 @@ const MultiDiv4th = () => {
                         </div>
                     ) : (
                         <div className={styles.divExplore}>
-                            <h2 className={styles.title}>나눗셈의 원리 💡</h2>
                             <div className={styles.setup}>
                                 <input type="number" value={n1} onChange={(e) => setN1(parseInt(e.target.value) || 0)} />
                                 <span>÷</span>
@@ -164,7 +164,6 @@ const MultiDiv4th = () => {
                 </div>
             ) : (
                 <div className={styles.practice}>
-                    <h2 className={styles.title}>{operation === 'multi' ? '곱셈' : '나눗셈'} 퀴즈 ✏️</h2>
                     {quizData && (
                         <div className={styles.problemCard}>
                             <h3 className={styles.question}>{quizData.question}</h3>

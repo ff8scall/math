@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Button from '../common/Button';
 import { updateCoins } from '../../utils/storage/storageManager';
 import confetti from 'canvas-confetti';
+import PageHeader from '../common/PageHeader';
 import styles from './MathQuiz.module.css';
 
 const Grade1Quiz = () => {
@@ -104,8 +105,8 @@ const Grade1Quiz = () => {
 
     return (
         <div className={styles.container}>
+            <PageHeader title="1학년 종합 퀴즈왕" grade="1" />
             <div className={styles.header}>
-                <h2 className={styles.title}>1학년 종합 퀴즈왕 👑</h2>
                 <div className={styles.scoreBadge}>점수: {score}</div>
             </div>
 

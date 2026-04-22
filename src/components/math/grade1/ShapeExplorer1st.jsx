@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Button from '../../common/Button';
 import confetti from 'canvas-confetti';
 import { updateCoins } from '../../../utils/storage/storageManager';
+import PageHeader from '../../common/PageHeader';
 import { JsonLd, generateCourseSchema } from '../../seo/JsonLd';
 import styles from './ShapeExplorer1st.module.css';
 
@@ -174,6 +175,7 @@ const ShapeExplorer1st = () => {
 
     return (
         <div className={styles.container}>
+            <PageHeader title="여러 가지 모양 (동그라미, 세모, 네모)" grade="1" />
             {/* 모드 전환 */}
             <div className={styles.modeTabs}>
                 <Button
@@ -194,7 +196,6 @@ const ShapeExplorer1st = () => {
 
             {mode === 'explore' ? (
                 <div className={styles.explore}>
-                    <h2 className={styles.title}>여러 가지 모양 🔷</h2>
                     <p className={styles.subtitle}>도형을 클릭하고 화면에 배치해보세요!</p>
 
                     {/* 도형 선택 */}
@@ -284,7 +285,6 @@ const ShapeExplorer1st = () => {
                 </div>
             ) : (
                 <div className={styles.practice}>
-                    <h2 className={styles.title}>도형 문제 풀기 ✏️</h2>
 
                     {quizData && (
                         <div className={styles.problemCard}>

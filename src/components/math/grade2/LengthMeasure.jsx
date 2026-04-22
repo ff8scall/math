@@ -4,6 +4,7 @@ import Button from '../../common/Button';
 import confetti from 'canvas-confetti';
 import { updateCoins } from '../../../utils/storage/storageManager';
 import { JsonLd, generateCourseSchema } from '../../seo/JsonLd';
+import PageHeader from '../../common/PageHeader';
 import styles from './LengthMeasure.module.css';
 
 const LengthMeasure = () => {
@@ -43,13 +44,13 @@ const LengthMeasure = () => {
 
     return (
         <div className={styles.container}>
+            <PageHeader title="길이 재기 (cm, m)" grade="2" />
             <div className={styles.modeTabs}>
                 <Button onClick={() => setMode('explore')} variant={mode === 'explore' ? 'primary' : 'secondary'}>🔍 탐험</Button>
                 <Button onClick={() => setMode('practice')} variant={mode === 'practice' ? 'primary' : 'secondary'}>✏️ 문제</Button>
             </div>
             {mode === 'explore' ? (
                 <div className={styles.explore}>
-                    <h2 className={styles.title}>길이 재기 📏</h2>
                     <div className={styles.ruler}>
                         <div className={styles.rulerLine} style={{ width: `${cm * 8 + 40}px` }}>
                             {[...Array(cm + 1)].map((_, i) => (

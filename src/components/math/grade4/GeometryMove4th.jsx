@@ -4,6 +4,7 @@ import Button from '../../common/Button';
 import confetti from 'canvas-confetti';
 import { updateCoins } from '../../../utils/storage/storageManager';
 import { JsonLd, generateCourseSchema } from '../../seo/JsonLd';
+import PageHeader from '../../common/PageHeader';
 import styles from './GeometryMove4th.module.css';
 
 const GeometryMove4th = () => {
@@ -115,6 +116,7 @@ const GeometryMove4th = () => {
 
     return (
         <div className={styles.container}>
+            <PageHeader title="평면도형의 이동" grade="4" />
             <div className={styles.modeTabs}>
                 <Button onClick={() => setMode('explore')} variant={mode === 'explore' ? 'primary' : 'secondary'} size="large">🔍 도형 이동 탐험</Button>
                 <Button onClick={() => setMode('practice')} variant={mode === 'practice' ? 'primary' : 'secondary'} size="large">✏️ 문제 풀기</Button>
@@ -122,7 +124,6 @@ const GeometryMove4th = () => {
 
             {mode === 'explore' ? (
                 <div className={styles.explore}>
-                    <h2 className={styles.title}>도형을 움직여봐요! 🔄</h2>
                     <p className={styles.subtitle}>밀기, 뒤집기, 돌리기를 클릭해서 도형의 변화를 관찰하세요.</p>
 
                     <div className={styles.gridCanvas}>
@@ -178,7 +179,6 @@ const GeometryMove4th = () => {
                 </div>
             ) : (
                 <div className={styles.practice}>
-                    <h2 className={styles.title}>도형 이동 퀴즈 ✏️</h2>
                     {quizData && (
                         <div className={styles.problemCard}>
                             <h3 className={styles.question}>{quizData.question}</h3>
