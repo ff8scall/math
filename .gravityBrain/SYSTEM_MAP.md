@@ -9,33 +9,38 @@
 | 구분 | 기술 |
 | :--- | :--- |
 | **Framework** | React 18 (Vite) |
-| **Styling** | Vanilla CSS (CSS Modules 추정) |
-| **Animation** | Framer Motion |
+| **Styling** | Vanilla CSS (CSS Modules) |
+| **Animation** | Framer Motion, canvas-confetti |
+| **Visuals** | Three.js (@react-three/fiber), Recharts |
 | **Icons** | Lucide React |
 | **Deployment** | Vercel |
 | **SEO** | custom scripts (Sitemap, RSS, IndexNow, Google Indexing) |
 
-## 📁 디렉토리 구조
+## 📁 디렉토리 구조 (핵심)
 ```mermaid
 graph TD
     Root["/ (Root)"] --> Src["src (Source Code)"]
-    Root --> Scripts["scripts (Automation)"]
-    Root --> Public["public (Static Assets)"]
-    
     Src --> Components["components (Reusable UI)"]
     Src --> Pages["pages (Route Components)"]
-    Src --> Data["data (SEO & Content Data)"]
-    Src --> Context["context (State Management)"]
+    Src --> Utils["utils (Business Logic)"]
     
-    Scripts --> SEOGen["generate-seo.js (SEO Automation)"]
-    Scripts --> GIndex["google-indexing.js (Google Indexing API)"]
-    Scripts --> ImgProc["*.ps1 (Image Processing)"]
+    Components --> Math["math (Curriculum Tools)"]
+    Components --> Common["common (UI Framework)"]
+    
+    Pages --> HomePage["HomePage (Dynamic Dashboard)"]
+    Pages --> MyRoom["MyRoom (Pet & Furniture)"]
+    Pages --> Shop["Shop (Gamification Hub)"]
+    Pages --> Parent["ParentPage (Analytics)"]
+    
+    Utils --> Storage["storage (State Persistence)"]
 ```
 
 ### 1. `src/` (주요 로직)
-- `App.jsx`: 메인 라우팅 및 레이아웃 정의
-- `data/seoData.js`: 서비스 내 모든 페이지의 SEO 메타데이터 관리 (Source of Truth)
-- `pages/`: 학년별 수학 학습 및 펫 관리 UI
+- `App.jsx`: 메인 라우팅 (Home, Selection, Curriculum, MyRoom, Shop, Parent 등)
+- `pages/HomePage.jsx`: 사용자 레벨, 뱃지, 랭킹 정보를 담은 대시보드형 메인
+- `pages/MyRoom.jsx`: 가구 배치 시스템 및 펫 인터랙션 구현
+- `pages/ParentPage.jsx`: Recharts 기반의 학습 데이터 시각화 리포트
+- `utils/storage/storageManager.js`: XP, 코인, 인벤토리, 레이아웃 등 모든 상태의 영속성 관리 (URL Sync 포함)
 
 ### 2. `scripts/` (자동화)
 - `generate-seo.js`: 빌드 시 `sitemap.xml`, `rss.xml`, `robots.txt`를 자동 생성하고 IndexNow에 제출함.

@@ -1,0 +1,120 @@
+.container {
+    padding: 30px;
+    background: #f8f9fa;
+    border-radius: 40px;
+    color: #333;
+}
+
+.header {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.header h2 {
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+}
+
+.header p {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.statsSummary {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.statCard {
+    background: white;
+    padding: 20px;
+    border-radius: 25px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+}
+
+.statLabel {
+    display: block;
+    font-size: 0.8rem;
+    color: #888;
+    margin-bottom: 5px;
+}
+
+.statValue {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.chartSection {
+    background: white;
+    padding: 25px;
+    border-radius: 30px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+}
+
+.chartSection h3 {
+    font-size: 1rem;
+    margin-bottom: 20px;
+}
+
+.analysisSection {
+    margin-bottom: 30px;
+}
+
+.analysisSection h3 {
+    font-size: 1rem;
+    margin-bottom: 15px;
+}
+
+.analysisBox {
+    background: #e7f5ff;
+    padding: 20px;
+    border-radius: 20px;
+    border-left: 5px solid #339af0;
+}
+
+.analysisBox p {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: #2c3e50;
+    word-break: keep-all;
+}
+
+.couponSection h3 {
+    font-size: 1rem;
+    margin-bottom: 15px;
+}
+
+.couponList {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.couponItem {
+    background: white;
+    padding: 15px 20px;
+    border-radius: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9rem;
+}
+
+.couponStatus {
+    color: #aaa;
+    font-size: 0.8rem;
+}
+
+.couponStatusActive {
+    color: #40c057;
+    font-weight: bold;
+    background: #ebfbee;
+    padding: 4px 10px;
+    border-radius: 20px;
+}

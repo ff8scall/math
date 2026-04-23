@@ -10,7 +10,7 @@
   text-align: center;
   border-radius: 0 0 50px 50px;
   box-shadow: var(--shadow-md);
-  margin-bottom: 60px;
+  margin-bottom: 40px;
 }
 
 .title {
@@ -22,7 +22,7 @@
 }
 
 .subtitle {
-  font-size: clamp(1.2rem, 4vw, 1.8rem);
+  font-size: clamp(1.2rem, 4vw, 1.5rem);
   color: #555;
   margin-bottom: 40px;
   max-width: 800px;
@@ -55,6 +55,96 @@
   background-color: #000;
 }
 
+.gridSection {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px 60px;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 30px;
+}
+
+.mainCol {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.sideCol {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.levelCard {
+    background: white;
+    padding: 30px;
+    border-radius: 30px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    text-align: center;
+    border: 1px solid #eee;
+}
+
+.levelLabel {
+    font-size: 0.9rem;
+    color: #888;
+}
+
+.levelValue {
+    font-size: 3rem;
+    color: #FFD93D;
+    margin: 10px 0;
+    text-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.xpBar {
+    width: 100%;
+    height: 12px;
+    background: #f0f2f5;
+    border-radius: 6px;
+    overflow: hidden;
+    margin: 15px 0 10px;
+}
+
+.xpProgress {
+    height: 100%;
+    background: linear-gradient(90deg, #FFD93D, #FF8B13);
+    transition: width 0.5s ease-out;
+}
+
+.xpText {
+    font-size: 0.8rem;
+    color: #666;
+}
+
+.socialWidget {
+    background: white;
+    padding: 25px;
+    border-radius: 30px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    border: 1px solid #eee;
+}
+
+.socialWidget h4 {
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.visitLogs {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.visitLogs p {
+    font-size: 0.85rem;
+    color: #666;
+    background: #f8f9fa;
+    padding: 10px;
+    border-radius: 12px;
+    margin: 0;
+}
+
 .features {
   max-width: 1200px;
   margin: 0 auto;
@@ -74,87 +164,8 @@
   transition: transform 0.3s ease;
 }
 
-.featureCard:hover {
-  transform: translateY(-10px);
-  border-color: var(--primary-color);
-}
-
-.featureIcon {
-  font-size: 3rem;
-  margin-bottom: 20px;
-  display: block;
-}
-
-.featureCard h3 {
-  font-size: 1.5rem;
-  margin-bottom: 15px;
-  color: #333;
-}
-
-.featureCard p {
-  color: #777;
-  line-height: 1.6;
-}
-
-.trustBadges {
-  background-color: #fcfcfc;
-  padding: 60px 20px;
-  text-align: center;
-  margin-top: 60px;
-}
-
-.badgeGrid {
-  display: flex;
-  justify-content: center;
-  gap: 40px;
-  margin-top: 30px;
-  opacity: 0.7;
-  filter: grayscale(1);
-}
-
-/* About Section for SEO */
-.aboutSection {
-  background: linear-gradient(135deg, #ffffff 0%, #f7f9fc 100%);
-  padding: 100px 20px;
-  border-top: 1px solid #eee;
-}
-
-.aboutContent {
-  max-width: 900px;
-  margin: 0 auto;
-  text-align: left;
-}
-
-.aboutContent h2 {
-  font-size: 2.5rem;
-  color: #333;
-  margin-bottom: 2rem;
-  text-align: center;
-}
-
-.aboutContent p {
-  font-size: 1.15rem;
-  color: #444;
-  line-height: 1.8;
-  margin-bottom: 1.5rem;
-  word-break: keep-all;
-}
-
-.aboutContent strong {
-  color: var(--primary-color);
-  font-weight: 700;
-}
-
-@media (max-width: 768px) {
-  .aboutSection {
-    padding: 60px 20px;
-  }
-  
-  .aboutContent h2 {
-    font-size: 1.8rem;
-  }
-  
-  .aboutContent p {
-    font-size: 1.05rem;
-  }
+@media (max-width: 900px) {
+    .gridSection {
+        grid-template-columns: 1fr;
+    }
 }

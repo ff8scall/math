@@ -4,14 +4,21 @@
 매쓰 펫토리는 사용자의 학습 동기를 유발하기 위해 '버프 기반 보상 시스템'을 채택하고 있습니다.
 
 ### 🔄 데이터 흐름 순서 (Sequence)
-1.  **이벤트 발생**: 사용자가 퀴즈(`MathQuiz`) 정답을 맞춤.
-2.  **보상 요청**: `updateCoins(10)` 함수 호출.
-3.  **버프 계산**: `getActiveMultiplier()`가 현재 활성화된 펫 버프를 확인.
-    - 버프 조건: 펫에게 간식을 준 후 30분 동안 지속.
-    - 공식: `Base(1.0) + (활성 펫 수 * 0.2)`, 최대 **2.0x**.
-4.  **저장소 갱신**: 최종 코인을 계산하여 `localStorage`에 저장.
-5.  **상태 전파**: `window.dispatchEvent`를 통해 `storage-update` 커스텀 이벤트 발생.
-6.  **UI 동기화**: `UserContext`가 이벤트를 수신하여 전역 `userData`를 갱신, 모든 UI(헤더의 코인 표시 등)가 즉시 업데이트됨.
+4.  **경험치(XP) 적립**: 코인과 동시에 정답 갯수/난이도에 따라 XP가 쌓임. (`updateCoins` 내부 로직)
+    - 레벨 공식: `Math.floor(totalXP / 1000) + 1`. (1,000 XP당 1레벨 상승)
+5.  **저장소 갱신**: 최종 코인과 XP를 계산하여 `localStorage`에 저장.
+6.  **상태 전파**: `window.dispatchEvent`를 통해 `storage-update` 커스텀 이벤트 발생.
+7.  **UI 동기화**: `UserContext`가 이벤트를 수신하여 전역 `userData`를 갱신, 모든 UI(홈페이지의 레벨 바, 헤더의 코인 등)가 즉시 업데이트됨.
+
+## 2. 펫 마이룸 가구 배치 시스템 (Layout Persistence)
+- **좌표 저장**: `Framer Motion`의 `onDragEnd`에서 반환되는 절대/상대 좌표를 `roomLayout` 객체에 `{ itemId: { x, y } }` 형태로 저장.
+- **레이아웃 복원**: 페이지 로드 시 `storageManager`에서 `roomLayout`을 불러와 각 컴포넌트의 `initial` 및 `animate` 속성에 주입.
+- **URL 동기화**: `urlSync.js`를 통해 방 꾸미기 상태까지 인코딩되어 타인과 공유 가능.
+
+## 3. 3D 입체도형 시뮬레이션 (Three.js Logic)
+- **엔진**: `@react-three/fiber`를 통해 React 컴포넌트 생명주기와 3D 씬을 통합.
+- **성질 학습**: 각 도형(원기둥, 원뿔 등)의 기하학적 파라미터(`cylinderGeometry args` 등)를 조작하며 면, 꼭짓점, 모서리의 개념을 시각적으로 매칭.
+- **최적화**: `Suspense`와 `Stage` 환경 설정을 통해 저사양 기기에서도 부드러운 60fps 렌더링 유지.
 
 ### 📊 시퀀스 다이브 (Mermaid)
 ```mermaid

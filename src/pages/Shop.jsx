@@ -194,11 +194,15 @@ const Shop = () => {
         { id: 'pet_frog', name: '초록 개구리', price: 300, img: pet_frog, desc: '폴짝폴짝 뛰는 귀여운 개구리' }
     ];
 
-    const couponItems = [
-        { id: 'c1', name: '유튜브 30분 보기', price: 500, icon: '📺', type: 'coupon' },
-        { id: 'c2', name: '간식 1개 획득권', price: 300, icon: '🍪', type: 'coupon' },
-        { id: 'c3', name: '게임 1시간 이용권', price: 1000, icon: '🎮', type: 'coupon' },
-        { id: 'c4', name: '장난감 쇼핑권', price: 2000, icon: '🧸', type: 'coupon' }
+    const furnitureItems = [
+        { id: 'f_bed', name: '폭신폭신 침대', price: 400, icon: '🛏️', desc: '펫들이 쉴 수 있는 편안한 침대예요.' },
+        { id: 'f_desk', name: '공부용 책상', price: 350, icon: '🪑', desc: '수학 공부를 더 열심히 할 수 있는 책상!' },
+        { id: 'f_plant', name: '파릇파릇 화분', price: 150, icon: '🪴', desc: '방 안을 상쾌하게 만들어주는 초록 식물' },
+        { id: 'f_bookshelf', name: '비밀 책꽂이', price: 450, icon: '📚', desc: '수학의 원리가 담긴 책들이 가득해요.' },
+        { id: 'f_window', name: '꿈꾸는 창문', price: 300, icon: '🪟', desc: '멋진 풍경이 보이는 커다란 창문' },
+        { id: 'f_carpet', name: '무지개 카페트', price: 250, icon: '🧶', desc: '방 분위기를 화사하게 바꿔주는 카페트' },
+        { id: 'f_lamp', name: '반짝 스탠드', price: 200, icon: '💡', desc: '밤에도 공부할 수 있게 밝혀주는 조명' },
+        { id: 'f_clock', name: '뻐꾸기 시계', price: 300, icon: '🕰️', desc: '시간의 원리를 배울 수 있는 예쁜 시계' }
     ];
 
     const buyItem = (item) => {
@@ -217,14 +221,14 @@ const Shop = () => {
         }
 
         if (data.inventory.includes(item.id)) {
-            // 아바타의 경우 이미 보유중이면 선택만 함 (상점에선 분양/구매 버튼이므로 이 로직은 주로 펫용)
+            alert('이미 보유하고 있는 아이템이에요!');
             return;
         }
 
         updateCoins(-item.price);
         addToInventory(item.id);
         confetti({ particleCount: 50, spread: 60 });
-        alert(`${item.name} 아이템을 획득했습니다!`);
+        alert(`${item.name} 아이템을 획득했습니다! 내 방에서 배치해 보세요.`);
     };
 
     const selectAvatarAction = (item) => {
@@ -266,6 +270,7 @@ const Shop = () => {
             <nav className={styles.tabs}>
                 <button className={tab === 'character' ? styles.activeTab : ''} onClick={() => setTab('character')}>👤 캐릭터</button>
                 <button className={tab === 'pets' ? styles.activeTab : ''} onClick={() => setTab('pets')}>🐾 펫 친구들</button>
+                <button className={tab === 'furniture' ? styles.activeTab : ''} onClick={() => setTab('furniture')}>🏠 가구</button>
                 <button className={tab === 'coupons' ? styles.activeTab : ''} onClick={() => setTab('coupons')}>🎟️ 쿠폰</button>
             </nav>
 
@@ -293,7 +298,6 @@ const Shop = () => {
                         ))}
                     </div>
                 )}
-
                 {tab === 'pets' && (
                     <div className={styles.grid}>
                         {petItems.map(item => (
@@ -312,6 +316,27 @@ const Shop = () => {
                                     {data.inventory.includes(item.id)
                                         ? (data.selectedPet === item.id ? '함께하는 중' : '데려가기')
                                         : '분양받기'}
+                                </Button>
+                            </div>
+                        ))}
+                    </div>
+                )}
+
+                {tab === 'furniture' && (
+                    <div className={styles.grid}>
+                        {furnitureItems.map(item => (
+                            <div key={item.id} className={`${styles.itemCard} ${data.inventory.includes(item.id) ? styles.owned : ''}`}>
+                                <div className={styles.furnitureIconBox}>{item.icon}</div>
+                                <h3>{item.name}</h3>
+                                <p style={{ fontSize: '0.9rem', color: '#666', height: '40px' }}>{item.desc}</p>
+                                <div className={styles.priceTag}>{data.inventory.includes(item.id) ? '보유중' : `${item.price} 코인`}</div>
+                                <Button
+                                    onClick={() => buyItem(item)}
+                                    variant={data.inventory.includes(item.id) ? 'secondary' : 'primary'}
+                                    fullWidth
+                                    disabled={data.inventory.includes(item.id)}
+                                >
+                                    {data.inventory.includes(item.id) ? '이미 보유함' : '구매하기'}
                                 </Button>
                             </div>
                         ))}

@@ -22,6 +22,7 @@ import UnitConverter from './components/math/UnitConverter';
 import MathQuiz from './components/math/MathQuiz';
 import WorksheetGenerator from './components/math/WorksheetGenerator';
 import MyRoom from './pages/MyRoom';
+import ParentPage from './pages/ParentPage';
 import CircleExplorer from './components/math/CircleExplorer';
 import WeightVolumeConverter from './components/math/WeightVolumeConverter';
 import NotFound from './pages/NotFound';
@@ -91,6 +92,7 @@ import Grade6Quiz from './components/math/Grade6Quiz';
 import MathGame from './pages/MathGame';
 
 // 신규 추가 공통 및 고학년 도구
+import Geometry3DExplorer from './components/math/grade6/Geometry3DExplorer';
 import BlockBuilder3D from './components/math/grade6/BlockBuilder3D';
 import NumberCardGame from './components/math/common/NumberCardGame';
 import WordProblemDefenseGame from './components/math/common/WordProblemDefenseGame';
@@ -110,7 +112,8 @@ function App() {
     <div className="App">
       <MainLayout>
         <Routes>
-          <Route path="/" element={<GradeSelection />} />
+          <Route path="/" element={<HomePage />} />
+          <Route path="/selection" element={<GradeSelection />} />
           <Route path="/grade/:gradeId" element={<Curriculum />} />
           <Route path="/grade/3/arithmetic" element={<AdditionWithCarry />} />
           <Route path="/grade/3/fraction" element={<FractionVisualizer />} />
@@ -200,14 +203,16 @@ function App() {
           <Route path="/grade/6/round-geometry" element={<RoundGeometry6th />} />
           <Route path="/grade/6/quiz" element={<Grade6Quiz />} />
           <Route path="/grade/6/block-builder" element={<BlockBuilder3D />} />
+          <Route path="/grade/6/geometry-3d" element={<Geometry3DExplorer />} />
           <Route path="/grade/:gradeId/game" element={<MathGame />} />
           
           {/* 공통 심화/게임 모드 */}
           <Route path="/grade/:gradeId/number-card" element={<NumberCardGame />} />
           <Route path="/grade/:gradeId/defense-game" element={<WordProblemDefenseGame />} />
 
-          <Route path="/myroom" element={<MyRoom />} />
+           <Route path="/myroom" element={<MyRoom />} />
           <Route path="/shop" element={<Shop />} />
+          <Route path="/parent" element={<ParentPage />} />
           {/* Legacy or Direct routes can be redirected or kept for testing */}
           <Route path="/arithmetic" element={<AdditionWithCarry />} />
           

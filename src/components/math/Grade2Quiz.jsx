@@ -6,15 +6,19 @@ import confetti from 'canvas-confetti';
 import PageHeader from '../common/PageHeader';
 import styles from './MathQuiz.module.css';
 
+import AITutor from '../common/AITutor';
+
 const Grade2Quiz = () => {
     const [problem, setProblem] = useState(null);
     const [userAnswer, setUserAnswer] = useState('');
     const [feedback, setFeedback] = useState(null);
     const [score, setScore] = useState(0);
     const [showAnswer, setShowAnswer] = useState(false);
+    const [showTutor, setShowTutor] = useState(false);
     const inputRef = useRef(null);
 
     const generateProblem = () => {
+        // ... (생략된 기존 로직 유지)
         const topics = ['three-digit', 'arithmetic', 'multiplication', 'length', 'time'];
         const topic = topics[Math.floor(Math.random() * topics.length)];
         let q, ans, exp;
@@ -29,7 +33,6 @@ const Grade2Quiz = () => {
                 exp = `각 자리의 숫자를 합치면 ${ans}입니다.`;
                 break;
             case 'arithmetic':
-                // Focus on carries and borrows for Grade 2
                 const isAdd = Math.random() > 0.5;
                 if (isAdd) {
                     const n1 = Math.floor(Math.random() * 40) + 15;
@@ -62,7 +65,6 @@ const Grade2Quiz = () => {
                 } else {
                     const total = meter * 100 + cm;
                     q = `${total}cm 는 몇 m 몇 cm인가요? (숫자만 입력: ${meter}m ${cm}cm라면 ${meter}${cm})`;
-                    // To keep input simple, we might ask for specific parts
                     q = `${total}cm는 ${meter}m와 몇 cm인가요?`;
                     ans = cm.toString();
                 }
@@ -72,12 +74,9 @@ const Grade2Quiz = () => {
                 const startH = Math.floor(Math.random() * 10) + 1;
                 const startM = [0, 10, 20, 30, 40, 50][Math.floor(Math.random() * 6)];
                 const elapsed = [30, 60, 90][Math.floor(Math.random() * 3)];
-                q = `${startH}시 ${startM === 0 ? "" : startM + "분"}에서 ${elapsed}분 후는 몇 시 몇 분인가요? (${startH}시 ${startM + elapsed}분이 되면 시가 바뀔 수 있어요)`;
-
                 const totalMinutes = startH * 60 + startM + elapsed;
                 const finalH = Math.floor(totalMinutes / 60) % 12 || 12;
                 const finalM = totalMinutes % 60;
-
                 q = `${startH}시 ${startM === 0 ? "정각" : startM + "분"}에서 ${elapsed}분 후는 몇 시인가요?`;
                 ans = finalH.toString();
                 exp = `${elapsed}분은 ${Math.floor(elapsed / 60) > 0 ? "1시간 " : ""}${elapsed % 60}분이에요.`;
@@ -90,6 +89,7 @@ const Grade2Quiz = () => {
         setUserAnswer('');
         setFeedback(null);
         setShowAnswer(false);
+        setShowTutor(false);
     };
 
     useEffect(() => {
@@ -107,6 +107,7 @@ const Grade2Quiz = () => {
             setTimeout(generateProblem, 2000);
         } else {
             setFeedback('incorrect');
+            setShowTutor(true); // 오답 시 튜터 등장
         }
     };
 
@@ -136,7 +137,7 @@ const Grade2Quiz = () => {
                         <div className={styles.buttons}>
                             <Button type="submit" fullWidth size="large" variant="primary">제출하기</Button>
                             {!showAnswer && feedback !== 'correct' && (
-                                <Button type="button" onClick={() => setShowAnswer(true)} variant="ghost" fullWidth size="medium">💡 잘 모르겠어요</Button>
+                                <Button type="button" onClick={() => { setShowAnswer(true); setShowTutor(true); }} variant="ghost" fullWidth size="medium">💡 잘 모르겠어요</Button>
                             )}
                         </div>
                     </form>
@@ -156,6 +157,8 @@ const Grade2Quiz = () => {
                     </AnimatePresence>
                 </div>
             )}
+            
+            <AITutor isVisible={showTutor} problem={problem} />
         </div>
     );
 };
