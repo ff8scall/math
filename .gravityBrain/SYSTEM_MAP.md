@@ -51,3 +51,4 @@ graph TD
 ## 🛡️ 가동 원칙
 1. 모든 페이지 추가 시 `src/data/seoData.js`에 먼저 등록할 것.
 2. 빌드 전 `npm run index` 또는 `npm run build`를 통해 SEO 정보를 갱신할 것.
+3. `index.html`은 최소한의 셸 구조만 유지하며, 정적인 메타 설명(Description) 태그를 직접 삽입하지 말 것 (SEOHead 컴포넌트와 충돌 방지).
