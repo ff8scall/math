@@ -50,7 +50,7 @@ sequenceDiagram
 4.  **Google Indexing API 호출**: `scripts/google-indexing.js`를 통해 Google Search Console에 실시간 색인 요청을 보냅니다.
 
 ### 🛠️ 구현 특징
-- **중앙 집중식 관리**: 페이지 추가 시 `seoData.js`만 업데이트하면 모든 SEO 자산과 인덱싱 요청이 자동으로 처리됩니다.
+- **중앙 집중식 관리**: 페이지 추가 시 `seoData.js`만 업데이트하면 모든 SEO 자산과 인덱싱 요청이 자동으로 처리됩니다. `index.html`은 최소한의 구조만 유지하며, 모든 메타 태그는 `SEOHead` 컴포넌트를 통해 런타임에 동적으로 주입하여 중복 발생을 원천 차단합니다.
 - **보안 및 이식성**: 민감한 API 키(`google-indexing-key.json`)는 프로젝트 루트에 보관하되 `.gitignore`로 제외하여 보안을 유지하며, 스크립트 내에서 상대 경로를 통해 유연하게 참조합니다.
 
 ## 4. 예외 처리 및 확장 전략
